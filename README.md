@@ -18,7 +18,8 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 2. Some molecules cannot find their SMILES through PubChem
 3. Decide what to show at for "mixture" product
 4. Review the validity of extracted reactoin string compared to Lowe's data
-5. Slow inference time
+5. Slow inference time (> 10 sec per prompt)
+6. Fine-tune the model (use ~1k response from Gemini to finetune gpt/llama/phi-2)?
 
 ## Developer
 Shuan Chen (shuan75@snu.ac.kr)<br>
