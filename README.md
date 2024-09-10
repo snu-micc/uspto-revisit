@@ -14,14 +14,27 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - [License](#license)
 
 ## To do
-1. Randomly select 100 reactions for each "Many products", "Many reagents", "Many reactants", "No reagent", "Rare template"<br>
-: This is already selected and stored in "src/GPT_input.csv"
-2. Get structured summarization via LLMs<br>
-: Prompts are uploaded in `src/prompts_five.json`
-3. Get SMILES from various DB: OPSIN, PubChem, CIR, ChemSpider<br>
-: Code is uploded in "src/get_smiles.ipynb"
-4. Generate Reactions SMILES<br>
-:
+# Project Workflow
+
+### 1. Randomly Select 100 Reactions for Each Category
+- **Categories**: "Many products", "Many reagents", "Many reactants", "No reagent", "Rare template".
+- The selected reactions are already stored in:  
+  `src/GPT_input.csv`
+
+### 2. Get Structured Summarization via LLMs
+- Prompts for structured summarization are available in:  
+  `src/prompts_five.json`
+
+### 3. Get SMILES from Various Databases
+- SMILES strings are retrieved from OPSIN, PubChem, CIR, and ChemSpider.
+- Code to retrieve SMILES can be found in:  
+  `src/get_smiles.ipynb`
+
+### 4. Generate Reaction SMILES
+- Generate reaction SMILES based on the selected reactions.
+- Code for generating reaction SMILES is located in:  
+  `src/generate_reaction_smiles.ipynb`
+
 
 ## Developer
 Shuan Chen (shuan75@snu.ac.kr)<br>
