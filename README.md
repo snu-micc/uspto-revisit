@@ -15,10 +15,13 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 
 ## To do
 1. Randomly select 100 reactions for each "Many products", "Many reagents", "Many reactants", "No reagent", "Rare template"<br>
-: This is already selected and stored in 
-2. Get structured summarization via LLMs
-3. Get SMILES from various DB: OPSIN, PubChem, CIR, ChemSpider
-4. Generate Reactions SMILES
+: This is already selected and stored in "src/GPT_input.csv"
+2. Get structured summarization via LLMs<br>
+: Prompts are uploaded in `src/prompts_five.json`
+3. Get SMILES from various DB: OPSIN, PubChem, CIR, ChemSpider<br>
+: Code is uploded in "src/get_smiles.ipynb"
+4. Generate Reactions SMILES<br>
+:
 
 ## Developer
 Shuan Chen (shuan75@snu.ac.kr)<br>
