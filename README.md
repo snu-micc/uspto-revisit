@@ -14,12 +14,11 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - [License](#license)
 
 ## To do
-1. Some reagents are either not extracted in reactants list or not show in reaction step
-2. Some molecules cannot find their SMILES through PubChem
-3. Decide what to show at for "mixture" product
-4. Review the validity of extracted reactoin string compared to Lowe's data
-5. Slow inference time (> 10 sec per prompt)
-6. Fine-tune the model (use ~1k response from Gemini to finetune gpt/llama/phi-2)?
+1. Randomly select 100 reactions for each "Many products", "Many reagents", "Many reactants", "No reagent", "Rare template"<br>
+: This is already selected and stored in 
+2. Get structured summarization via LLMs
+3. Get SMILES from various DB: OPSIN, PubChem, CIR, ChemSpider
+4. Generate Reactions SMILES
 
 ## Developer
 Shuan Chen (shuan75@snu.ac.kr)<br>
