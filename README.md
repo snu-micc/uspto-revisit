@@ -61,7 +61,12 @@ The raw sgemented paragraphs and reactions extracted from USPTO are downloaded f
 
 
 ## Scripts
-See `gemini.ipynb`.
+See the following scripts in the `src` folder:
+- `get_smiles.ipynb`
+- `generate_reaction_smiles.ipynb`
+- `GPT_input.csv`
+- `prompts_five.json`
+
 
 ## Publication
 -
