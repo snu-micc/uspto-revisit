@@ -13,8 +13,8 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - [References](#references)
 - [License](#license)
 
-## To do
-# Project Workflow
+
+## Project Workflow
 
 ### 1. Randomly Select 100 Reactions for Each Category
 - **Categories**: "Many products", "Many reagents", "Many reactants", "No reagent", "Rare template".
