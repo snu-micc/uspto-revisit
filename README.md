@@ -23,10 +23,11 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 
 ## Developer
 Shuan Chen (shuan75@snu.ac.kr)<br>
+Chaewon Lee (cw.lee@snu.ac.kr)<br>
 
 ## Python Dependencies
 * Python (version >= 3.8)
-* google-generativeai (version <= 2023)
+* OpenAI (version <= 2024)
 * RDKit (version >= 2019)
 
 ## Installation Guide
