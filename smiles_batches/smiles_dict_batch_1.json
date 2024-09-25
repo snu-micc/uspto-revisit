@@ -1,0 +1,777 @@
+﻿[
+  {
+    "A": "N1CC(C(=O)OCC)CCC1",
+    "B": "C(C(O)C(O)C(=O)O)(=O)O",
+    "C": "C(C)O",
+    "D": "[(+)-tartrate salt of (+)-ethyl nipecotate (NoSmi)]"
+  },
+  {
+    "A": "SC1=NC2=C(N1)C=CC=C2",
+    "B": "Cl.ClCC1=NC=CC(=C1OC)SCCCCl",
+    "C": "C(C)(C)O",
+    "D": "O",
+    "E": "Cl.Cl.ClCCCSC1=C(C(=NC=C1)CSC1=NC2=C(N1)C=CC=C2)OC"
+  },
+  {
+    "A": "ClC1=NC=NC2=CC=C(C=C12)F",
+    "B": "ClC=1C=C(N)C=CC1Cl",
+    "C": "C(C)(C)O",
+    "D": "C(C)OCC",
+    "E": "Cl.ClC=1C=C(NC2=NC=NC3=CC=C(C=C23)F)C=CC1Cl"
+  },
+  {
+    "A": "FC1=C(C=CC(=C1)F)C1(OCC(O1)COC1=CC=C(C=C1)N1CCN(CC1)C1=CC=C(C=C1)N1C=NN(C1=O)C(C(C)N[C@@H](CC1=CC=CC=C1)C(=O)O)C)CN1N=CN=C1",
+    "B": "CC(C)=O",
+    "C": "C(\\C=C/C(=O)O)(=O)O",
+    "D": "C(\\C=C/C(=O)O)(=O)O.FC1=C(C=CC(=C1)F)C1(OCC(O1)COC1=CC=C(C=C1)N1CCN(CC1)C1=CC=C(C=C1)N1C=NN(C1=O)C(C(C)N[C@@H](CC1=CC=CC=C1)C(=O)O)C)CN1N=CN=C1"
+  },
+  {
+    "A": "[(+)-(5)6-methoxy-2-[[(4-methoxy-3,5-dimethyl-2-pyridinyl)methyl]sulfinyl]-1H-benzimidazole (NoSmi)]",
+    "B": "C(C)C(=O)C",
+    "C": "[OH-].[Na+]",
+    "D": "CC1=CC=CC=C1",
+    "E": "[MEK (NoSmi)]",
+    "F": "C(C)OCC",
+    "G": "[(+)-(5)6-methoxy-2-[[(4-methoxy-3,5-dimethyl-2-pyridinyl)methyl]sulfinyl]-1H-benzimidazole sodium salt (NoSmi)]"
+  },
+  {
+    "A": "BrC1=C(C(=O)O)C=CC=C1",
+    "B": "[MeOH (NoSmi)]",
+    "C": "[K2CO3 (NoSmi)]",
+    "D": "[K+].BrC1=C(C(=O)[O-])C=CC=C1"
+  },
+  {
+    "A": "COC(=O)C1=CNC=2CCN3C=CN=C3C12",
+    "B": "Br",
+    "C": "C(C)OCC",
+    "D": "Br.N=1C=CN2CCC=3NC=C(C3C12)C(=O)O"
+  },
+  {
+    "A": "FC1=C(C=CC(=C1)F)C(CNC=O)O",
+    "B": "CO",
+    "C": "Cl",
+    "D": "C(C)(=O)OCC",
+    "E": "Cl.NCC(O)C1=C(C=C(C=C1)F)F"
+  },
+  {
+    "A": "C(C(CCC)CCC)(=O)[O-].[Mg+2].C(C(CCC)CCC)(=O)[O-]",
+    "B": "C(C)#N",
+    "C": "O.C(C(CCC)CCC)(=O)[O-].[Mg+2].C(C(CCC)CCC)(=O)[O-]"
+  },
+  {
+    "A": "O[C@@H](CNCCCCCCCCCN1CCC(CC1)OC(NC1=C(C=CC=C1)C1=CC=CC=C1)=O)C1=C2C=CC(NC2=C(C=C1)O)=O",
+    "B": "CO",
+    "C": "C1(=CC=CC=2C(=CC=CC12)S(=O)(=O)O)S(=O)(=O)O",
+    "D": "C1(=CC=CC=2C(=CC=CC12)S(=O)(=O)O)S(=O)(=O)O.O[C@@H](CNCCCCCCCCCN1CCC(CC1)OC(NC1=C(C=CC=C1)C1=CC=CC=C1)=O)C1=C2C=CC(NC2=C(C=C1)O)=O"
+  },
+  {
+    "A": "[N-(1S,2R)-{1-(3,5-Difluoro-benzyl)-2-hydroxy-2-[(5R,2R)-5-pent-4-enyloxy-piperdin-2-yl]-ethyl}-acetamide hydrochloride (NoSmi)]",
+    "B": "[Palladium on carbon (NoSmi)]",
+    "C": "CO",
+    "D": "[H]",
+    "E": "[filtering agent (NoSmi)]",
+    "F": "[N-(1S,2R)-{1-(3,5-Difluoro-benzyl)-2-hydroxy-2-[(5R,2R)-5-pent-4-enyloxy-piperdin-2-yl]-ethyl}-acetamide (NoSmi)]"
+  },
+  {
+    "A": "C(#N)C1(CCN(CC1)C(=O)OC(C)(C)C)C(=O)N1CCOCC1",
+    "B": "Cl",
+    "C": "O1CCOCC1",
+    "D": "Cl.N1(CCOCC1)C(=O)C1(CCNCC1)C#N"
+  },
+  {
+    "A": "[cefoxitin acid (NoSmi)]",
+    "B": "CC(=O)C",
+    "C": "C(C(O)C)(=O)[O-].[Na+]",
+    "D": "O",
+    "E": "[Cefoxitin Sodium (NoSmi)]"
+  },
+  {
+    "A": "ClCC1=NN2C(C(=NC=C2C)C)=N1",
+    "B": "C1(=CC=CC=C1)P(C1=CC=CC=C1)C1=CC=CC=C1",
+    "C": "C(C)#N",
+    "D": "CCOCC",
+    "E": "[Cl-].CC1=CN=C(C=2N1N=C(N2)C[P+](C2=CC=CC=C2)(C2=CC=CC=C2)C2=CC=CC=C2)C"
+  },
+  {
+    "A": "FC(C(F)(F)F)(OC1=CC=C(OC2CCN(CC2)C(=O)OC(C)(C)C)C=C1)F",
+    "B": "Cl",
+    "C": "O1CCOCC1",
+    "D": "C(C)OCC",
+    "E": "Cl.FC(C(F)(F)F)(OC1=CC=C(OC2CCNCC2)C=C1)F"
+  },
+  {
+    "A": "COC=1C=C(CC2=NN=C(O2)NC=2C=C3C=NN(C3=CC2)C(=O)OC(C)(C)C)C=CC1",
+    "B": "Cl",
+    "C": "O1CCOCC1",
+    "D": "C(C)(=O)OCC",
+    "E": "Cl.COC=1C=C(CC2=NN=C(O2)NC=2C=C3C=NNC3=CC2)C=CC1"
+  },
+  {
+    "A": "C(#N)C=1OC2=C(C1)C=C(C=C2)N2CCNCC2",
+    "B": "ClCCl",
+    "C": "C(C)(=O)OCC",
+    "D": "Cl",
+    "E": "[Cl-].C(#N)C=1OC2=C(C1)C=C(C=C2)N2CC[NH2+]CC2"
+  },
+  {
+    "A": "FC=1C=C(CC2C[C@@H]3N(CCNC3)C2=O)C=CC1",
+    "B": "Cl",
+    "C": "O1CCOCC1",
+    "D": "Cl.FC=1C=C(CC2C[C@@H]3N(CCNC3)C2=O)C=CC1"
+  },
+  {
+    "A": "C(C)(=O)O.C(C)(=O)O.IC1=CC=CC=C1",
+    "B": "[CH2Cl2 (NoSmi)]",
+    "C": "OS(=O)(=O)C(F)(F)F",
+    "D": "C[Si](C1=C(C=CC=C1)[Si](C)(C)C)(C)C",
+    "E": "CCOCC",
+    "F": "[O-]S(=O)(=O)C(F)(F)F.C1(=CC=CC=C1)[I+]C1=C(C=CC=C1)[Si](C)(C)C"
+  },
+  {
+    "A": "NC(C1=CC=C(OCCCC2CCN(CC2)CCCOC2=CC=C(C(=N)N)C=C2)C=C1)=N",
+    "B": "C(C)O",
+    "C": "Cl",
+    "D": "Cl.NC(C1=CC=C(OCCCC2CCN(CC2)CCCOC2=CC=C(C(=N)N)C=C2)C=C1)=N"
+  },
+  {
+    "A": "C1(CCCCC1)COC=1C=2N(C=CC1)C(=C(N2)C)C(=O)N[C@@H]2CN(CC2)C",
+    "B": "C(C)(=O)OCC",
+    "C": "Cl",
+    "D": "Cl.C1(CCCCC1)COC=1C=2N(C=CC1)C(=C(N2)C)C(=O)N[C@@H]2CN(CC2)C"
+  },
+  {
+    "A": "C(C)(C)(C)C1=NN(C(=C1)NC(=O)NC1=CC=C(C2=CC=CC=C12)OCC1=CC(=NC=C1)NC1=NC(=CN=C1)CC)C1=CC=C(C=C1)C",
+    "B": "CC(CC)=O",
+    "C": "C(\\C=C/C(=O)O)(=O)O",
+    "D": "C(\\C=C/C(=O)O)(=O)O.C(C)(C)(C)C1=NN(C(=C1)NC(=O)NC1=CC=C(C2=CC=CC=C12)OCC1=CC(=NC=C1)NC1=NC(=CN=C1)CC)C1=CC=C(C=C1)C"
+  },
+  {
+    "A": "Br.CN1CC(=CCC1)C(=O)O",
+    "B": "Cl",
+    "C": "Cl.CN1CC(=CCC1)C(=O)O"
+  },
+  {
+    "A": "CN(C(=O)Cl)C",
+    "B": "OC(=O)C(F)(F)F.ClC=1C=CC(=C(C1)C(=O)C1CCN(CC1)C=1N=C2C(=NC1NC(C)C)CNCC2)F",
+    "C": "C(C)N(CC)CC",
+    "D": "C(Cl)Cl",
+    "E": "CO",
+    "F": "ClC=1C=CC(=C(C(=O)C2CCN(CC2)C=2N=C3C(=NC2NC(C)C)CN(CC3)C(=O)N(C)C)C1)F"
+  },
+  {
+    "A": "NCC1(C2C=C(CC2C1)CC)CC(=O)OC(C)(C)C",
+    "B": "C(C)#N",
+    "C": "C([C@H](O)C1=CC=CC=C1)(=O)O",
+    "D": "C([C@H](O)C1=CC=CC=C1)(=O)O.NC[C@]1([C@@H]2C=C(C[C@@H]2C1)CC)CC(=O)OC(C)(C)C"
+  },
+  {
+    "A": "OC(CN1C(CCC1=O)=O)COC1=CC=CC=C1",
+    "B": "Cl",
+    "C": "C(C)O",
+    "D": "O",
+    "E": "CCOCC",
+    "F": "CO",
+    "G": "Cl.NCC(COC1=CC=CC=C1)O"
+  },
+  {
+    "A": "C1(=CC=CC2=CC=CC=C12)CSCC1=CC=CC2=CC=CC=C12",
+    "B": "F[Sb-](F)(F)(F)(F)F.C(C)[O+](CC)CC",
+    "C": "C(Cl)Cl",
+    "D": "F[Sb-](F)(F)(F)(F)F.C1(=CC=CC2=CC=CC=C12)C[S+](CC)CC1=CC=CC2=CC=CC=C12"
+  },
+  {
+    "A": "CN1C(=O)N(C(=O)C(C1=O)C(NC1=CC(=C(C(=C1)Cl)OC(C(F)OC(C(C(F)(F)F)(F)F)(F)F)(F)F)Cl)=O)C",
+    "B": "C(C)#N",
+    "C": "C(C)N(CC)CC",
+    "D": "C(C)[NH+](CC)CC.CN1C(=O)N(C(=O)C(C1=O)C(NC1=CC(=C(C(=C1)Cl)OC(C(F)OC(C(C(F)(F)F)(F)F)(F)F)(F)F)Cl)=O)C"
+  },
+  {
+    "A": "NC1CN2CCC1CC2",
+    "B": "CN1CCOCC1",
+    "C": "C(Cl)(Cl)Cl",
+    "D": "C(C1=CC=CC=C1)N1C(C(OC2=C1C=C(C=C2C(=O)Cl)Cl)(C)CC)=O",
+    "E": "O",
+    "F": "C(O)([O-])=O.[Na+]",
+    "G": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "H": "C(C)O",
+    "I": "C(C)(C)OC(C)C",
+    "J": "Cl",
+    "K": "Cl.C(C1=CC=CC=C1)N1C(C(OC2=C1C=C(C=C2C(=O)NC2CN1CCC2CC1)Cl)C)=O"
+  },
+  {
+    "A": "C1(C=2C(C(N1CC(CCC(C)=O)=O)=O)=CC=CC2)=O",
+    "B": "N1(C=NC=C1)CCCN",
+    "C": "C(C)(=O)O",
+    "D": "Cl",
+    "E": "C(C)O",
+    "F": "Cl.N1(C=NC=C1)CCCN1C(=CC=C1C)CN1C(C=2C(C1=O)=CC=CC2)=O"
+  },
+  {
+    "A": "[NaOH (NoSmi)]",
+    "B": "[7d (NoSmi)]",
+    "C": "[EtOH (NoSmi)]",
+    "D": "O",
+    "E": "[MIBK (NoSmi)]",
+    "F": "O.[Na+].[Cl-]",
+    "G": "[NaSO4 (NoSmi)]",
+    "H": "[Na+].ClC1=C(C=CC=C1OC)C1=C(N(C(N(C1=O)C[C@@H](C1=CC=CC=C1)NCCCC(=O)[O-])=O)CC1=C(C=CC=C1C(F)(F)F)F)C"
+  },
+  {
+    "A": "OC(C)(C)C1=CC=C(C=C1)C=1N=C(N2C1C=NC1=C2C=CN1S(=O)(=O)C1=CC=C(C)C=C1)[C@H]1C[C@H](CC1)NC(OC(C)(C)C)=O",
+    "B": "O1CCOCC1",
+    "C": "Cl",
+    "D": "[Et2O (NoSmi)]",
+    "E": "N[C@@H]1C[C@@H](CC1)C1=NC(=C2N1C1=C(N=C2)N(C=C1)S(=O)(=O)C1=CC=C(C)C=C1)C1=CC=C(C=C1)C(C)(C)O"
+  },
+  {
+    "A": "[R,R′-atracurium besylate (NoSmi)]",
+    "B": "[THF (NoSmi)]",
+    "C": "CC(=O)C",
+    "D": "[HClO4 (NoSmi)]",
+    "E": "O",
+    "F": "[mixture1 (NoSmi)]",
+    "G": "[mixture2 (NoSmi)]"
+  },
+  {
+    "A": "COC(=O)C=1SC(=CC1N(C1CCN(CC1)C)C(=O)[C@@H]1CC[C@H](CC1)C)C1=CC=CC=C1",
+    "B": "[LiOH.monohydrate (NoSmi)]",
+    "C": "O1CCOCC1",
+    "D": "O",
+    "E": "Cl",
+    "F": "O",
+    "G": "[hexanes (NoSmi)]",
+    "H": "[Cl-].C(=O)(O)C=1SC(=CC1N(C1CC[NH+](CC1)C)C(=O)[C@@H]1CC[C@H](CC1)C)C1=CC=CC=C1"
+  },
+  {
+    "A": "CC1=C(N)C=C(C=C1)[N+](=O)[O-]",
+    "B": "N#CN",
+    "C": "C(C)(C)O",
+    "D": "Cl",
+    "E": "[N+](=O)(O)[O-]",
+    "F": "[N+](=O)(O)[O-].CC1=C(C=C(C=C1)[N+](=O)[O-])NC(=N)N"
+  },
+  {
+    "A": "C(C)(C)(C)NC1=C(N=C2N1C=CC=C2)C=2SC(=CC2)C#CC2=NC=CC=C2",
+    "B": "C(Cl)Cl",
+    "C": "O",
+    "D": "Cl[Si](C)(C)C",
+    "E": "Cl.C(C)(C)(C)NC1=C(N=C2N1C=CC=C2)C=2SC(=CC2)C#CC2=NC=CC=C2"
+  },
+  {
+    "A": "N1=C(N)N=C(N)N=C1N",
+    "B": "C=O",
+    "C": "O",
+    "D": "C=O.N1=C(N)N=C(N)N=C1N"
+  },
+  {
+    "A": "C1(=CC(=CC=C1)CN)CN",
+    "B": "C(CCCCC(=O)O)(=O)O",
+    "C": "C(CCCCC(=O)O)(=O)O.C1(=CC(=CC=C1)CN)CN"
+  },
+  {
+    "A": "Cl",
+    "B": "O1CCOCC1",
+    "C": "C(C)(C)(C)OC(=O)N(C1=C(C(=C(C(=C1)C)OC(C)=O)C)C)C",
+    "D": "C(C)(C)OC(C)C",
+    "E": "Cl.CNC1=C(C(=C(C(=C1)C)OC(C)=O)C)C"
+  },
+  {
+    "A": "C(C)(=O)N1C(CC2=CC=CC=C12)C(=O)O",
+    "B": "C(C)O",
+    "C": "O",
+    "D": "CO",
+    "E": "C1(=CC=CC=C1)[C@@H]([C@H](CO)N)O",
+    "F": "C1(=CC=CC=C1)[C@@H]([C@H](CO)N)O.C(C)(=O)N1[C@@H](CC2=CC=CC=C12)C(=O)O"
+  },
+  {
+    "A": "C1=CC=CC2=CC3=CC=CC=C3C=C12",
+    "B": "COCCOC",
+    "C": "[K]",
+    "D": "[Ar]",
+    "E": "C1=CC=CC2=CC3=CC=CC=C3C=C12.[K]"
+  },
+  {
+    "A": "C(C)(C)(C)C=1C=C(C=C(C1O)C(C)(C)C)S",
+    "B": "C(C)OC(=O)N=NC(=O)OCC",
+    "C": "O1CCOCC1",
+    "D": "[complex of 3,5-di-t-butyl-4-hydroxythiophenol and diethyl azodicarboxylate (NoSmi)]"
+  },
+  {
+    "A": "NC(\\C=C(/C(=O)O)\\C)CC1=CC=C(C=C1)C1=CC=CC=C1",
+    "B": "C(C)O",
+    "C": "S(=O)(Cl)Cl",
+    "D": "CCCCCCC",
+    "E": "C(C)(=O)OCC",
+    "F": "Cl.NC(\\C=C(/C(=O)O)\\C)CC1=CC=C(C=C1)C1=CC=CC=C1"
+  },
+  {
+    "A": "COC=1C=C(COC=2C=CC=3N(N2)C=C(N3)NC(OC(C)(C)C)=O)C=C(C1OC)OC",
+    "B": "ClCCl",
+    "C": "FC(C(=O)O)(F)F",
+    "D": "C(C)OCC",
+    "E": "FC(C(=O)O)(F)F.NC=1N=C2N(N=C(C=C2)OCC2=CC(=C(C(=C2)OC)OC)OC)C1"
+  },
+  {
+    "A": "COC1=C(C=CC(=C1)OS(=O)(=O)C)C=1NC2=C(C(=NC=C2)OS(=O)(=O)C)N1",
+    "B": "[ethanolic hydrochloric acid (NoSmi)]",
+    "C": "C(C)O",
+    "D": "Cl.COC1=C(C=CC(=C1)OS(=O)(=O)C)C1=NC=2C(C(NCC2)=O)=N1"
+  },
+  {
+    "A": "[vinyl acetate/maleic anhydride copolymer (NoSmi)]",
+    "B": "C(CC)O",
+    "C": "[vinyl acetate/propyl maleate copolymer (NoSmi)]"
+  },
+  {
+    "A": "CN(C(CNC(=O)OC(C)(C)C)=O)N1C(=CC=C1)C(C1=C(C=CC=C1)Cl)=O",
+    "B": "C(C)(=O)OCC",
+    "C": "C(CC)O",
+    "D": "Br",
+    "E": "CCOCC",
+    "F": "C(C)(C)O",
+    "G": "Br.CN(C(CN)=O)N1C(=CC=C1)C(C1=C(C=CC=C1)Cl)=O"
+  },
+  {
+    "A": "ClCCC(=O)N1C2=C(NC(C3=C1C=CC=C3)=O)C=CC=C2",
+    "B": "CC1NCCCC1",
+    "C": "C(C)(C)O",
+    "D": "C(Cl)Cl",
+    "E": "O",
+    "F": "CC(=O)C",
+    "G": "Cl",
+    "H": "Cl.C(C)N1C2=C(N(C3=C(C1=O)C=CC=C3)C(CCN3C(CCCC3)C)=O)C=CC=C2"
+  },
+  {
+    "A": "C(CC)C(C(=O)O)(CCC)CCC",
+    "B": "CC1=CC=CC=C1",
+    "C": "[OH-].[Na+]",
+    "D": "CO",
+    "E": "[CECA WSL black (NoSmi)]",
+    "F": "CC(=O)C",
+    "G": "C(CC)C(C(=O)[O-])(CCC)CCC.[Na+]"
+  },
+  {
+    "A": "C(C)(C)OCC(CN1C=NC=C1)SC1=C(C(=C(C(=C1Cl)Cl)Cl)Cl)Cl",
+    "B": "[N+](=O)(O)[O-]",
+    "C": "CCOCC",
+    "D": "C(C)(=O)OCC",
+    "E": "[N+](=O)(O)[O-].C(C)(C)OCC(CN1C=NC=C1)SC1=C(C(=C(C(=C1Cl)Cl)Cl)Cl)Cl"
+  },
+  {
+    "A": "C1(=CC=CC=C1)N1CNC(C12CCN(CC2)C[C@H]2[C@@H](C1=CC=C(C=C1CC2)OC)O)=O",
+    "B": "CCOCC",
+    "C": "Cl",
+    "D": "Cl.C1(=CC=CC=C1)N1CNC(C12CCN(CC2)C[C@H]2[C@@H](C1=CC=C(C=C1CC2)OC)O)=O"
+  },
+  {
+    "A": "N1(CCNCC1)C1=NC2=CC(=C(C=C2C(=N1)N)OC)OC",
+    "B": "C(Cl)(Cl)Cl",
+    "C": "O1C(=CC=C1)C(=O)Cl",
+    "D": "C(CC(C)C)O",
+    "E": "[OH-].[Na+]",
+    "F": "O",
+    "G": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "H": "Cl",
+    "I": "Cl.C1(=CC=CC=C1)N1CNC(C12CCN(CC2)C[C@H]2[C@@H](C1=CC=C(C=C1CC2)OC)O)=O"
+  },
+  {
+    "A": "COC([C@@](NOCC1=CC=CC=C1)(CC1=CC=C(C=C1)O)C=C)=O",
+    "B": "Cl",
+    "C": "C(Cl)Cl",
+    "D": "[activated charcoal (NoSmi)]",
+    "E": "Cl.C(=C)[C@](N)(CC1=CC=C(C=C1)O)C(=O)O"
+  },
+  {
+    "A": "ClCC(=O)O",
+    "B": "C(C)NCCN",
+    "C": "[OH-].[K+]",
+    "D": "O",
+    "E": "C(C)O",
+    "F": "[aquosulphato(N,N'-diethylethylenediamine)platinum(II) (NoSmi)]"
+  },
+  {
+    "A": "F[As-](F)(F)(F)(F)F.C1(=CC=CC=C1)[I+]C1=CC=CC=C1",
+    "B": "C1(=CC=CC=C1)SC1=CC=CC=C1",
+    "C": "C(C1=CC=CC=C1)(=O)[O-].[Cu+2].C(C1=CC=CC=C1)(=O)[O-]",
+    "D": "C(C)OCC",
+    "E": "C(C)O",
+    "F": "F[As-](F)(F)(F)(F)F.C1(=CC=CC=C1)[S+](C1=CC=CC=C1)C1=CC=CC=C1"
+  },
+  {
+    "A": "C(C)(C)(C)OC(=O)NCC(=O)NC1=C(C=CC=C1)C1=NC2=C(C(O1)=O)C=CC=C2",
+    "B": "C(C)(=O)OCC",
+    "C": "Cl",
+    "D": "Cl.NCC(=O)NC1=C(C=CC=C1)C1=NC2=C(C(O1)=O)C=CC=C2"
+  },
+  {
+    "A": "C1(CC(C1)=O)=O",
+    "B": "C(C)(=O)OCC",
+    "C": "C(C)NCC",
+    "D": "C(C)[NH2+]CC.OC1=CC(C1)=O"
+  },
+  {
+    "A": "C(C)N(C(OC(C)(C)C)=O)CCC(C)C",
+    "B": "CO",
+    "C": "Cl",
+    "D": "Cl.C(C)NCCC(C)C"
+  },
+  {
+    "A": "P(=O)(OCC(CCCC)CC)(OCC(CCCC)CC)[O-]",
+    "B": "[OH-].[Na+]",
+    "C": "C(C)O",
+    "D": "[Cl-].[La+3].[Cl-].[Cl-]",
+    "E": "C1CCCCC1",
+    "F": "O",
+    "G": "P(=O)(OCC(CCCC)CC)(OCC(CCCC)CC)[O-].[Na+]",
+    "H": "P(=O)(OCC(CCCC)CC)(OCC(CCCC)CC)[O-].[La+3].C(C)C(COP(=O)(OCC(CCCC)CC)[O-])CCCC.C(C)C(COP(=O)(OCC(CCCC)CC)[O-])CCCC"
+  },
+  {
+    "A": "CN(CC1=CNC2=CC=CC(=C12)C)C",
+    "B": "C(C)#N",
+    "C": "CI",
+    "D": "CCOCC",
+    "E": "[I-].C[N+](CC1=CNC2=CC=CC(=C12)C)(C)C"
+  },
+  {
+    "A": "C(C)(=O)Cl",
+    "B": "C(C)O",
+    "C": "O.O=C(O)CN(C)C(N)=N",
+    "D": "[CEE HCl (NoSmi)]"
+  },
+  {
+    "A": "ClC1=CC=C(C=C1)[C@H](OC1CCN(CC1)CCCC(=O)O)C1=NC=CC=C1",
+    "B": "C(C)(=O)OCC",
+    "C": "O.C1(=CC=CC=C1)S(=O)(=O)O",
+    "D": "C(C)#N",
+    "E": "C1(=CC=CC=C1)S(=O)(=O)O.ClC1=CC=C(C=C1)[C@H](OC1CCN(CC1)CCCC(=O)O)C1=NC=CC=C1"
+  },
+  {
+    "A": "COC1=C(C=CC=C1)N1CCN(CC1)CCC(C)(C1=CC=CC=C1)C(=O)C1CCCCC1",
+    "B": "CO",
+    "C": "C(\\C=C/C(=O)O)(=O)O",
+    "D": "[MTBE (NoSmi)]",
+    "E": "C(\\C=C/C(=O)O)(=O)O.COC1=C(C=CC=C1)N1CCN(CC1)CCC(C)(C1=CC=CC=C1)C(=O)C1CCCCC1"
+  },
+  {
+    "A": "FC1=C(C=CC(=C1)F)[C@]([C@@H](C)N1C(N(CC1)C1=CC=C(C=C1)N1N=NN=C1)=O)(CN1N=CN=C1)O",
+    "B": "C(C(C)(C)C)(=O)OCCl",
+    "C": "C(C)#N",
+    "D": "C(C)(C)OC(C)C",
+    "E": "C(C)(=O)OCC",
+    "F": "CC(=O)C",
+    "G": "C(C)O",
+    "H": "[Cl-].FC1=C(C=CC(=C1)F)[C@@](C[NH+]1N=CN(C1)COC(C(C)(C)C)=O)([C@@H](C)N1C(N(CC1)C1=CC=C(C=C1)N1N=NN=C1)=O)O",
+    "I": "[Cl-].FC1=C(C=CC(=C1)F)[C@@](C[NH+]1N=CN(C1)COC(C(C)(C)C)=O)([C@@H](C)N1C(N(CC1)C1=CC=C(C=C1)N1N=NN=C1)=O)O",
+    "J": "[Cl-].FC1=C(C=CC(=C1)F)[C@@](C[NH+]1N=CN(C1)COC(C(C)(C)C)=O)([C@@H](C)N1C(N(CC1)C1=CC=C(C=C1)N1N=NN=C1)=O)O"
+  },
+  {
+    "A": "[N+](=O)([O-])C1=C(C=CC(=C1)N)N",
+    "B": "C(C)O",
+    "C": "Cl",
+    "D": "O1CCOCC1",
+    "E": "C(C)OCC",
+    "F": "Cl.[N+](=O)([O-])C1=C(C=CC(=C1)N)N"
+  },
+  {
+    "A": "NN1CCC2=CC=CC=C12",
+    "B": "O.Cl.N1C(CCCC1)=O",
+    "C": "C(C)(C)O",
+    "D": "C(C)OCC",
+    "E": "Cl.C1=C2C3=C(N4C2=C(C=C1)CC4)CCNC3"
+  },
+  {
+    "A": "[Cl-].ClC=[N+](C)C",
+    "B": "C(C)(C)[Si](N1C=CC=C1)(C(C)C)C(C)C",
+    "C": "[CH2Cl2 (NoSmi)]",
+    "D": "C(C)OCC",
+    "E": "[Cl-].C[N+](=CC1=CNC=C1)C"
+  },
+  {
+    "A": "C(C)(C)(C)NC(=S)N[C@@H](CO)CC1=CSC=C1",
+    "B": "Cl",
+    "C": "CC(=O)C",
+    "D": "C(C)O",
+    "E": "C(C)OCC",
+    "F": "Cl.S1C=C(C=C1)C[C@H]1N=C(SC1)N"
+  },
+  {
+    "A": "C(C1=CC=C(C=C1)OC)(=O)[C@@]([C@@](C(=O)O)(O)C(C1=CC=C(C=C1)OC)=O)(O)C(=O)O",
+    "B": "Cl",
+    "C": "O",
+    "D": "CO",
+    "E": "ClC=1C=C(C=CC1Cl)C1(CNCC1)CCO",
+    "F": "C(C1=CC=C(C=C1)OC)(=O)[C@@]([C@@](C(=O)O)(O)C(C1=CC=C(C=C1)OC)=O)(O)C(=O)O.ClC=1C=C(C=CC1Cl)[C@@]1(CNCC1)CCO"
+  },
+  {
+    "A": "C(C)(C)C=1CC2=CC=CC(=C2C1)C1=CC=CC=C1",
+    "B": "CC1=CC=CC=C1",
+    "C": "C(CCC)[Li]",
+    "D": "CCCCCC",
+    "E": "C(C)(C)C=1[CH-]C2=CC=CC(=C2C1)C1=CC=CC=C1.[Li+]"
+  },
+  {
+    "A": "[Z-Ala-cholesterol (NoSmi)]",
+    "B": "O1CCCC1",
+    "C": "C(C)(=O)O",
+    "D": "[palladium on charcoal (NoSmi)]",
+    "E": "[Ala-cholesterol (NoSmi)]"
+  },
+  {
+    "A": "NC[C@@H]1CC[C@H](CC1)C(=O)O",
+    "B": "CC1=CC=C(C=C1)S(=O)(=O)O",
+    "C": "C(C1=CC=CC=C1)O",
+    "D": "CC1=CC=CC=C1",
+    "E": "C(C)OCC",
+    "F": "CC1=CC=C(C=C1)S(=O)(=O)O.NC[C@@H]1CC[C@H](CC1)C(=O)OCC1=CC=CC=C1"
+  },
+  {
+    "A": "C(C)(C)(C)C1=NC(=CC(=N1)N1CCN(CC1)CCCCl)C(C)(C)C",
+    "B": "CN1C(=NN=C1C)S",
+    "C": "[OH-].[Li+]",
+    "D": "[I-].[K+]",
+    "E": "CN(C=O)C",
+    "F": "O",
+    "G": "C(C)(=O)OCC",
+    "H": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "I": "ClCCl",
+    "J": "CO",
+    "K": "C(C)(C)O",
+    "L": "Cl",
+    "M": "C(C)(C)C(C)(C(C)C)OC(C)(C(C)C)C(C)C",
+    "N": "Cl.C(C)(C)(C)C1=NC(=CC(=N1)N1CCN(CC1)CCCSC1=NN=C(N1C)C)C(C)(C)C"
+  },
+  {
+    "A": "S(=O)(=O)(O)C=1C=C(C2=C(C=C(C=C2C1)S(=O)(=O)O)S(=O)(=O)O)N=C=S.[Na]",
+    "B": "[PAMAM 4.0 (NoSmi)]",
+    "C": "CN(CC=C)C",
+    "D": "O",
+    "E": "[Amberlite IR-120(Na) (NoSmi)]",
+    "F": "[Sephadex LH20 (NoSmi)]",
+    "G": "[sodium 3, 6, 8-trisulfonaphthylthiourea terminated PAMAM 4.0 dendrimer (NoSmi)]"
+  },
+  {
+    "A": "ClC1=CC=C(C=C1)\\C(=C(/C(=O)OCC)\\CCO)\\C1=CC=C(C=C1)S(=O)(=O)C",
+    "B": "C(C)O",
+    "C": "[OH-].[Na+]",
+    "D": "C(C)(=O)OCC",
+    "E": "C(C)OCC",
+    "F": "ClC1=CC=C(C=C1)\\C(=C(/C(=O)[O-])\\CCO)\\C1=CC=C(C=C1)S(=O)(=O)C.[Na+]"
+  },
+  {
+    "A": "C(C)(C)C1=CC=C(C=C1)CC#N",
+    "B": "CCOCC",
+    "C": "C(C)O",
+    "D": "Cl",
+    "E": "C(CN)N",
+    "F": "O",
+    "G": "C(Cl)Cl",
+    "H": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "I": "Cl.C(C)(C)C1=CC=C(C=C1)CC(O)=N",
+    "J": "C(C)(C)C1=CC=C(C=C1)CC([O-])=N"
+  },
+  {
+    "A": "N[C@]12CC[C@@H]([C@@]1(C)CC[C@@H]1[C@]3(CC[C@@H](C[C@H]3CC[C@@H]21)O)C)C(=O)OC",
+    "B": "[CH2Cl2 (NoSmi)]",
+    "C": "C(=O)(N1C=NC=C1)N1C=NC=C1",
+    "D": "N[C@H](CO)CC1=CC=CC=C1",
+    "E": "O",
+    "F": "[MgSO4 (NoSmi)]",
+    "G": "C(C)O",
+    "H": "Cl",
+    "I": "[MeOH (NoSmi)]",
+    "J": "[NH4OH (NoSmi)]",
+    "K": "Cl.N[C@]12CC[C@@H]([C@@]1(C)CC[C@@H]1[C@]3(CC[C@@H](C[C@H]3CC[C@@H]21)OC(=O)NC(CO)CC2=CC=CC=C2)C)C(=O)OC"
+  },
+  {
+    "A": "[I-].[C-]1(C=CC=C1)C[N+](C)(C)C.[CH-]1C=CC=C1.[Fe+2]",
+    "B": "[KCN (NoSmi)]",
+    "C": "O",
+    "D": "C(C)OCC",
+    "E": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "F": "[C-]1(C=CC=C1)CC#N.[CH-]1C=CC=C1.[Fe+2]"
+  },
+  {
+    "A": "NC[C@@H]1CC[C@H](CC1)C(=O)O",
+    "B": "CC1=CC=C(C=C1)S(=O)(=O)O",
+    "C": "C(C1=CC=CC=C1)O",
+    "D": "CC1=CC=CC=C1",
+    "E": "C(C)OCC",
+    "F": "CC1=CC=C(C=C1)S(=O)(=O)O.NC[C@@H]1CC[C@H](CC1)C(=O)OCC1=CC=CC=C1"
+  },
+  {
+    "A": "CN1CCC(CC1)N1C=C(C2=CC=CC=C12)C=1C(NC(C1C1=CN(C2=CC=CC=C12)C)=O)=O",
+    "B": "C(C)(=O)OCC",
+    "C": "Cl",
+    "D": "CO",
+    "E": "CCOCC",
+    "F": "Cl.CN1CCC(CC1)N1C=C(C2=CC=CC=C12)C=1C(NC(C1C1=CN(C2=CC=CC=C12)C)=O)=O"
+  },
+  {
+    "A": "C(N)(=N)C1=CC=C(C=C1)N1C(OC(C1)C(=O)N1CCC(CC1)C(=O)OC(C)(C)C)=O",
+    "B": "Cl",
+    "C": "CCOCC",
+    "D": "C(C)#N",
+    "E": "Cl.C(N)(=N)C1=CC=C(C=C1)N1C(OC(C1)C(=O)N1CCC(CC1)C(=O)O)=O"
+  },
+  {
+    "A": "C(C)(=O)OC(C)=O",
+    "B": "S(O)(O)(=O)=O",
+    "C": "I(=O)(=O)[O-].[K+]",
+    "D": "C(C)(C)(C)C1=CC=CC=C1",
+    "E": "O",
+    "F": "[Cl-].[Na+]",
+    "G": "[ice (NoSmi)]",
+    "H": "[Cl-].[K+]",
+    "I": "C(C)OCC",
+    "J": "[O-2].[Ag+].[Ag+]",
+    "K": "[Ag2O (NoSmi)]",
+    "L": "FC(C(=O)O)(F)F",
+    "M": "C12(C(=O)CC(CC1)C2(C)C)CS(=O)(=O)O",
+    "N": "C(C1=CC=CC=C1)S(=O)(=O)O",
+    "O": "CO",
+    "P": "C1(=CC=CC=C1)[B-](C1=CC=CC=C1)(C1=CC=CC=C1)C1=CC=CC=C1.[Na+]",
+    "Q": "[Cl-].C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C",
+    "R": "FC(C(=O)[O-])(F)F.C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C",
+    "S": "C12(C(=O)CC(CC1)C2(C)C)CS(=O)(=O)[O-].C(C)(C)(C)C2=CC=C(C=C2)[I+]C2=CC=C(C=C2)C(C)(C)C",
+    "T": "C(C1=CC=CC=C1)S(=O)(=O)[O-].C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C",
+    "U": "C1(=CC=CC=C1)[B-](C1=CC=CC=C1)(C1=CC=CC=C1)C1=CC=CC=C1.C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C"
+  },
+  {
+    "A": "[Benzhydrol 2-(2-amino-4-trifluoromethylphenoxy)benzoate (NoSmi)]",
+    "B": "N1=CC=CC=C1",
+    "C": "FC(C=1C=C(C=C(C1)C(F)(F)F)S(=O)(=O)Cl)(F)F",
+    "D": "C(C)(=O)OCC",
+    "E": "CCCCCC",
+    "F": "[Benzhydrol 2-[2-[3,5-bis (trifluoromethyl)phenylsulfonamido]-4-trifluoromethylphenoxy]benzoate (NoSmi)]"
+  },
+  {
+    "A": "N=1C=CN2C1CC(CC2)C(=O)OCC",
+    "B": "Cl",
+    "C": "[5,6,7,8-tetrahydroimidazo[1,2-a]pyridine-7-carboxylic acid·hydrochloride (NoSmi)]"
+  },
+  {
+    "A": "C(C)NCCC1=CC(OC)=C(OC)C=C1",
+    "B": "Br",
+    "C": "C(C)(=O)O",
+    "D": "CCOCC",
+    "E": "C(C)(C)O",
+    "F": "Br.C(C)NCCC1=CC(=C(C=C1)O)O"
+  },
+  {
+    "A": "O1C(=CC=C1)B(C=1OC=CC1)C=1OC=CC1",
+    "B": "O1CCCC1",
+    "C": "O1C(=CC=C1)[Li]",
+    "D": "O1C(=CC=C1)[B-](C=1OC=CC1)(C=1OC=CC1)C=1OC=CC1.[Li+]"
+  },
+  {
+    "A": "COC([C@@H](NS(=O)(=O)C1=CC(=CC=C1)C)CNC(C[C@@H]1C[C@@H](N(O1)C)C1=CC=C(C=C1)C=NN)=O)=O",
+    "B": "Cl",
+    "C": "O",
+    "D": "[TFA (NoSmi)]",
+    "E": "C(C)#N",
+    "F": "CN1O[C@@H](C[C@@H]1C1=CC=C(C=C1)C=NN)CC(=O)NC[C@H](NS(=O)(=O)C1=CC(=CC=C1)C)C(=O)O"
+  },
+  {
+    "A": "[HCl (NoSmi)]",
+    "B": "O1CCOCC1",
+    "C": "C(C)(C)(C)OC(NCC1CN(C(O1)=O)C1=CC(=C(C=C1)N1CCC(C=C1)=O)F)=O",
+    "D": "[MeOH (NoSmi)]",
+    "E": "Cl.NCC1CN(C(O1)=O)C1=CC(=C(C=C1)N1CCC(C=C1)=O)F"
+  },
+  {
+    "A": "C1(CC1)C=1N=CN(C1)C=1C(=CC(=C(C#N)C1)F)C",
+    "B": "Cl",
+    "C": "C(C)(=O)OCC",
+    "D": "CO",
+    "E": "ClCCl",
+    "F": "Cl.C1(CC1)C=1N=CN(C1)C=1C(=CC(=C(C(=O)O)C1)F)C"
+  },
+  {
+    "A": "C(C1=CC=CC=C1)NC[C@H]1N(C[C@@H](C1)SCC1=CC=C(C=C1)OC)S(=O)(=O)C",
+    "B": "FC(C(=O)O)(F)F",
+    "C": "C(C)[SiH](CC)CC",
+    "D": "O",
+    "E": "C(C)OCC",
+    "F": "FC(C(=O)O)(F)F.C(C1=CC=CC=C1)NC[C@@H]1C[C@H](CN1S(=O)(=O)C)S"
+  },
+  {
+    "A": "[Cl-].OCC[NH+]1CCS(CC1)(=O)=O",
+    "B": "N1=CC=CC=C1",
+    "C": "S(=O)(Cl)Cl",
+    "D": "C(Cl)(Cl)Cl",
+    "E": "O",
+    "F": "C(C)O",
+    "G": "CO",
+    "H": "[Cl-].ClCC[NH+]1CCS(CC1)(=O)=O"
+  },
+  {
+    "A": "FC=1C(=C(C=CC1)C(C(C(=O)OC)C1CCN(CC1)C(=O)OC(C)(C)C)O)NC(C(C)(C)C)=O",
+    "B": "CO",
+    "C": "O",
+    "D": "Cl",
+    "E": "C(C)O",
+    "F": "Cl.FC=1C=CC=C2C=C(C(NC12)=O)C1CCNCC1"
+  },
+  {
+    "A": "N12C[C@@H](C(CC1)CC2)OC(C(CC=C)(C=2SC=CC2)O)=O",
+    "B": "C(C)#N",
+    "C": "C(Cl)(Cl)Cl",
+    "D": "O(C1=CC=CC=C1)CCCBr",
+    "E": "CCOCC",
+    "F": "[Br-].OC(C(=O)O[C@H]1C[N+]2(CCC1CC2)CCCOC2=CC=CC=C2)(CC=C)C=2SC=CC2"
+  },
+  {
+    "A": "C(C)(C)(C)OC(=O)N1C(=NC(=C1)CCCC(NCC(C)C)=O)N",
+    "B": "ClCCl",
+    "C": "[TFA (NoSmi)]",
+    "D": "CC1=CC=CC=C1",
+    "E": "C(C)OCC",
+    "F": "[HCl (NoSmi)]",
+    "G": "Cl.NC=1NC=C(N1)CCCC(=O)NCC(C)C"
+  },
+  {
+    "A": "C(C)O[C@H](C(=O)O)CC1=CC=C(C=C1)C1=NC(=CC=C1)N(C(=O)NCCCCCCC)C",
+    "B": "Cl",
+    "C": "C(C)O",
+    "D": "CC(=O)C",
+    "E": "C(C)OCC",
+    "F": "O",
+    "G": "Cl.C(C)O[C@H](C(=O)O)CC1=CC=C(C=C1)C1=NC(=CC=C1)N(C(=O)NCCCCCCC)C"
+  },
+  {
+    "A": "CN1CCN(CC1)C1CCCCC1",
+    "B": "C(C)O",
+    "C": "IC",
+    "D": "CCOCC",
+    "E": "[I-].C[N+]1(CCN(CC1)C1CCCCC1)C"
+  },
+  {
+    "A": "C=CC1=CC=CC=C1",
+    "B": "CC=CC1=CC=CC=C1",
+    "C": "C1(CCCCCN1)=O",
+    "D": "[AIBN (NoSmi)]",
+    "E": "C1(CCCCCN1)=O"
+  },
+  {
+    "A": "N[C@H](COC(C(C)(C)C)=O)C",
+    "B": "C(C(C)(C)C)(=O)OC[C@H](C)NC(=O)OC(C)(C)C",
+    "C": "C(C)(=O)OCC",
+    "D": "Cl",
+    "E": "O1CCOCC1",
+    "F": "C(C)OCC",
+    "G": "Cl.N[C@H](COC(C(C)(C)C)=O)C"
+  },
+  {
+    "A": "FC(C(C(F)(F)F)OC(C(C)(C)C)=O)(S(=O)(=O)[O-])F.[Na+]",
+    "B": "[OH-].[Na+]",
+    "C": "CO",
+    "D": "Cl",
+    "E": "FC(C(C(F)(F)F)O)(S(=O)(=O)[O-])F.[Na+]"
+  },
+  {
+    "A": "[Flupirtine (NoSmi)]",
+    "B": "C(C)(C)O",
+    "C": "C(\\C=C/C(=O)O)(=O)O",
+    "D": "[Flupirtine Maleate (NoSmi)]"
+  }
+]
