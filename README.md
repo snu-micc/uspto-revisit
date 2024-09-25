@@ -21,8 +21,7 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 
 ### 2. Get Structured Summarization via LLMs
 - Prompts for structured summarization are available in #논문 이름:
-- We adopt finetuned GPT 4o-mini model
-
+  
 ### 3. Get SMILES from Various Databases
 - SMILES strings are retrieved from OPSIN, PubChem, CIR, and ChemSpider.
 - Code to retrieve SMILES can be found in :  
@@ -60,7 +59,7 @@ The raw segemented paragraphs and reactions extracted from USPTO are downloaded 
 See the `main.ipynb`:
 
 ## Publication
-USTPO-multistep reaction dataset: 
+USTPO-multistep reaction dataset: [Figshare link](https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574).
 
 
 ## References
@@ -70,12 +69,4 @@ Phd thesis: https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac
 
 ## License
 This project is covered under the **MIT License**.
-
-```bibtex
-@misc{lee2024ustpo,
-  author = {Chaewon Lee and Shuan Chen},
-  title = {USTPO-multistep Reaction Dataset},
-  year = {2024},
-  url = {https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574}
-}
 
