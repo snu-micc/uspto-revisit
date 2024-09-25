@@ -1,5 +1,5 @@
-# uspto-revisit
-Revisting the USPTO reaction dataset originally collected by Daniel Lowe using LLM (Gemini)<br>
+# USPTO-Revisit
+Revisting the USPTO reaction dataset originally collected by Daniel Lowe using LLM (GPT4o-mini)<br>
 
 ## Contents
 
@@ -20,18 +20,18 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - **Categories**: "Many products", "Many reagents", "Many reactants", "No reagent", "Rare template".
 
 ### 2. Get Structured Summarization via LLMs
-- Prompts for structured summarization are available in #논문 이름:
+- Prompts for structured summarization are available in [#Journal link]:
   
 ### 3. Get SMILES from Various Databases
 - SMILES strings are retrieved from OPSIN, PubChem, CIR, and ChemSpider.
 - Code to retrieve SMILES can be found in :  
   `smiles_fetch_utils.py`, `chemspider_utils.py`
-- Log for getting SMILES are found in:
+- Log for retreiving SMILES can be found in:
   `smiles_fetch.log`
 
 ### 4. Generate Reaction SMILES
-- Generate reaction SMILES based on the selected reactions.
-- Code for generating reaction SMILES is located in:  
+- Reaction SMILES are generated based on the selected reactions.
+- The code for generating reaction SMILES is located in:  
   `reaction_step_processing_utlis.py`, `reaction_smiles_processing_utils.py`
 
 ## Developer
@@ -53,10 +53,10 @@ conda activate rdenv
 
 ## Data
 #### USPTO dataset
-The raw segemented paragraphs and reactions extracted from USPTO are downloaded from this [Figshare link](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873).
+The raw segemented paragraphs and reactions extracted from US patents are downloaded from this [Figshare link](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873).
 
 ## Scripts
-See the `main.ipynb`:
+See the `main.ipynb` for details on running the scripts.
 
 ## Publication
 USTPO-multistep reaction dataset: [Figshare link](https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574).
@@ -64,7 +64,7 @@ USTPO-multistep reaction dataset: [Figshare link](https://figshare.com/articles/
 
 ## References
 ### Daniel Lowe's methods:
-Phd thesis: https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28 <br>
+Phd thesis: [Respository link](https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28)
 
 
 ## License
