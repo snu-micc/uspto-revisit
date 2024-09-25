@@ -62,13 +62,6 @@ See the `main.ipynb`:
 ## Publication
 USTPO-multistep reaction dataset: 
 
-```bibtex
-@misc{lee2024ustpo,
-  author = {Chaewon Lee and Shuan Chen},
-  title = {USTPO-multistep Reaction Dataset},
-  year = {2024},
-  url = {https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574}
-}
 
 ## References
 ### Daniel Lowe's methods:
@@ -77,3 +70,12 @@ Phd thesis: https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac
 
 ## License
 This project is covered under the **MIT License**.
+
+```bibtex
+@misc{lee2024ustpo,
+  author = {Chaewon Lee and Shuan Chen},
+  title = {USTPO-multistep Reaction Dataset},
+  year = {2024},
+  url = {https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574}
+}
+
