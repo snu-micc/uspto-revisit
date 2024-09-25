@@ -64,7 +64,7 @@ USTPO-multistep reaction dataset: [Figshare link](https://figshare.com/articles/
 
 ## References
 ### Daniel Lowe's methods:
-Phd thesis: [Respository link](https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28)
+Ph.D Thesis: [Respository link](https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28)
 
 
 ## License
