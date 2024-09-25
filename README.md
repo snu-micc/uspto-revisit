@@ -27,12 +27,13 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - SMILES strings are retrieved from OPSIN, PubChem, CIR, and ChemSpider.
 - Code to retrieve SMILES can be found in :  
   `smiles_fetch_utils.py`, `chemspider_utils.py`
+- Log for getting SMILES are found in:
+  `smiles_fetch.log`
 
 ### 4. Generate Reaction SMILES
 - Generate reaction SMILES based on the selected reactions.
 - Code for generating reaction SMILES is located in:  
   `reaction_step_processing_utlis.py`, `reaction_smiles_processing_utils.py`
-
 
 ## Developer
 Shuan Chen (shuan75@snu.ac.kr)<br>
@@ -41,7 +42,6 @@ Chaewon Lee (cw.lee@snu.ac.kr)<br>
 ## Python Dependencies
 * Python (version >= 3.8)
 * OpenAI (version <= 2024)
-* RDKit (version >= 2019)
 
 ## Installation Guide
 
@@ -54,19 +54,14 @@ conda activate rdenv
 
 ## Data
 #### USPTO dataset
-The raw sgemented paragraphs and reactions extracted from USPTO are downloaded from this [Figshare link](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873).
+The raw segemented paragraphs and reactions extracted from USPTO are downloaded from this [Figshare link](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873).
 
 
 ## Scripts
 See the `main.ipynb`:
-- `get_smiles.ipynb`
-- `generate_reaction_smiles.ipynb`
-- `GPT_input.csv`
-- `prompts_five.json`
-
 
 ## Publication
-USTPO-multistep reactionset: 
+USTPO-multistep reaction dataset: https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574
 
 ## References
 ### Daniel Lowe's methods:
