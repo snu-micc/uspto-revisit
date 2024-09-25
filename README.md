@@ -61,8 +61,13 @@ The raw segemented paragraphs and reactions extracted from USPTO are downloaded 
 See the `main.ipynb`:
 
 ## Publication
-USTPO-multistep reaction dataset: https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574
-
+USTPO-multistep reaction dataset: 
+@misc{smiles_fetch_tool,
+  author = {Chawon Lee, Shuan Chen},
+  title = {USTPO-multistep},
+  year = {2024},
+  url = {[https://github.com/your-repo/smiles-fetch-utils](https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574)}
+}
 ## References
 ### Daniel Lowe's methods:
 Phd thesis: https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28 <br>
