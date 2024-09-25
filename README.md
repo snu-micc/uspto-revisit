@@ -56,11 +56,9 @@ conda activate rdenv
 #### USPTO dataset
 The raw segemented paragraphs and reactions extracted from USPTO are downloaded from this [Figshare link](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873).
 
-
 ## Scripts
 See the `main.ipynb`:
 
-## Publication
 ## Publication
 USTPO-multistep reaction dataset: 
 
@@ -71,18 +69,11 @@ USTPO-multistep reaction dataset:
   year = {2024},
   url = {https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574}
 }
-```
+
 ## References
 ### Daniel Lowe's methods:
 Phd thesis: https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28 <br>
-NextMove talks: https://www.nextmovesoftware.com/talks.html
 
-### Prompt-based methods:
-Omar M. Yaghi's group: https://pubs.acs.org/doi/10.1021/jacs.3c05819<br>
-Eunomia: https://arxiv.org/pdf/2312.11690.pdf
-
-### Fine-tuned-based methods:
-Reaction Miner: https://aclanthology.org/2023.emnlp-demo.36/<br>
 
 ## License
 This project is covered under the **MIT License**.
