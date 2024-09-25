@@ -51,7 +51,6 @@ Chaewon Lee (cw.lee@snu.ac.kr)<br>
 git clone https://github.com/snu-micc/uspto-revisit.git
 cd uspto-revisit
 conda create -c conda-forge -n rdenv python -y
-pip install google-generativeai
 conda activate rdenv
 ```
 
@@ -61,7 +60,7 @@ The raw sgemented paragraphs and reactions extracted from USPTO are downloaded f
 
 
 ## Scripts
-See the following scripts in the `src` folder:
+See the following scripts in the `main.py`:
 - `get_smiles.ipynb`
 - `generate_reaction_smiles.ipynb`
 - `GPT_input.csv`
