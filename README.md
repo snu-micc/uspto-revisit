@@ -38,8 +38,11 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 Chaewon Lee (cw.lee@snu.ac.kr)<br>
 
 ## Python Dependencies
-* Python (version >= 3.8)
-* OpenAI (version <= 2024)
+*aiohttp==3.9.5
+*ChemSpiPy==2.0.0
+*nest_asyncio==1.6.0
+*Requests==2.32.3
+
 
 ## Installation Guide
 
@@ -58,12 +61,16 @@ The raw segemented paragraphs and reactions extracted from US patents are downlo
 See the `main.ipynb` for details on running the scripts.
 
 ## Publication
-USTPO-multistep reaction dataset: [Figshare link](https://figshare.com/articles/dataset/USPTO-multistep_csv/26941993?file=49017574).
-
-
-## References
-### Daniel Lowe's methods:
-Ph.D Thesis: [Respository link](https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28)
+@article{chen2024precise,
+  title={Improving Reaction Dataset Extraction with Fine-Tuned Large Language Models},
+  author={Chaewon Lee, Shuan Chen, Kai Tzu-iunn Ong, Jinyoung Yeo, and Yousung Jung},
+  journal={In review},
+  volume={},
+  number={},
+  pages={},
+  year={},
+  publisher={}
+}
 
 
 ## License
