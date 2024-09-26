@@ -35,7 +35,6 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
   `reaction_step_processing_utlis.py`, `reaction_smiles_processing_utils.py`
 
 ## Developer
-Shuan Chen (shuan75@snu.ac.kr)<br>
 Chaewon Lee (cw.lee@snu.ac.kr)<br>
 
 ## Python Dependencies
