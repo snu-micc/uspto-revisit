@@ -25,25 +25,25 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - SMILES strings are retrieved from OPSIN, PubChem, CIR, and ChemSpider.
 - Use your own API key for ChemSpider. You can obtain API key from the [ChemSpider API Link](https://developer.rsc.org/)
 - Code to retrieve SMILES can be found in :  
-  `smiles_fetch_utils.py`
-  `chemspider_utils.py`
+  -`smiles_fetch_utils.py`
+  -`chemspider_utils.py`
 - Log for retreiving SMILES can be found in:
-  `smiles_fetch.log`
+  -`smiles_fetch.log`
 
 ### 4. Generate Reaction SMILES
 - Reaction SMILES are generated based on the selected reactions.
 - The code for generating reaction SMILES is located in:  
-  `reaction_step_processing_utlis.py`
-  `reaction_smiles_processing_utils.py`
+  -`reaction_step_processing_utlis.py`
+  -`reaction_smiles_processing_utils.py`
 
 ## Developer
 Chaewon Lee (cw.lee@snu.ac.kr)<br>
 
 ## Python Dependencies
-*aiohttp==3.9.5
-*ChemSpiPy==2.0.0
-*nest_asyncio==1.6.0
-*Requests==2.32.3
+* aiohttp==3.9.5
+* ChemSpiPy==2.0.0
+* nest_asyncio==1.6.0
+* Requests==2.32.3
 
 
 ## Installation Guide
