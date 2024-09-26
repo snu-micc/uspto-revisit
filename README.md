@@ -10,7 +10,6 @@ Revisting the USPTO reaction dataset originally collected by Daniel Lowe using L
 - [Data](#data)
 - [Scripts](#scripts)
 - [Publication](#publication)
-- [References](#references)
 - [License](#license)
 
 
