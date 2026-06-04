@@ -149,14 +149,6 @@ Final reaction SMILES columns include:
 {OPENAI_MODEL}_rxn
 ```
 
-The final reaction SMILES file does not include helper columns such as `idx` or `model`.
-
-The intermediate `*_response_with_smiles.csv` file is not saved by default because the final reaction file already includes the SMILES dictionary. To save it for debugging:
-
-```bash
-python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --with-smiles-output result/debug_response_with_smiles.csv
-```
-
 ## Outputs
 
 Generated files are written under `result/`:
@@ -169,14 +161,3 @@ result/smiles_batches/
 ```
 
 `result/`, `data/`, and `.env` are ignored by git.
-
-## Package Usage
-
-```python
-from uspto_revisit.reaction_smiles import process_smiles_data
-
-skeleton_smiles, final_smiles, errors = process_smiles_data(
-    merged_json_responses,
-    merged_smiles_dict,
-)
-```
