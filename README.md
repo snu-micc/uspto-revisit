@@ -23,25 +23,27 @@ result/smiles_batches/  Local cache/intermediate SMILES files, ignored by git
 
 ## Installation
 
-```powershell
-cd "C:\Users\Chaewon\OneDrive\바탕 화면\문서\uspto-revisit"
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe -m pip install -r requirements.txt
+```bash
+git clone https://github.com/snu-micc/uspto-revisit.git
+cd uspto-revisit
+python -m pip install -r requirements.txt
 ```
 
 For editable development:
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe -m pip install -e ".[dev]"
+```bash
+python -m pip install -e ".[dev]"
 ```
 
 ## Configuration
 
 Copy the example environment file:
 
-```powershell
-Copy-Item .env.example .env
-notepad .env
+```bash
+cp .env.example .env
 ```
+
+On Windows PowerShell, use `Copy-Item .env.example .env`.
 
 Fill in your OpenAI key and model:
 
@@ -75,14 +77,14 @@ You can also pass another file with `--input`.
 
 ## Run GPT Extraction
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe main.py gpt-extract
+```bash
+python main.py gpt-extract
 ```
 
 Recommended for longer runs:
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe main.py gpt-extract --input input.csv --semaphore-size 5 --timeout-seconds 180
+```bash
+python main.py gpt-extract --input input.csv --semaphore-size 5 --timeout-seconds 180
 ```
 
 Default settings:
@@ -98,8 +100,8 @@ The GPT output CSV is updated as rows finish, so partial progress is preserved d
 
 To test GPT extraction with a small public example:
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe main.py gpt-extract --input examples/sample_patent_text.csv
+```bash
+python main.py gpt-extract --input examples/sample_patent_text.csv
 ```
 
 GPT output columns:
@@ -116,14 +118,14 @@ error
 
 After GPT extraction, run:
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names
+```bash
+python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names
 ```
 
 For a faster test without PubChem/CIR/ChemSpider reprocessing:
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --skip-reprocess
+```bash
+python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --skip-reprocess
 ```
 
 Default final output:
@@ -151,8 +153,8 @@ The final reaction SMILES file does not include helper columns such as `idx` or 
 
 The intermediate `*_response_with_smiles.csv` file is not saved by default because the final reaction file already includes the SMILES dictionary. To save it for debugging:
 
-```powershell
-C:\Users\Chaewon\anaconda3\envs\uspto_revisit\python.exe main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --with-smiles-output result/debug_response_with_smiles.csv
+```bash
+python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --with-smiles-output result/debug_response_with_smiles.csv
 ```
 
 ## Outputs
