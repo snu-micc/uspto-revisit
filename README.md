@@ -180,7 +180,3 @@ skeleton_smiles, final_smiles, errors = process_smiles_data(
     merged_smiles_dict,
 )
 ```
-
-## Data Policy
-
-Generated outputs, logs, caches, and API keys are intentionally ignored by git. Make sure committed input files contain only data that can be shared publicly.
