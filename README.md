@@ -14,7 +14,7 @@ Utilities for extracting structured reaction JSON from patent text, resolving ch
 ```text
 src/uspto_revisit/      Python package
 prompts/prompt.txt      GPT extraction prompt template
-examples_used_for_finetuning/    Examples used for finetuning gpt-4.1-mini
+examples/examples_used_for_finetuning/    Examples used for finetuning gpt-4.1-mini
 input.csv               Default GPT input file
 data/                   Local data, ignored by git
 result/                 Local outputs, ignored by git
