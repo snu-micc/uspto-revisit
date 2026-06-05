@@ -48,7 +48,7 @@ Fill in your OpenAI key and model:
 
 ```env
 # Optional: used only for ChemSpider fallback during NoSmi reprocessing.
-CHEMSPIDER_API_KEY=
+CHEMSPIDER_API_KEY=your_chemspider_key
 OPENAI_API_KEY=your_openai_api_key
 OPENAI_MODEL=gpt-4.1-mini
 # OPENAI_MODEL=gpt-5.4
