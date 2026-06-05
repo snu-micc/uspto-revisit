@@ -16,7 +16,6 @@ src/uspto_revisit/      Python package
 prompts/prompt.txt      GPT extraction prompt template
 examples/examples_used_for_finetuning/    Examples used for finetuning gpt-4.1-mini
 examples/input.csv               Default GPT input file
-data/                   Local data, ignored by git
 result/                 Local outputs, ignored by git
 result/smiles_batches/  Local cache/intermediate SMILES files, ignored by git
 ```
