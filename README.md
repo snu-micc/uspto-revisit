@@ -14,10 +14,8 @@ Utilities for extracting structured reaction JSON from patent text, resolving ch
 ```text
 src/uspto_revisit/                    Python package
 prompts/prompt.txt                    GPT extraction prompt template
-examples/                             Small public examples
+examples/input.csv                    GPT input
 examples/examples_used_for_finetuning/ Example JSONL records for fine-tuning format
-input.csv                             Local GPT input file, ignored by git
-data/                                 Local data, ignored by git
 result/                               Committed output examples/results
 result/smiles_batches/                Committed SMILES cache/intermediate files
 Zhang_et_al_Llama3_8B_result.csv      Benchmark result file
