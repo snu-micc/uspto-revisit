@@ -1,0 +1,772 @@
+﻿[
+  {
+    "A": "N1CC(C(=O)OCC)CCC1",
+    "B": "[(+)-tartaric acid (NoSmi)]",
+    "C": "C(C)O",
+    "D": "[(+)-tartrate salt of (+)-ethyl nipecotate (NoSmi)]"
+  },
+  {
+    "A": "O1C(=CC=C1)B(C=1OC=CC1)C=1OC=CC1",
+    "B": "O1CCCC1",
+    "C": "O1C(=CC=C1)[Li]",
+    "D": "[N]",
+    "E": "O1C(=CC=C1)[B-](C=1OC=CC1)(C=1OC=CC1)C=1OC=CC1.[Li+]"
+  },
+  {
+    "A": "C(C)NCCC1=CC(OC)=C(OC)C=C1",
+    "B": "Br",
+    "C": "C(C)(=O)O",
+    "D": "CCOCC",
+    "E": "C(C)(C)O",
+    "F": "Br.C(C)NCCC1=CC(=C(C=C1)O)O"
+  },
+  {
+    "A": "N=1C=CN2C1CC(CC2)C(=O)OCC",
+    "B": "Cl",
+    "C": "Cl.N=1C=CN2C1CC(CC2)C(=O)O"
+  },
+  {
+    "A": "[benzhydrol 2-(2-amino-4-trifluoromethylphenoxy)benzoate (NoSmi)]",
+    "B": "N1=CC=CC=C1",
+    "C": "FC(C=1C=C(C=C(C1)C(F)(F)F)S(=O)(=O)Cl)(F)F",
+    "D": "[benzhydrol 2-[2-[3,5-bis(trifluoromethyl)phenylsulfonamido]-4-trifluoromethylphenoxy]benzoate (NoSmi)]"
+  },
+  {
+    "A": "C(C)(=O)OC(C)=O",
+    "B": "S(O)(O)(=O)=O",
+    "C": "I(=O)(=O)[O-].[K+]",
+    "D": "C(C)(C)(C)C1=CC=CC=C1",
+    "E": "[Cl-].[Na+]",
+    "F": "O",
+    "G": "O",
+    "H": "[Cl-].[K+]",
+    "I": "C(C)OCC",
+    "J": "[O-2].[Ag+].[Ag+]",
+    "K": "FC(C(=O)O)(F)F",
+    "L": "C12(C(=O)CC(CC1)C2(C)C)CS(=O)(=O)O",
+    "M": "C(C1=CC=CC=C1)S(=O)(=O)O",
+    "N": "CO",
+    "O": "C1(=CC=CC=C1)[B-](C1=CC=CC=C1)(C1=CC=CC=C1)C1=CC=CC=C1.[Na+]",
+    "P": "[Cl-].C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C",
+    "Q": "FC(C(=O)[O-])(F)F.C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C",
+    "R": "C12(C(=O)CC(CC1)C2(C)C)CS(=O)(=O)[O-].C(C)(C)(C)C2=CC=C(C=C2)[I+]C2=CC=C(C=C2)C(C)(C)C",
+    "S": "C(C1=CC=CC=C1)S(=O)(=O)[O-].C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C",
+    "T": "C1(=CC=CC=C1)[B-](C1=CC=CC=C1)(C1=CC=CC=C1)C1=CC=CC=C1.C(C)(C)(C)C1=CC=C(C=C1)[I+]C1=CC=C(C=C1)C(C)(C)C"
+  },
+  {
+    "A": "C(N)(=N)C1=CC=C(C=C1)N1C(OC(C1)C(=O)N1CCC(CC1)C(=O)OC(C)(C)C)=O",
+    "B": "[ethereal hydrochloric acid (NoSmi)]",
+    "C": "CCOCC",
+    "D": "C(C)#N",
+    "E": "Cl.C(N)(=N)C1=CC=C(C=C1)N1C(OC(C1)C(=O)N1CCC(CC1)C(=O)O)=O"
+  },
+  {
+    "A": "CN1CCC(CC1)N1C=C(C2=CC=CC=C12)C=1C(NC(C1C1=CN(C2=CC=CC=C12)C)=O)=O",
+    "B": "C(C)(=O)OCC",
+    "C": "Cl",
+    "D": "CO",
+    "E": "CCOCC",
+    "F": "Cl.CN1CCC(CC1)N1C=C(C2=CC=CC=C12)C=1C(NC(C1C1=CN(C2=CC=CC=C12)C)=O)=O"
+  },
+  {
+    "A": "NC[C@@H]1CC[C@H](CC1)C(=O)O",
+    "B": "CC1=CC=C(C=C1)S(=O)(=O)O",
+    "C": "C(C1=CC=CC=C1)O",
+    "D": "CC1=CC=CC=C1",
+    "E": "C(C)OCC",
+    "F": "CC1=CC=C(C=C1)S(=O)(=O)O.NC[C@@H]1CC[C@H](CC1)C(=O)OCC1=CC=CC=C1"
+  },
+  {
+    "A": "[I-].[C-]1(C=CC=C1)C[N+](C)(C)C.[CH-]1C=CC=C1.[Fe+2]",
+    "B": "[C-]#N.[K+]",
+    "C": "O",
+    "D": "C(C)OCC",
+    "E": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "F": "[C-]1(C=CC=C1)CC#N.[CH-]1C=CC=C1.[Fe+2]"
+  },
+  {
+    "A": "COC(=O)[C@@H]1[C@]2(C)[C@](CC1)([C@@H]1CC[C@@H]3C[C@H](CC[C@]3(C)[C@H]1CC2)O)N",
+    "B": "C(Cl)Cl",
+    "C": "C(=O)(N1C=NC=C1)N1C=NC=C1",
+    "D": "N[C@H](CO)CC1=CC=CC=C1",
+    "E": "O",
+    "F": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "G": "CO",
+    "H": "N",
+    "I": "[ethanolic hydrochloric acid (NoSmi)]",
+    "J": "[(3β(S),5β,14β,17β)-14-amino-3-[[[[2-hydroxy-1-(phenylmethyl)ethyl]amino]carbonyl]oxy]androstane-17-carboxylic acid methyl ester hydrochloride (NoSmi)]"
+  },
+  {
+    "A": "C(C)(C)C1=CC=C(C=C1)CC#N",
+    "B": "CCOCC",
+    "C": "[absolute ethanol (NoSmi)]",
+    "D": "Cl",
+    "E": "C(CN)N",
+    "F": "O",
+    "G": "C(Cl)Cl",
+    "H": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "I": "Cl.C(C)(C)C1=CC=C(C=C1)CC(O)=N",
+    "J": "[free base of 4-isopropylphenylacetimidate (NoSmi)]",
+    "K": "Cl.C(C)(C)C1=CC=C(C=C1)CC(O)=N"
+  },
+  {
+    "A": "ClC1=CC=C(C=C1)\\C(=C(/C(=O)OCC)\\CCO)\\C1=CC=C(C=C1)S(=O)(=O)C",
+    "B": "C(C)O",
+    "C": "[OH-].[Na+]",
+    "D": "C(C)(=O)OCC",
+    "E": "C(C)OCC",
+    "F": "ClC1=CC=C(C=C1)\\C(=C(/C(=O)[O-])\\CCO)\\C1=CC=C(C=C1)S(=O)(=O)C.[Na+]"
+  },
+  {
+    "A": "COC([C@@H](N(S(=O)(=O)C1=CC(=CC=C1)C)N)CC(C[C@@H]1C[C@@H](N(O1)C)C1=CC=C(C=C1)C=NN)=O)=O",
+    "B": "Cl",
+    "C": "O",
+    "D": "[0.1% trifluoroacetic acid in acetonitrile (NoSmi)]",
+    "E": "Cl.CN1O[C@@H](C[C@@H]1C1=CC=C(C=C1)C=NN)CC(=O)C[C@H](N(S(=O)(=O)C1=CC(=CC=C1)C)N)C(=O)O"
+  },
+  {
+    "A": "S(=O)(=O)(O)C=1C=C(C2=C(C=C(C=C2C1)S(=O)(=O)O)S(=O)(=O)O)N=C=S.[Na]",
+    "B": "[PAMAM 4.0 (NoSmi)]",
+    "C": "CN(CC=C)C",
+    "D": "O",
+    "E": "[Amberlite IR-120(Na) (NoSmi)]",
+    "F": "[Sephadex LH20 (NoSmi)]",
+    "G": "[sodium 3,6,8-trisulfonaphthylthiourea terminated PAMAM 4.0 dendrimer (NoSmi)]"
+  },
+  {
+    "A": "NC[C@@H]1CC[C@H](CC1)C(=O)O",
+    "B": "CC1=CC=C(C=C1)S(=O)(=O)O",
+    "C": "C(C1=CC=CC=C1)O",
+    "D": "CC1=CC=CC=C1",
+    "E": "C(C)OCC",
+    "F": "CC1=CC=C(C=C1)S(=O)(=O)O.NC[C@@H]1CC[C@H](CC1)C(=O)OCC1=CC=CC=C1"
+  },
+  {
+    "A": "[Z-Ala-cholesterol (NoSmi)]",
+    "B": "O1CCCC1",
+    "C": "C(C)(=O)O",
+    "D": "[5% palladium on charcoal (NoSmi)]"
+  },
+  {
+    "A": "C(C)(C)C=1CC2=CC=CC(=C2C1)C1=CC=CC=C1",
+    "B": "CC1=CC=CC=C1",
+    "C": "C(CCC)[Li]",
+    "D": "CCCCCC",
+    "E": "C(C)(C)C=1[CH-]C2=CC=CC(=C2C1)C1=CC=CC=C1.[Li+]"
+  },
+  {
+    "A": "C(C1=CC=C(C=C1)OC)(=O)[C@@]([C@@](C(=O)O)(O)C(C1=CC=C(C=C1)OC)=O)(O)C(=O)O",
+    "B": "Cl",
+    "C": "O",
+    "D": "CO",
+    "E": "ClC=1C=C(C=CC1Cl)C1(CNCC1)CCO",
+    "F": "C(C1=CC=C(C=C1)OC)(=O)[C@@]([C@@](C(=O)O)(O)C(C1=CC=C(C=C1)OC)=O)(O)C(=O)O.ClC=1C=C(C=CC1Cl)[C@@]1(CNCC1)CCO"
+  },
+  {
+    "A": "C(C)(C)(C)NC(=S)N[C@@H](CO)CC1=CSC=C1",
+    "B": "Cl",
+    "C": "CC(=O)C",
+    "D": "C(C)O",
+    "E": "C(C)OCC",
+    "F": "Cl.S1C=C(C=C1)C[C@H]1N=C(SC1)N"
+  },
+  {
+    "A": "NN1CCC2=CC=CC=C12",
+    "B": "O.Cl.N1C(CCCC1)=O",
+    "C": "C(C)(C)O",
+    "D": "C(C)OCC",
+    "E": "Cl.C1=C2C3=C(N4C2=C(C=C1)CC4)CCNC3"
+  },
+  {
+    "A": "[N+](=O)([O-])C1=C(C=CC(=C1)N)N",
+    "B": "C(C)O",
+    "C": "[hydrogen chloride in dioxane (NoSmi)]",
+    "D": "C(C)OCC",
+    "E": "Cl.[N+](=O)([O-])C1=C(C=CC(=C1)N)N"
+  },
+  {
+    "A": "FC1=C(C=CC(=C1)F)[C@]([C@@H](C)N1C(N(CC1)C1=CC=C(C=C1)N1N=NN=C1)=O)(CN1N=CN=C1)O",
+    "B": "C(C(C)(C)C)(=O)OCCl",
+    "C": "C(C)#N",
+    "D": "C(C)(C)OC(C)C",
+    "E": "[silica gel (NoSmi)]",
+    "F": "C(C)(=O)OCC",
+    "G": "CC(=O)C",
+    "H": "C(C)O",
+    "I": "[Cl-].FC1=C(C=CC(=C1)F)[C@@](C[NH+]1N=CN(C1)COC(C(C)(C)C)=O)([C@@H](C)N1C(N(CC1)C1=CC=C(C=C1)N1N=NN=C1)=O)O"
+  },
+  {
+    "A": "COC1=C(C=CC=C1)N1CCN(CC1)CCC(C)(C1=CC=CC=C1)C(=O)C1CCCCC1",
+    "B": "CO",
+    "C": "C(\\C=C/C(=O)O)(=O)O",
+    "D": "C(C)(C)(C)OC",
+    "E": "C(\\C=C/C(=O)O)(=O)O.COC1=C(C=CC=C1)N1CCN(CC1)CCC(C)(C1=CC=CC=C1)C(=O)C1CCCCC1"
+  },
+  {
+    "A": "ClC1=CC=C(C=C1)[C@H](OC1CCN(CC1)CCCC(=O)O)C1=NC=CC=C1",
+    "B": "O.C1(=CC=CC=C1)S(=O)(=O)O",
+    "C": "C(C)(=O)OCC",
+    "D": "C(C)#N",
+    "E": "C1(=CC=CC=C1)S(=O)(=O)O.ClC1=CC=C(C=C1)[C@H](OC1CCN(CC1)CCCC(=O)O)C1=NC=CC=C1"
+  },
+  {
+    "A": "C(C)(=O)Cl",
+    "B": "C(C)O",
+    "C": "O.O=C(O)CN(C)C(N)=N",
+    "D": "[CEE HCl (NoSmi)]"
+  },
+  {
+    "A": "C(C)(C)(C)C1=NC(=CC(=N1)N1CCN(CC1)CCCCl)C(C)(C)C",
+    "B": "CN1C(=NN=C1C)S",
+    "C": "[OH-].[Li+]",
+    "D": "[I-].[K+]",
+    "E": "CN(C=O)C",
+    "F": "O",
+    "G": "C(C)(=O)OCC",
+    "H": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "I": "ClCCl",
+    "J": "CO",
+    "K": "C(C)(C)O",
+    "L": "[hydrochloric acid in isopropanol (NoSmi)]",
+    "M": "C(C)(C)C(C)(C(C)C)OC(C)(C(C)C)C(C)C",
+    "N": "Cl.C(C)(C)(C)C1=NC(=CC(=N1)N1CCN(CC1)CCCSC1=NN=C(N1C)C)C(C)(C)C"
+  },
+  {
+    "A": "[4.0 M hydrochloric acid in 1,4-dioxane (NoSmi)]",
+    "B": "C(C)(C)(C)OC(NCC1CN(C(O1)=O)C1=CC(=C(C=C1)N1CCC(C=C1)=O)F)=O",
+    "C": "CO",
+    "D": "Cl.NCC1CN(C(O1)=O)C1=CC(=C(C=C1)N1CCC(C=C1)=O)F"
+  },
+  {
+    "A": "[Cl-].OCC[NH+]1CCS(CC1)(=O)=O",
+    "B": "N1=CC=CC=C1",
+    "C": "S(=O)(Cl)Cl",
+    "D": "C(Cl)(Cl)Cl",
+    "E": "O",
+    "F": "C(C)O",
+    "G": "CO",
+    "H": "[Cl-].ClCC[NH+]1CCS(CC1)(=O)=O"
+  },
+  {
+    "A": "C(C1=CC=CC=C1)NC[C@H]1N(C[C@@H](C1)SCC1=CC=C(C=C1)OC)S(=O)(=O)C",
+    "B": "FC(C(=O)O)(F)F",
+    "C": "C(C)[SiH](CC)CC",
+    "D": "O",
+    "E": "C(C)OCC",
+    "F": "FC(C(=O)O)(F)F.C(C1=CC=CC=C1)NC[C@@H]1C[C@H](CN1S(=O)(=O)C)S"
+  },
+  {
+    "A": "C(CCCCCCC)(=O)O",
+    "B": "O",
+    "C": "[OH-].[Na+]",
+    "D": "C(C)O",
+    "E": "Cl",
+    "F": "[sodium octoate (NoSmi)]"
+  },
+  {
+    "A": "COC(C=CC1=CC(=CC=C1)C#N)=O",
+    "B": "[palladium on carbon (NoSmi)]",
+    "C": "Cl",
+    "D": "O1CCOCC1",
+    "E": "CO",
+    "F": "[Celite (NoSmi)]",
+    "G": "Cl.COC(CCC1=CC(=CC=C1)CN)=O"
+  },
+  {
+    "A": "OC(C(S(=O)(=O)[O-])(F)F)C(F)(F)F.C1(=CC=CC=C1)[S+](C1=CC=CC=C1)C1=CC=CC=C1",
+    "B": "C(Cl)Cl",
+    "C": "N1=CC=CC=C1",
+    "D": "C(C)(=O)OC(C)=O",
+    "E": "C(C)N(CC)CC",
+    "F": "CN(C)C1=CC=NC=C1",
+    "G": "O",
+    "H": "C(C)(=O)OC(C(S(=O)(=O)[O-])(F)F)C(F)(F)F.C1(=CC=CC=C1)[S+](C1=CC=CC=C1)C1=CC=CC=C1"
+  },
+  {
+    "A": "OCC1(N=C(OC1)C)CCC1=CC=C(C=C1)O",
+    "B": "CN(C=O)C",
+    "C": "C([O-])([O-])=O.[Cs+].[Cs+]",
+    "D": "BrCCCOC1=CC=CC=C1",
+    "E": "C(C)(=O)OCC",
+    "F": "O",
+    "G": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "H": "CCCCCC",
+    "I": "CC=1OCC(N1)(CCC1=CC=C(C=C1)OCCCOC1=CC=CC=C1)CO",
+    "J": "C(C)O",
+    "K": "Cl",
+    "L": "[dry ether (NoSmi)]",
+    "M": "[2-amino-2-{2-[4-(3-phenoxy-propoxy)-phenyl]-ethyl}-propane-1,3-diol hydro-chloride (NoSmi)]"
+  },
+  {
+    "A": "C(C)(C)(C)C1=CC=C(N)C=C1",
+    "B": "C(C)#N",
+    "C": "C(Cl)Cl",
+    "D": "F[B-](F)(F)F.N#[O+]",
+    "E": "F[B-](F)(F)F.C(C)(C)(C)C1=CC=C(C=C1)[N+]#N"
+  },
+  {
+    "A": "[compound 20a (NoSmi)]",
+    "B": "O1CCOCC1",
+    "C": "[hydrogen chloride in dioxane (NoSmi)]",
+    "D": "CO",
+    "E": "CCOCC",
+    "F": "Cl.COC(=O)[C@@]1([C@@H](C1)C=C)N"
+  },
+  {
+    "A": "C(C)(C)(C)OC(=O)NCCCC(=O)OC1=C(C=CC=C1C)C",
+    "B": "ClCCl",
+    "C": "[hydrogen chloride in dioxane (NoSmi)]",
+    "D": "Cl.NCCCC(=O)OC1=C(C=CC=C1C)C"
+  },
+  {
+    "A": "FC=1C(=C(C=CC1)C(C(C(=O)OC)C1CCN(CC1)C(=O)OC(C)(C)C)O)NC(C(C)(C)C)=O",
+    "B": "CO",
+    "C": "O",
+    "D": "Cl",
+    "E": "C(C)O",
+    "F": "Cl.FC=1C=CC=C2C=C(C(NC12)=O)C1CCNCC1"
+  },
+  {
+    "A": "N12C[C@@H](C(CC1)CC2)OC(C(CC=C)(C=2SC=CC2)O)=O",
+    "B": "C(C)#N",
+    "C": "C(Cl)(Cl)Cl",
+    "D": "O(C1=CC=CC=C1)CCCBr",
+    "E": "CCOCC",
+    "F": "[Br-].OC(C(=O)O[C@H]1C[N+]2(CCC1CC2)CCCOC2=CC=CC=C2)(CC=C)C=2SC=CC2"
+  },
+  {
+    "A": "C(C)(C)(C)OC(=O)N1C(=NC(=C1)CCCC(NCC(C)C)=O)N",
+    "B": "ClCCl",
+    "C": "FC(C(=O)O)(F)F",
+    "D": "CC1=CC=CC=C1",
+    "E": "[2M hydrochloric acid in diethyl ether (NoSmi)]",
+    "F": "C(C)OCC",
+    "G": "Cl.NC=1NC=C(N1)CCCC(=O)NCC(C)C"
+  },
+  {
+    "A": "C(C)O[C@H](C(=O)O)CC1=CC=C(C=C1)C1=NC(=CC=C1)N(C(=O)NCCCCCCC)C",
+    "B": "C(C)O",
+    "C": "Cl",
+    "D": "CC(=O)C",
+    "E": "C(C)OCC",
+    "F": "O",
+    "G": "Cl.C(C)O[C@H](C(=O)O)CC1=CC=C(C=C1)C1=NC(=CC=C1)N(C(=O)NCCCCCCC)C"
+  },
+  {
+    "A": "CN1CCN(CC1)C1CCCCC1",
+    "B": "C(C)O",
+    "C": "IC",
+    "D": "CCOCC",
+    "E": "[I-].C[N+]1(CCN(CC1)C1CCCCC1)C"
+  },
+  {
+    "A": "C=CC1=CC=CC=C1",
+    "B": "CC=CC1=CC=CC=C1",
+    "C": "C1(CCCCCN1)=O",
+    "D": "[AIBN (NoSmi)]",
+    "E": "[styrene-methyl styrene co-polymer (NoSmi)]"
+  },
+  {
+    "A": "C(C(C)(C)C)(=O)OC[C@H](C)NC(=O)OC(C)(C)C",
+    "B": "C(C)(=O)OCC",
+    "C": "[4N hydrochloric acid in dioxane (NoSmi)]",
+    "D": "C(C)OCC",
+    "E": "Cl.N[C@H](COC(C(C)(C)C)=O)C"
+  },
+  {
+    "A": "FC(C(C(F)(F)F)OC(C(C)(C)C)=O)(S(=O)(=O)[O-])F.[Na+]",
+    "B": "[OH-].[Na+]",
+    "C": "CO",
+    "D": "Cl"
+  },
+  {
+    "A": "[Flupirtine base (NoSmi)]",
+    "B": "C(\\C=C/C(=O)O)(=O)O",
+    "C": "C(C)(C)O",
+    "D": "[Flupirtine Maleate (NoSmi)]"
+  },
+  {
+    "A": "OCC(S(=O)(=O)[O-])(F)F.[Na+]",
+    "B": "O",
+    "C": "C(Cl)(Cl)Cl",
+    "D": "[Cl-].C1(=CC=CC=C1)[S+](C1=CC=CC=C1)C1=CC=CC=C1",
+    "E": "OCC(S(=O)(=O)[O-])(F)F.C1(=CC=CC=C1)[S+](C1=CC=CC=C1)C1=CC=CC=C1"
+  },
+  {
+    "A": "[2-[(tert-butoxycarbonyl-ethyl-amino)methyl]-4-(6-ethoxypyridin-3-yl)-6-methoxybiphenyl-3-yl]acetic acid ethyl ester (NoSmi)]",
+    "B": "ClCCl",
+    "C": "[hydrogen chloride in 1,4-dioxane (NoSmi)]",
+    "D": "Cl.C(C)OC(CC=1C(=C(C(=CC1C=1C=NC(=CC1)OCC)OC)C1=CC=CC=C1)CNCC)=O"
+  },
+  {
+    "A": "FC1=C(C(=O)O)C(=CC=C1)F",
+    "B": "C(C)O",
+    "C": "O",
+    "D": "[OH-].[Na+]",
+    "E": "FC1=C(C(=O)[O-])C(=CC=C1)F.[Na+]"
+  },
+  {
+    "A": "C(C)OC(=O)C=1N=C(SC1)C1CCN(CC1)C(=O)OC(C)(C)C",
+    "B": "C(C)OCC",
+    "C": "[hydrogen chloride in diethyl ether (NoSmi)]",
+    "D": "[absolute ethanol (NoSmi)]",
+    "E": "Cl.N1CCC(CC1)C=1SC=C(N1)C(=O)OCC"
+  },
+  {
+    "A": "CN1CCC(CC1)NC1=NC=C(C(=N1)C(F)(F)F)C(=O)OC",
+    "B": "Cl",
+    "C": "C(C)(C)OC(C)C",
+    "D": "C(C)(=O)OCC",
+    "E": "Cl.CN1CCC(CC1)NC1=NC=C(C(=N1)C(F)(F)F)C(=O)O"
+  },
+  {
+    "A": "[tert-butyl ester of 1,1-difluoro-6-aza-spiro[2.5]octane-6-carboxylic acid (NoSmi)]",
+    "B": "ClCCl",
+    "C": "[hydrochloric acid in dioxane (NoSmi)]",
+    "D": "Cl.FC1(CC12CCNCC2)F"
+  },
+  {
+    "A": "ClCCCCS(=O)(=O)[O-].C(CCC)[N+](CCCC)(CCCC)CCCC",
+    "B": "C1(=CC=CC=C1)[O-].[Na+]",
+    "C": "O1CCCC1",
+    "D": "O(C1=CC=CC=C1)CCCCS(=O)(=O)[O-].C(CCC)[N+](CCCC)(CCCC)CCCC"
+  },
+  {
+    "A": "[Nalbuphine alkaloid (NoSmi)]",
+    "B": "C(C)O",
+    "C": "O",
+    "D": "Cl",
+    "E": "[ethanol:water mixture (NoSmi)]",
+    "F": "[Nalbuphine hydrochloride (NoSmi)]"
+  },
+  {
+    "A": "[E2 free base (NoSmi)]",
+    "B": "C(C(C)C)C(=O)C",
+    "C": "C(\\C=C\\C(=O)O)(=O)O",
+    "D": "O1CCOCC1",
+    "E": "C(\\C=C\\C(=O)O)(=O)O.FC1=CC=C(C=C1)OC1=CC=C(C=N1)C(=O)N(C1=CC=C(C=C1)CN1C[C@@H](NCC1)C)C"
+  },
+  {
+    "A": "C1=CC=CC2=CC3=CC=CC=C3C(=C12)COC(NCCOCCOCCCCCCCl)=O",
+    "B": "ClCCl",
+    "C": "C1(=CC=CC=C1)OC",
+    "D": "FC(C(=O)O)(F)F",
+    "E": "O",
+    "F": "CN(C=O)C",
+    "G": "FC(C(=O)[O-])(F)F.ClCCCCCCOCCOCC[NH3+]"
+  },
+  {
+    "A": "CN(CC1=CNC2=CC=CC(=C12)C)C",
+    "B": "C(C)#N",
+    "C": "CI",
+    "D": "CCOCC",
+    "E": "[I-].C[N+](CC1=CNC2=CC=CC(=C12)C)(C)C"
+  },
+  {
+    "A": "[Cl-].ClC=[N+](C)C",
+    "B": "C(C)(C)[Si](N1C=CC=C1)(C(C)C)C(C)C",
+    "C": "ClCCl",
+    "D": "C(C)OCC",
+    "E": "[Cl-].C[N+](=CC1=CNC=C1)C"
+  },
+  {
+    "A": "C(C)N(C(OC(C)(C)C)=O)CCC(C)C",
+    "B": "CO",
+    "C": "Cl",
+    "D": "Cl.C(C)NCCC(C)C"
+  },
+  {
+    "A": "C1(=CC=C(C=C1)C[C@H](\\C=C(/C(=O)O)\\C)NC(=O)OC(C)(C)C)C1=CC=CC=C1",
+    "B": "C(C)O",
+    "C": "S(=O)(Cl)Cl",
+    "D": "CCCCCCC",
+    "E": "C(C)(=O)OCC",
+    "F": "Cl.N[C@@H](\\C=C(/C(=O)O)\\C)CC1=CC=C(C=C1)C1=CC=CC=C1"
+  },
+  {
+    "A": "OC(CN1C(CCC1=O)=O)COC1=CC=CC=C1",
+    "B": "Cl",
+    "C": "C(C)O",
+    "D": "O",
+    "E": "CCOCC",
+    "F": "CO",
+    "G": "Cl.NCC(COC1=CC=CC=C1)O"
+  },
+  {
+    "A": "NCC1(C2C=C(CC2C1)CC)CC(=O)OC(C)(C)C",
+    "B": "C(C)#N",
+    "C": "C([C@H](O)C1=CC=CC=C1)(=O)O",
+    "D": "C([C@H](O)C1=CC=CC=C1)(=O)O.NC[C@]1([C@@H]2C=C(C[C@@H]2C1)CC)CC(=O)OC(C)(C)C"
+  },
+  {
+    "A": "CN(C(=O)Cl)C",
+    "B": "OC(=O)C(F)(F)F.ClC=1C=CC(=C(C1)C(=O)C1CCN(CC1)C=1N=C2C(=NC1NC(C)C)CNCC2)F",
+    "C": "C(C)N(CC)CC",
+    "D": "ClCCl",
+    "E": "OC(=O)C(F)(F)F.ClC=1C=CC(=C(C(=O)C2CCN(CC2)C=2N=C3C(=NC2NC(C)C)CN(CC3)C(=O)N(C)C)C1)F"
+  },
+  {
+    "A": "Br.CN1CC(=CCC1)C(=O)O",
+    "B": "Cl",
+    "C": "Cl.CN1CC(=CCC1)C(=O)O"
+  },
+  {
+    "A": "C(C)(C)(C)C1=NN(C(=C1)NC(=O)NC1=CC=C(C2=CC=CC=C12)OCC1=CC(=NC=C1)NC1=NC(=CN=C1)CC)C1=CC=C(C=C1)C",
+    "B": "CC(CC)=O",
+    "C": "C(\\C=C/C(=O)O)(=O)O",
+    "D": "C(\\C=C/C(=O)O)(=O)O.C(C)(C)(C)C1=NN(C(=C1)NC(=O)NC1=CC=C(C2=CC=CC=C12)OCC1=CC(=NC=C1)NC1=NC(=CN=C1)CC)C1=CC=C(C=C1)C"
+  },
+  {
+    "A": "C1(CCCCC1)COC=1C=2N(C=CC1)C(=C(N2)C)C(=O)N[C@@H]2CN(CC2)C",
+    "B": "C(C)(=O)OCC",
+    "C": "C(C)(=O)OCC",
+    "D": "Cl.C1(CCCCC1)COC=1C=2N(C=CC1)C(=C(N2)C)C(=O)N[C@@H]2CN(CC2)C"
+  },
+  {
+    "A": "C(C)(C)OCC(CN1C=NC=C1)SC1=C(C(=C(C(=C1Cl)Cl)Cl)Cl)Cl",
+    "B": "[N+](=O)(O)[O-]",
+    "C": "CCOCC",
+    "D": "C(C)(=O)OCC",
+    "E": "[N+](=O)(O)[O-].C(C)(C)OCC(CN1C=NC=C1)SC1=C(C(=C(C(=C1Cl)Cl)Cl)Cl)Cl"
+  },
+  {
+    "A": "C1(=CC=CC=C1)N1CNC(C12CCN(CC2)C[C@H]2[C@@H](C1=CC=C(C=C1CC2)OC)O)=O",
+    "B": "CCOCC",
+    "C": "Cl.C=C",
+    "D": "Cl.C1(=CC=CC=C1)N1CNC(C12CCN(CC2)C[C@H]2[C@@H](C1=CC=C(C=C1CC2)OC)O)=O"
+  },
+  {
+    "A": "N1(CCNCC1)C1=NC2=CC(=C(C=C2C(=N1)N)OC)OC",
+    "B": "C(Cl)(Cl)Cl",
+    "C": "O1C(=CC=C1)C(=O)Cl",
+    "D": "C(CC(C)C)O",
+    "E": "[OH-].[Na+]",
+    "F": "O",
+    "G": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "H": "Cl",
+    "I": "Cl.C1(=CC=CC=C1)N1CNC(C12CCN(CC2)C[C@H]2[C@@H](C1=CC=C(C=C1CC2)OC)O)=O"
+  },
+  {
+    "A": "COC([C@@](NOCC1=CC=CC=C1)(CC1=CC=C(C=C1)O)C=C)=O",
+    "B": "Cl",
+    "C": "C(Cl)Cl",
+    "D": "[activated charcoal (NoSmi)]",
+    "E": "Cl.C(=C)[C@](N)(CC1=CC=C(C=C1)O)C(=O)O"
+  },
+  {
+    "A": "ClCC(=O)O",
+    "B": "[N-ethylethylenediamine diaquo complex (NoSmi)]",
+    "C": "[OH-].[K+]",
+    "D": "O",
+    "E": "C(C)O",
+    "F": "[aquosulphato (N,N'-diethylethylenediamine) platinum (II) (NoSmi)]"
+  },
+  {
+    "A": "F[As-](F)(F)(F)(F)F.C1(=CC=CC=C1)[I+]C1=CC=CC=C1",
+    "B": "C1(=CC=CC=C1)SC1=CC=CC=C1",
+    "C": "C(C1=CC=CC=C1)(=O)[O-].[Cu+2].C(C1=CC=CC=C1)(=O)[O-]",
+    "D": "C(C)OCC",
+    "E": "C(C)O",
+    "F": "F[As-](F)(F)(F)(F)F.C1(=CC=CC=C1)[S+](C1=CC=CC=C1)C1=CC=CC=C1"
+  },
+  {
+    "A": "C(C)(C)(C)OC(=O)NCC(=O)NC1=C(C=CC=C1)C1=NC2=C(C(O1)=O)C=CC=C2",
+    "B": "C(C)(=O)OCC",
+    "C": "Cl",
+    "D": "Cl.NCC(=O)NC1=C(C=CC=C1)C1=NC2=C(C(O1)=O)C=CC=C2"
+  },
+  {
+    "A": "C1(C=2C(C(N1CC(CCC(C)=O)=O)=O)=CC=CC2)=O",
+    "B": "N1(C=NC=C1)CCCN",
+    "C": "C(C)(=O)O",
+    "D": "[ethanolic hydrochloric acid (NoSmi)]",
+    "E": "C(C)O",
+    "F": "Cl.N1(C=NC=C1)CCCN1C(=CC=C1C)CN1C(C=2C(C1=O)=CC=CC2)=O"
+  },
+  {
+    "A": "NC1CN2CCC1CC2",
+    "B": "CN1CCOCC1",
+    "C": "C(Cl)(Cl)Cl",
+    "D": "C(C1=CC=CC=C1)N1C(C(OC2=C1C=C(C=C2C(=O)Cl)Cl)(C)CC)=O",
+    "E": "O",
+    "F": "C(O)([O-])=O.[Na+]",
+    "G": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "H": "C(C)O",
+    "I": "C(C)(C)OC(C)C",
+    "J": "[ethanolic hydrochloric acid (NoSmi)]",
+    "K": "Cl.C(C1=CC=CC=C1)N1C(C(OC2=C1C=C(C=C2C(=O)NC2CN1CCC2CC1)Cl)C)=O"
+  },
+  {
+    "A": "CN1C(=O)N(C(=O)C(C1=O)C(NC1=CC(=C(C(=C1)Cl)OC(C(F)OC(C(C(F)(F)F)(F)F)(F)F)(F)F)Cl)=O)C",
+    "B": "C(C)#N",
+    "C": "C(C)N(CC)CC",
+    "D": "C(C)[NH+](CC)CC.CN1C(=O)N(C(=O)C(C1=O)C(NC1=CC(=C(C(=C1)Cl)OC(C(F)OC(C(C(F)(F)F)(F)F)(F)F)(F)F)Cl)=O)C"
+  },
+  {
+    "A": "C1(=CC=CC2=CC=CC=C12)CSCC1=CC=CC2=CC=CC=C12",
+    "B": "F[Sb-](F)(F)(F)(F)F.C(C)[O+](CC)CC",
+    "C": "C(Cl)Cl",
+    "D": "F[Sb-](F)(F)(F)(F)F.C1(=CC=CC2=CC=CC=C12)C[S+](CC)CC1=CC=CC2=CC=CC=C12"
+  },
+  {
+    "A": "SC1=NC2=C(N1)C=CC=C2",
+    "B": "Cl.ClCC1=NC=CC(=C1OC)SCCCCl",
+    "C": "C(C)(C)O",
+    "D": "O",
+    "E": "Cl.Cl.ClCCCSC1=C(C(=NC=C1)CSC1=NC2=C(N1)C=CC=C2)OC"
+  },
+  {
+    "A": "ClC1=NC=NC2=CC=C(C=C12)F",
+    "B": "ClC=1C=C(N)C=CC1Cl",
+    "C": "C(C)(C)O",
+    "D": "C(C)OCC",
+    "E": "Cl.ClC=1C=C(NC2=NC=NC3=CC=C(C=C23)F)C=CC1Cl"
+  },
+  {
+    "A": "[Compound 23 (NoSmi)]",
+    "B": "C(\\C=C/C(=O)O)(=O)O",
+    "C": "CC(C)=O",
+    "D": "[[2S-[2α,4α[(R*,R*)]]]-2-[4-[4-[4-[4-[[2-(2,4-difluorophenyl)-2-(1H-1,2,4-triazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy]-phenyl]-1-piperazinyl]-phenyl]-4,5-dihydro-5-oxo-1H-1,2,4-triazol-1-yl]-1-methylpropyl L-phenylalanine (Z)-2-butenedioate (1:1) (NoSmi)]"
+  },
+  {
+    "A": "[(+)-5,6-methoxy-2-[(4-methoxy-3,5-dimethyl-2-pyridinyl)methyl]sulfinyl-1H-benzimidazole (NoSmi)]",
+    "B": "C(C)C(=O)C",
+    "C": "[OH-].[Na+]",
+    "D": "CC1=CC=CC=C1",
+    "E": "C(C)OCC",
+    "F": "[N]",
+    "G": "[Na].COC=1C=CC2=C(NC(=N2)S(=O)CC2=NC=C(C(=C2C)OC)C)C1"
+  },
+  {
+    "A": "BrC1=C(C(=O)O)C=CC=C1",
+    "B": "CO",
+    "C": "C([O-])([O-])=O.[K+].[K+]",
+    "D": "[K+].BrC1=C(C(=O)[O-])C=CC=C1"
+  },
+  {
+    "A": "COC(=O)C1=CNC=2CCN3C=CN=C3C12",
+    "B": "Br",
+    "C": "C(C)OCC",
+    "D": "Br.N=1C=CN2CCC=3NC=C(C3C12)C(=O)O"
+  },
+  {
+    "A": "FC1=C(C=CC(=C1)F)C(CNC=O)O",
+    "B": "CO",
+    "C": "Cl",
+    "D": "C(C)(=O)OCC",
+    "E": "Cl.NCC(O)C1=C(C=C(C=C1)F)F"
+  },
+  {
+    "A": "C(C(CCC)CCC)(=O)[O-].[Mg+2].C(C(CCC)CCC)(=O)[O-]",
+    "B": "C(C)#N",
+    "C": "O.C(C(CCC)CCC)(=O)[O-].[Mg+2].C(C(CCC)CCC)(=O)[O-]"
+  },
+  {
+    "A": "O[C@@H](CNCCCCCCCCCN1CCC(CC1)OC(NC1=C(C=CC=C1)C1=CC=CC=C1)=O)C1=C2C=CC(NC2=C(C=C1)O)=O",
+    "B": "C1(=CC=CC=2C(=CC=CC12)S(=O)(=O)O)S(=O)(=O)O",
+    "C": "CO",
+    "D": "C1(=CC=CC=2C(=CC=CC12)S(=O)(=O)O)S(=O)(=O)O.O[C@@H](CNCCCCCCCCCN1CCC(CC1)OC(NC1=C(C=CC=C1)C1=CC=CC=C1)=O)C1=C2C=CC(NC2=C(C=C1)O)=O"
+  },
+  {
+    "A": "Cl.FC=1C=C(C[C@@H]([C@@H]([C@@H]2NC[C@@H](CC2)OCCCC=C)O)NC(C)=O)C=C(C1)F",
+    "B": "[10% palladium on carbon (NoSmi)]",
+    "C": "CO",
+    "D": "[H]",
+    "E": "Cl.FC=1C=C(C[C@@H]([C@@H]([C@@H]2NC[C@@H](CC2)OCCCCC)O)NC(C)=O)C=C(C1)F"
+  },
+  {
+    "A": "C(#N)C1(CCN(CC1)C(=O)OC(C)(C)C)C(=O)N1CCOCC1",
+    "B": "[4M hydrochloric acid in dioxane (NoSmi)]",
+    "C": "O1CCOCC1",
+    "D": "Cl.N1(CCOCC1)C(=O)C1(CCNCC1)C#N"
+  },
+  {
+    "A": "[cefoxitin acid (NoSmi)]",
+    "B": "CC(=O)C",
+    "C": "C(C(O)C)(=O)[O-].[Na+]",
+    "D": "CC(=O)C",
+    "E": "[cefoxitin sodium (NoSmi)]"
+  },
+  {
+    "A": "P(=O)(OCC(CCCC)CC)(OCC(CCCC)CC)[O-]",
+    "B": "[OH-].[Na+]",
+    "C": "C(C)O",
+    "D": "[Cl-].[La+3].[Cl-].[Cl-]",
+    "E": "C1CCCCC1",
+    "F": "O",
+    "G": "[lanthanum di(2-ethylhexyl) phosphate solution in cyclohexane (NoSmi)]"
+  },
+  {
+    "A": "FC(C(F)(F)F)(OC1=CC=C(OC2CCN(CC2)C(=O)OC(C)(C)C)C=C1)F",
+    "B": "[4.0M hydrochloric acid in 1,4-dioxane (NoSmi)]",
+    "C": "C(C)OCC",
+    "D": "Cl.FC(C(F)(F)F)(OC1=CC=C(OC2CCNCC2)C=C1)F"
+  },
+  {
+    "A": "COC=1C=C(CC2=NN=C(O2)NC=2C=C3C=NN(C3=CC2)C(=O)OC(C)(C)C)C=CC1",
+    "B": "[hydrogen chloride in dioxane (NoSmi)]",
+    "C": "O1CCOCC1",
+    "D": "C(C)(=O)OCC",
+    "E": "Cl.COC=1C=C(CC2=NN=C(O2)NC=2C=C3C=NNC3=CC2)C=CC1"
+  },
+  {
+    "A": "N1CCNCC1",
+    "B": "ClCCl",
+    "C": "C(C)(=O)OCC",
+    "D": "Cl",
+    "E": "[Cl-].C(#N)C=1OC2=C(C1)C=C(C=C2)N2CC[NH2+]CC2"
+  },
+  {
+    "A": "[product from Example 213A (NoSmi)]",
+    "B": "O1CCOCC1",
+    "C": "[hydrogen chloride in 1,4-dioxane (NoSmi)]",
+    "D": "Cl.FC=1C=C(CC2C[C@@H]3N(CCNC3)C2=O)C=CC1"
+  },
+  {
+    "A": "C(C)(=O)O.C(C)(=O)O.IC1=CC=CC=C1",
+    "B": "ClCCl",
+    "C": "OS(=O)(=O)C(F)(F)F",
+    "D": "C[Si](C1=C(C=CC=C1)[Si](C)(C)C)(C)C",
+    "E": "CCOCC",
+    "F": "[O-]S(=O)(=O)C(F)(F)F.C1(=CC=CC=C1)[I+]C1=C(C=CC=C1)[Si](C)(C)C"
+  },
+  {
+    "A": "NC(C1=CC=C(OCCCC2CCN(CC2)CCCOC2=CC=C(C(=N)N)C=C2)C=C1)=N",
+    "B": "C(C)O",
+    "C": "C(C)O",
+    "D": "Cl.NC(C1=CC=C(OCCCC2CCN(CC2)CCCOC2=CC=C(C(=N)N)C=C2)C=C1)=N"
+  },
+  {
+    "A": "C1(CC1)C=1N=CN(C1)C=1C(=CC(=C(C#N)C1)F)C",
+    "B": "Cl",
+    "C": "C(C)(=O)OCC",
+    "D": "CO",
+    "E": "ClCCl",
+    "F": "Cl.C1(CC1)C=1N=CN(C1)C=1C(=CC(=C(C(=O)O)C1)F)C"
+  },
+  {
+    "A": "ClCCC(=O)N1C2=C(N(C(C3=C1C=CC=C3)=O)CC)C=CC=C2",
+    "B": "CC1NCCCC1",
+    "C": "C(C)(C)O",
+    "D": "C(Cl)Cl",
+    "E": "O",
+    "F": "CC(=O)C",
+    "G": "Cl",
+    "H": "Cl.C(C)N1C2=C(N(C3=C(C1=O)C=CC=C3)C(CCN3C(CCCC3)C)=O)C=CC=C2"
+  },
+  {
+    "A": "CN(C(CNC(=O)OC(C)(C)C)=O)N1C(=CC=C1)C(C1=C(C=CC=C1)Cl)=O",
+    "B": "C(C)(=O)OCC",
+    "C": "C(CC)O",
+    "D": "Br",
+    "E": "CCOCC",
+    "F": "C(C)(C)O",
+    "G": "Br.CN(C(CN)=O)N1C(=CC=C1)C(C1=C(C=CC=C1)Cl)=O"
+  },
+  {
+    "A": "C1(CC(C1)=O)=O",
+    "B": "C(C)(=O)OCC",
+    "C": "C(C)NCC",
+    "D": "C(C)[NH2+]CC.OC1=CC(C1)=O"
+  }
+]

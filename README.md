@@ -12,12 +12,15 @@ Utilities for extracting structured reaction JSON from patent text, resolving ch
 ## Repository Layout
 
 ```text
-src/uspto_revisit/      Python package
-prompts/prompt.txt      GPT extraction prompt template
-examples/examples_used_for_finetuning/    Examples used for finetuning gpt-4.1-mini
-examples/input.csv               Default GPT input file
-result/                 Local outputs, ignored by git
-result/smiles_batches/  Local cache/intermediate SMILES files, ignored by git
+src/uspto_revisit/                    Python package
+prompts/prompt.txt                    GPT extraction prompt template
+examples/                             Small public examples
+examples/examples_used_for_finetuning/ Example JSONL records for fine-tuning format
+input.csv                             Local GPT input file, ignored by git
+data/                                 Local data, ignored by git
+result/                               Committed output examples/results
+result/smiles_batches/                Committed SMILES cache/intermediate files
+Zhang_et_al_Llama3_8B_result.csv      Benchmark result file
 ```
 
 ## Installation
@@ -42,7 +45,11 @@ Copy the example environment file:
 cp .env.example .env
 ```
 
-On Windows PowerShell, use `Copy-Item .env.example .env`.
+On Windows PowerShell, use:
+
+```powershell
+Copy-Item .env.example .env
+```
 
 Fill in your OpenAI key and model:
 
@@ -60,7 +67,7 @@ Do not commit `.env` or real API keys.
 
 ## Input Format
 
-By default, GPT extraction reads:
+By default, GPT extraction reads a local file:
 
 ```text
 input.csv
@@ -148,15 +155,38 @@ Final reaction SMILES columns include:
 {OPENAI_MODEL}_rxn
 ```
 
-## Outputs
+The final reaction SMILES file does not include helper columns such as `idx` or `model`.
 
-Generated files are written under `result/`:
+The intermediate `*_response_with_smiles.csv` file is not saved by default because the final reaction file already includes the SMILES dictionary. To save it for debugging:
+
+```bash
+python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --with-smiles-output result/debug_response_with_smiles.csv
+```
+
+## Included Outputs
+
+This repository includes generated outputs under `result/`:
 
 ```text
-result/{OPENAI_MODEL}_output.csv
-result/{OPENAI_MODEL}_reaction_smiles.csv
+result/gpt-4.1-mini_output.csv
+result/gpt-4.1-mini_reaction_smiles.csv
 result/smiles_fetch.log
 result/smiles_batches/
 ```
 
-`result/`, `data/`, and `.env` are ignored by git.
+The `Zhang_et_al_Llama3_8B_result.csv` file is included as a benchmark result from Zhang, Wei, et al., "Fine-tuning large language models for chemical text mining," Chemical Science 15.27 (2024): 10600-10611.
+
+## Package Usage
+
+```python
+from uspto_revisit.reaction_smiles import process_smiles_data
+
+skeleton_smiles, final_smiles, errors = process_smiles_data(
+    merged_json_responses,
+    merged_smiles_dict,
+)
+```
+
+## Data Policy
+
+Generated outputs are committed for reproducibility. Local inputs in `input.csv`, local data in `data/`, and API keys in `.env` are ignored by git.

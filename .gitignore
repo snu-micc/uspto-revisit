@@ -8,17 +8,19 @@ env/
 .env
 .env.*
 !.env.example
+input.csv
 
 .ipynb_checkpoints/
 
 *.log
 *.pkl
-*_result.csv
+!result/**/*.log
+!result/**/*.pkl
+!result/smiles_batches/
+!result/smiles_batches/**
 
 data/
-result/
 results/
-smiles_batches/
 
 build/
 dist/
