@@ -6,7 +6,6 @@ import asyncio
 import logging
 import os
 
-from chemspipy import ChemSpider
 from requests.exceptions import RequestException
 
 REQUEST_LIMIT = 980
@@ -43,6 +42,12 @@ def get_smiles_from_chemspider(compound_name: str) -> tuple[str | None, str | No
         api_key = get_current_api_key()
     except RuntimeError:
         logging.info("[ChemSpider] CHEMSPIDER_API_KEY is not set; skipping %s", compound_name)
+        return None, None
+
+    try:
+        from chemspipy import ChemSpider
+    except ImportError:
+        logging.info("[ChemSpider] ChemSpiPy is not installed; skipping %s", compound_name)
         return None, None
 
     chemspider = ChemSpider(api_key)

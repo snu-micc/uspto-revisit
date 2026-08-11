@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "description": "Auditable NoSmi recovery choices for the 400-row USPTO Revisit example set. Exact aliases preserve identity; active_component entries intentionally omit a carrier solvent or heterogeneous support and must not be interpreted as the full material formulation.",
+  "overrides": [
+    {
+      "name": "palladium on carbon",
+      "lookup_name": "palladium",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Palladium",
+      "note": "Use [Pd] as the catalytically active component; carbon support and loading are not molecularly defined."
+    },
+    {
+      "name": "palladium on charcoal",
+      "lookup_name": "palladium",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Palladium",
+      "note": "Use [Pd] as the active component and omit the heterogeneous carbon support."
+    },
+    {
+      "name": "10% palladium on carbon",
+      "lookup_name": "palladium",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Palladium",
+      "note": "The percentage describes catalyst loading, not a molecular structure."
+    },
+    {
+      "name": "palladium hydroxide on carbon",
+      "lookup_name": "palladium hydroxide",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Palladium-hydroxide",
+      "note": "Use Pd(OH)2 and omit the heterogeneous carbon support."
+    },
+    {
+      "name": "Raney nickel",
+      "lookup_name": "nickel",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Nickel",
+      "note": "Use [Ni] as the active component; the porous alloy catalyst has no unique molecular SMILES."
+    },
+    {
+      "name": "Oxone",
+      "lookup_name": "potassium peroxymonosulfate",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Potassium-peroxymonosulfate",
+      "note": "Use the active peroxymonosulfate salt rather than assigning a false single structure to the commercial triple salt."
+    },
+    {
+      "name": "hydrogen chloride in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Carrier solvent and concentration are omitted; the active reagent is HCl."
+    },
+    {
+      "name": "hydrogen chloride in 1,4-dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Carrier solvent and concentration are omitted; the active reagent is HCl."
+    },
+    {
+      "name": "hydrochloric acid in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Carrier solvent and concentration are omitted; the active reagent is HCl."
+    },
+    {
+      "name": "4.0 M hydrochloric acid in 1,4-dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Concentration and carrier solvent are metadata, not molecular identity."
+    },
+    {
+      "name": "4M hydrochloric acid in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Concentration and carrier solvent are metadata, not molecular identity."
+    },
+    {
+      "name": "4N hydrochloric acid in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Concentration and carrier solvent are metadata, not molecular identity."
+    },
+    {
+      "name": "ethereal hydrochloric acid",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Diethyl ether is a carrier solvent; the active reagent is HCl."
+    },
+    {
+      "name": "hydrogen chloride in diethyl ether",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Diethyl ether is a carrier solvent; the active reagent is HCl."
+    },
+    {
+      "name": "ethanolic hydrochloric acid",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Hydrogen-chloride",
+      "note": "Ethanol is a carrier solvent; the active reagent is HCl."
+    },
+    {
+      "name": "lithium aluminum hydride in tetrahydrofuran",
+      "lookup_name": "lithium aluminium hydride",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Lithium-aluminium-hydride",
+      "note": "THF is a carrier solvent; the active reagent is LiAlH4."
+    },
+    {
+      "name": "10% sodium hydroxide in D2O",
+      "lookup_name": "sodium hydroxide",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-hydroxide",
+      "note": "D2O and concentration are omitted from the active reagent structure."
+    },
+    {
+      "name": "sodium alendronate aqueous solution",
+      "lookup_name": "sodium alendronate",
+      "kind": "active_component",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Alendronate-sodium",
+      "note": "The verified sodium alendronate trihydrate record represents the solute; bulk aqueous solvent and concentration are omitted."
+    },
+    {
+      "name": "cefoxitin acid",
+      "lookup_name": "cefoxitin",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Cefoxitin"
+    },
+    {
+      "name": "19-nor-testosterone acetate",
+      "lookup_name": "19-nortestosterone acetate",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/19-nortestosterone%20acetate/property/SMILES/JSON"
+    },
+    {
+      "name": "Flupirtine base",
+      "lookup_name": "flupirtine",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Flupirtine"
+    },
+    {
+      "name": "Nalbuphine alkaloid",
+      "lookup_name": "nalbuphine",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Nalbuphine"
+    },
+    {
+      "name": "N,N-dimethylaminopyridine",
+      "lookup_name": "4-dimethylaminopyridine",
+      "kind": "name_correction",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/4-Dimethylaminopyridine",
+      "note": "The paragraph uses the conventional acylation catalyst DMAP."
+    },
+    {
+      "name": "4-methoxybenzylnitrile",
+      "lookup_name": "2-(4-methoxyphenyl)acetonitrile",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/4-Methoxyphenylacetonitrile"
+    },
+    {
+      "name": "4-benzyloxy-2-fluoroacetophenone",
+      "lookup_name": "1-[4-(benzyloxy)-2-fluorophenyl]ethan-1-one",
+      "kind": "systematic_name",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/1-%5B4-(benzyloxy)-2-fluorophenyl%5Dethan-1-one.smi"
+    },
+    {
+      "name": "6-chloro-2-pentanone",
+      "lookup_name": "5-chloropentan-2-one",
+      "kind": "contextual_name_correction",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/5-chloropentan-2-one.smi",
+      "note": "Carbon 6 is impossible for a pentanone; the product's 3-chloropropyl substituent confirms 5-chloropentan-2-one."
+    },
+    {
+      "name": "2-oxazole-(tri-n-butyl)tin",
+      "lookup_name": "2-(tributylstannyl)-1,3-oxazole",
+      "kind": "systematic_name",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/2-(tributylstannyl)-1,3-oxazole.smi"
+    },
+    {
+      "name": "malonic acid monoester potassium salt",
+      "lookup_name": "potassium ethyl malonate",
+      "kind": "contextual_identity",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Potassium-ethyl-malonate",
+      "note": "The same paragraph forms ethyl 3-(4-pyridyl)-3-oxopropionate, identifying the monoester as ethyl."
+    },
+    {
+      "name": "3-(3-amino-2-fluorobenzyl)amine",
+      "lookup_name": "(3-amino-2-fluorophenyl)methanamine",
+      "kind": "name_correction",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/(3-amino-2-fluorophenyl)methanamine.smi"
+    },
+    {
+      "name": "N,N-dimethyl-2-(4-methyl-1H-indol-3-yl)methanamine",
+      "lookup_name": "N,N-dimethyl-1-(4-methyl-1H-indol-3-yl)methanamine",
+      "kind": "name_correction",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/N,N-dimethyl-1-(4-methyl-1H-indol-3-yl)methanamine.smi",
+      "note": "The paragraph explicitly names dimethyl-(4-methyl-1H-indol-3-ylmethyl)-amine."
+    },
+    {
+      "name": "2-methyl-2-oxiranylmethyl (S)-4-nitrobenzenesulfonate",
+      "lookup_name": "[(2S)-2-methyloxiran-2-yl]methyl 4-nitrobenzenesulfonate",
+      "kind": "systematic_name",
+      "evidence_url": "https://patents.google.com/patent/EP2644599A1/en",
+      "note": "The patent identifies this reagent as (S)-2-methylglycidyl 4-nitrobenzenesulfonate."
+    },
+    {
+      "name": "sodium meta-periodate",
+      "lookup_name": "sodium periodate",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-periodate"
+    },
+    {
+      "name": "DMF/DMA",
+      "lookup_name": "N,N-dimethylformamide dimethyl acetal",
+      "kind": "identity_alias",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/N_N-Dimethylformamide-dimethyl-acetal"
+    },
+    {
+      "name": "BOP",
+      "lookup_name": "benzotriazol-1-yloxytris(dimethylamino)phosphonium hexafluorophosphate",
+      "kind": "contextual_abbreviation",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Bop-reagent",
+      "note": "BOP is interpreted as the peptide-coupling reagent only in the synthetic reaction context."
+    },
+    {
+      "name": "CEE HCl",
+      "lookup_name": "creatine ethyl ester hydrochloride",
+      "kind": "contextual_abbreviation",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/Creatine-ethyl-ester-hydrochloride",
+      "note": "The paragraph title and preparation identify CEE HCl as creatine ethyl ester hydrochloride."
+    },
+    {
+      "name": "free base of 4-isopropylphenylacetimidate",
+      "lookup_name": "ethyl 2-(4-isopropylphenyl)acetimidate",
+      "kind": "contextual_identity",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/ethyl%202-(4-isopropylphenyl)acetimidate.smi",
+      "note": "Ethanol is the alcohol used in the Pinner reaction in the same paragraph."
+    },
+    {
+      "name": "E2 free base",
+      "lookup_name": "6-[(4-fluorophenyl)oxy]-N-methyl-N-[4-[[(3S)-3-methylpiperazin-1-yl]methyl]phenyl]pyridine-3-carboxamide",
+      "kind": "contextual_patent_label",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/6-%5B(4-fluorophenyl)oxy%5D-N-methyl-N-%5B4-%5B%5B(3S)-3-methylpiperazin-1-yl%5Dmethyl%5Dphenyl%5Dpyridine-3-carboxamide.smi",
+      "note": "The free-base identity is given by the product title before fumarate salt formation."
+    },
+    {
+      "name": "pyridine nitrile A466.2",
+      "lookup_name": "6-bromopyridine-2-carbonitrile",
+      "kind": "contextual_patent_label",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6-Bromopyridine-2-carbonitrile",
+      "note": "Ethylmagnesium bromide conversion to A466.3, 1-(6-bromopyridin-2-yl)propylamine, identifies the nitrile."
+    },
+    {
+      "name": "lithiated veratrole",
+      "lookup_name": "1-lithio-2,3-dimethoxybenzene",
+      "kind": "contextual_identity",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/1-lithio-2,3-dimethoxybenzene.smi",
+      "note": "The paragraph product is 4-(2,3-dimethoxybenzoyl)pyridine, fixing the lithiation site."
+    },
+    {
+      "name": "7α-(5-bromopentyl)-11β-fluor-estra-1,3,5(10)-triene-3,17-diol",
+      "lookup_name": "7alpha-(5-bromopentyl)-11beta-fluoroestra-1,3,5(10)-triene-3,17beta-diol",
+      "kind": "stereochemical_name_completion",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/7alpha-(5-bromopentyl)-11beta-fluoroestra-1,3,5(10)-triene-3,17beta-diol.smi",
+      "note": "The product title and steroid convention specify the 17beta alcohol omitted by the model."
+    },
+    {
+      "name": "(3β,5β,14β,17β)-methyl 14-amino-3-hydroxyandrostane-17-carboxylate",
+      "lookup_name": "methyl (3beta,5beta,14beta,17beta)-14-amino-3-hydroxyandrostane-17-carboxylate",
+      "kind": "systematic_name",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/methyl%20(3beta,5beta,14beta,17beta)-14-amino-3-hydroxyandrostane-17-carboxylate.smi"
+    },
+    {
+      "name": "p-n-decyloxybenzoic acid p'-(2-methylbutoxycarbonyl)phenyl ester",
+      "lookup_name": "2-methylbutyl 4-[(4-decyloxybenzoyl)oxy]benzoate",
+      "kind": "systematic_name",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/2-methylbutyl%204-%5B(4-decyloxybenzoyl)oxy%5Dbenzoate.smi",
+      "note": "The same paragraph gives both ester partners and the 2-methylbutyl alcohol residue."
+    },
+    {
+      "name": "4-chloro-pyrimidin-2-yl)-(3,4,5-trimethoxy-phenyl)-amine",
+      "lookup_name": "N-(4-chloropyrimidin-2-yl)-3,4,5-trimethoxyaniline",
+      "kind": "name_correction",
+      "evidence_url": "https://opsin.ch.cam.ac.uk/opsin/N-(4-chloropyrimidin-2-yl)-3,4,5-trimethoxyaniline.smi",
+      "note": "The extracted name is missing its opening parenthesis and N locant."
+    },
+    {
+      "name": "2-benzyloxy-4-chloro-N-tert-butoxycarbanilide",
+      "lookup_name": "2-benzyloxy-4-chloro-N-tert-butoxycarbonylaniline",
+      "kind": "title_correction",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/2-benzyloxy-4-chloro-N-tert-butoxycarbonylaniline/property/SMILES/JSON",
+      "note": "The exact product name is given in the paragraph title."
+    },
+    {
+      "name": "diphenylphosphoryl azide",
+      "smiles": "O=P(OC1=CC=CC=C1)(N=[N+]=[N-])OC1=CC=CC=C1",
+      "kind": "canonical_structure",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/26386-88-9",
+      "note": "Use the diphenyl phosphate ester (DPPA), not diphenylphosphinic azide."
+    },
+    {
+      "name": "diethyl malonate",
+      "smiles": "CCOC(=O)CC(=O)OCC",
+      "kind": "canonical_structure",
+      "evidence_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7761",
+      "note": "Use the neutral diethyl ester of malonic acid."
+    }
+  ]
+}

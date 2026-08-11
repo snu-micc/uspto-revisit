@@ -1,0 +1,7 @@
+﻿Heuristic type,Noise-free reactions (283),Noise-free reactions (283),Noisy reactions (117),Noisy reactions (117),All reactions (400),All reactions (400),All reactions (400)
+,Passed (TP),Filtered (FN),Passed (FP),Filtered (TN),Noise-free data saved rate (%),Noisy data filtered rate (%),Denoising accuracy (%)
+Many-products,193,90,103,14,68.1979,11.9658,51.7500
+Many-reactants,237,46,83,34,83.7456,29.0598,67.7500
+Many-reagents,235,48,112,5,83.0389,4.2735,60.0000
+No-reagent,234,49,84,33,82.6855,28.2051,66.7500
+Template-anomaly,244,39,62,55,86.2191,47.0085,74.7500

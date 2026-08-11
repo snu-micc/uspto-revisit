@@ -1,190 +1,207 @@
-# USPTO Revisit
+# LLM-based curation of USPTO reaction data
 
-Utilities for extracting structured reaction JSON from patent text, resolving chemical names to SMILES, and generating reaction SMILES.
+This repository contains the code, 400-paragraph benchmark, final model
+outputs, fine-tuning examples, and evaluation scripts used in our two-stage
+reaction-data curation study.
 
-## Features
+The pipeline has two stages:
 
-- Generate reaction JSON from `title` and `paragraph` columns with OpenAI models.
-- Parse GPT-style reaction JSON into reaction skeletons.
-- Resolve chemical names to SMILES with OPSIN and optional PubChem/CIR/ChemSpider fallback.
-- Create final reaction SMILES files with model-specific output names.
+1. **Reaction extraction:** an LLM converts a patent title and experimental
+   paragraph into structured reaction information, which is resolved to SMILES
+   and atom-mapped with LocalMapper.
+2. **Denoising:** a template-anomaly filter flags singleton transformation
+   templates or reactions for which an assignable reaction center cannot be
+   obtained.
 
-## Repository Layout
+The repository can reproduce the reported metrics without calling a vendor API;
+all 19 evaluated model-configuration outputs are included.
+
+## Repository structure
 
 ```text
-src/uspto_revisit/                    Python package
-prompts/prompt.txt                    Prompt used in GPT extraction 
-examples/input.csv                    GPT input
-examples/examples_used_for_finetuning/ Example JSONL records for fine-tuning
-result/                               Committed output examples/results
-result/smiles_batches/                Committed SMILES cache/intermediate files
-Zhang_et_al_Llama3_8B_result.csv      Benchmark result file
+src/uspto_revisit/              Extraction, SMILES conversion, and atom mapping
+prompts/prompt.txt              Prompt used for structured extraction
+examples/input.csv              400-paragraph evaluation input
+examples/finetuning/            Non-overlapping fine-tuning examples
+result/model_outputs/           Final outputs for all 19 configurations
+evaluation/ground_truth_review.csv
+                                Final expert annotations (400 paragraphs)
+evaluation/*.py                 Scoring and sensitivity-analysis scripts
+evaluation/results/             Reproduced tables and row-level outcomes
+benchmarks/                     Contextual outputs from prior studies
+tests/                          Unit tests
 ```
+
+Temporary logs, API batch metadata, caches, intermediate review files, and
+manuscript-editing artifacts are intentionally excluded.
 
 ## Installation
 
-```bash
-git clone https://github.com/snu-micc/uspto-revisit.git
-cd uspto-revisit
-python -m pip install -r requirements.txt
-```
-
-For editable development:
+Python 3.9 or later is required. A clean environment is recommended.
 
 ```bash
+git clone https://github.com/won-24/LLM_Denoise_final.git
+cd LLM_Denoise_final
 python -m pip install -e ".[dev]"
 ```
 
-## Configuration
+The environment includes RDKit and LocalMapper. LocalMapper installs its
+PyTorch/DGL stack and is licensed separately under CC BY-NC-SA 4.0.
 
-Copy the example environment file:
+## Reproduce the reported evaluation
+
+No API key is required for these commands because the final model outputs are
+included.
+
+```bash
+python evaluation/build_ground_truth_review.py
+python evaluation/evaluate_table2.py
+python evaluation/select_best_configurations.py
+python evaluation/evaluate_table3.py
+python evaluation/evaluate_step_by_step.py
+python evaluation/evaluate_threshold_sensitivity.py
+python evaluation/evaluate_weighted_extrapolation.py
+```
+
+The principal outputs are:
+
+```text
+evaluation/results/table2/table2.csv
+evaluation/results/table2/table2_metrics.csv
+evaluation/results/table2_best_models.csv
+evaluation/results/table3/table3.csv
+evaluation/results/table3/table3_metrics.csv
+evaluation/results/step_by_step/step_by_step_summary_gemini-3.6-flash-high.csv
+evaluation/results/template_threshold_sensitivity.csv
+evaluation/results/weighted_extrapolation.csv
+```
+
+Expected headline values for the selected `gemini-3.6-flash-high`
+configuration are:
+
+- reaction-level exact-match accuracy: **86.6%** (245/283);
+- template-anomaly denoising accuracy: **74.8%** (299/400);
+- strict end-to-end accuracy: **68.0%** (272/400);
+- noise-free reactions saved: **86.2%**;
+- noisy reactions filtered: **47.0%**.
+
+See [evaluation/README.md](evaluation/README.md) for definitions and the exact
+denominators used by every metric.
+
+## Benchmark and annotations
+
+The evaluation set contains 400 patent paragraphs sampled equally from four
+ORDerly flag categories. Every ground-truth record was manually reviewed by
+a human evaluator. The public `ground_truth_valid` column uses a single
+Boolean label: `True` means that a valid ground-truth reaction was established
+and `False` means that no valid reaction could be established. The final set
+contains 283 `True` (noise-free) and 117 `False` (noisy) paragraphs. The
+400-paragraph benchmark was used only for evaluation. The 70 fine-tuning
+examples are stored separately and do not overlap with the benchmark.
+
+`evaluation/ground_truth_review.csv` is the authoritative, human-validated
+annotation file. For every `ground_truth_valid=True` row, the final reactant,
+reagent, product, and reaction fields are explicitly materialized; no automatic
+approval label is used.
+Running `evaluation/build_ground_truth_review.py` creates the local working file
+`evaluation/benchmark_all_configurations.csv` from the released annotations and
+model outputs. Because it is fully reproducible, this generated file is not
+versioned.
+
+## Model outputs
+
+`result/model_outputs/` contains the final reaction-SMILES and LocalMapper
+outputs for:
+
+- base and fine-tuned qwen-3.5-9B at none, low, and high reasoning;
+- base and fine-tuned gpt-4.1-mini;
+- gpt-5.4 and gpt-5.6-sol at none, low, and high reasoning;
+- gemini-2.5-flash with reasoning disabled;
+- gemini-3.1-pro-preview and gemini-3.6-flash at low and high reasoning.
+
+Reasoning-specific results are retained for auditability, while
+`evaluation/results/table2_best_models.csv` reports one best-performing
+configuration per model family.
+
+## Run a new extraction
+
+Copy the environment template and add only the provider key you intend to use:
 
 ```bash
 cp .env.example .env
 ```
 
-On Windows PowerShell, use:
+PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Fill in your OpenAI key and model:
-
-```env
-# Optional: used only for ChemSpider fallback during NoSmi reprocessing.
-CHEMSPIDER_API_KEY=your_chemspider_key
-OPENAI_API_KEY=your_openai_api_key
-OPENAI_MODEL=gpt-4.1-mini
-# OPENAI_MODEL=gpt-5.4
-```
-
-`CHEMSPIDER_API_KEY` is optional. If it is empty, ChemSpider fallback is skipped.
-
-Do not commit `.env` or real API keys.
-
-## Input Format
-
-By default, GPT extraction reads a local file:
-
-```text
-input.csv
-```
-
-The file must contain at least:
-
-```csv
-title,paragraph
-```
-
-You can also pass another file with `--input`.
-
-## Run GPT Extraction
+Run extraction on the included input:
 
 ```bash
-python main.py gpt-extract
+python main.py gpt-extract --input examples/input.csv
 ```
 
-Recommended for longer runs:
+Select Gemini explicitly:
 
 ```bash
-python main.py gpt-extract --input input.csv --semaphore-size 5 --timeout-seconds 180
+python main.py gpt-extract \
+  --provider gemini \
+  --model gemini-3.6-flash \
+  --input examples/input.csv
 ```
 
-Default settings:
-
-```text
-input: input.csv
-output: result/{OPENAI_MODEL}_output.csv
-concurrent OpenAI requests: 10
-request timeout: 20 seconds
-```
-
-The GPT output CSV is updated as rows finish, so partial progress is preserved during long runs.
-
-To test GPT extraction with a small public example:
+Generate reaction SMILES and atom mappings from an extraction output:
 
 ```bash
-python main.py gpt-extract --input examples/sample_patent_text.csv
+python main.py \
+  --input result/my_model_output.csv \
+  --model-column prediction \
+  --output-prefix my_model \
+  --fix-names \
+  --map-atoms
 ```
 
-GPT output columns:
+Chemical names are resolved through PubChem, OPSIN, NCI CIR, ChEBI, and
+optionally ChemSpider. Recovered SMILES are validated and canonicalized with
+RDKit before reaction construction and atom mapping.
 
-```text
-idx
-title
-paragraph
-prediction
-error
-```
+## Fine-tuning data
 
-## Generate Reaction SMILES
+The exact fine-tuning examples are provided under `examples/finetuning/`:
 
-After GPT extraction, run:
+- `openai/samples_for_finetuning_final.jsonl`: chat-format examples used for
+  gpt-4.1-mini fine-tuning;
+- `qwen3.5-9b/qwen3_5_9b_sft_messages.jsonl`: the same targets converted to the
+  conversational format used for qwen-3.5-9B;
+- `qwen3.5-9b/convert_gpt_examples_to_qwen35.py`: deterministic conversion and
+  validation script.
+
+The fine-tuning examples and the 400 evaluation paragraphs are disjoint. See
+[examples/finetuning/README.md](examples/finetuning/README.md) for details.
+
+## Contextual benchmarks
+
+Outputs from Zhang et al. and Ai et al. are included under `benchmarks/` for
+contextual analysis. They are not treated as direct Table 2 comparators because
+their inputs, output schemas, and training objectives differ from the task used
+in this repository.
+
+## Data and security policy
+
+- `.env`, API keys, logs, caches, and batch-job metadata are excluded.
+- Publication outputs and the final annotation files are versioned.
+- No train/test split was applied to the 400-paragraph benchmark because it was
+  used exclusively for evaluation.
+- The source patent data and third-party tools remain subject to their original
+  licenses and terms.
+
+## Tests
 
 ```bash
-python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names
+pytest
 ```
 
-For a faster test without PubChem/CIR/ChemSpider reprocessing:
-
-```bash
-python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --skip-reprocess
-```
-
-Default final output:
-
-```text
-result/{OPENAI_MODEL}_reaction_smiles.csv
-```
-
-For example, `OPENAI_MODEL=gpt-4.1-mini` creates:
-
-```text
-result/gpt-4.1-mini_output.csv
-result/gpt-4.1-mini_reaction_smiles.csv
-```
-
-Final reaction SMILES columns include:
-
-```text
-{OPENAI_MODEL}_smiles
-{OPENAI_MODEL}_skeleton
-{OPENAI_MODEL}_rxn
-```
-
-The final reaction SMILES file does not include helper columns such as `idx` or `model`.
-
-The intermediate `*_response_with_smiles.csv` file is not saved by default because the final reaction file already includes the SMILES dictionary. To save it for debugging:
-
-```bash
-python main.py --input result/gpt-4.1-mini_output.csv --model-column prediction --fix-names --with-smiles-output result/debug_response_with_smiles.csv
-```
-
-## Included Outputs
-
-This repository includes generated outputs under `result/`:
-
-```text
-result/gpt-4.1-mini_output.csv
-result/gpt-4.1-mini_reaction_smiles.csv
-result/smiles_fetch.log
-result/smiles_batches/
-```
-
-The `Zhang_et_al_Llama3_8B_result.csv` file is included as a benchmark result from Zhang, Wei, et al., "Fine-tuning large language models for chemical text mining," Chemical Science 15.27 (2024): 10600-10611.
-
-## Package Usage
-
-```python
-from uspto_revisit.reaction_smiles import process_smiles_data
-
-skeleton_smiles, final_smiles, errors = process_smiles_data(
-    merged_json_responses,
-    merged_smiles_dict,
-)
-```
-
-## Data Policy
-
-Generated outputs are committed for reproducibility. Local inputs in `input.csv`, local data in `data/`, and API keys in `.env` are ignored by git.
+Tests cover JSON parsing, reaction-step processing, SMILES resolution,
+atom-mapping interfaces, CLI behavior, and annotation/evaluation utilities.

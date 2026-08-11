@@ -7,13 +7,42 @@ import logging
 import re
 
 
+_INVALID_JSON_ESCAPE = re.compile(r'\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})')
+
+
+def _repair_invalid_json_escapes(value: str) -> str:
+    """Drop backslashes that do not begin a JSON escape sequence."""
+    return _INVALID_JSON_ESCAPE.sub("", value)
+
+
+def parse_json_object(value, max_depth: int = 3) -> dict | None:
+    """Decode a JSON object, including JSON strings wrapped in JSON strings."""
+    current = value
+    for _ in range(max_depth):
+        if isinstance(current, dict):
+            return current
+        if not isinstance(current, str):
+            return None
+        stripped = current.strip()
+        try:
+            current = json.loads(stripped)
+        except (TypeError, ValueError):
+            repaired = _repair_invalid_json_escapes(stripped)
+            if repaired == stripped:
+                return None
+            try:
+                current = json.loads(repaired)
+            except (TypeError, ValueError):
+                return None
+    return current if isinstance(current, dict) else None
+
+
 def is_valid_json(json_string: str) -> bool:
-    try:
-        json.loads(json_string)
+    parsed = parse_json_object(json_string)
+    if parsed is not None:
         return True
-    except ValueError as exc:
-        logging.error("Invalid JSON string: %s... [Error] %s", json_string[:100], exc)
-        return False
+    logging.error("Invalid JSON object: %s...", str(json_string)[:100])
+    return False
 
 
 def fix_json_string(json_string: str) -> str | None:

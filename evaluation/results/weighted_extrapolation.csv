@@ -1,0 +1,6 @@
+orderly_sampling_category,population_n,sample_n,sample_tp,sample_fn,sample_fp,sample_tn,sampling_weight,weighted_tp,weighted_fn,weighted_fp,weighted_tn
+many_products,67030,100,57,29,2,12,670.30,38207.10,19438.70,1340.60,8043.60
+many_reactants,30709,100,55,2,31,12,307.09,16889.95,614.18,9519.79,3685.08
+many_reagents,224249,100,82,5,1,12,2242.49,183884.18,11212.45,2242.49,26909.88
+no_reagent,180009,100,50,3,28,19,1800.09,90004.50,5400.27,50402.52,34201.71
+TOTAL,501997,400,244,39,62,55,,328985.73,36665.60,63505.40,72840.27

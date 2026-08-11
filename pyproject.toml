@@ -5,14 +5,25 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "uspto-revisit"
 version = "0.1.0"
-description = "Utilities for reaction-step parsing and chemical-name to SMILES resolution."
+description = "Reproducible LLM extraction and template-anomaly evaluation for USPTO reaction data."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "aiohttp>=3.9.5",
     "ChemSpiPy>=2.0.0",
+    "setuptools>=77,<82",
+    "localmapper[rdkit]>=0.1.4,<0.2",
+    "rdkit>=2022.3.4",
+    "torch==2.2.2",
+    "dgl==2.2.0",
+    "torchdata==0.7.1",
+    "numpy>=1.26,<2",
+    "scipy>=1.11,<1.15",
+    "PyYAML>=6.0,<7",
+    "pydantic>=2,<3",
     "nest_asyncio>=1.6.0",
     "openai>=1.0.0",
+    "google-genai>=1.0.0",
     "pandas>=2.2.3",
     "requests>=2.32.3",
     "tqdm>=4.66.4",
@@ -20,8 +31,10 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "matplotlib>=3.8",
     "openpyxl>=3.1",
     "pytest>=8.0",
+    "streamlit>=1.38,<2",
 ]
 
 [project.scripts]

@@ -1,4 +1,4 @@
-"""GPT-based reaction extraction using the bundled prompt template."""
+"""LLM-based reaction extraction using the bundled prompt template."""
 
 from __future__ import annotations
 
@@ -9,7 +9,8 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
-from openai import AsyncOpenAI
+
+SUPPORTED_PROVIDERS = ("openai", "gemini")
 
 DEFAULT_SYSTEM_PROMPT = """
 You are a chemical reaction extraction assistant.
@@ -38,11 +39,60 @@ def build_user_prompt(prompt_template: str, title: Any, paragraph: Any) -> str:
 
 
 def parse_json_output(raw_text: str) -> dict | list:
-    return json.loads(raw_text.strip())
+    text = raw_text.strip()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as exc:
+        # Some providers occasionally append a second JSON value despite the
+        # JSON-only instruction. Keep the first complete response object.
+        value, _ = json.JSONDecoder().raw_decode(text)
+        return value
+
+
+def normalize_provider(provider: str) -> str:
+    normalized = provider.strip().lower()
+    if normalized not in SUPPORTED_PROVIDERS:
+        choices = ", ".join(SUPPORTED_PROVIDERS)
+        raise ValueError(f"Unsupported LLM provider '{provider}'. Choose one of: {choices}.")
+    return normalized
+
+
+def api_key_environment_variable(provider: str) -> str:
+    normalized = normalize_provider(provider)
+    return "OPENAI_API_KEY" if normalized == "openai" else "GEMINI_API_KEY"
+
+
+async def generate_model_output(
+    client: Any,
+    provider: str,
+    model_name: str,
+    system_prompt: str,
+    user_prompt: str,
+) -> str:
+    if provider == "openai":
+        response = await client.responses.create(
+            model=model_name,
+            instructions=system_prompt,
+            input=user_prompt,
+        )
+        return response.output_text
+
+    from google.genai import types
+
+    response = await client.models.generate_content(
+        model=model_name,
+        contents=user_prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            response_mime_type="application/json",
+        ),
+    )
+    return response.text or ""
 
 
 async def get_prediction_prompt_json(
-    client: AsyncOpenAI,
+    client: Any,
+    provider: str,
     gpt_prompt: str,
     system_prompt: str,
     idx: int,
@@ -56,15 +106,16 @@ async def get_prediction_prompt_json(
 
     async with semaphore:
         try:
-            response = await asyncio.wait_for(
-                client.responses.create(
-                    model=model_name,
-                    instructions=system_prompt,
-                    input=user_prompt,
+            raw = await asyncio.wait_for(
+                generate_model_output(
+                    client,
+                    provider,
+                    model_name,
+                    system_prompt,
+                    user_prompt,
                 ),
                 timeout=timeout_seconds,
             )
-            raw = response.output_text
             prediction = parse_json_output(raw)
             error = None
         except asyncio.TimeoutError:
@@ -86,6 +137,7 @@ async def get_prediction_prompt_json(
 async def run_all_prompt_json(
     input_df: pd.DataFrame,
     model_name: str,
+    provider: str = "openai",
     gpt_prompt: str | None = None,
     system_prompt: str = DEFAULT_SYSTEM_PROMPT,
     title_column: str = "title",
@@ -95,9 +147,11 @@ async def run_all_prompt_json(
     partial_output_path: str | Path | None = None,
     api_key: str | None = None,
 ) -> list[dict[str, Any]]:
-    api_key = api_key or os.getenv("OPENAI_API_KEY")
+    provider = normalize_provider(provider)
+    api_key_env = api_key_environment_variable(provider)
+    api_key = api_key or os.getenv(api_key_env)
     if not api_key:
-        raise RuntimeError("Set OPENAI_API_KEY before running GPT extraction.")
+        raise RuntimeError(f"Set {api_key_env} before running {provider} extraction.")
 
     if title_column not in input_df.columns or paragraph_column not in input_df.columns:
         available = ", ".join(input_df.columns)
@@ -107,11 +161,28 @@ async def run_all_prompt_json(
         )
 
     prompt_template = gpt_prompt or load_prompt()
-    client = AsyncOpenAI(api_key=api_key)
+    if provider == "openai":
+        try:
+            from openai import AsyncOpenAI
+        except ImportError as exc:
+            raise RuntimeError(
+                "Install a compatible openai package before running OpenAI extraction."
+            ) from exc
+        client = AsyncOpenAI(api_key=api_key)
+    else:
+        try:
+            from google import genai
+        except ImportError as exc:
+            raise RuntimeError(
+                "Install the google-genai package before running Gemini extraction."
+            ) from exc
+        client = genai.Client(api_key=api_key).aio
+
     semaphore = asyncio.Semaphore(semaphore_size)
     tasks = [
         get_prediction_prompt_json(
             client,
+            provider,
             prompt_template,
             system_prompt,
             idx,
@@ -125,17 +196,23 @@ async def run_all_prompt_json(
     ]
 
     results = []
-    for completed in asyncio.as_completed(tasks):
-        result = await completed
-        results.append(result)
-        print(f"[{len(results)}/{len(tasks)}] {str(result['title'])[:40]}")
-        if partial_output_path:
-            partial_results = sorted(results, key=lambda item: item["idx"])
-            results_to_frame(partial_results).to_csv(
-                partial_output_path,
-                index=False,
-                encoding="utf-8-sig",
-            )
+    try:
+        for completed in asyncio.as_completed(tasks):
+            result = await completed
+            results.append(result)
+            print(f"[{len(results)}/{len(tasks)}] {str(result['title'])[:40]}")
+            if partial_output_path:
+                partial_results = sorted(results, key=lambda item: item["idx"])
+                results_to_frame(partial_results).to_csv(
+                    partial_output_path,
+                    index=False,
+                    encoding="utf-8-sig",
+                )
+    finally:
+        if provider == "openai":
+            await client.close()
+        else:
+            await client.aclose()
 
     return sorted(results, key=lambda item: item["idx"])
 

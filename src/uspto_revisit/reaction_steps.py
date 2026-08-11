@@ -45,9 +45,15 @@ def make_intermediates_list(response: dict):
             work_up_chemicals.update(reactants, products)
 
         for product in products:
+            effective_reactants = reactants - {product}
+            if not effective_reactants:
+                continue
             if product in response[product_key]:
-                product_reactants[product] = expand_reactants(reactants, intermediates)
-            intermediates[product] = reactants
+                product_reactants[product] = expand_reactants(
+                    effective_reactants,
+                    intermediates,
+                )
+            intermediates[product] = effective_reactants
 
     grouped = {}
     for _index, name, reactant_set in zip(

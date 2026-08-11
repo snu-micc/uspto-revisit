@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import ast
+import json
 from collections.abc import Mapping
 
+from uspto_revisit.json_utils import parse_json_object
 from uspto_revisit.reaction_steps import process_reaction_data
 
 
@@ -17,11 +19,25 @@ def replace_with_smiles(rxn_code: str, smiles_dict: Mapping[str, str]) -> str:
 
 
 def _coerce_mapping(value, index: int, name: str) -> dict:
-    if isinstance(value, str):
-        value = ast.literal_eval(value.strip())
-    if not isinstance(value, dict):
-        raise ValueError(f"{name} at index {index} is not a valid JSON string or dictionary.")
-    return value
+    parsed = parse_json_object(value)
+    if parsed is not None:
+        return parsed
+
+    current = value
+    for _ in range(3):
+        if isinstance(current, dict):
+            return current
+        if not isinstance(current, str):
+            break
+        stripped = current.strip()
+        try:
+            current = json.loads(stripped)
+        except (TypeError, ValueError):
+            try:
+                current = ast.literal_eval(stripped)
+            except (SyntaxError, ValueError):
+                break
+    raise ValueError(f"{name} at index {index} is not a valid JSON string or dictionary.")
 
 
 def process_smiles_data(merged_json_responses, merged_smiles_dict):

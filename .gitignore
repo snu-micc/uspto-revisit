@@ -1,6 +1,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.DS_Store
+.codex_tmp/
+.cache/
 
 .venv/
 venv/
@@ -8,19 +11,15 @@ env/
 .env
 .env.*
 !.env.example
-input.csv
+/input.csv
 
 .ipynb_checkpoints/
 
 *.log
 *.pkl
-!result/**/*.log
-!result/**/*.pkl
-!result/smiles_batches/
-!result/smiles_batches/**
 
-data/
-results/
+/data/
+/results/
 
 build/
 dist/
@@ -29,3 +28,6 @@ dist/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Rebuilt locally from the released ground truth and model outputs.
+evaluation/benchmark_all_configurations.csv

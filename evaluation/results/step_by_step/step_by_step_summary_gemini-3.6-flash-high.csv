@@ -1,0 +1,10 @@
+﻿stage,success_n,evaluated_n,conditional_success_rate,conditional_failure_n,cumulative_success_n,cumulative_success_rate_all_400,wilson_ci_lower,wilson_ci_upper
+LLM generation,400,400,1.000000,0,400,1.000000,0.990488,1.000000
+Structured output,396,400,0.990000,4,396,0.990000,0.974573,0.996105
+Reaction-step processing,395,396,0.997475,1,395,0.987500,0.985836,0.999554
+Name-to-SMILES conversion,346,395,0.875949,49,346,0.865000,0.839775,0.904881
+Atom mapping,346,346,1.000000,0,346,0.865000,0.989019,1.000000
+Template processing,318,346,0.919075,28,318,0.795000,0.885528,0.943419
+Exact extraction (noise-free only),245,283,0.865724,38,245,0.612500,0.821067,0.900586
+Correct denoising decision,299,400,0.747500,101,299,0.747500,0.702708,0.787583
+Strict end-to-end,272,400,0.680000,128,272,0.680000,0.632760,0.723816

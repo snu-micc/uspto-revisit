@@ -1,0 +1,401 @@
+﻿source_row,idx,title,ground_truth_valid,noise_label,generation_success,structured_output_success,json_reaction_step_count,reaction_processing_success,name_to_smiles_success,reaction_step_count,atom_mapping_success,template_processing_success,extraction_exact,template_anomaly_passed,template_anomaly_filtered,denoising_correct,strict_end_to_end_success
+0,0,(+)-tartrate,False,noisy,1,1,1,1,1,1,1,0,0,0,1,1,1
+1,1,lithium tetra(2-furyl)borate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+2,2,"N-Ethyl-3,4-dihydroxyphenethylamine hydrobromide",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+3,3,"5,6,7,8-tetrahydroimidazo[1,2-a]pyridine-7-carboxylic acid·hydrochloride",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+4,4,"Benzhydrol 2-[2-[3,5-bis (trifluoromethyl)phenylsulfonamido]-4-trifluoromethylphenoxy]benzoate",True,noise-free,1,1,2,1,1,1,1,1,1,0,1,0,0
+5,5,di(p-t-butylphenyl)iodonium tetraphenylborate,False,noisy,1,1,11,1,1,4,1,0,0,0,1,1,1
+6,6,"1-[3-(4-amidinophenyl)-2-oxo-5-oxazolidinylcarbonyl]piperidine-4-carboxylic acid, hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+7,7,"3-[1-(1-Methyl-piperidin-4-yl)-indol-3-yl]-4-(1-methyl-indol-3-yl)-1H-pyrrole-2,5-dione hydrochloride",True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+8,8,Benzyl trans-4-aminomethylcyclohexane-1-carboxylate-p-toluenesulfonic acid salt,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+9,9,1.1: Preparation of ferrocenylacetonitrile,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+10,10,"(3β,5β,14β,17β)-14-Amino-3-[[[[2-hydroxy-1-(phenylmethyl)ethyl]amino]carbonyl]oxy]androstane-17-carboxylic Acid, Methyl Ester Hydrochloride",True,noise-free,1,1,5,1,0,1,0,0,0,0,1,0,0
+11,11,4-isopropylphenylacetimidate hydrochloride,True,noise-free,1,1,4,1,1,3,1,0,0,0,1,0,0
+12,12,sodium (Z)-3-(4-chlorophenyl)-3-(4-methanesulphonylphenyl)-2-(2-hydroxyethyl)prop-2-enoate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+13,13,Cis-3-[2-[2-methyl-3-[4-(aminoiminomethyl)phenyl]-isoxazolidin-5-yl]acetyl]amino-N-(3-methylphenylsulfonyl)-L-alanine monohydrogenchloride,True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+14,14,"sodium 3, 6, 8-trisulfonaphthylthiourea",False,noisy,1,1,2,1,0,1,0,0,0,0,1,1,1
+15,15,Benzyl trans4-aminomethylcyclohexane1-carboxylate-p-toluenesulfonic acid salt,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+16,16,b) Synthesis of Ala-cholesterol (3-O-(L-alanyl)-cholesterol),True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+17,17,Lithium 2-isopropyl-4-phenylindenide,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+18,18,"(S)-3-(3,4-dichlorophenyl)-3-(2-hydroxyethyl)pyrrolidine (R,R)-di-p-anisoyltartaric acid",True,noise-free,1,1,2,1,1,1,1,0,1,0,1,0,0
+19,19,"(−)-(4R)-4-(3-thienylmethyl)-4,5-dihydro-1,3-thiazol-2-ylamine hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+20,20,"4,5,7,8,9,10-hexahydropyrido[4,3-b]pyrrolo[3,2,1-hi]indole hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+21,21,"2-nitro-1,4-phenylenediamine hydrochloride",True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+22,22,"1-[(2R,3R)-2-(2,4-difluorophenyl)-2-hydroxy-3-[2-oxo-3-[4-(1H-tetrazol-1-yl)phenyl]-1-imidazolidinyl]butyl]-4-[(2,2-dimethylpropanoyloxy)methyl]-1H-1,2,4-triazolium chloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+23,23,1-(2-methoxyphenyl)-4-[3-(cyclohexanecarbonyl)-3-(phenyl)butyl]piperazine maleate,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+24,24,(S)-4-[4-[(4-chlorophenyl)(2-pyridyl)-methoxy]piperidino]butanoic acid monobenzenesulfonic acid salt,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+25,25,creatine monohydrate,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+26,26,"2-tert-Butyl-4-{4-[3-(4-methyl-5-methyl-4H-[1,2,4]triazol-3-ylsulfanyl)-propyl]-piperazin-1-yl}-6-tert-butyl-pyrimidine hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+27,27,"1-[4-(5-aminomethyl-2-oxo-oxazolidin-3-yl)-2-fluoro-phenyl]-2,3-dihydro-1H-pyridin-4-one hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+28,28,"4-(2-chloroethyl)thiomorpholin-4-ium 1,1-dioxide chloride (41-2)",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+29,29,"(3R,5S)-5-(benzylamino-methyl)-1-methanesulfonyl-pyrrolidine-3-thiol trifluoro-acetate",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+30,30,sodium octoate,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+31,31,3-(3-Aminomethyl-phenyl)-propionic acid methyl ester hydrochloride salt,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+32,32,"triphenylsulfonium 2-acetoxy-1,1,3,3,3-pentafluoropropane-1-sulfonate",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+33,33,"2-amino-2-{2-[4-(3-phenoxy-propoxy)-phenyl]-ethyl}-propane-1,3-diol hydro-chloride",True,noise-free,1,1,2,1,1,2,1,1,1,1,0,1,1
+34,34,4-tert-Butylbenzenediazonium tetrafluoroborate (4).,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+35,35,"(1R,2S)-1-amino-2-vinylcyclopropane carboxylic acid methyl ester hydrochloride",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+36,36,"2,6-Dimethylphenyl 4-aminobutanoate hydrochloride",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+37,37,8-Fluoro-3-(piperidin-4-yl)quinolin-2(1H)-one hydrochloride,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+38,38,Preparation of (3R)-3-(2-Hydroxy-2-thien-2-ylpent-4-enoyloxy)-1-(3-phenoxypropyl)-1-azoniabicyclo[2.2.2]octane bromide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+39,39,4-(2-amino-1H-imidazol-4-yl)-N-isobutyl-butyramide hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+40,40,2(S)-ethoxy-3-{4-[6-(3-heptyl-1-methylureido)pyrid-2-yl]phenyl}propanoic acid hydrochloride,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+41,41,"1,1-dimethyl-4-cyclohexylpiperazin-1-ium iodide",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+42,42,styrene methyl styrene,False,noisy,1,1,2,1,1,1,1,0,0,0,1,1,1
+43,43,"Step 2: (2S)-2-aminopropyl-2,2-dimethylpropanoate hydrochloride",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+44,44,"Synthesis of sodium 1,1,3,3,3-pentafluoro-2-hydroxy-propanesulfonate",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+45,45,Flupirtine Maleate,True,noise-free,1,1,5,1,1,1,1,0,1,0,1,0,0
+46,46,"triphenylsulfonium 2-hydroxy-1,1-difluoroethanesulfonate",True,noise-free,1,1,2,1,1,1,1,0,1,0,1,0,0
+47,47,"[4′-(6-Ethoxy-pyridin-3-yl)-2′-ethylaminomethyl-6-methoxy-biphenyl-3-yl]-acetic acid ethyl ester, hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+48,48,"sodium 2,6-difluorobenzoate",True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+49,49,ethyl 2-(4-piperidinyl)-4-thiazolecarboxylate monohydrochloride,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+50,50,2-[(1-methylpiperidin-4-yl)-amino]-4-(trifluoromethyl)pyrimidine-5-carboxylic acid hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+51,51,"1,1-difluoro-6-aza-spiro[2.5]octane hydrochloride",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+52,52,tetrabutylammonium 4-phenoxybutylsulfonate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+53,53,Nalbuphine hydrochloride,True,noise-free,1,1,2,1,1,1,1,0,1,0,1,0,0
+54,54,6-[(4-Fluorophenyl)oxy]-N-methyl-N-(4-{[(3S)-3-methyl-1-piperazinyl]methyl}phenyl)-3-pyridinecarboxamide fumarate,True,noise-free,1,1,3,1,0,1,0,0,0,0,1,0,0
+55,55,2-[2-(6-chlorohexyloxy)-ethoxy]-ethyl-ammonium trifluoro-acetate,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+56,56,Trimethyl-(4-methyl-1H-indol-3-ylmethyl)-ammonium iodide,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+57,57,Dimethyl-(1H-pyrrol-3-ylmethylene)-ammonium chlorid,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+58,58,N-ethyl-3-methylbutan-1-amine hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+59,59,(Z)—(R)-4-amino-5-biphenyl-4-yl-2-methyl-pent-2-enoic acid hydrochloride,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+60,60,1-amino-3-phenoxypropan-2-ol hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+61,61,"tert-butyl [(1R,5S,6S)-6-aminomethyl-3-ethylbicyclo[3.2.0]hept-3-en-6-yl]acetate D-mandelate",True,noise-free,1,1,2,1,1,1,1,0,1,0,1,0,0
+62,62,"2-(4-(5-chloro-2-fluorobenzoyl)piperidin-1-yl)-3-(isopropylamino)-N,N-dimethyl-7,8-dihydropyrido[3,4-b]pyrazine-6(5H)-carboxamide",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+63,63,"1-methyl-1,2,5,6-tetrahydropyridine-3-carboxylic acid hydrochloride",True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+64,64,1-(3-(tert-butyl)-1-(p-tolyl)-1H-pyrazol-5-yl)-3-(4-((2-((6-ethylpyrazin-2-yl)amino)pyridin-4-yl)methoxy)naphthalen-1-yl)urea maleate,True,noise-free,1,1,4,1,1,1,1,0,1,0,1,0,0
+65,65,"8-(cyclohexylmethoxy)-2-methyl-N-[(3S)-1-methylpyrrolidin-3-yl]imidazo[1,2-a]pyridine-3-carboxamide hydrochloride",True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+66,66,1-[3'-isopropoxy-2'-(pentachlorophenylthio)propyl]imidazole nitrate,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+67,67,"1-Phenyl-8-[(trans-1,2,3,4-tetrahydro-1-hydroxy-6-methoxy-2-naphthalenyl)methyl]-1,3,8-triazaspiro-[4.5]decan-4-one, hydrochloride",True,noise-free,1,1,2,1,1,1,1,0,1,0,1,0,0
+68,68,"1-Phenyl-8-[(trans-1,2,3,4-tetrahydro-1-hydroxy-6-methoxy-2-naphthalenyl)methyl]-1,3,8-triazaspiro-[4.5]decan-4-one, hydrochloride",False,noisy,1,1,3,1,1,1,1,1,0,0,1,1,1
+69,69,α-vinyltyrosine hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+70,70,"PREPARATION OF AQUOSULPHATO (N,N'-DIETHYLETHYLENEDIAMINE) PLATINUM (II)",False,noisy,1,1,4,1,0,1,0,0,0,0,1,1,1
+71,71,triphenylsulfonium hexafluoroarsenate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+72,72,"2-[2-aminoethanoyl]aminophenyl-3,1-benzoxazin-4-one hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+73,73,1-(3-(1-Imidazolyl)-propyl)-2-(phthalimido-methyl)-5-methyl-pyrrole hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,0,0,1,0,0
+74,74,"4-benzyl-6-chloro-3,4-dihydro-2-methyl-3-oxo-N-(3-quinuclidinyl)-2H-1,4-benzoxazine-8-carboxamide hydrochloride",True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+75,75,"1,3-Dimethyl-5-(3,5-dichloro-(4-(2-(1,1,2,2,3,3,3-heptafluoropropoxy)-1,1,2-trifluoroethoxy))-phenylcarbamoyl)barbituric acid, triethylammonium salt (Example 15)",True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+76,76,bis(1-naphthylmethyl)ethylsulfonium hexafluoroantimonate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+77,77,2-{[[4-(3-Chloropropylthio)-3-methoxy-2-pyridinyl]-methyl]thio}-1H-benzimidazole Dihydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+78,78,"4-(3,4-dichloroanilino)-6-fluoroquinazoline hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+79,79,"2-[4-[4-[4-[4-[[2-(2,4-difluorophenyl)-2-(1H-1,2,4-triazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy]-phenyl]-1-piperazinyl]-phenyl]-4,5-dihydro-5-oxo-1H-1,2,4-triazol-1-yl]-1-methylpropyl L-phenylalanine (Z)-2-butenedioate",False,noisy,1,1,3,1,0,1,0,0,0,0,1,1,1
+80,80,"(+)-(5)6-Methoxy-2-[[(4-methoxy-3,5-dimethyl-2-pyridinyl)methyl]sulfinyl]-1H-benzimidazole Sodium Salt",True,noise-free,1,1,3,1,1,1,1,0,1,0,1,0,0
+81,81,o-Bromobenzoic Acid Potassium Salt,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+82,82,"5,6-dihydro-4H-1,3a,6-triaza-as-indacene-8-carboxylic acid hydrobromide",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+83,83,"2-Amino-1-(2,4-difluorophenyl)-ethanol-hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+84,84,magnesium valproate,False,noisy,1,0,0,0,0,1,0,0,0,0,1,1,1
+85,85,"Biphenyl-2-ylcarbamic Acid 1-{9-[(R)-2-Hydroxy-2-(8-Hydroxy-2-oxo-1,2-dihydroquinolin-5-yl)ethylamino]nonyl}piperidin-4-yl Ester Naphthalene-1,5-disulfonic Acid Salt",True,noise-free,1,1,2,1,1,1,1,0,1,0,1,0,0
+86,86,"N-(1S, 2R)-{1-(3,5-Difluoro-benzyl)-2-hydroxy-2-[(5R,2R)-5-pentyloxy-piperidin-2-yl]-ethyl}-acetamide hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+87,87,4-(Morpholin-4-ylcarbonyl)piperidine-4-carbonitrile hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+88,88,Cefoxitin Sodium,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+89,89,sodium di(2-ethylhexyl) phosphate,False,noisy,1,1,2,1,1,1,1,1,0,0,1,1,1
+90,90,4-[4-(pentafluoroethoxy)phenoxy]piperidine hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+91,91,"5-[5-(3-methoxybenzyl)-1,3,4-oxadiazol-2-ylamino]-1H-indazole hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+92,92,4-(2-cyano-1-benzofuran-5-yl)piperazin-1-ium chloride,False,noisy,1,1,4,1,1,1,1,1,0,0,1,1,1
+93,93,"(8aS)-7-(3-fluorobenzyl)hexahydropyrrolo[1,2-a]pyrazin-6(2H)-one hydrochloride",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+94,94,(Phenyl)[2-(trimethylsilyl)phenyl]iodonium Triflate,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+95,95,4-{3-[4-(3-{4-[amino(imino)methyl]phenoxy}propyl)-1-piperidinyl]propoxy}benzamidine hydrochloride,True,noise-free,1,1,1,1,1,1,1,0,1,0,1,0,0
+96,96,5-(4-cyclopropyl-1H-imidazol-1-yl)-2-fluoro-4-methylbenzoic acid hydrochloride,True,noise-free,1,1,1,1,1,1,1,1,1,0,1,0,0
+97,97,"5,10-Dihydro-10-ethyl-5-[3-(2-methyl-piperidino)-propionyl]-11H-dibenzo[b,e][1,4]diazepin-11-one hydrochloride",True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+98,98,1-(N-Methyl-aminoacetamido)-2-(2-chlorobenzoyl)pyrrole hydrobromide,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+99,99,3-hydroxy-2-cyclobuten-1-one-diethylammonium salt,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+100,100,Diethyl[3-(1-tridecynyl)phenyl]phosphonate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+101,101,"(2aR, 4S)-1-Benzoyl-4-(di-n-propyl)amino-6-bromo-1,2,2a,3,4,5-hexahydrobenz[cd]indole",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+102,102,N-(2-hydroxyethyl)-4-nitrobenzenamine,True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+103,103,4-(4-Fluorophenyl)-5-[4-(methylsulfonyl)phenyl]-1-phenyl-3-(trifluoromethyl)pyrazole,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+104,104,hydroxybenzothiazole,False,noisy,1,0,0,0,0,1,0,0,0,0,1,1,1
+105,105,tetrahydropyran-2-yloxymethyl-2-oxo-oxazolidine-3-carboxylic acid {1-[4-(4-fluorophenyl)cyclohexyl]-(3R)-pyrrolidin-3-yl}amide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+106,106,dimethyl 4-fluoro-2-nitrophenylmalonate,True,noise-free,1,1,3,1,1,1,1,1,0,1,0,1,0
+107,107,1-[4-(Pyridin-2-yl)-phenyl]-4(S)-hydroxy-2-N-(N-methoxy-carbonyl-(L)-valyl)amino-5(S)-N-(N-methoxycarbonyl-(L)-iso-leucyl)amino-6-phenyl-2-azahexane,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+108,108,"Pregna-4,20-dien-3,6-dione",False,noisy,1,1,2,1,0,2,0,0,0,0,1,1,1
+109,109,5-(2-chlorophenyl)tetrazole,False,noisy,1,1,6,1,1,1,1,1,0,1,0,0,0
+110,110,"[2-Chloro-4-(3-methyl-pyrazol-1-yl)-phenyl]-(11H-5-oxa-4,10-diaza-dibenzo[a,d]cyclohepten-10-yl)-methanone",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+111,111,2-benzyloxy-4-chloro-N-tert-butoxycarbonylaniline,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+112,112,"5-(chloromethyl)-3-phenyl-1,2,4-oxadiazole",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+113,113,6-amino-1-propylpyrimidinedione,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+114,114,"3-Methylthio-8-oxo-6-(2-cyclopropylmethoxyphenyl)-7,8-dihydropyrimido[4,5-e][1,2,4]triazine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+115,115,5-ethyl-2-[1-(2-fluorobenzyl)-indazol-3-yl]-5-hydroxymethyl-oxazole,True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+116,116,"N,N′-bis-Boc-(2R)-2,5-diamino-N-[(1R)-1-[(RS)-(5-tert-butyl-2-benzoxazolyl)-hydroxymethyl]-3-phenylpropyl]-valeramide",True,noise-free,1,1,2,1,1,2,1,1,1,1,0,1,1
+117,117,4-nitrobenzoic acid 2-bromo-ethyl ester,True,noise-free,1,1,4,1,1,1,1,1,0,1,0,1,0
+118,118,"N-(4-chloro-2-hydroxy-3-aminosulfonylphenyl)-N′(2,3-methylenedioxyphenyl) urea",False,noisy,1,1,3,1,1,1,1,1,0,1,0,0,0
+119,119,(6-But-3-enyl-2-hydroxypyridin-3-yl)carbamic Acid Benzyl Ester,False,noisy,1,1,3,1,0,1,0,0,0,0,1,1,1
+120,120,Methyl [4-(4-imidazol-1-yl-methyl-3-isopropyl-phenylethynyl)-phenyl]-acetate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+121,121,4-Carboxyphenylboronic Acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+122,122,3-Carboxy-4-(4-fluorophenyl)piperidine-6-one,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+123,123,"1,7-diacetamido-3,5-dimethyladamantane",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+124,124,3-[2-(2-diethylamino-ethyl)-cyclopropyl]-1-(toluene-4-sulfonyl)-1H-indole-5-carbonitrile,False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
+125,125,"11β-fluor-7α-{5-[methyl-(4,4,5,5,6,6,7,7,8,8,9,9,9-tridecafluoro-nonyl)-amino]-pentyl}-estra-1,3,5(10)-triene-3,17β-diol",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+126,126,"30.b. ethyl 7-chloro-4-(chloromethyl)-6-methoxy-2-oxo-1,2-dihydro-3-quinolinecarboxylate",False,noisy,1,1,4,1,1,1,1,1,0,1,0,0,0
+127,127,2-(4-Vinylphenoxy)ethanol,False,noisy,1,1,5,1,1,1,1,1,0,1,0,0,0
+128,128,thiadiazolopyrimidine,False,noisy,1,1,7,1,0,6,0,0,0,0,1,1,1
+129,129,"2-butene-1,4-dibutyrate",False,noisy,1,1,4,1,1,1,1,1,0,1,0,0,0
+130,130,[4-(2-{[4-chlorophenyl]amino}-6-methoxy-1-methylbenzimidazol-5-yloxy)(2-pyridyl)]-N-(2-pyrrolidinylethyl)carboxamide,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+131,131,"7-(4-bromo-2-chlorophenylamino)-imidazo[1,2-a]pyridine-6-carboxylic acid cyclopropylmethoxyamide",True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+132,132,4-(2-Pyridyl)benzoic acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+133,133,2-[(2-chlorophenyl) dimethylaminomethyl]cyclohexanone,False,noisy,1,1,3,1,1,1,1,1,0,1,0,0,0
+134,134,Methyl 3-benzo[b]thiophen-2-yl-1H-indazole-5-carboxylate,True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+135,135,"General Procedure for the Preparation of Terpyridyl Proteomimetics According to FIG. 19, Scheme 19",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+136,136,"[5-(5-Cyano-pyridin-2-yloxy)-1,2,3,4-tetrahydro-naphthalen-1-ylmethyl]-carbamic acid tert-butyl ester",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+137,137,(2E)-3-(5-{(tert-butoxycarbonyl){(3R)-1-(2-ethylbutyl)-3-pyrrolidinyl}amino}-2-pyridinyl)-N-(tetrahydro-2H-pyran-2-yloxy)acrylamide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+138,138,"2-(3-bromo-propyl)-isoindole-1,3-dione",True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+139,139,"methyl (S)-2,3,11,11a-tetrahydro-1H,5H-pyrrolo[2,1-c][1,4]benzoxazepine-5-one-7-carboxylate",True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+140,140,3-methylsulfanyl-benzoic acid methyl ester,False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
+141,141,4-(3-{[4-(4-acetyl-2-chloro-3-hydroxy-phenoxymethyl)-phenyl]-hydroxy-methyl}-phenyl)-3H-thiazol-2-one,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+142,142,2-Chloro-5-methanesulfonyl-benzoic acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+143,143,(R)-1-(2-methyl-2-oxiranylmethyl)-2-(4-nitrophenylthio)imidazole,False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
+144,144,t-butyl 4-(6-hydroxymethylpyridine-2-carbonyl)piperazine-1-carboxylate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+145,145,ethyl 1-tert-butyl-5-(3-chloropropyl)-1H-pyrazole-3-carboxylate,True,noise-free,1,1,6,1,1,1,1,1,1,1,0,1,1
+146,146,"2-(2,5-Dimethyl-3-thienyl)acetic acid",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+147,147,3-ethyl-1-phenyl-1H-pyrazole-4-carbaldehyde,False,noisy,1,1,3,1,1,1,1,1,0,1,0,0,0
+148,148,3-hydroxy-3-methyl-1-decene,False,noisy,1,1,4,1,1,1,1,1,0,1,0,0,0
+149,149,"1-((2,2-difluorocyclopropyl)methyl)-3-(4-methyl-5-(1H-pyrazol-3-yl)thiazol-2-yl)imidazolidin-2-one",False,noisy,1,1,3,1,1,1,1,1,0,1,0,0,0
+150,150,2-(4-Bromo-benzoyl)-3-oxo-butyric acid methyl ester,False,noisy,1,1,4,1,1,1,1,1,0,1,0,0,0
+151,151,"Biphenyl-2-ylcarbamic Acid 1-(2-{[3-(4-(1,3-Dioxolan-2-yl)-phenylcarbamoyl)propyl]methylcarbamoyl}ethyl)piperidin-4-yl Ester",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+152,152,N-(6-hydroxy-(2-naphthyl))(benzyloxy)carboxamide,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+153,153,"1-(2-Amino-4,6-dichloropyrimidin-5-yl)-2-(2,2-dimethyl-[1,3]dioxolan-4-yl)ethan-1-ol",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+154,154,3-[6-Chloro-2-(ethylamino)-3-pyridinyl]-2-cyano-3-hydroxy-N-methyl-2-propenamide,True,noise-free,1,1,3,1,1,1,1,1,0,1,0,1,0
+155,155,"3-(3-Amino-2-fluorobenzyl)-7-(pyrimidin-2-yloxy)-benzo[e][1,3]oxazine-2,4-dione",False,noisy,1,1,6,1,1,1,1,1,0,1,0,0,0
+156,156,5-(1-bromoethyl)-2-fluoropyridine,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+157,157,"1-[4-(4-chloro-3-methoxy-phenyl)-piperazin-1-yl]-2-[3-(oxazole-2-yl)-pyrazolo[3,4-b]pyridine-2-yl]ethanone",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+158,158,"(S)-3-cyclopentyl-N-[1-(2-isopropoy-ethyl)-1H-pyrazol-3-yl]-2-(1-oxo-4-trifluoromethyl-1,3-dihydro-isoindol-2-yl)-propionamide",True,noise-free,1,1,3,1,1,1,1,1,0,1,0,1,0
+159,159,"1-(4-nitrophenyl)-1H-imidazo[4,5-c]pyridine-4-carboxylic acid methyl ester",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+160,160,Benzyl N-{1-Methyl-1-[4-(methylsulfonylamino)phenyl]ethyl}carbamate,True,noise-free,1,1,4,1,0,1,0,0,0,0,1,0,0
+161,161,[1-(4-Phenylacetyl-phenyl)-cyclobutyl]-carbamic Acid Tert-butyl Ester,False,noisy,1,1,3,1,0,1,0,0,0,0,1,1,1
+162,162,N-[(3S)-1-Azabicyclo[2.2.2]oct-3-yl]-6-methoxy-N-methyl-1H-indazole-3-carboxamide,False,noisy,1,1,4,1,1,1,1,1,0,1,0,0,0
+163,163,N-cyclopropyl-2-chloro-2-hydroxyimino-acetamide,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+164,164,4-{[5-(4-benzyloxy-phenyl)-6-butyl-pyridazine-3-carbonyl]-amino}-piperidine-1-carboxylic acid tert-butyl ester,True,noise-free,1,1,2,1,0,1,0,0,0,0,1,0,0
+165,165,"1-(2,3-Dihydroxypropyl)-N-(6-ethyl-3,4-difluoro-2-(2-fluoro-4-iodophenylamino)phenyl)cyclopropane-1-sulfonamide",False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
+166,166,"5-(4-Ethoxycarbonyl-2-fluorophenyl)-6,7-dihydro-5H-pyrrolo[1,2-c]imidazole-5-carboxylic acid",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+167,167,"5-chloro-1′-[trans-3-(4-chlorophenyl)allyl]spiro[perhydro-azepine-3,3′-piperidine]",False,noisy,1,1,3,1,1,1,1,1,0,1,0,0,0
+168,168,"1-(6-(4-methyl-2-oxo-2,3-dihydrobenz-[d]oxazol-6-yloxy)pyrimidin-4-yl)spiro[piperidin-4,4′-pyrido[2,3-d][1.3]oxazin]-2′(1′H)-one",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+169,169,"[5-Oxo-1-(3-oxo-3,4-dihydro-2H-pyrido[3,2-b][1,4]oxazin-6-yl)pyrrolidin-3-yl]carbamic acid benzyl ester",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+170,170,"8-chloro-7-fluoro-2,3,4,5-tetrahydro-2-methyl-5-(2-(piperidin-1-yl)ethyl)-1H-pyrido[4,3-b]indole",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+171,171,1-(1H-benzo[d]imidazol-5-yl)-5-(4-butoxyphenyl)imidazolidin-2-one,False,noisy,1,1,1,1,1,1,1,1,0,0,1,1,1
+172,172,"(2R,3S)-Ethyl 2,3-dihydroxy-3-(1-(4-((5-(trifluoromethyl)pyridin-2-yl)oxy)-phenyl)-1H-indol-3-yl)propanoate",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+173,173,"[(R)-8-fluoro-6-(3-fluoro-phenylsulfanyl)-1,2,3,4-tetrahydro-naphthalen-1-ylmethyl]-urea",True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+174,174,"3-(1-acetyl-piperid-4-yl)-1,1-dimethyl propanol",True,noise-free,1,1,3,1,1,1,1,1,0,1,0,1,0
+175,175,"N-(1-carboxy-3-phenylpropyl)-β-amino-D,L-alanyl-L-proline",False,noisy,1,1,6,1,1,4,1,1,0,0,1,1,1
+176,176,"Methyl 1-(4-Methylsulfonylphenyl)-1,4-dihydro-4-oxo-6-methylpyridazine-3-carboxylate",True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+177,177,"5-(2,6,6-trimethyl-3-oxo-cyclohex-1-enyl)-3-methyl-1-phenylsulphonyl-penta-2,4-diene",True,noise-free,1,1,2,1,1,2,1,1,1,1,0,1,1
+178,178,"23,23-Difluoro-3β-tetrahydropyranyloxycholest-5-ene-26,27-dioic Acid Diethyl Ester",False,noisy,1,1,2,1,1,1,1,1,0,0,1,1,1
+179,179,"5,6-difluoroisatin",False,noisy,1,1,4,1,1,1,1,1,0,1,0,0,0
+180,180,"1,3-Benzodioxole-4-sulfonamide",True,noise-free,1,1,4,1,1,2,1,1,0,1,0,1,0
+181,181,1-phenylcarbamoyl-4-hydroxy-2-pyrrolidinone,True,noise-free,1,1,3,1,1,1,1,1,0,1,0,1,0
+182,182,(E)-5-methoxy-2-[2-[3-[2-[4-(cyclobutyl)-2-thiazolyl]ethenyl]phenylamino]-2-oxoethyl]benzoic acid,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+183,183,methyl 2-[2-(1-benzyloxyiminoethyl) oxymethylphenyl]-3-methoxypropenoate,False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
+184,184,"3-carbomethoxy-5-[N-tert-butoxycarbonyl-N-(3-trifluoromethanesulfonamidopropan-1-yl)aminomethyl]imidazo[1,2-a]pyridine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+185,185,"4-(2,6-dichloro-4-(3,3-dichloro-2-propenyloxy)phenoxy)pentanal O-tert-butyloxime",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+186,186,Preparation of ethyl N-triethoxysilylpropylcarbamate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+187,187,Ethyl 3-(4-pyridyl)-3-oxopropionate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+188,188,"2-Azidomethyl-2-hydroxy-1,3-diazidopropane",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+189,189,"4-Hydroxy-2-oxo-1,2-dihydro-quinoline-3-carboxylic acid ethyl ester",True,noise-free,1,1,5,1,1,1,1,1,1,1,0,1,1
+190,190,Ethyl (E)-3-[4-(2-amino-2-methyl-propanoylamino)-phenyl]-acrylate,False,noisy,1,1,2,1,0,1,0,0,0,0,1,1,1
+191,191,4-[5-bromo-2-(but-3-en-1-yloxy)phenyl]-4-hydroxybutan-2-one,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+192,192,1-fluoro-3-methoxy-2-nitrobenzene,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+193,193,"N2-Mesityl-1-methyl-N7,N7-dipropyl-1H-benzimidazole-2,7-diamine",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+194,194,"4-[2,5-Dioxo-4-[(2-propenyloxy)methyl]imidazolidin-4-yl]benzonitrile",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+195,195,Methyl N-{4-[2-(4-chlorophenyl)-1-propylpent-4-en-1-yl]benzoyl}-β-alaninate,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+196,196,4-Bromo-2-phenoxy-benzoic acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+197,197,2-(5-amino-1-phenyl-1 H-pyrazol-3-yl)-2-methylpropanoic acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+198,198,A466.3: 1-(6-Bromo-pyridin-2-yl)-propylamine,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+199,199,1-[cyano-(4-methoxyphenyl)methyl]cyclohexanol,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+200,200,"6-Bromo-7-ethylthieno(2,3-b]pyrazine-2,3(1H,4H)-dione",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+201,201,4-trimethylsilylethynyl bromo benzene,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+202,202,N-octyl-cis-3-(propanoylthio)acrylamide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+203,203,2-amino-4-acetylphenol,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+204,204,N-Acetyl-3-(indol-3-yl)propanol,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+205,205,4-(1-Aminotridecyl)-2-triethylsilylfuran,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+206,206,(Z)-3-(2-Naphthyl)-3-phenylacrylic acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+207,207,(R)-5-Bromo-3-(N-methylpyrrolidin-2-ylmethyl)-1H-indole,True,noise-free,1,1,8,1,1,1,1,1,1,1,0,1,1
+208,208,"3-cyano-9-hydroxy-4-(3-nitrophenyl)-2-(1-pyrrolyl)-4H-naphtho[1,2-b]pyran-8-carboxylic acid",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+209,209,"2,5,6-Trichloro-1-(β-D-ribofuranosyl)benzimidazole",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+210,210,N-[2-(2-methoxy-1-naphthyl)ethyl]propionamide,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+211,211,"1,2,3,4-tetrahydro-6-benzyloxynaphthalene-2-carboxylic acid",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+212,212,"1-(8,9-Dihydroxynonyl)-3,7-dimethylxanthine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+213,213,4'-Cyclohexylidenemethylbiphenyl-2-sulfonamide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+214,214,"3-(4-Amino-2-fluorophenyl)-3-hydroxy-1-(1,1-diphenylmethyl)azetidine",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+215,215,"(S)-α-methyl-1,3 benzodioxole-5-ethanol",True,noise-free,1,1,2,1,0,1,0,0,0,0,1,0,0
+216,216,"3-Cyano-1-(2,6-dichloro-4-trifluoromethylphenyl)-4-formylpyrazole",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+217,217,"N-[(3-methylpropyl)oxy]-1,2,3,4-tetrahydro-9-acridinamine",False,noisy,1,0,0,0,0,1,0,0,0,0,1,1,1
+218,218,"Methyl (S)-2-[3-(2-benzyloxy-1-methylethyl)-2-(3,5-dimethylphenyl)-1H-pyrrolo[2,3-b]pyridin-5-yl]-2-methylpropanoate",False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
+219,219,4-(4-Fluorophenoxy)thiophenol,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+220,220,"cis-(3,5-Bis-trifluoromethyl-benzyl)-(1-butyl-6,7-dimethoxy-2-methyl-1,2,3,4-tetrahydro-quinolin-4-yl)-carbamic acid methyl ester",True,noise-free,1,1,2,1,1,2,1,0,1,0,1,0,0
+221,221,phenoxyacetic acid,True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+222,222,1-hydroxymethyl-3-adamantanol,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+223,223,"[2-(R,S)-Benzylcarbamoyl-3-(4-cyano-phenyl)-propionylamino]-(S)-cyclohexyl-acetic Acid Methyl Ester",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+224,224,2-(4-methyl-2-phenylpiperazin-1-yl)pyridine-3-methanol,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+225,225,4-fluoro-3′-methoxy-3-nitrobiphenyl,True,noise-free,1,1,1,1,1,1,1,1,0,1,0,1,0
+226,226,"[4-[4-[4-(hydroxydiphenylmethyl)-1-piperidinyl]-1-oxobutyl]phenyl]methyl-propanedioic acid, diethyl ester",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+227,227,N-(4-n-butoxyphenyl)-2-(1-benzyl-4-hydroxypiperidin-4-yl)acetamide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+228,228,(R)-(+)-(1-Aza-bicyclo[2.2.2]oct-3-yl)-carbamic acid benzyl ester,True,noise-free,1,1,5,1,0,1,0,0,0,0,1,0,0
+229,229,[(2S)-2-(4-bromophenoxy)propyl][(methylethyl)sulfonyl]amine,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+230,230,"tert-Butyl (5-methyl-3-naphthylcarbonyl-2,4-dioxo-5-phenylimidazolidinyl)acetate (Compound 14)",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+231,231,Methyl (2E)-3-[3-[2-[[4-fluoro-2-(trifluoromethyl)phenyl]amino]-2-oxoethyl]-7-methyl-2-oxo-4-phenyl-2H-chromen-6-yl]propenoate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+232,232,"4-(3,5,5,8,8-Pentamethyl-5,6,7,8-tetrahydro-2-naphthylselanyl)benzoic acid",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+233,233,"2,3-Dihydroxy-4methoxy-benzaldehyde (6b)",True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+234,234,tert-Butyl 6-(methoxymethyl)pyrimidin-4-ylcarbamate (24-4),True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+235,235,"1a, 1-[2-(2-Trifluoromethylphenylsulfanyl)phenyl]piperazine",False,noisy,1,1,4,1,0,1,0,0,0,0,1,1,1
+236,236,"[4-(4,9-dimethoxy-1-oxo-1,3-dihydro-2H-benzo[f]isoindol-2-yl)phenyl]acetic acid",True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+237,237,"2-(2,4-dichloro-phenyl)-7-hydroxy-1H-benzoimidazole-4-carboxylic acid",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+238,238,3-Amino-2-Phenylindole,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+239,239,"9,9-Diethyl-7-bromo-fluorene-2-carboxaldehyde",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+240,240,2-Isopropoxy-6-pentadecylbenzoic Acid,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+241,241,N-[3-(2-Fluoro-4′-hydroxymethyl-biphenyl-4-yl)-2-oxo-oxazolidin-5-ylmethyl]-acetamide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+242,242,(1-Diazo-2-oxo-propyl)-phosphonic acid dimethyl ester,True,noise-free,1,1,5,1,1,1,1,1,0,1,0,1,0
+243,243,"4-(3-(2,6-Dimethylbenzyloxy)-phenyl)-4(R)-hydroxybutanoic acid",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+244,244,B. Preparation of 4-Nitro-heptanedial,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+245,245,N1-(4-Methoxyphenyl)-5-amino-3-tert-butylpyrazole,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+246,246,"2-Benzyloxycarbonylamino-3-(2,4-dichlorobenzenesulfonylamino)-2-methylpropionic Acid",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+247,247,2-(1H-Indol-4-yl)-6-(4-methyl-piperazin-1-ylmethyl)-4-morpholin-4-yl-thieno[3.2-d]pyrimidine,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+248,248,"2-(5-Benzylbenzofuran-2-yl)-5-(hydroxymethyl)benzonitrile (Step 3, scheme 5)",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+249,249,2(S)-allyloxy-3-[3′-(3-heptyl-1-methylureido)biphenyl-4-yl]propanoic acid,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+250,250,irbesartan,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+251,251,"4-(6-Chloro-7-(4-phenethylpiperazin-1-yl)-3H-imidazo[4,5-b]pyridin-2-yl)-N,N-dimethylaniline",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+252,252,2-(2-benzyloxypyridin-3-yl)-4-tert-butyl-5-methoxybenzoic acid methyl ester,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+253,253,"2-(1H-Indazol-4-yl)-4-morpholin-4-yl-thieno[3,2-d]pyrimidine-6-carbaldehyde",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+254,254,5-chloro-N-((1-(3-fluoro-4-iodophenyl)-1H-imidazol-4-yl)methyl)thiophene-2-carboxamide,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+255,255,1-Methyl-piperidine-4-carboxylic acid [2-(2-methoxy-benzylamino)-quinolin-6-yl]-amide,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+256,256,3-(3-fluoro-5-nitrophenoxy)pyridine,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+257,257,"(S)-1-(1-PHENYLPROPYL)-6-(QUINOLIN-5-YL)-1H-IMIDAZO[4,5-B]PYRAZIN-2(3H)-ONE",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+258,258,2-Bromo-4-(prop-1-ynyl)pyridine,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+259,259,"tert-butyl 7-(hydroxymethyl)-3,4-dihydroisoquinoline-2(1H)-carboxylate",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+260,260,"8-bromo-3,4-dihydrobenzo[f][1,4]oxazepin-5(2H)-one",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+261,261,(R)-3-Benzyl-1-(3-cyclopentyloxy-4-methoxy-phenyl)-piperazine,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+262,262,(R)-2-(2-chloropyrimidin-4-ylamino)-2-methylbutanoic acid,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+263,263,N-[4-((S)-1-Propyl-pyrrolidin-3-yl)-phenyl]-3-pyrrolidin-1-yl-benzenesulfonamide,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+264,264,Preparation of CDA Modified with Alendronate,False,noisy,1,1,2,1,0,1,0,0,0,0,1,1,1
+265,265,2-(Hydroxymethyl)-4-phenylthiazole,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+266,266,amino-4-phenyl-thiazole-5-carbonitrile,False,noisy,1,1,3,1,0,1,0,0,0,0,1,1,1
+267,267,6-(4-Methyl-piperazin-1-yl)-1-(toluene-4-sulfonyl)-1H-indole,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+268,268,"2-hydroxy-4,5-dimethoxybenzoic acid",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+269,269,"5-Chloro-N-(2,4-dimethoxybenzyl)-2,4-difluoro-N-1,3,4-thiadiazol-2-ylbenzenesulfonamide",True,noise-free,1,1,6,1,1,1,1,1,1,1,0,1,1
+270,270,"2-fluoro-6-nitro-N-(3-(2,2,2-trifluoroethyl)phenyl)benzamide",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+271,271,[2-(4-tert-butoxycarbonylamino-piperidin-1-yl)-5-chloro-4-(4-cyano-3-fluoro-phenyl)-6-oxo-6H-pyrimidin-1-yl]-acetic acid methyl ester,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+272,272,Compound 3: 4-(4-fluoro-2-methyl-1H-indol-5-yloxy)-6-methoxyquinazolin-7-ol,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+273,273,"3,5-dibromo-6H-anthra[1,9-cd]isoxazol-6-one",True,noise-free,1,1,5,1,1,1,1,1,1,1,0,1,1
+274,274,methyl[3-benzyloxy-5-hydroxyphenyl]acetate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+275,275,7-(2-Aminomethylphenylacetamido)-3-(1-carboxymethyltetrazol-5-ylthiomethyl)-3-cephem-4-carboxylic Acid (III),True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+276,276,3-Allyl-3-methyl-pent-4-en-2-ol,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+277,277,3-amino-3-difluoromethyl-2-piperidone,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+278,278,"4-Chloro-6-methyl-1H-pyrazolo[3,4-b]pyridine-5-carboxylic acid ethyl ester",True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+279,279,"A. N-Isobutyl-2-[2-benzyloxy-4-(1,1-dimethylheptyl)phenyl]piperidine",True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+280,280,"2-Benzyloxy-1-bromo-4-(1,1-dimethylheptyl)benzene",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+281,281,"α-[(1-Oxo-3,3-diphenylpropyl)amino]benzenepropionic acid",True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+282,282,(E)-4-(4-fluorophenyl)-3-butenoic acid,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+283,283,2-Hydroxymethyl-8-methoxy-chroman ##STR19##,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+284,284,2-phenyl-2-trifluoromethylethanol,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+285,285,1-(tert-butyldimethylsilyl)-4(R)-(hydroxymethyl)azetidin-2-one,True,noise-free,1,1,2,1,1,1,1,1,0,1,0,1,0
+286,286,Ethyl 7-(3-benzyloxypropoxy)-chromane-2-carboxylate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+287,287,"2-[4-[(3,5-Dichlorophenyl)sulfanyl]-5-ethyl-3-(hydroxymethyl)-1H-pyrazol-1-yl]ethanol",False,noisy,1,1,3,1,0,1,0,0,0,0,1,1,1
+288,288,"Imidazo[1,2-a]pyridin-6-ylamine",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+289,289,"(Z)-Methyl 3-(4-amino-3,5-dimethylphenyl)-2-(benzyloxycarbonyl)acrylate",True,noise-free,1,1,3,1,0,1,0,0,0,0,1,0,0
+290,290,(4-Bromo-3-methylphenyl)(4-hydroxyphenyl)methanone,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+291,291,4-(hydroxymethyl)phenyl-diisopropylsilane,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+292,292,N-(4-{2-[4-(N-{1-(N-hydroxycarbamoyl)(1S)-2-[(tert-butoxy)carbonylamino]ethyl}carbamoyl)phenyl]ethynyl}phenyl)-2-[(tert-butoxy)carbonylamino]acetamide,True,noise-free,1,1,4,1,1,1,1,1,1,1,0,1,1
+293,293,2-(4-(bis(4-chlorophenyl)methyl)-2-oxopiperazin-1-yl)acetic acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+294,294,"Preparation of 4-[3-amino-2-methyl-4-(methylsulfonyl)benzoyl]-1,3-dimethyl-5-hydroxypyrazole",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+295,295,"Evaluation of Wild-Type Ketoreductases for Reduction of 5-((4S)-2-oxo-4-phenyl(1,3-oxazolidin-3-yl))-1-(4-fluorophenyl)pentane-1,5-dione",False,noisy,1,1,2,0,0,1,0,0,0,0,1,1,1
+296,296,"8-(3-Sulfamoyl-phenylamino)-4,5-dihydro-thiazolo[4,5-h]quinazoline-2-carboxylic acid ethyl ester",True,noise-free,1,1,2,1,1,2,1,1,0,1,0,1,0
+297,297,"(S)-1-[(3S,4S)-1-Benzyl-3-(3,4-difluoro-phenyl)-piperidin-4-yl]-ethanol",True,noise-free,1,1,1,1,1,1,1,1,1,0,1,0,0
+298,298,"2-(4,5,6,7-tetrahydro-1-phenyl-1H-indazol-4-yl)ethanol",True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+299,299,(12) Diphenylether Herbicidal Compounds,False,noisy,1,0,0,0,0,1,0,0,0,0,1,1,1
+300,300,p-n-Decyloxybenzoic acid chloride,True,noise-free,1,1,3,1,1,2,1,1,1,1,0,1,1
+301,301,"3-[2-[4-(2-methoxyphenyl)-1-piperazinyl]ethyl]-7-acetylamino-1,2,3,4-tetrahydroquinazoline-2,4-dione",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+302,302,3-[3-(2-Nitro-1H-imidazol-1-yl)propyl]-2-oxazolidinone,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+303,303,"2-trifluoromethyl-1,1,1,2,4,4-hexafluorobutane",False,noisy,1,1,3,1,0,2,0,0,0,0,1,1,1
+304,304,a) Diethyl 4-acetoxy-3-(acetoxymethyl)butylphosphonate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+305,305,2-(4-n-decyloxy-2-fluorophenyl)-5-octyloxypyridine,False,noisy,1,1,3,1,0,2,0,0,0,0,1,1,1
+306,306,"10-Acetoxy-7,8,9,10-tetrahydrophenanthridine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+307,307,"2,2,2-trifluoroethyl trifluoromethanesulfonate",True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+308,308,(6-methoxy-2-cyclopentylbenzo[b]thien-3-yl)[4-[2-(dimethylamino)ethoxy]phenyl]methanone,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+309,309,1-hydroxy-1-p-tolylethylphosphonous acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+310,310,3-Cyano-8-fluoro-5-methoxy-2-H-chromen,True,noise-free,1,1,1,1,0,1,0,0,0,0,1,0,0
+311,311,"5-[[4-Methoxy-3-(phenylmethoxy)phenyl]methylene]-2,4-imidazolidinedione",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+312,312,Diethyl 3.5-bis(trifluoromethyl)benzylphosphonate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+313,313,N-(3-chloropropyl)-6-acetyl-2-benzoxazolinone,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+314,314,"3,4,4-trifluoro-3-butenethioic acid, S-octyl ester",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+315,315,1-hydroxy-1-p-tolylethylphosphonous acid,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+316,316,"3-[(2,2-Diphenyl-1,3-benzodioxolan-5-yl) methylcarbonyl]indole",False,noisy,1,1,2,1,0,2,0,0,0,0,1,1,1
+317,317,3-Amino-5-chloropicolinamide,True,noise-free,1,1,3,1,1,1,1,1,1,1,0,1,1
+318,318,6-cyano-1-(2-carbamoylvinyl)-2-naphthol,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+319,319,"N,N-dimethyl-1,2,3,4-tetrahydro-2,3-dioxo-6-quinoxaline sulfonamide",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+320,320,α-(diethoxyphosphorylmethyl)styrene,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+321,321,2-(2-Hydroxyphenyl)-1-(4-methylpiperazino)-1-ethanone,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+322,322,"5,6,7,8-tetrahydro-4-chloro-7-ethoxycarbonyl-2-(3-pyridyl)pyrido[4′,3′:4,5]thieno[2,3-d]pyrimidine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+323,323,"N-[(2,5-Difluorophenyl)acetyl]alanine iso-Butyl Ester",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+324,324,Ethyl 3-[4-benzyloxyphenyl]-2-hexyloxypropanoate,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+325,325,"N-(3,5-Bis-trifluoromethyl-benzyl)-N-methyl-4-o-tolyl-6-[1,2,4]triazol-1-yl-nicotinamide",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+326,326,3-octyloxy-4-hydroxy-8-(2-ethoxycarbonylethoxy)-2H-1-benzopyran-2-one,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+327,327,"6-Chloro-3-[ethoxymethylidene]-1H-pyrrolo[2,3-b]pyridin-2-one",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+328,328,"2-Bromo-6-ethyl-5-[(4-methoxy-3-methylphenyl)sulfonyl]-5,6-dihydrophenanthridin",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+329,329,"N-[4-[(4-cyanophenyl)amino]-6-[(2,6-dichlorophenyl)methyl]-1,3,5-triazin-2-yl]acetamide",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+330,330,"4-Chloro-2,5-dimethyl-6-(2,4,6-trimethyl-benzyl)-pyrimidine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+331,331,"6-Chloro-2-trifluoromethyl-7-(2,4,6-trimethyl-phenyl)-7H-imidazo[1,2-a]imidazole-3-carboxylic acid ethyl ester, Scheme 6: (AA)",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+332,332,13778.3) N-{1-(4-(4-fluorophenyl)-1H-imidazol-2-yl)heptyl}cyclohexanamine,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+333,333,"N-[5-(6-fluoro-3-pyridinyl)-2,3-dihydro-1H-inden-2-yl]-2-propanesulfonamide",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+334,334,4-allyl-1H-indol-5-ol,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+335,335,Step 1 5-(3-Dimethylamino-acryloyl)-4′-methyl-biphenyl-3-carboxylic acid (2-methoxy-1-methyl-ethyl)-amide,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+336,336,4-(3-Chloro-pyrazin-2-ylamino)-1H-pyrazole-3-carboxylic acid (4-fluoro-phenyl)-amide,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+337,337,"N-[9,9,9′,9′-tetramethyl-7′-(4-nitro-phenylethynyl)-9H,9′H-[2,2′]bifluoreny-7-yl]-acetamide",False,noisy,1,1,5,1,0,4,0,0,0,0,1,1,1
+338,338,"2-[(R)-1-[(3R,4S)-1-Benzyl-4-(3,4-difluoro-phenyl)-pyrrolidin-3-yl]-2-(tert-butyl-dimethyl-silanyloxy)-ethoxy]-5-chloro-pyridine",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+339,339,"2-[4-(Dimethoxy-phosphoryl)-but-2-enyl]-6-(4-hydroxy-6-methoxy-7-methyl-3-oxo-1,3-dihydro-isobenzofuran-5-yl)-4-methyl-hex-4-enoic Acid Methyl Ester",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+340,340,N-(4-propargylpiperazin-1-ylethyl)-2-methyl-3-hydroxy-4-pyridinone,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+341,341,"1-(2,6-diisopropyl-phenyl)-3-[1-(toluene-4-sulfonyl)cyclopentylmethyl]-urea",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+342,342,4-(4-oxo-4H-chromen-6-yl)benzoic Acid,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+343,343,4-Bromo-2-(2-bromo-ethyl)-benzenesulfonyl chloride,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+344,344,4-trifluoromethylphenylacetyl chloride,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+345,345,"Synthesis of 2-(5,6-dihydro-4H-pyrrolo[3,2,1-ij]quinolin-1-yl)-5-phenyl-1,3,4-oxadiazole (57)",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+346,346,Step (i): Synthesis of 2-phenylaminomethylene-malonic acid diethyl ester,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+347,347,[Step 1] 1-[(Chlorocarbonyl)oxy]ethyl 2-methylpropionate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+348,348,N-(2-Benzoyl-4-chloro-phenyl)-4-trifluoromethoxy-benzenesulfonamide,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+349,349,"methyl 7-methyl-2,3-dioxo-1,2,3,4-tetrahydroquinoxaline-6-carboxylate",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+350,350,methyl 6-cyano-7-fluorochroman-4-carboxylate,True,noise-free,1,1,3,1,1,1,1,1,0,1,0,1,0
+351,351,2-benzothiazol-2-yl-3-chloro-3-(4-nitrophenyl)-acrylonitrile,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+352,352,"Ethyl 4-[2,4-dichloro-7-(1-ethylpropyl)-1H-benzimidazol-1-yl]butanoate",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+353,353,"b) Synthesis of 1-hydroxy-6-propyl-3,4-dimethoxybenzene",False,noisy,1,1,3,1,1,1,1,1,0,1,0,0,0
+354,354,6-(4-Morpholinyl)-2-pyridinamine,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+355,355,3-[(4-chloro-2-methoxybenzyl)amino]pyridine-4-carboxylic acid,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+356,356,6-allyloxy-benzothiazole-2-carbonitrile,True,noise-free,1,1,2,1,1,2,1,1,1,1,0,1,1
+357,357,"(R)-3-(4′-Cyano-biphenyl-4-yl)-2-{[(3R,7S)-3-[4-(3,4-dichloro-benzyloxy)-phenyl]-1-methyl-2-oxo-6-((S)-1-phenyl-propyl)-2,3,5,6,7,8-hexahydro-1H-4-oxa-1,6-diaza-anthracene-7-carbonyl]-amino}-propionic acid methyl ester",False,noisy,1,1,2,1,0,1,0,0,0,0,1,1,1
+358,358,"(R)-8-(5-bromo-2-fluoro-phenyl)-8-methyl-6,6-dioxo-6λ6-thia-9-aza-spiro[4.5]deca-2,9-dien-10-ylamine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+359,359,"4-amino-2-[4-(1-cyclopenten-1-ylcarbonyl)piperazinyl]-6,7-dimethoxyquinazoline",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+360,360,"1-(N,N-diethylsulphamoyl)-2-oxo-tetrahydroimidazole",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+361,361,"1-acetyl-3-(3,4-methylenedioxyphenyl)-1,3-dihydroimidazo[4,5-b]pyridin-2-one",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+362,362,4-Hydroxy-7-(2-hydroxy-3-phenoxypropoxy) coumarin,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+363,363,"(b) 2-Chloro-5-cyano-6-methyl-3-pyridine-carboxylic acid, ethyl ester",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+364,364,(b) N-2-hydroxypropyl-5-methyl-oxazolidine (HIPOX),False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+365,365,ethyl β-(2-naphthyl)-acrylate,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+366,366,2-(5-hyroxypentylamino)-5-(6-methyl-3-pyridylmethyl)-4-pyrimidone,True,noise-free,1,1,1,1,1,1,1,1,0,0,1,0,0
+367,367,"4-methoxycarbonyl-1-(3,5-dimethylphenyl)-5-pyrazolecarboxamide",False,noisy,1,1,2,1,0,1,0,0,0,0,1,1,1
+368,368,cis methyl N-t-butoxycarbonyl-4-(2-di-ethylphosphonoethyl)pyrrolidine-2-carboxylate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+369,369,"4-dibenzylaminobutyric acid, ethyl ester",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+370,370,"3,4-dihydro-3-methyl-1-phenylbenzo[f]phthalazine",False,noisy,1,1,2,1,0,2,0,0,0,0,1,1,1
+371,371,"N-(ethyl)-2-dimethylamino-1,2,3,4-tetrahydrodibenzofuran-8-carboxamide",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+372,372,"{3-[2-Difluoromethyl-5-(4-methoxy-phenyl)-2H-[1,2,4]triazol-3-yl]-benzyl}-dimethyl-amine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+373,373,6-{trans-[4-(2-methyl-3-phenylpropylamino)-cyclohexyl]}-3H-benzoxazol-2-one,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+374,374,Preparation of 1-phenyl-3-trifluoromethyl-5-(p-tolyl)-1H-pyrazole,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+375,375,"4-(2,3-dimethoxybenzoyl)pyridine",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+376,376,3-(1H-Indol-6-yl)-3-(3-chloro-phenyl)-N-methyl-propionamide,False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+377,377,"5-Chloro-3-(2-chloro-phenyl)-6-(2,4-difluoro-phenoxy)-1H-pyrazolo[3,4-b]pyrazine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+378,378,3-(4-trifluoromethylphenoxy)dihydrofuran-2-one,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+379,379,2-chloro-4-propyl-6-(3-trifluoromethylphenyl)-pyrimidine,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+380,380,"2-(Dimethyl-amino)-6-[2-(3,4,5-trimethoxy-phenylamino)-pyrimidin-4-ylamino]-benzenesulfonamide",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+381,381,"5-fluoro-N4-(3-hydroxyphenyl)-N2-(1H-pyrrol-1-yl)-2,4-pyrimidinediamine",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+382,382,"7-diethylamino-3-(4-phenyl-[1,2,3]triazol-1-yl)-chromen-2-one",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+383,383,"(3R,8aS)-3-(Chloromethyl)hexahydro-1H-pyrrolo[2,1-c][1,4]oxazine",True,noise-free,1,1,3,1,1,1,1,1,1,0,1,0,0
+384,384,"2-Ethyl-4-[5-(5-isobutyl-thiophen-2-yl)-[1,3,4]oxadiazol-2-yl]-6-methyl-phenol",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+385,385,"5-benzyl-4-chloro-5H-pyrrolo[3,2-d]pyrimidin-2-amine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+386,386,4-chloro-7-benzyloxy-6-methoxy-quinoline,True,noise-free,1,1,3,1,1,3,1,1,1,1,0,1,1
+387,387,ethyl 4-formyl-2-(methylthio)pyrimidine-5-carboxylate,True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+388,388,"(3S,4R,6S)-6-benzhydryl-4-benzylamino-tetrahydropyran-3-ol",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+389,389,"(S)-7-((4-(4-chlorophenyl)-5,6-dihydropyridin-1(2H)-yl)methyl)-4-ethyl-3-methyl-3,4-dihydropyrido[3,2-b]pyrazin-2(1H)-one",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+390,390,1-[3-(N-benzyl-N-2-pyridyl amino)propyl]-4-(2-methylbenzamido)piperidine,False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+391,391,"1-butyl-3-[(3-dimethylcarbamoyl-2,3,4,5-tetrahydro-1H-3-benzazepin-7-yl) sulfonyl]urea",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+392,392,3-chloro-2-hydroxy-1-propyl acetate,True,noise-free,1,1,2,1,1,1,1,1,1,1,0,1,1
+393,393,"5-Methyl-2[3-(N,N-diethylamino)-2-hydroxypropylaminocarbonyl]-3-methoxy-1-phenylindole",False,noisy,1,1,2,1,0,1,0,0,0,0,1,1,1
+394,394,"5,11-Dihydro-11-[[3-[3-[(benzoyl)methylamino]propyl]-1-piperidinyl]acetyl]-6H-pyrido[2,3-b][1,4]benzodiazepin-6-one",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+395,395,"N4-(4-tert-butylbenzoyl)-N3-(4-methoxybenzoyl)-3,4-pyridinediamine",False,noisy,1,1,1,1,0,1,0,0,0,0,1,1,1
+396,396,"a) Preparation of 1-(2-Fluorobenzyl)-3-[5chlorosulphinylfuran2-yl]pyrazolo[3,4-b]-pyridine",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+397,397,"diethyl{4-methyl-2-[4-(trifluoromethyl)phenyl]-1,3-thiazol-5-yl}methylphosphonate",True,noise-free,1,1,1,1,1,1,1,1,1,1,0,1,1
+398,398,"5,7-Di-tert-butyl-1H-indole-2,3-dione",False,noisy,1,1,1,1,1,1,1,1,0,1,0,0,0
+399,399,"2-Amino-5-{[6-chloro-4,4-dimethyl-2-hydroxy-5-methoxy-2-(trifluoromethyl)-1,2,3,4-tetrahydronaphthlen-1-yl]amino}-8-fluoro-quinoline",False,noisy,1,1,2,1,1,1,1,1,0,1,0,0,0
