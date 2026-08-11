@@ -3,12 +3,41 @@
 from __future__ import annotations
 
 import ast
+import importlib.resources
 import math
 import os
+import sys
+import types
 from collections.abc import Iterable
 from typing import Any
 
 import pandas as pd
+
+
+def _legacy_resource_filename(package: str, resource: str) -> str:
+    """Resolve package data for LocalMapper without setuptools.pkg_resources."""
+    return str(importlib.resources.files(package).joinpath(resource))
+
+
+def _install_localmapper_compatibility() -> None:
+    """Install narrow compatibility shims required by LocalMapper and DGL.
+
+    LocalMapper 0.1.4 imports the removed ``pkg_resources.resource_filename``.
+    DGL 2.2.1 imports its distributed subsystem eagerly; that subsystem is not
+    needed for local atom mapping and currently has an unpatched RPC advisory.
+    Supplying a local-only module avoids loading the distributed RPC code.
+    """
+    if "pkg_resources" not in sys.modules:
+        pkg_resources = types.ModuleType("pkg_resources")
+        pkg_resources.resource_filename = _legacy_resource_filename
+        sys.modules["pkg_resources"] = pkg_resources
+
+    if "dgl.distributed" not in sys.modules:
+        distributed = types.ModuleType("dgl.distributed")
+        distributed.__path__ = []
+        distributed.DistGraph = type("DistGraph", (), {})
+        distributed.DistDataLoader = type("DistDataLoader", (), {})
+        sys.modules["dgl.distributed"] = distributed
 
 
 def parse_reaction_smiles(value: Any) -> list[str]:
@@ -63,12 +92,13 @@ def normalize_localmapper_reaction(reaction_smiles: str) -> str:
 def create_localmapper(device: str = "cpu", model_version: str = "202403"):
     """Create LocalMapper lazily so non-mapping commands stay lightweight."""
     os.environ.setdefault("DGLBACKEND", "pytorch")
+    _install_localmapper_compatibility()
     try:
         from localmapper import localmapper
     except ImportError as exc:
         raise RuntimeError(
             "LocalMapper could not be imported. Install the mapping dependencies "
-            "with `python -m pip install -r requirements.txt`. "
+            "with `python -m pip install -e \".[mapping]\"`. "
             f"Original import error: {exc}"
         ) from exc
     return localmapper(device=device, model_version=model_version)

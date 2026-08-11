@@ -37,16 +37,26 @@ manuscript-editing artifacts are intentionally excluded.
 
 ## Installation
 
-Python 3.9 or later is required. A clean environment is recommended.
+Python 3.10 or later is required. A clean environment is recommended.
 
 ```bash
-git clone https://github.com/won-24/LLM_Denoise_final.git
-cd LLM_Denoise_final
-python -m pip install -e ".[dev]"
+git clone https://github.com/snu-micc/uspto-revisit.git
+cd uspto-revisit
+python -m pip install -e ".[dev,mapping]"
 ```
 
-The environment includes RDKit and LocalMapper. LocalMapper installs its
-PyTorch/DGL stack and is licensed separately under CC BY-NC-SA 4.0.
+`pyproject.toml` is the single source of dependency definitions. For evaluation
+without atom mapping, install `.[dev]`; add the `mapping` extra only when
+LocalMapper is required. LocalMapper installs its PyTorch/DGL stack and is
+licensed separately under CC BY-NC-SA 4.0.
+
+DGL's distributed RPC subsystem is not used by this project and has an
+unpatched deserialization advisory in the current DGL release. The atom-mapping
+entry point therefore prevents that subsystem from loading and supports only
+local, single-process LocalMapper inference. Use
+`uspto_revisit.atom_mapping.create_localmapper()` rather than importing DGL
+directly before the project entry point, and do not expose a DistDGL RPC
+service. See [SECURITY.md](SECURITY.md) for the remaining upstream limitation.
 
 ## Reproduce the reported evaluation
 

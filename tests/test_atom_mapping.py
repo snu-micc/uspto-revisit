@@ -1,6 +1,8 @@
 import pytest
 
 from uspto_revisit.atom_mapping import (
+    _install_localmapper_compatibility,
+    _legacy_resource_filename,
     add_atom_mapping_columns,
     map_reaction_values,
     normalize_localmapper_reaction,
@@ -24,6 +26,22 @@ class FakeMapper:
             for reaction in values
         ]
         return results[0] if single else results
+
+
+def test_legacy_resource_filename_resolves_packaged_file():
+    path = _legacy_resource_filename("uspto_revisit", "__init__.py")
+    assert path.endswith("__init__.py")
+
+
+def test_localmapper_compatibility_disables_distributed_rpc(monkeypatch):
+    import sys
+
+    monkeypatch.delitem(sys.modules, "dgl.distributed", raising=False)
+    _install_localmapper_compatibility()
+
+    distributed = sys.modules["dgl.distributed"]
+    assert distributed.__name__ == "dgl.distributed"
+    assert distributed.DistGraph.__module__ == "uspto_revisit.atom_mapping"
 
 
 def test_parse_reaction_smiles_accepts_serialized_list():
