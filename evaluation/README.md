@@ -116,6 +116,13 @@ success when it is filtered. The selected gemini-3.6-flash configuration
 achieves 272/400 (68.0%). Row-level outcomes are retained in
 `results/step_by_step/`.
 
+The step-by-step script also writes
+`table_s14_noise_free_steps_gemini-3.6-flash-high.csv`. This manuscript-facing
+table uses the fixed set of 283 noise-free paragraphs as the denominator for
+all overall step rates. Conditional rates for steps 1–6 use only paragraphs
+that passed the preceding step; exact-extraction accuracy is evaluated
+independently against the ground truth and therefore has no conditional rate.
+
 ## 4. Template-frequency sensitivity
 
 Run:

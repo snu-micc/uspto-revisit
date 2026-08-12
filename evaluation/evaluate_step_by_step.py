@@ -332,6 +332,58 @@ def build_summary(flags: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def build_noise_free_step_table(flags: pd.DataFrame) -> pd.DataFrame:
+    """Build the manuscript step table on the fixed noise-free denominator."""
+    noise_free = flags.loc[flags["noise_label"].eq("noise-free")].copy()
+    reference_n = len(noise_free)
+    if reference_n == 0:
+        raise ValueError("No noise-free rows were available for step evaluation.")
+
+    stages = [
+        ("LLM generation", "generation_success"),
+        ("Structured output", "structured_output_success"),
+        ("Reaction-step processing", "reaction_processing_success"),
+        ("Name-to-SMILES conversion", "name_to_smiles_success"),
+        ("Atom mapping", "atom_mapping_success"),
+        ("Template processing", "template_processing_success"),
+    ]
+    active = pd.Series(True, index=noise_free.index)
+    rows: list[dict[str, Any]] = []
+    for stage, column in stages:
+        conditional_n = int(active.sum())
+        active = active & noise_free[column].eq(1)
+        success_n = int(active.sum())
+        rows.append(
+            {
+                "step": stage,
+                "success_n": success_n,
+                "reference_n": reference_n,
+                "success_over_reference": f"{success_n}/{reference_n}",
+                "overall_success_rate_percent": 100 * success_n / reference_n,
+                "conditional_success_n": success_n,
+                "conditional_evaluated_n": conditional_n,
+                "conditional_success_rate_percent": (
+                    100 * success_n / conditional_n if conditional_n else math.nan
+                ),
+            }
+        )
+
+    exact_n = int(noise_free["extraction_exact"].eq(1).sum())
+    rows.append(
+        {
+            "step": "Exact-extraction accuracy",
+            "success_n": exact_n,
+            "reference_n": reference_n,
+            "success_over_reference": f"{exact_n}/{reference_n}",
+            "overall_success_rate_percent": 100 * exact_n / reference_n,
+            "conditional_success_n": math.nan,
+            "conditional_evaluated_n": math.nan,
+            "conditional_success_rate_percent": math.nan,
+        }
+    )
+    return pd.DataFrame(rows)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -372,12 +424,20 @@ def main() -> int:
 
     flags = build_row_flags(review, pipeline, table2, table3, args.model)
     summary = build_summary(flags)
+    noise_free_steps = build_noise_free_step_table(flags)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     row_path = output_dir / f"step_by_step_row_flags_{args.model}.csv"
     summary_path = output_dir / f"step_by_step_summary_{args.model}.csv"
+    noise_free_path = output_dir / f"table_s14_noise_free_steps_{args.model}.csv"
     flags.to_csv(row_path, index=False, encoding="utf-8-sig")
     summary.to_csv(summary_path, index=False, encoding="utf-8-sig", float_format="%.6f")
+    noise_free_steps.to_csv(
+        noise_free_path,
+        index=False,
+        encoding="utf-8-sig",
+        float_format="%.4f",
+    )
 
     headline = summary.set_index("stage")
     extraction = headline.loc["Exact extraction (noise-free only)"]
@@ -389,6 +449,7 @@ def main() -> int:
     print(f"Strict end-to-end: {int(end_to_end.success_n)}/{int(end_to_end.evaluated_n)} ({100*end_to_end.conditional_success_rate:.1f}%)")
     print(f"Row-level output: {row_path}")
     print(f"Summary output: {summary_path}")
+    print(f"Noise-free manuscript table: {noise_free_path}")
     return 0
 
 
