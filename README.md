@@ -9,9 +9,10 @@ The pipeline has two stages:
 1. **Reaction extraction:** an LLM converts a patent title and experimental
    paragraph into structured reaction information, which is resolved to SMILES
    and atom-mapped with LocalMapper.
-2. **Denoising:** a template-anomaly filter flags singleton transformation
-   templates or reactions for which an assignable reaction center cannot be
-   obtained.
+2. **Denoising:** the primary template-anomaly filter flags reactions for which
+   an assignable reaction center cannot be obtained. Template-frequency cutoffs
+   (N=1, N<5, and N<10) are evaluated separately as an exploratory sensitivity
+   analysis and are not part of the primary criterion.
 
 The repository can reproduce the reported metrics without calling a vendor API;
 all 19 evaluated model-configuration outputs are included.
@@ -27,6 +28,9 @@ result/model_outputs/           Final outputs for all 19 configurations
 evaluation/ground_truth_review.csv
                                 Final expert annotations (400 paragraphs)
 evaluation/*.py                 Scoring and sensitivity-analysis scripts
+evaluation/build_template_threshold_audit.py
+                                Links released population frequencies to the benchmark
+evaluation/data/                Inputs and provenance for evaluation artifacts
 evaluation/results/             Reproduced tables and row-level outcomes
 benchmarks/                     Contextual outputs from prior studies
 tests/                          Unit tests
@@ -97,6 +101,52 @@ configuration are:
 
 See [evaluation/README.md](evaluation/README.md) for definitions and the exact
 denominators used by every metric.
+
+## ORDerly-flagged population data artifact
+
+The population file used to link the exploratory template-frequency analysis
+to the 400-paragraph benchmark is distributed as the versioned release artifact
+[`grants_issue.zip`](https://github.com/snu-micc/uspto-revisit/releases/download/data-v1.0.0/grants_issue.zip)
+from the `data-v1.0.0` release. It is kept outside the Git history because of
+its size. The archive contains `grants_issue.csv` with 623,290 data rows and the
+following columns:
+
+```text
+Year, PatentNumber, ParagraphNum, ReactionSmiles, Template, Reagent,
+NAtomChanges, TemplateFreq, NMolecules, Issue
+```
+
+Expected SHA-256:
+
+```text
+C5F6A5D1FEF673F247FCE5A481438E33594C32FFDB09807F7A2478D8E1D0EEBF
+```
+
+Download the archive to `evaluation/data/grants_issue.zip`, verify the
+checksum, and rebuild the 400-row audit and sensitivity table:
+
+```bash
+curl -L https://github.com/snu-micc/uspto-revisit/releases/download/data-v1.0.0/grants_issue.zip -o evaluation/data/grants_issue.zip
+python evaluation/build_template_threshold_audit.py
+python evaluation/evaluate_threshold_sensitivity.py
+```
+
+PowerShell checksum verification:
+
+```powershell
+Get-FileHash evaluation/data/grants_issue.zip -Algorithm SHA256
+```
+
+`grants_issue.zip` is the released ORDerly-flagged subset, not the complete
+approximately 1.9-million-reaction USPTO corpus. Its `Template` and
+`TemplateFreq` columns are precomputed upstream fields used in the reported
+exploratory analysis; `TemplateFreq` is not obtained by counting templates only
+within the 623,290 released rows. The release and scripts reproduce the link
+from those published values to the benchmark and the resulting threshold
+sensitivity table. They do **not** regenerate the historical template
+assignments or corpus-level frequencies from the raw/full USPTO corpus. See
+[evaluation/data/README.md](evaluation/data/README.md) for the schema, checksum,
+and provenance boundary.
 
 ## Benchmark and annotations
 
@@ -202,6 +252,8 @@ in this repository.
 
 - `.env`, API keys, logs, caches, and batch-job metadata are excluded.
 - Publication outputs and the final annotation files are versioned.
+- The large `grants_issue.zip` population artifact is distributed through a
+  versioned data release rather than committed to Git history.
 - No train/test split was applied to the 400-paragraph benchmark because it was
   used exclusively for evaluation.
 - The source patent data and third-party tools remain subject to their original

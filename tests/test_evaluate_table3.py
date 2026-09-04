@@ -45,12 +45,80 @@ def test_missing_product_atom_maps_cause_template_failure():
     assert result["template_failure"] == 1
 
 
-def test_singleton_issue_marks_template_anomaly():
+def test_singleton_metadata_does_not_mark_primary_template_anomaly(tmp_path):
+    model = "model-a"
+    review = pd.DataFrame(
+        [
+            {
+                "idx": 0,
+                "rare_template_input": 1,
+                f"{model}_has_unresolved_nosmi": 0,
+            }
+        ]
+    )
+    manifest = pd.DataFrame(
+        [
+            {
+                "source_row": 0,
+                "ground_truth_valid": False,
+                "ground_truth_source": "no_valid_ground_truth",
+                "ground_truth_count": 0,
+                "_accepted_signatures": [],
+            }
+        ]
+    )
+    pd.DataFrame(
+        [
+            {
+                f"{model}_rxn": '["CBr.O>>CO"]',
+                f"{model}_mapped_rxn": (
+                    '["[CH3:1][Br:2].[OH:3]>>[CH3:1][OH:3]"]'
+                ),
+                f"{model}_mapping_template": '["template"]',
+                f"{model}_mapping_error": "[]",
+            }
+        ]
+    ).to_csv(tmp_path / f"{model}_reaction_smiles_final.csv", index=False)
+
+    flags = evaluate_table3.build_flags(
+        review,
+        manifest,
+        tmp_path,
+        (model,),
+    )
+
+    assert flags.loc[0, "template_failure"] == 0
+    assert flags.loc[0, "identical_structures"] == 0
+    assert flags.loc[0, "rare_template"] == 0
+
+
+def test_template_failure_marks_primary_template_anomaly():
     model = "model-a"
     row = pd.Series(
         {
-            f"{model}_rxn": '["C>>C"]',
-            f"{model}_mapped_rxn": '["[CH3:1]>>[CH3:1]"]',
+            f"{model}_rxn": '["C>>CO"]',
+            f"{model}_mapped_rxn": '["[CH3:1]>>[CH3:1][OH:2]"]',
+            f"{model}_mapping_template": "[]",
+            f"{model}_mapping_error": "[]",
+        }
+    )
+
+    result = evaluate_table3.evaluate_model_heuristics(
+        row,
+        model=model,
+        relevant_nosmi=False,
+    )
+
+    assert result["template_failure"] == 1
+    assert result["rare_template"] == 1
+
+
+def test_identical_structure_marks_primary_template_anomaly():
+    model = "model-a"
+    row = pd.Series(
+        {
+            f"{model}_rxn": '["CC>>CC"]',
+            f"{model}_mapped_rxn": '["[CH3:1][CH3:2]>>[CH3:1][CH3:2]"]',
             f"{model}_mapping_template": '["template"]',
             f"{model}_mapping_error": "[]",
         }
@@ -59,10 +127,11 @@ def test_singleton_issue_marks_template_anomaly():
     result = evaluate_table3.evaluate_model_heuristics(
         row,
         model=model,
-        issue_rare=True,
         relevant_nosmi=False,
     )
 
+    assert result["template_failure"] == 0
+    assert result["identical_structures"] == 1
     assert result["rare_template"] == 1
 
 

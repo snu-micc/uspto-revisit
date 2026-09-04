@@ -1,0 +1,61 @@
+{
+  "inputs": {
+    "population": {
+      "archive_member": "grants_issue.csv",
+      "archive_member_crc32": "33375c81",
+      "archive_member_size": 371968178,
+      "format": "zip",
+      "frequency_flag_counts": {
+        "N<10": 159047,
+        "N<5": 130075,
+        "N=1": 79074
+      },
+      "matched_unique_reactions": 398,
+      "matching_population_records": 1132,
+      "path": "evaluation/data/grants_issue.zip",
+      "rows_scanned": 623290,
+      "rows_with_blank_template_frequency": 0,
+      "sha256": "c5f6a5d1fef673f247fce5a481438e33594c32ffdb09807f7a2478d8e1d0eebf",
+      "unique_benchmark_reactions": 398
+    },
+    "sample": {
+      "path": "examples/input.csv",
+      "rows": 400,
+      "sha256": "fe6e9270854570d69a42aece3945df531347d7a4a239c45bf4890efa7171cd07"
+    },
+    "table3_flags": {
+      "path": "evaluation/results/table3/table3_flags.csv",
+      "selected_model_rows": 400,
+      "sha256": "ff92ca27406228ff0f4b43ec191a3430da91f65c6ed6add861ac7130c3e32ee9"
+    }
+  },
+  "model": "gemini-3.6-flash-high",
+  "outputs": {
+    "audit": {
+      "path": "evaluation/data/template_threshold_audit.csv",
+      "rows": 400,
+      "sha256": "9e259c1903cc44a3218c56795cf37380e63be6dffd98a45fb5ba12fb4b556bee"
+    },
+    "linkage": {
+      "path": "evaluation/results/template_threshold_linkage.csv",
+      "rows": 400,
+      "sha256": "8b712eafd133f9ea14038f0343b532da1d23bd15108effa57cac4285128ffd7f"
+    }
+  },
+  "schema_version": 1,
+  "scope": "Links stored grants_issue TemplateFreq values to the benchmark; does not regenerate frequencies from the full USPTO corpus.",
+  "thresholds": {
+    "N<10": {
+      "benchmark_frequency_flags": 117,
+      "benchmark_union_filtered": 195
+    },
+    "N<5": {
+      "benchmark_frequency_flags": 93,
+      "benchmark_union_filtered": 176
+    },
+    "N=1": {
+      "benchmark_frequency_flags": 0,
+      "benchmark_union_filtered": 94
+    }
+  }
+}

@@ -31,3 +31,6 @@ htmlcov/
 
 # Rebuilt locally from the released ground truth and model outputs.
 evaluation/benchmark_all_configurations.csv
+
+# Distributed as a versioned GitHub Release asset.
+/evaluation/data/grants_issue.zip

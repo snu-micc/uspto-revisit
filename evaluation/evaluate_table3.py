@@ -384,7 +384,6 @@ def evaluate_model_heuristics(
     result_row: pd.Series,
     *,
     model: str,
-    issue_rare: bool,
     relevant_nosmi: bool,
 ) -> dict[str, Any]:
     raw_reactions = parse_list(result_row.get(f"{model}_rxn", ""))
@@ -444,10 +443,11 @@ def evaluate_model_heuristics(
     result["many_products"] = int(any(step["many_products"] for step in steps))
     result["many_reagents"] = int(any(step["many_reagents"] for step in steps))
     result["no_reagent"] = int(any(step["no_reagent"] for step in steps))
+    # The primary Template-anomaly screen is model-derived. Corpus-frequency
+    # thresholds (including singleton status) are evaluated only in the
+    # separate threshold-sensitivity analysis and must not affect Table 3.
     result["rare_template"] = int(
-        issue_rare
-        or result["template_failure"]
-        or result["identical_structures"]
+        result["template_failure"] or result["identical_structures"]
     )
     return result
 
@@ -503,7 +503,6 @@ def build_flags(
             evaluated = evaluate_model_heuristics(
                 result_row,
                 model=model,
-                issue_rare=bool(int(review_row.get("rare_template_input", 0) or 0)),
                 relevant_nosmi=relevant_nosmi,
             )
 

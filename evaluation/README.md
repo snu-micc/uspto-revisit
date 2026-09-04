@@ -85,10 +85,12 @@ copies are not written because they can be reconstructed from
 `table3_metrics.csv`.
 
 The evaluated heuristics are many-products, many-reactants, many-reagents,
-no-reagent, and template anomaly. A template anomaly is flagged when a
-singleton template is present or when a reliable transformation template
-cannot be obtained because of unresolved structures, mapping/template failure,
-or no detectable reactant-product structural change.
+no-reagent, and template anomaly. Under the primary criterion, a template
+anomaly is flagged when a reliable reaction center cannot be assigned because
+of unresolved structures, mapping/template failure, or no detectable
+reactant-product structural change. A low template frequency, including N=1,
+is not part of this primary Table 3 criterion. Frequency cutoffs are assessed
+only in the exploratory sensitivity analysis described in Section 4.
 
 ## 3. Step-specific and end-to-end evaluation
 
@@ -125,15 +127,61 @@ independently against the ground truth and therefore has no conditional rate.
 
 ## 4. Template-frequency sensitivity
 
-Run:
+The repository versions the downstream 400-row input
+`data/template_threshold_audit.csv`, so the reported exploratory N=1, N<5, and
+N<10 comparison can be reproduced directly:
 
 ```bash
 python evaluation/evaluate_threshold_sensitivity.py
 ```
 
-The script compares N=1, N<5, and N<10 while leaving template/mapping failure
-and no-transformation conditions unchanged. It reads the released 400-row audit
-file in `data/template_threshold_audit.csv`.
+The script changes only the frequency cutoff while leaving template/mapping
+failure and no-transformation conditions unchanged. N=1 is therefore a
+sensitivity setting, not the primary template-anomaly definition.
+
+### Rebuild the 400-row frequency audit
+
+The versioned population artifact
+[`grants_issue.zip`](https://github.com/snu-micc/uspto-revisit/releases/download/data-v1.0.0/grants_issue.zip)
+is available from the `data-v1.0.0` release. It contains 623,290 data rows from
+the ORDerly-flagged subset. Place it at `evaluation/data/grants_issue.zip`,
+verify its SHA-256, and run:
+
+```bash
+python evaluation/build_template_threshold_audit.py
+python evaluation/evaluate_threshold_sensitivity.py
+```
+
+Expected SHA-256:
+
+```text
+C5F6A5D1FEF673F247FCE5A481438E33594C32FFDB09807F7A2478D8E1D0EEBF
+```
+
+`build_template_threshold_audit.py` links the stored `TemplateFreq` values in
+the released population file to the 400 benchmark reactions, combines them
+with the selected model's mapping/template-failure and no-transformation flags,
+validates the linkage, and rewrites `data/template_threshold_audit.csv`.
+`evaluate_threshold_sensitivity.py` then produces
+`results/template_threshold_sensitivity.csv`.
+
+The released population schema is:
+
+```text
+Year, PatentNumber, ParagraphNum, ReactionSmiles, Template, Reagent,
+NAtomChanges, TemplateFreq, NMolecules, Issue
+```
+
+This workflow has a deliberate provenance boundary. `grants_issue.zip` is the
+623,290-row flagged subset, not the raw/full approximately 1.9-million-reaction
+USPTO corpus. `Template` and `TemplateFreq` are precomputed upstream fields;
+the repository does not include the historical extraction workflow required to
+regenerate those two fields from the full corpus. In particular,
+`TemplateFreq` must not be interpreted as a frequency newly calculated within
+the 623,290 released rows. The code reproduces the benchmark linkage and Table
+S22-style exploratory aggregation from the released values, not full-corpus
+template extraction. Detailed field definitions and provenance are in
+[`data/README.md`](data/README.md).
 
 ## 5. Weighted extrapolation
 
