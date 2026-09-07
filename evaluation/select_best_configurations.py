@@ -34,7 +34,7 @@ FAMILIES = {
     "gemini-3.6-flash-low": "gemini-3.6-flash",
     "gemini-3.6-flash-high": "gemini-3.6-flash",
 }
-EFFORT_RANK = {"off": 0, "none": 0, "nonreasoning": 0, "low": 1, "high": 2}
+EFFORT_RANK = {"high": 0, "low": 1, "off": 2, "none": 2, "nonreasoning": 2}
 FAMILY_ORDER = (
     "qwen-3.5-9B",
     "fine-tuned qwen-3.5-9B",
@@ -55,21 +55,8 @@ def effort_rank(method: str) -> int:
     )
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--metrics",
-        type=Path,
-        default=Path("evaluation/results/table2/table2_metrics.csv"),
-    )
-    parser.add_argument(
-        "--output",
-        type=Path,
-        default=Path("evaluation/results/table2_best_models.csv"),
-    )
-    args = parser.parse_args()
-
-    metrics = pd.read_csv(args.metrics)
+def select_best_metrics(metrics: pd.DataFrame) -> pd.DataFrame:
+    """Maximize reaction accuracy, preferring higher reasoning on exact ties."""
     original = metrics.loc[metrics["method"].eq("original_data")]
     models = metrics.loc[metrics["method"].isin(FAMILIES)].copy()
     models["model_family"] = models["method"].map(FAMILIES)
@@ -87,7 +74,24 @@ def main() -> int:
     )
     selected = selected.sort_values("model_family")
     selected["extraction_method"] = selected["model_family"].astype(str)
-    selected = pd.concat([original, selected[metrics.columns]], ignore_index=True)
+    return pd.concat([original, selected[metrics.columns]], ignore_index=True)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--metrics",
+        type=Path,
+        default=Path("evaluation/results/table2/table2_metrics.csv"),
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("evaluation/results/table2_best_models.csv"),
+    )
+    args = parser.parse_args()
+
+    selected = select_best_metrics(pd.read_csv(args.metrics))
     methods = tuple(selected["method"])
     args.output.parent.mkdir(parents=True, exist_ok=True)
     publication_table(selected, methods).to_csv(

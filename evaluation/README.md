@@ -52,7 +52,11 @@ interval.
 Table 2 uses only the 283 noise-free paragraphs. All 19 configuration-specific
 results are written to `results/table2/table2.csv`.
 `results/table2_best_models.csv` retains the highest-accuracy configuration for
-each model family; ties are resolved in favor of the lower reasoning effort.
+each model family; exact reaction-accuracy ties are resolved in favor of the
+higher reasoning effort (`high`, then `low`, then `off`/`none`). Thus, gpt-5.4
+uses `high` when `low` and `high` both achieve 237/283 (83.7456%). All component
+metrics in the selected row come from that same configuration. This selection
+rule does not change the reasoning setting used when generating model outputs.
 The manuscript-format table reports percentages to four decimal places;
 `table2_metrics.csv` retains the underlying full-precision ratios.
 

@@ -1,0 +1,6 @@
+# Preserve hashes of the released original data and training modules on checkout.
+src/*.py -text
+data/*.jsonl -text
+outputs/*.jsonl -text
+qwen3_5_9b_sft_messages.jsonl -text
+scripts/*.sbatch text eol=lf

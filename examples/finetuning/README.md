@@ -18,6 +18,12 @@ removes double JSON encoding, validates every target, and preserves all 70
 records. Apply the tokenizer revision's own chat template during preprocessing;
 do not insert model-specific special tokens directly into the JSONL file.
 
-The released data are the exact task targets used in the study. Hardware- and
-framework-specific training launch settings should be recorded alongside any
-new fine-tuning run because they may affect numerical reproducibility.
+The Qwen run used **4-bit QLoRA**, with 56 training examples and 14 held-out
+examples from these 70 records. The held-out examples were used for checkpoint
+selection and baseline/fine-tuned JSON-format, ROUGE-L, and exact-match
+comparison; they are separate from the 400-paragraph publication benchmark.
+
+The reported base-model revision, training settings, checkpoint losses, and
+hardware/software environment are recorded in
+[qwen3.5-9b/README.md](qwen3.5-9b/README.md) and the machine-readable
+[reported_run_config.json](qwen3.5-9b/reported_run_config.json).

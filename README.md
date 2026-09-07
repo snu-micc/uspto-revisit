@@ -181,7 +181,9 @@ outputs for:
 
 Reasoning-specific results are retained for auditability, while
 `evaluation/results/table2_best_models.csv` reports one best-performing
-configuration per model family.
+configuration per model family. Exact reaction-accuracy ties prefer higher
+reasoning effort, so the selected gpt-5.4 row uses `high` and its corresponding
+component precision/recall values.
 
 ## Run a new extraction
 
@@ -237,6 +239,17 @@ The exact fine-tuning examples are provided under `examples/finetuning/`:
   conversational format used for qwen-3.5-9B;
 - `qwen3.5-9b/convert_gpt_examples_to_qwen35.py`: deterministic conversion and
   validation script.
+
+Qwen3.5-9B was adapted using **4-bit QLoRA**, with 56 examples for training
+and 14 for evaluation. The selected adapter was `checkpoint-42` (epoch 3),
+which had the lowest evaluation loss, 0.0712597. The full reported workflow,
+base-model revision, hyperparameters, and hardware/software versions are in
+the [Qwen training record](examples/finetuning/qwen3.5-9b/README.md#reported-training-workflow)
+and [JSON configuration record](examples/finetuning/qwen3.5-9b/reported_run_config.json).
+Original training/inference/comparison modules, the exact 56/14 split, and
+14-example baseline/fine-tuned outputs are included in that directory. The
+[checkpoint-42 adapter](https://github.com/snu-micc/uspto-revisit/releases/tag/qwen3.5-9b-qlora-checkpoint-42)
+is distributed as a GitHub Release with SHA-256 checksums.
 
 The fine-tuning examples and the 400 evaluation paragraphs are disjoint. See
 [examples/finetuning/README.md](examples/finetuning/README.md) for details.

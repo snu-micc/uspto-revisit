@@ -1,0 +1,11 @@
+/models/
+/hf-cache/
+/tmp/
+/.venv/
+/.conda/
+/outputs/qlora/
+/checkpoint-42/adapter_model.safetensors
+/checkpoint-42/tokenizer.json
+/checkpoint-42/tokenizer_config.json
+/checkpoint-42/chat_template.jinja
+/*.zip
