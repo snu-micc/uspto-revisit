@@ -1,10 +1,10 @@
 {
   "sha256": {
-    "qwen3_5_9b_sft_messages.jsonl": "6bdca34125b12e9a8eef6ed855cac06f4ac7de567e1e1e796a1e2517de78fcdd",
+    "qwen3_5_9b_sft_messages.jsonl": "434c57efe3a6eee2ffc3d138f72e9854f181d4d684423c2102e8f9d948e2997b",
     "data/train.jsonl": "55f8bb64d1f431757eaab579feca9b759db218ab86f9ec35feb3a39b9ebef932",
     "data/eval.jsonl": "af78e7697a92c172b14d21db208105e18d3fd3598083f5748e85909d2ff1e038",
-    "outputs/baseline.jsonl": "480b03a5366b07187fb4fc2af41c991b44f8ee811e9a820078d132147e8563d5",
-    "outputs/finetuned.jsonl": "165d0352e5a60142d67d650bb347636f76d1dc183461e9538e264bf077a8ce72",
+    "outputs/baseline.jsonl": "6f71e16e318944a3e48ee5a6e7d5d745f6efc5feb24dd7669e391d4bb2624dde",
+    "outputs/finetuned.jsonl": "eae19fa35261cb6de0387bb8211105baf426eb8e7d47b1eaa3c587ae2648181f",
     "src/__init__.py": "b2a4e957f076f8515b1477d57b582ead53e8538fea7cf0f2472bda6d646518ec",
     "src/compare.py": "726c0ddd096045855d2dd698995ba9c95d538532eb795f60aa452763a13d531e",
     "src/data.py": "7757f624aa96fc7f3efb085ab393f1c0c003d4eda43f107ab701e85fc5104421",
@@ -17,5 +17,6 @@
   },
   "original_training_script_unchanged": true,
   "split_verified_against_seed_42": true,
-  "original_prediction_text_and_references_unchanged": true
+  "original_prediction_text_and_references_unchanged": true,
+  "jsonl_line_endings": "LF; original JSON records and prediction text preserved"
 }
