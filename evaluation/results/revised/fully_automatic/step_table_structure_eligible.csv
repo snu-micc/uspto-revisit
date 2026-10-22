@@ -1,0 +1,8 @@
+﻿step,success_n,reference_n,success_over_reference,overall_success_rate_percent,conditional_success_n,conditional_evaluated_n,conditional_success_rate_percent
+LLM generation,289,289,289/289,100.0,289.0,289.0,100.0
+Structured output,289,289,289/289,100.0,289.0,289.0,100.0
+Reaction-step processing,289,289,289/289,100.0,289.0,289.0,100.0
+Name-to-SMILES conversion,260,289,260/289,89.96539792387543,260.0,289.0,89.96539792387543
+Atom mapping,260,289,260/289,89.96539792387543,260.0,260.0,100.0
+Template processing,237,289,237/289,82.00692041522491,237.0,260.0,91.15384615384616
+Exact-extraction accuracy,216,289,216/289,74.74048442906575,,,

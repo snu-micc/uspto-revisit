@@ -1,0 +1,7 @@
+# Store the released Ai et al. preprocessing tables byte for byte. One raw
+# model-output cell contains a bare line feed, which line-ending conversion
+# would otherwise rewrite on checkout.
+benchmarks/ai_et_al/preprocessing/*.csv -text
+
+# The re-query recording is verified against the SHA-256 in its capture file.
+result/name_resolution/requery_*.jsonl -text

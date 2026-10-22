@@ -6,7 +6,9 @@ import argparse
 import ast
 import json
 import math
+import re
 from collections import Counter
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 
@@ -110,6 +112,56 @@ def product_labels(raw_output: str) -> set[str]:
         return set()
     products = parsed.get("Products", {}) if isinstance(parsed, dict) else {}
     return {str(label) for label in products} if isinstance(products, dict) else set()
+
+
+# Scope of a multi-step extraction in the comparison: every step (default, as in the
+# published tables) or only the step that forms the title compound.
+TITLE_STEP_ONLY = False
+TITLE_MATCH_THRESHOLD = 0.5
+
+
+def configure_step_scope(*, title_step_only: bool = False) -> None:
+    global TITLE_STEP_ONLY
+    TITLE_STEP_ONLY = title_step_only
+
+
+def product_names(raw_output: str) -> dict[str, str]:
+    try:
+        parsed = json.loads(raw_output)
+        if isinstance(parsed, str):
+            parsed = json.loads(parsed)
+    except (TypeError, ValueError, json.JSONDecodeError):
+        return {}
+    products = parsed.get("Products", {}) if isinstance(parsed, dict) else {}
+    return {str(label): str(name) for label, name in products.items()} if isinstance(products, dict) else {}
+
+
+def compact_name(value: Any) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(value).lower())
+
+
+def title_step_index(record: pd.Series, prefix: str) -> int | None:
+    """Step that forms the title compound, chosen from the model output and the title only.
+
+    The extracted product whose name is most similar to the title is located among the
+    step products of the skeleton. If no product name resembles the title or the product
+    forms in no step, the last step is used. The reference is never consulted. Returns
+    None for single-step outputs.
+    """
+    steps = parse_list(record.get(f"{prefix}_skeleton", ""))
+    if len(steps) < 2:
+        return None
+    title = compact_name(record.get("title", ""))
+    scored = sorted(
+        (SequenceMatcher(None, title, compact_name(name)).ratio(), label)
+        for label, name in product_names(str(record.get("prediction", "") or "")).items()
+    )
+    if scored and scored[-1][0] >= TITLE_MATCH_THRESHOLD:
+        label = scored[-1][1]
+        for index, step in enumerate(steps):
+            if label in {token.split("(", 1)[0] for token in step.rsplit(">", 1)[-1].split(".")}:
+                return index
+    return len(steps) - 1
 
 
 def display_skeleton(skeleton: Any, raw_output: str, nosmi_labels: dict[str, str]) -> str:
@@ -320,16 +372,23 @@ def lowe_signature(value: Any) -> str | None:
 def model_row(record: pd.Series, prefix: str) -> dict[str, Any]:
     raw_output = str(record.get("prediction", "") or "")
     nosmi_labels = unresolved_nosmi_labels(record.get(f"{prefix}_smiles", ""))
+    skeleton_steps = parse_list(record.get(f"{prefix}_skeleton", ""))
+    reactions = parse_list(record.get(f"{prefix}_rxn"))
+    mapped = parse_list(record.get(f"{prefix}_mapped_rxn"))
+    mapping_errors = parse_list(record.get(f"{prefix}_mapping_error"))
+    step = title_step_index(record, prefix) if TITLE_STEP_ONLY else None
+    if step is not None:
+        # Steps are aligned by position in the skeleton, reaction, mapping and error lists.
+        skeleton_steps, reactions, mapped, mapping_errors = (
+            values[step:step + 1] for values in (skeleton_steps, reactions, mapped, mapping_errors)
+        )
     skeleton = display_skeleton(
-        record.get(f"{prefix}_skeleton", ""),
+        skeleton_steps if step is not None else record.get(f"{prefix}_skeleton", ""),
         raw_output,
         nosmi_labels,
     )
     unresolved_skeleton_labels = set(nosmi_labels) & skeleton_compound_labels(skeleton)
     has_unresolved_nosmi = bool(unresolved_skeleton_labels)
-    reactions = parse_list(record.get(f"{prefix}_rxn"))
-    mapped = parse_list(record.get(f"{prefix}_mapped_rxn"))
-    mapping_errors = parse_list(record.get(f"{prefix}_mapping_error"))
     (
         reactants,
         reagents,
@@ -369,6 +428,29 @@ def model_row(record: pd.Series, prefix: str) -> dict[str, Any]:
         "mapped_products": mapped_products,
         "product_mapping_complete": product_mapping_complete,
         "mapping_error": " | ".join(error for error in mapping_errors if error.strip()),
+    }
+
+
+def model_columns(model: str, candidate: dict[str, Any]) -> dict[str, Any]:
+    """Per-configuration review columns for one record (see ``model_row``)."""
+    return {
+        f"{model}_raw_output": candidate["raw_output"],
+        f"{model}_generation_error": candidate["generation_error"],
+        f"{model}_skeleton": candidate["skeleton"],
+        f"{model}_unresolved_nosmi": json.dumps(candidate["unresolved_nosmi"]),
+        f"{model}_unresolved_nosmi_in_skeleton": json.dumps(
+            candidate["unresolved_nosmi_in_skeleton"]
+        ),
+        f"{model}_has_unresolved_nosmi": int(candidate["has_unresolved_nosmi"]),
+        f"{model}_mapped_reactions": json.dumps(candidate["mapped_reactions"]),
+        f"{model}_reactants_smiles": json.dumps(candidate["reactants"]),
+        f"{model}_reagents_smiles": json.dumps(candidate["reagents"]),
+        f"{model}_products_smiles": json.dumps(candidate["products"]),
+        f"{model}_mapped_reactants_smiles": json.dumps(candidate["mapped_reactants"]),
+        f"{model}_mapped_reagents_smiles": json.dumps(candidate["mapped_reagents"]),
+        f"{model}_mapped_products_smiles": json.dumps(candidate["mapped_products"]),
+        f"{model}_product_mapping_complete": int(candidate["product_mapping_complete"]),
+        f"{model}_mapping_error": candidate["mapping_error"],
     }
 
 
@@ -468,23 +550,7 @@ def build_queue(
             "automatic_consensus_candidate": int(not manual_required),
         }
         for model, candidate in candidates.items():
-            row[f"{model}_raw_output"] = candidate["raw_output"]
-            row[f"{model}_generation_error"] = candidate["generation_error"]
-            row[f"{model}_skeleton"] = candidate["skeleton"]
-            row[f"{model}_unresolved_nosmi"] = json.dumps(candidate["unresolved_nosmi"])
-            row[f"{model}_unresolved_nosmi_in_skeleton"] = json.dumps(
-                candidate["unresolved_nosmi_in_skeleton"]
-            )
-            row[f"{model}_has_unresolved_nosmi"] = int(candidate["has_unresolved_nosmi"])
-            row[f"{model}_mapped_reactions"] = json.dumps(candidate["mapped_reactions"])
-            row[f"{model}_reactants_smiles"] = json.dumps(candidate["reactants"])
-            row[f"{model}_reagents_smiles"] = json.dumps(candidate["reagents"])
-            row[f"{model}_products_smiles"] = json.dumps(candidate["products"])
-            row[f"{model}_mapped_reactants_smiles"] = json.dumps(candidate["mapped_reactants"])
-            row[f"{model}_mapped_reagents_smiles"] = json.dumps(candidate["mapped_reagents"])
-            row[f"{model}_mapped_products_smiles"] = json.dumps(candidate["mapped_products"])
-            row[f"{model}_product_mapping_complete"] = int(candidate["product_mapping_complete"])
-            row[f"{model}_mapping_error"] = candidate["mapping_error"]
+            row.update(model_columns(model, candidate))
         prior = existing.get(index, {})
         if str(prior.get("ground_truth_valid", "")).strip().lower() in {
             "true",

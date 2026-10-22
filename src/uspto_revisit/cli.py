@@ -29,12 +29,16 @@ from uspto_revisit.nosmi_review import (
 )
 from uspto_revisit.reaction_smiles import process_smiles_data
 from uspto_revisit.smiles_fetch import (
+    RESOLVER_CONFLICT_POLICIES,
     audit_name_smiles_consistency,
     load_cache,
     load_resolution_overrides,
     process_batch,
     reprocess_no_smi,
+    resolver_audit,
     save_cache,
+    set_resolver_conflict_policy,
+    write_resolver_audit,
 )
 
 
@@ -240,6 +244,25 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     retry_parser.add_argument(
+        "--resolver-conflict-policy",
+        choices=RESOLVER_CONFLICT_POLICIES,
+        default="log",
+        help=(
+            "How NoSmi retry handles PubChem/OPSIN/CIR/ChEBI/ChemSpider results whose "
+            "InChIKey connectivity blocks disagree. 'log' (default) keeps the "
+            "first result in priority order, as in the released runs, and only "
+            "records the conflict; 'reject' leaves such names unresolved."
+        ),
+    )
+    retry_parser.add_argument(
+        "--resolver-audit",
+        default=None,
+        help=(
+            "CSV recording every retried name, each resolver's result and the "
+            "agreement status. Default: <output-smiles-dict-stem>_resolver_audit.csv"
+        ),
+    )
+    retry_parser.add_argument(
         "--batch-size",
         type=int,
         default=100,
@@ -432,6 +455,25 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--resolver-conflict-policy",
+        choices=RESOLVER_CONFLICT_POLICIES,
+        default="log",
+        help=(
+            "How NoSmi retry handles PubChem/OPSIN/CIR/ChEBI/ChemSpider results whose "
+            "InChIKey connectivity blocks disagree. 'log' (default) keeps the "
+            "first result in priority order, as in the released runs, and only "
+            "records the conflict; 'reject' leaves such names unresolved."
+        ),
+    )
+    parser.add_argument(
+        "--resolver-audit",
+        default=None,
+        help=(
+            "CSV recording every retried name, each resolver's result and the "
+            "agreement status. Default: <batch-dir>/resolver_audit.csv"
+        ),
+    )
+    parser.add_argument(
         "--fix-names",
         action="store_true",
         help="Normalize compound names before the first lookup pass.",
@@ -613,6 +655,8 @@ async def run_retry_no_smi(args: argparse.Namespace) -> Path:
         cache_path = None
 
     load_resolution_overrides(args.overrides)
+    set_resolver_conflict_policy(getattr(args, "resolver_conflict_policy", "log"))
+    resolver_audit.clear()
 
     semaphore = asyncio.Semaphore(args.reprocess_concurrency)
     async with aiohttp.ClientSession(
@@ -627,6 +671,16 @@ async def run_retry_no_smi(args: argparse.Namespace) -> Path:
         )
     if cache_path:
         save_cache(cache_path)
+    resolver_audit_path = (
+        Path(args.resolver_audit)
+        if getattr(args, "resolver_audit", None)
+        else recovered_dict_path.with_name(f"{recovered_dict_path.stem}_resolver_audit.csv")
+    )
+    conflicts = write_resolver_audit(resolver_audit_path)
+    if conflicts:
+        logging.warning(
+            "Resolvers disagreed for %s retried names; see %s", conflicts, resolver_audit_path
+        )
 
     with recovered_dict_path.open("r", encoding="utf-8-sig") as handle:
         smiles_dicts = json.load(handle)
@@ -702,6 +756,8 @@ async def maybe_reprocess_no_smi(
     reprocess_concurrency: int,
     skip_reprocess: bool,
     overrides: str | Path | None = None,
+    resolver_conflict_policy: str = "log",
+    resolver_audit_path: str | Path | None = None,
 ) -> Path:
     import aiohttp
 
@@ -711,6 +767,8 @@ async def maybe_reprocess_no_smi(
         return initial_path
 
     load_resolution_overrides(overrides)
+    set_resolver_conflict_policy(resolver_conflict_policy)
+    resolver_audit.clear()
     semaphore = asyncio.Semaphore(reprocess_concurrency)
     async with aiohttp.ClientSession(
         connector=aiohttp.TCPConnector(ssl=aiohttp_ssl_context())
@@ -722,6 +780,10 @@ async def maybe_reprocess_no_smi(
             semaphore,
             batch_size=batch_size,
         )
+    audit_path = Path(resolver_audit_path) if resolver_audit_path else batch_dir / "resolver_audit.csv"
+    conflicts = write_resolver_audit(audit_path)
+    if conflicts:
+        logging.warning("Resolvers disagreed for %s retried names; see %s", conflicts, audit_path)
     return final_path
 
 
@@ -785,6 +847,8 @@ async def run_pipeline(args: argparse.Namespace) -> Path:
         reprocess_concurrency=args.reprocess_concurrency,
         skip_reprocess=args.skip_reprocess,
         overrides=args.overrides,
+        resolver_conflict_policy=args.resolver_conflict_policy,
+        resolver_audit_path=args.resolver_audit,
     )
     conflict_count = audit_name_smiles_consistency(
         batch_dir / "smiles_cache.pkl",

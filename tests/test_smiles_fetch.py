@@ -165,3 +165,123 @@ def test_chebi_does_not_accept_short_acronym_synonym(monkeypatch):
     )
 
     assert result == (None, None)
+
+
+def test_known_smiles_table_parses_and_dma_is_dimethylacetamide():
+    for name, smiles in smiles_fetch.DEFAULT_KNOWN_SMILES.items():
+        assert smiles_fetch.canonicalize_smiles(smiles), name
+    dma = smiles_fetch._known_smiles("DMA")
+    assert smiles_fetch.structure_identity(dma)[0] == "FXHOOIRPVKKKFG-UHFFFAOYSA-N"
+    assert smiles_fetch._known_smiles("Pd/C") == "[Pd]"
+
+
+def test_compare_resolver_results_classifies_agreement():
+    compare = smiles_fetch.compare_resolver_results
+    assert compare([])["resolver_agreement"] == "none"
+    assert compare([("PubChem", "CCO")])["resolver_agreement"] == "single_source"
+    assert compare([("PubChem", "CCO"), ("OPSIN", "OCC")])["resolver_agreement"] == "agree"
+    stereo = compare(
+        [("PubChem", "C[C@H](N)C(=O)O"), ("CIR", "CC(N)C(=O)O")]
+    )
+    assert stereo["resolver_agreement"] == "stereo_or_protonation_only"
+    assert stereo["resolver_disagreement"] == 0
+    conflict = compare([("PubChem", "CN(C)C(C)=O"), ("ChEBI", "CC(N)=O")])
+    assert conflict["resolver_agreement"] == "conflict"
+    assert conflict["resolver_disagreement"] == 1
+    assert conflict["resolver_candidates"] == "PubChem=CN(C)C(C)=O | ChEBI=CC(N)=O"
+
+
+def _patch_resolvers(monkeypatch, results):
+    def make(source):
+        async def fake(session, name, semaphore, max_retries):
+            return results.get(source, (None, None))
+
+        return fake
+
+    monkeypatch.setattr(smiles_fetch, "get_smiles_from_pubchem", make("PubChem"))
+    monkeypatch.setattr(smiles_fetch, "get_smiles_from_opsin", make("OPSIN"))
+    monkeypatch.setattr(smiles_fetch, "get_smiles_from_cir", make("CIR"))
+    monkeypatch.setattr(smiles_fetch, "get_smiles_from_chebi", make("ChEBI"))
+
+    async def fake_chemspider(name):
+        return results.get("ChemSpider", (None, None))
+
+    monkeypatch.setattr(smiles_fetch, "get_smiles_from_chemspider_async", fake_chemspider)
+    monkeypatch.setattr(smiles_fetch, "smiles_cache", {})
+
+
+def test_resolver_conflict_is_logged_without_changing_selection(monkeypatch, tmp_path):
+    _patch_resolvers(
+        monkeypatch,
+        {"OPSIN": ("CC(N)=O", "OPSIN"), "ChEBI": ("CN(C)C(C)=O", "ChEBI")},
+    )
+    smiles_fetch.resolver_audit.clear()
+    smiles_fetch.set_resolver_conflict_policy("log")
+
+    result = asyncio.run(
+        smiles_fetch.resolve_no_smi_name("ambiguous amide", session=object(), semaphore=object())
+    )
+
+    assert result == ("CC(N)=O", "OPSIN")
+    record = smiles_fetch.resolver_audit["ambiguousamide"]
+    assert record["resolver_disagreement"] == 1
+    assert record["selected_source"] == "OPSIN"
+    audit_path = tmp_path / "resolver_audit.csv"
+    assert smiles_fetch.write_resolver_audit(audit_path) == 1
+    assert "ambiguousamide" in audit_path.read_text(encoding="utf-8-sig")
+
+
+def test_resolver_conflict_reject_policy_leaves_name_unresolved(monkeypatch):
+    _patch_resolvers(
+        monkeypatch,
+        {"PubChem": ("CC(N)=O", "PubChem"), "CIR": ("CN(C)C(C)=O", "CIR")},
+    )
+    smiles_fetch.resolver_audit.clear()
+    try:
+        smiles_fetch.set_resolver_conflict_policy("reject")
+        result = asyncio.run(
+            smiles_fetch.resolve_no_smi_name("ambiguous amide", session=object(), semaphore=object())
+        )
+    finally:
+        smiles_fetch.set_resolver_conflict_policy("log")
+
+    assert result == (None, None)
+    assert smiles_fetch.resolver_audit["ambiguousamide"]["selected_smiles"] == ""
+    assert smiles_fetch.smiles_cache == {}
+
+
+def test_resolver_agreement_keeps_first_priority_result(monkeypatch):
+    _patch_resolvers(
+        monkeypatch,
+        {"PubChem": ("OCC", "PubChem"), "OPSIN": ("CCO", "OPSIN")},
+    )
+    smiles_fetch.resolver_audit.clear()
+    smiles_fetch.set_resolver_conflict_policy("reject")
+    try:
+        result = asyncio.run(
+            smiles_fetch.resolve_no_smi_name("ethyl alcohol", session=object(), semaphore=object())
+        )
+    finally:
+        smiles_fetch.set_resolver_conflict_policy("log")
+
+    assert result == ("CCO", "PubChem")
+    assert smiles_fetch.resolver_audit["ethylalcohol"]["resolver_agreement"] == "agree"
+
+
+def test_element_names_resolve_to_diatomic_molecules(monkeypatch):
+    # OPSIN and the shared cache gave one atom for "hydrogen", "bromine", ... and [C]=O for CO.
+    assert [smiles_fetch.canonicalize_smiles(s) for s in ("[H]", "[Br]", "[Cl]", "[I]", "[N]", "[C]=O")] == [
+        "[H][H]", "BrBr", "ClCl", "II", "N#N", "[C-]#[O+]",
+    ]
+    # Hydrogen halides, ions and hydride keep their structure.
+    assert [smiles_fetch.canonicalize_smiles(s) for s in ("Br", "Cl", "[Br-]", "[H-]", "[H+]")] == [
+        "Br", "Cl", "[Br-]", "[H-]", "[H+]",
+    ]
+
+    async def opsin(_session, name, _semaphore, max_retries):
+        return ("[Br]", "OPSIN") if name == "bromine" else (None, None)
+
+    monkeypatch.setattr(smiles_fetch, "get_smiles_from_opsin", opsin)
+    monkeypatch.setitem(smiles_fetch.smiles_cache, "hydrogen", "[H]")
+    assert asyncio.run(smiles_fetch.get_smiles(None, "hydrogen", False, None)) == ("[H][H]", "Cache")
+    assert asyncio.run(smiles_fetch.get_smiles(None, "bromine", False, None)) == ("BrBr", "OPSIN")

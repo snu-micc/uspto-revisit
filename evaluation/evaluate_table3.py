@@ -13,6 +13,25 @@ from typing import Any
 import pandas as pd
 from rdkit import Chem, RDLogger
 
+try:
+    from evaluation.curation_ablation import (
+        ablate,
+        add_sensitivity_arguments,
+        apply_curation_ablation,
+        automatic_ablate,
+        resolve_sensitivity,
+        sensitivity_root,
+    )
+except ModuleNotFoundError:
+    from curation_ablation import (  # type: ignore[no-redef]
+        ablate,
+        add_sensitivity_arguments,
+        apply_curation_ablation,
+        automatic_ablate,
+        resolve_sensitivity,
+        sensitivity_root,
+    )
+
 RDLogger.DisableLog("rdApp.*")
 
 MODELS = (
@@ -51,6 +70,22 @@ HEURISTIC_LABELS = {
     "rare_template": "Template-anomaly",
 }
 COMPONENT_FIELDS = ("reactants", "reagents", "products")
+
+# Structure-matching options. The defaults reproduce the published tables;
+# configure_matching() is called only for the --strict-* sensitivity options.
+STRICT_STRUCTURES = False
+FIRST_REFERENCE_ONLY = False
+
+
+def configure_matching(
+    *,
+    strict_structures: bool = False,
+    first_reference_only: bool = False,
+) -> None:
+    """Set how structures and reference alternatives are compared."""
+    global STRICT_STRUCTURES, FIRST_REFERENCE_ONLY
+    STRICT_STRUCTURES = bool(strict_structures)
+    FIRST_REFERENCE_ONLY = bool(first_reference_only)
 
 
 def is_blank(value: Any) -> bool:
@@ -108,6 +143,24 @@ def split_reaction(reaction: str) -> tuple[list[str], list[str], list[str]]:
 
 
 def comparison_smiles(smiles: str) -> str | None:
+    """Canonicalize a structure for comparison with the ground truth.
+
+    By default this is ``relaxed_comparison_smiles``. With
+    ``configure_matching(strict_structures=True)`` only atom maps are removed;
+    stereochemistry, formal charge, hydrogen count and isotopes are kept.
+    """
+    if not STRICT_STRUCTURES:
+        return relaxed_comparison_smiles(smiles)
+    molecule = Chem.MolFromSmiles(smiles)
+    if molecule is None:
+        return None
+    molecule = Chem.Mol(molecule)
+    for atom in molecule.GetAtoms():
+        atom.SetAtomMapNum(0)
+    return Chem.MolToSmiles(molecule, canonical=True, isomericSmiles=True)
+
+
+def relaxed_comparison_smiles(smiles: str) -> str | None:
     """Canonicalize while ignoring atom maps, stereo, charge, and protonation."""
     molecule = Chem.MolFromSmiles(smiles)
     if molecule is None:
@@ -201,7 +254,11 @@ def build_ground_truth_manifest(review: pd.DataFrame) -> pd.DataFrame:
         valid = parse_bool(row["ground_truth_valid"])
         if valid:
             first_signature = signature_from_row(row, "ground_truth_")
-            second_signature = signature_from_row(row, "ground_truth_2_")
+            second_signature = (
+                None
+                if FIRST_REFERENCE_ONLY
+                else signature_from_row(row, "ground_truth_2_")
+            )
             source = "human_validated"
         else:
             first_signature = None
@@ -254,7 +311,9 @@ def mapped_component_info(smiles: str) -> tuple[set[int], str | None, bool]:
         atom.GetAtomicNum() == 1 or atom.GetAtomMapNum() > 0
         for atom in molecule.GetAtoms()
     )
-    return maps, comparison_smiles(smiles), all_heavy_atoms_mapped
+    # The heuristic's identical-structure test always uses the relaxed form, so
+    # the strict matching options change only the comparison with the reference.
+    return maps, relaxed_comparison_smiles(smiles), all_heavy_atoms_mapped
 
 
 def evaluate_mapped_step(
@@ -472,16 +531,25 @@ def build_flags(
     manifest: pd.DataFrame,
     results_dir: Path,
     models: tuple[str, ...],
+    result_frames: dict[str, pd.DataFrame] | None = None,
 ) -> pd.DataFrame:
+    """Row-level Table 3 decisions.
+
+    ``result_frames`` replaces the files in ``results_dir`` for the given
+    configurations; the curated-resolution switches pass rebuilt outputs.
+    """
     review_by_idx = review.set_index("idx", drop=False)
     manifest_by_idx = manifest.set_index("source_row", drop=False)
     rows = []
 
     for model in models:
         path = results_dir / f"{model}_reaction_smiles_final.csv"
-        if not path.is_file():
+        if result_frames is not None and model in result_frames:
+            result = result_frames[model].fillna("")
+        elif not path.is_file():
             raise FileNotFoundError(path)
-        result = pd.read_csv(path, encoding="utf-8-sig").fillna("")
+        else:
+            result = pd.read_csv(path, encoding="utf-8-sig").fillna("")
         inferred = infer_model(path, result)
         if inferred != model:
             raise ValueError(f"Model mismatch for {path.name}: {inferred}")
@@ -647,10 +715,97 @@ def build_parser() -> argparse.ArgumentParser:
         help="Finalized ground-truth review CSV.",
     )
     parser.add_argument("--results-dir", default="result/model_outputs")
-    parser.add_argument("--output-dir", default="evaluation/results/table3")
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help=(
+            "Default: evaluation/results/table3, or "
+            "evaluation/results/sensitivity/<variant>/table3 when a sensitivity "
+            "option is used."
+        ),
+    )
     parser.add_argument("--primary-model", default="gemini-3.6-flash-high")
     parser.add_argument("--models", nargs="*", default=list(MODELS))
+    add_sensitivity_arguments(parser)
     return parser
+
+
+def prepare_sensitivity(
+    args: argparse.Namespace,
+    review: pd.DataFrame,
+    models: tuple[str, ...],
+    table: str,
+    results_dir: str | Path = "result/model_outputs",
+) -> tuple[
+    pd.DataFrame,
+    Path,
+    dict[str, Any],
+    pd.DataFrame | None,
+    dict[str, pd.DataFrame] | None,
+]:
+    """Apply the optional sensitivity switches shared by Tables 2 and 3.
+
+    Returns (review, output directory, options, audit, rebuilt outputs); the
+    last two are None unless a curated-resolution switch is used.
+    """
+    options = resolve_sensitivity(args)
+    variant = options["variant"]
+    default_dir = (
+        sensitivity_root(variant) / table
+        if variant
+        else Path("evaluation/results") / table
+    )
+    output_dir = Path(args.output_dir) if args.output_dir else default_dir
+    configure_matching(
+        strict_structures=options["strict_structures"],
+        first_reference_only=options["first_reference_only"],
+    )
+    audit = None
+    outputs = None
+    if options["name_resolution"] == "fully-automatic":
+        review, audit, outputs = automatic_ablate(
+            review,
+            models,
+            override_path=options["override_path"],
+            row_decision_path=options["row_decision_path"],
+            requery_log=options["requery_log"],
+            order=options["resolution_order"],
+            results_dir=results_dir,
+        )
+    elif options["override_path"] or options["row_decision_path"]:
+        review, audit, outputs = ablate(
+            review,
+            models,
+            override_path=options["override_path"],
+            row_decision_path=options["row_decision_path"],
+            override_scope=options["override_scope"],
+            results_dir=results_dir,
+        )
+    return review, output_dir, options, audit, outputs
+
+
+def write_sensitivity_record(
+    output_dir: Path,
+    options: dict[str, Any],
+    audit: pd.DataFrame | None,
+) -> None:
+    """Record which non-default options produced a sensitivity output."""
+    if not options["variant"]:
+        return
+    record = {key: value for key, value in options.items()}
+    record["note"] = (
+        "Sensitivity analysis; the published tables use none of these options."
+    )
+    (output_dir / "sensitivity_options.json").write_text(
+        json.dumps(record, indent=2),
+        encoding="utf-8",
+    )
+    if audit is not None:
+        audit.to_csv(
+            output_dir / "curation_ablation_audit.csv",
+            index=False,
+            encoding="utf-8-sig",
+        )
 
 
 def main() -> int:
@@ -661,12 +816,17 @@ def main() -> int:
 
     review = pd.read_csv(args.review, encoding="utf-8-sig").fillna("")
     review["idx"] = review["idx"].astype(int)
+    review, output_dir, options, audit, outputs = prepare_sensitivity(
+        args, review, models, "table3", args.results_dir
+    )
     manifest = build_ground_truth_manifest(review)
-    flags = build_flags(review, manifest, Path(args.results_dir), models)
+    flags = build_flags(
+        review, manifest, Path(args.results_dir), models, result_frames=outputs
+    )
     metrics = build_metrics(flags, models)
 
-    output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    write_sensitivity_record(output_dir, options, audit)
     flags.to_csv(
         output_dir / "table3_flags.csv",
         index=False,
@@ -684,6 +844,8 @@ def main() -> int:
         encoding="utf-8-sig",
     )
 
+    if options["variant"]:
+        print(f"Sensitivity variant: {options['variant']}")
     print(f"Evaluated {len(models)} models across {len(review)} finalized rows.")
     print(f"Primary manuscript-format table: {output_dir / 'table3.csv'}")
     return 0

@@ -16,11 +16,14 @@ import pandas as pd
 from uspto_revisit.atom_mapping import add_atom_mapping_columns, create_localmapper
 from uspto_revisit.reaction_smiles import _coerce_mapping, process_smiles_data
 from uspto_revisit.smiles_fetch import (
+    RESOLVER_CONFLICT_POLICIES,
     load_cache,
     load_resolution_overrides,
     normalize_name_key,
     process_batch_final,
+    resolver_audit,
     save_cache,
+    set_resolver_conflict_policy,
     should_skip_automatic_resolution,
 )
 
@@ -45,6 +48,16 @@ def parse_args() -> argparse.Namespace:
         help="Auditable NoSmi override JSON. Default: config/nosmi_overrides.json",
     )
     parser.add_argument("--cache", default=None, help="Shared successful-resolution cache.")
+    parser.add_argument(
+        "--resolver-conflict-policy",
+        choices=RESOLVER_CONFLICT_POLICIES,
+        default="log",
+        help=(
+            "'log' (default) keeps the first resolver result in priority order and "
+            "records disagreements in the audit; 'reject' leaves names unresolved "
+            "when resolvers disagree on connectivity."
+        ),
+    )
     parser.add_argument(
         "--output-dir",
         default="result",
@@ -234,6 +247,8 @@ async def run(args: argparse.Namespace) -> None:
     if args.cache:
         load_cache(args.cache)
     loaded_overrides = load_resolution_overrides(args.overrides)
+    set_resolver_conflict_policy(args.resolver_conflict_policy)
+    resolver_audit.clear()
 
     resolution_cache = {}
     semaphore = asyncio.Semaphore(args.concurrency)
@@ -338,6 +353,11 @@ async def run(args: argparse.Namespace) -> None:
                 "lookup_name": override.get("lookup_name", ""),
                 "evidence_url": override.get("evidence_url", ""),
                 "note": override.get("note", ""),
+                # Empty when the name was not sent to the external resolvers
+                # (override SMILES, known alias, cache hit or ambiguity filter).
+                "resolver_agreement": resolver_audit.get(key, {}).get("resolver_agreement", ""),
+                "resolver_disagreement": resolver_audit.get(key, {}).get("resolver_disagreement", ""),
+                "resolver_candidates": resolver_audit.get(key, {}).get("resolver_candidates", ""),
             }
         )
     pd.DataFrame(audit_rows).to_csv(args.audit, index=False, encoding="utf-8-sig")
@@ -372,6 +392,10 @@ async def run(args: argparse.Namespace) -> None:
             "include every literal (NoSmi), including nested-bracket names."
         ),
         "override_count": len(loaded_overrides),
+        "resolver_conflict_policy": args.resolver_conflict_policy,
+        "resolver_conflicts": sum(
+            int(row.get("resolver_disagreement", 0)) for row in resolver_audit.values()
+        ),
     }
     Path(args.summary).write_text(
         json.dumps(summary, ensure_ascii=False, indent=2),

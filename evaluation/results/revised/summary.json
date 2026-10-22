@@ -1,0 +1,79 @@
+{
+  "records": 400,
+  "noise_free": 292,
+  "noisy": 108,
+  "structure_eligible": 289,
+  "structure_unavailable": [
+    14,
+    215,
+    235
+  ],
+  "replaced_records": [
+    15,
+    315
+  ],
+  "salt_formation": {
+    "salt_formation_noise_free": 27,
+    "salt_formation_noisy": 1,
+    "template_anomaly_filtered": 27,
+    "denoising_correct": 285,
+    "denoising_correct_if_noisy": 312,
+    "records": 400
+  },
+  "fully_automatic": {
+    "primary": {
+      "extraction_method": "gemini-3.6-flash (high)",
+      "evaluated_reactions": 289,
+      "excluded_reactions": 111,
+      "reactants_tp": 520,
+      "reactants_fp": 43,
+      "reactants_fn": 92,
+      "reactants_precision": 0.9236234458259325,
+      "reactants_recall": 0.8496732026143791,
+      "reagents_tp": 597,
+      "reagents_fp": 16,
+      "reagents_fn": 122,
+      "reagents_precision": 0.9738988580750407,
+      "reagents_recall": 0.8303198887343533,
+      "products_tp": 338,
+      "products_fp": 7,
+      "products_fn": 40,
+      "products_precision": 0.9797101449275363,
+      "products_recall": 0.8941798941798942,
+      "reaction_correct": 216,
+      "reaction_incorrect": 73,
+      "reaction_accuracy": 0.7474048442906575,
+      "reaction_accuracy_ci_lower": 0.6942889028582336,
+      "reaction_accuracy_ci_upper": 0.7940299321041288
+    },
+    "best_method": "gemini-3.6-flash-high"
+  },
+  "curated": {
+    "primary": {
+      "extraction_method": "gemini-3.6-flash (high)",
+      "evaluated_reactions": 289,
+      "excluded_reactions": 111,
+      "reactants_tp": 561,
+      "reactants_fp": 42,
+      "reactants_fn": 51,
+      "reactants_precision": 0.9303482587064676,
+      "reactants_recall": 0.9166666666666666,
+      "reagents_tp": 660,
+      "reagents_fp": 16,
+      "reagents_fn": 59,
+      "reagents_precision": 0.9763313609467456,
+      "reagents_recall": 0.9179415855354659,
+      "products_tp": 362,
+      "products_fp": 9,
+      "products_fn": 16,
+      "products_precision": 0.9757412398921833,
+      "products_recall": 0.9576719576719577,
+      "reaction_correct": 235,
+      "reaction_incorrect": 54,
+      "reaction_accuracy": 0.8131487889273357,
+      "reaction_accuracy_ci_lower": 0.7642081788640909,
+      "reaction_accuracy_ci_upper": 0.8538737031512071
+    },
+    "best_method": "gemini-3.6-flash-high"
+  }
+}

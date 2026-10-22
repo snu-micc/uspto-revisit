@@ -23,10 +23,16 @@ from uspto_revisit.json_utils import fix_json_string, fix_name, parse_json_objec
 
 nest_asyncio.apply()
 
+# Every value must parse with RDKit; tests/test_smiles_fetch.py checks this.
+# "DMA" is N,N-dimethylacetamide (the solvent sense used in the patents); it was
+# previously mis-encoded as acetamide (CC(=O)N). "Pd/C" follows the
+# active-component convention of config/nosmi_overrides.json; the earlier value
+# "Pd" was not valid SMILES and was silently ignored. "brine" is a deliberate
+# water + NaCl representation of the aqueous mixture.
 DEFAULT_KNOWN_SMILES = {
     "ice": "O",
     "DCM": "C(Cl)Cl",
-    "DMA": "CC(=O)N",
+    "DMA": "CN(C)C(C)=O",
     "DMF": "CN(C)C=O",
     "THF": "C1CCOC1",
     "ether": "CCOCC",
@@ -40,7 +46,7 @@ DEFAULT_KNOWN_SMILES = {
     "lithiumaluminium hydride": "[Li+].[AlH4-]",
     "racemic phenylalanine": "NC(Cc1ccccc1)C(=O)O",
     "brine": "O.[Na+].[Cl-]",
-    "Pd/C": "Pd",
+    "Pd/C": "[Pd]",
     "DMSO": "CS(=O)C",
     "LiAlH4": "[Li+].[AlH4-]",
 }
@@ -137,6 +143,29 @@ AMBIGUOUS_NAME_PATTERNS = (
 smiles_cache = {}
 resolution_overrides = {}
 
+# NoSmi retry queries several resolvers concurrently and, as in the released
+# runs, keeps the first non-empty result in RESOLVER_PRIORITY order. Every
+# retried name is also compared across resolvers. "log" (default) only records
+# the comparison in resolver_audit and the log, so outputs are unchanged;
+# "reject" leaves a name unresolved when resolvers disagree on connectivity.
+RESOLVER_PRIORITY = ("PubChem", "OPSIN", "CIR", "ChEBI", "ChemSpider")
+RESOLVER_CONFLICT_POLICIES = ("log", "reject")
+RESOLVER_AUDIT_FIELDS = (
+    "normalized_name",
+    "name",
+    "lookup_name",
+    "override_kind",
+    "resolver_candidates",
+    "resolver_inchikeys",
+    "resolver_agreement",
+    "resolver_disagreement",
+    "conflict_policy",
+    "selected_source",
+    "selected_smiles",
+)
+resolver_conflict_policy = "log"
+resolver_audit = {}
+
 
 def _clean_compound_name(compound_name: str) -> str:
     return " ".join(str(compound_name).replace("′", "'").split())
@@ -205,6 +234,26 @@ def should_skip_automatic_resolution(compound_name: str) -> bool:
     return any(pattern.search(cleaned) for pattern in AMBIGUOUS_NAME_PATTERNS)
 
 
+# OPSIN and the shared cache read an element name as one atom ("hydrogen" -> [H],
+# "bromine" -> [Br]) and carbon monoxide as the radical [C]=O. A reagent named by its
+# element is the diatomic molecule, and carbon monoxide is [C-]#[O+].
+MOLECULAR_FORMS = {
+    "[H]": "[H][H]",
+    "[N]": "N#N",
+    "[O]": "O=O",
+    "[F]": "FF",
+    "[Cl]": "ClCl",
+    "[Br]": "BrBr",
+    "[I]": "II",
+    "[C]=O": "[C-]#[O+]",
+}
+
+
+def molecular_form(smiles: str) -> str:
+    """Return the molecule for a lone element atom or radical CO; other SMILES unchanged."""
+    return MOLECULAR_FORMS.get(smiles, smiles)
+
+
 def canonicalize_smiles(smiles: str | None) -> str | None:
     """Validate and canonicalize one SMILES value with RDKit."""
     if not isinstance(smiles, str) or not smiles.strip():
@@ -213,10 +262,86 @@ def canonicalize_smiles(smiles: str | None) -> str | None:
         molecule = Chem.MolFromSmiles(smiles.strip())
         if molecule is None:
             return None
-        return Chem.MolToSmiles(molecule, canonical=True, isomericSmiles=True)
+        return molecular_form(Chem.MolToSmiles(molecule, canonical=True, isomericSmiles=True))
     except Exception as exc:
         logging.warning("RDKit rejected SMILES %r: %s", smiles, exc)
         return None
+
+
+def set_resolver_conflict_policy(policy: str) -> None:
+    """Choose how NoSmi retry handles resolvers that disagree ("log" or "reject")."""
+    global resolver_conflict_policy
+    if policy not in RESOLVER_CONFLICT_POLICIES:
+        raise ValueError(
+            f"Unknown resolver conflict policy {policy!r}; "
+            f"choose one of {', '.join(RESOLVER_CONFLICT_POLICIES)}."
+        )
+    resolver_conflict_policy = policy
+
+
+def structure_identity(smiles: str) -> tuple[str, str]:
+    """Return (InChIKey, connectivity block) for one SMILES.
+
+    The first InChIKey block encodes the connectivity layer, so two results
+    with the same block differ at most in stereochemistry, isotopes or
+    protonation. If InChI generation fails, canonical non-isomeric SMILES is
+    used for both values so that the comparison can still be made.
+    """
+    molecule = Chem.MolFromSmiles(smiles)
+    if molecule is None:
+        return "", ""
+    try:
+        inchikey = Chem.MolToInchiKey(molecule)
+    except Exception:  # pragma: no cover - depends on the RDKit build
+        inchikey = ""
+    if inchikey:
+        return inchikey, inchikey.split("-", 1)[0]
+    fallback = Chem.MolToSmiles(molecule, isomericSmiles=False)
+    return fallback, fallback
+
+
+def compare_resolver_results(candidates: list[tuple[str, str]]) -> dict:
+    """Compare non-empty (source, canonical SMILES) results from several resolvers.
+
+    ``resolver_agreement`` is ``none`` (no result), ``single_source``, ``agree``
+    (identical InChIKeys), ``stereo_or_protonation_only`` (same connectivity
+    block, different full InChIKey) or ``conflict`` (different connectivity).
+    """
+    identities = [(source, smiles, *structure_identity(smiles)) for source, smiles in candidates]
+    inchikeys = {inchikey for _source, _smiles, inchikey, _block in identities}
+    blocks = {block for _source, _smiles, _inchikey, block in identities}
+    if not identities:
+        agreement = "none"
+    elif len(identities) == 1:
+        agreement = "single_source"
+    elif len(blocks) > 1:
+        agreement = "conflict"
+    elif len(inchikeys) > 1:
+        agreement = "stereo_or_protonation_only"
+    else:
+        agreement = "agree"
+    return {
+        "resolver_candidates": " | ".join(
+            f"{source}={smiles}" for source, smiles, _inchikey, _block in identities
+        ),
+        "resolver_inchikeys": " | ".join(
+            f"{source}={inchikey}" for source, _smiles, inchikey, _block in identities
+        ),
+        "resolver_agreement": agreement,
+        "resolver_disagreement": int(agreement == "conflict"),
+    }
+
+
+def write_resolver_audit(output_path: str | Path) -> int:
+    """Write the NoSmi resolver comparison table; return the number of conflicts."""
+    destination = Path(output_path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    rows = [resolver_audit[key] for key in sorted(resolver_audit)]
+    with destination.open("w", newline="", encoding="utf-8-sig") as handle:
+        writer = csv.DictWriter(handle, fieldnames=RESOLVER_AUDIT_FIELDS, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+    return sum(int(row.get("resolver_disagreement", 0)) for row in rows)
 
 
 def _known_smiles(compound_name: str) -> str | None:
@@ -488,6 +613,7 @@ async def get_smiles(session, compound_name, fix_name_bool, semaphore):
         max_retries=2,
     )
     if result:
+        result = molecular_form(result)
         smiles_cache[original_name] = result
         smiles_cache[compound_name] = result
         logging.info("Found SMILES for %s from %s: %s", compound_name, source, result)
@@ -608,6 +734,8 @@ async def resolve_no_smi_name(compound_name, session, semaphore):
         get_smiles_from_chemspider_async(lookup_name),
         return_exceptions=True,
     )
+    # Results stay in RESOLVER_PRIORITY order; the first one is selected as before.
+    candidates = []
     for result in results:
         if isinstance(result, Exception):
             logging.error("Error processing %s: %s", original_name, result)
@@ -615,11 +743,37 @@ async def resolve_no_smi_name(compound_name, session, semaphore):
         smiles, source = result
         smiles = canonicalize_smiles(smiles)
         if smiles:
-            smiles_cache[original_name] = smiles
-            smiles_cache[lookup_name] = smiles
-            if override:
-                source = f"Curated:{override.get('kind', 'alias')}+{source}"
-            return smiles, source
+            candidates.append((source, smiles))
+
+    comparison = compare_resolver_results(candidates)
+    selected = candidates[0] if candidates else (None, None)
+    if comparison["resolver_disagreement"]:
+        logging.warning(
+            "[ResolverConflict] %s (lookup %r): %s",
+            original_name,
+            lookup_name,
+            comparison["resolver_candidates"],
+        )
+        if resolver_conflict_policy == "reject":
+            selected = (None, None)
+    resolver_audit[normalize_name_key(original_name)] = {
+        "normalized_name": normalize_name_key(original_name),
+        "name": original_name,
+        "lookup_name": lookup_name,
+        "override_kind": override.get("kind", "") if override else "",
+        **comparison,
+        "conflict_policy": resolver_conflict_policy,
+        "selected_source": selected[0] or "",
+        "selected_smiles": selected[1] or "",
+    }
+
+    source, smiles = selected
+    if smiles:
+        smiles_cache[original_name] = smiles
+        smiles_cache[lookup_name] = smiles
+        if override:
+            source = f"Curated:{override.get('kind', 'alias')}+{source}"
+        return smiles, source
     return None, None
 
 

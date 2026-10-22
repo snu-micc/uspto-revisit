@@ -1,0 +1,5 @@
+﻿Frequency cutoff,Passed (TP),Filtered (FN),Passed (FP),Filtered (TN),Noise-free data saved rate (%),Noisy data filtered rate (%),"Denoising accuracy (%, 95% CI)"
+none (primary criterion),248,44,57,51,84.9,47.2,74.8 (70.3–78.8)
+N=1,248,44,57,51,84.9,47.2,74.8 (70.3–78.8)
+N<5,192,100,32,76,65.8,70.4,67.0 (62.2–71.4)
+N<10,176,116,29,79,60.3,73.1,63.8 (58.9–68.3)

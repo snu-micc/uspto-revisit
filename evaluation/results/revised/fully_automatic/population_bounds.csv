@@ -1,0 +1,9 @@
+﻿quantity,scoring,counts,total,se,ci_low,ci_high,frame_n
+exact_retained_lower,lenient,"{'many_product (> 1)': 49, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 68, 'no_reagent': 44}",249843.32,13194.548593775806,223982.47996393582,275704.1600360642,454475
+exact_retained_upper,lenient,"{'many_product (> 1)': 49, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 68, 'no_reagent': 44}",249843.32,13194.548593775806,223982.47996393582,275704.1600360642,454475
+noise_free_retained,lenient,"{'many_product (> 1)': 54, 'many_reactant (> 2)': 55, 'many_reagent (> 5)': 76, 'no_reagent': 45}",276103.94,12619.370267274662,251370.42876856605,300837.45123143395,454475
+noisy_removed,lenient,"{'many_product (> 1)': 10, 'many_reactant (> 2)': 13, 'many_reagent (> 5)': 11, 'no_reagent': 21}",66583.59,9656.890660478735,47656.43210282046,85510.74789717954,454475
+exact_retained_lower,strict,"{'many_product (> 1)': 49, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 65, 'no_reagent': 44}",243626.69,13356.200607493553,217449.01783902064,269804.36216097936,454475
+exact_retained_upper,strict,"{'many_product (> 1)': 49, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 65, 'no_reagent': 44}",243626.69,13356.200607493553,217449.01783902064,269804.36216097936,454475
+noise_free_retained,strict,"{'many_product (> 1)': 54, 'many_reactant (> 2)': 55, 'many_reagent (> 5)': 76, 'no_reagent': 45}",276103.94,12619.370267274662,251370.42876856605,300837.45123143395,454475
+noisy_removed,strict,"{'many_product (> 1)': 10, 'many_reactant (> 2)': 13, 'many_reagent (> 5)': 11, 'no_reagent': 21}",66583.59,9656.890660478735,47656.43210282046,85510.74789717954,454475

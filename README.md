@@ -1,71 +1,263 @@
 # LLM-based curation of USPTO reaction data
 
-This repository contains the code, 400-paragraph benchmark, final model
-outputs, fine-tuning examples, and evaluation scripts used in our two-stage
-reaction-data curation study.
+Code, benchmark, model outputs and evaluation scripts for a two-stage curation
+of USPTO reaction data:
 
-The pipeline has two stages:
+1. **Reaction extraction.** An LLM reads a patent title and experimental
+   paragraph and returns the reactants, reagents and products by name. The
+   names are resolved to SMILES and the reaction is atom-mapped with
+   LocalMapper.
+2. **Denoising.** The template-anomaly filter removes reactions for which no
+   reaction center can be assigned. It is compared with the four ORDerly
+   heuristics (many-products, many-reactants, many-reagents and no-reagent).
 
-1. **Reaction extraction:** an LLM converts a patent title and experimental
-   paragraph into structured reaction information, which is resolved to SMILES
-   and atom-mapped with LocalMapper.
-2. **Denoising:** the primary template-anomaly filter flags reactions for which
-   an assignable reaction center cannot be obtained. Template-frequency cutoffs
-   (N=1, N<5, and N<10) are evaluated separately as an exploratory sensitivity
-   analysis and are not part of the primary criterion.
-
-The repository can reproduce the reported metrics without calling a vendor API;
-all 19 evaluated model-configuration outputs are included.
+The benchmark has 400 patent paragraphs, 100 from each ORDerly-flagged
+stratum. The outputs of all 19 evaluated model configurations are included, so
+every reported number can be reproduced offline and without API keys.
 
 ## Repository structure
 
 ```text
-src/uspto_revisit/              Extraction, SMILES conversion, and atom mapping
-prompts/prompt.txt              Prompt used for structured extraction
-examples/input.csv              400-paragraph evaluation input
-examples/finetuning/            Non-overlapping fine-tuning examples
-result/model_outputs/           Final outputs for all 19 configurations
-evaluation/ground_truth_review.csv
-                                Final expert annotations (400 paragraphs)
-evaluation/*.py                 Scoring and sensitivity-analysis scripts
-evaluation/build_template_threshold_audit.py
-                                Links released population frequencies to the benchmark
-evaluation/data/                Inputs and provenance for evaluation artifacts
-evaluation/results/             Reproduced tables and row-level outcomes
-benchmarks/                     Contextual outputs from prior studies
-tests/                          Unit tests
+evaluation/reproduce_revised.py        All results of the manuscript and SI (one command)
+evaluation/rebuild_revised_outputs.py  Rebuilds the revised model outputs (optional)
+evaluation/data/revised/               Benchmark labels, references, input and sample membership
+result/revised/model_outputs/          Outputs of the 19 configurations (fully automatic and curated)
+result/revised/replacement_runs/       The 19 configurations on the two redrawn records
+result/model_outputs/                  Outputs on the first-release input
+result/name_resolution/                Shared name cache and the recorded resolver re-query
+result/configuration_settings.csv      Run settings and query dates of the 19 configurations
+config/nosmi_overrides.json            Curated name-resolution overrides
+result/nosmi_human_review.csv          Record-level name-resolution decisions
+src/uspto_revisit/                     Extraction, name resolution and atom mapping
+prompts/prompt.txt                     Extraction prompt
+scripts/                               Extraction runners and name-resolution pipeline
+examples/finetuning/                   Fine-tuning examples (disjoint from the benchmark)
+benchmarks/                            Outputs of Ai et al. and Zhang et al.
+evaluation/                            Scoring, statistics and first-release evaluation
+tests/                                 Unit tests
 ```
-
-Temporary logs, API batch metadata, caches, intermediate review files, and
-manuscript-editing artifacts are intentionally excluded.
 
 ## Installation
 
-Python 3.10 or later is required. A clean environment is recommended.
+Python 3.10 or later is required.
 
 ```bash
 git clone https://github.com/snu-micc/uspto-revisit.git
 cd uspto-revisit
-python -m pip install -e ".[dev,mapping]"
+python -m pip install -e ".[dev]"
 ```
 
-`pyproject.toml` is the single source of dependency definitions. For evaluation
-without atom mapping, install `.[dev]`; add the `mapping` extra only when
-LocalMapper is required. LocalMapper installs its PyTorch/DGL stack and is
-licensed separately under CC BY-NC-SA 4.0.
+The `mapping` extra (`python -m pip install -e ".[dev,mapping]"`) installs
+LocalMapper and its PyTorch/DGL stack. It is needed only to rebuild model
+outputs or to process new extractions. LocalMapper is licensed separately
+under CC BY-NC-SA 4.0. The project loads DGL for local, single-process
+inference only; see [SECURITY.md](SECURITY.md).
 
-DGL's distributed RPC subsystem is not used by this project and has an
-unpatched deserialization advisory in the current DGL release. The atom-mapping
-entry point therefore prevents that subsystem from loading and supports only
-local, single-process LocalMapper inference. Use
-`uspto_revisit.atom_mapping.create_localmapper()` rather than importing DGL
-directly before the project entry point, and do not expose a DistDGL RPC
-service. See [SECURITY.md](SECURITY.md) for the remaining upstream limitation.
+## Reproduce the results
 
-## Reproduce the reported evaluation
+```bash
+python evaluation/reproduce_revised.py
+```
 
-No API key is required for these commands because the final model outputs are
-included.
+The script scores the stored model outputs against the released labels and
+references. It writes every table, statistical test and figure to
+`evaluation/results/revised/` in about two minutes on a CPU, and it makes no
+model, name-resolver or network call. Percentages are rounded half up to one
+decimal, and intervals are 95% Wilson score intervals unless stated.
+
+Expected values for the selected configuration, gemini-3.6-flash with high
+reasoning and fully automatic name resolution:
+
+| Quantity | Value |
+| --- | --- |
+| Reaction-level exact-match extraction | 216/289 (74.7%; 95% CI 69.4–79.4%) |
+| Strict matching | 210/289 |
+| Original USPTO record, same references | 105/289 (36.3%) |
+| Extraction with curated name resolution | 235/289 (81.3%) |
+| Template-anomaly denoising, all 400 labels | 285/400 (71.3%) |
+| Noise-free retained / noisy removed | 230/292 / 55/108 |
+| End-to-end, all 400 records | 246/400 (61.5%) |
+| Correct retained reactions in the 454,475-record sampling frame | about 250,000 (95% CI 224,000–276,000) |
+
+Files are in `evaluation/results/revised/fully_automatic/` unless another
+folder is given:
+
+| Manuscript or SI | File |
+| --- | --- |
+| Table 2 | `table2.csv` (`table2_raw.csv` unrounded) |
+| Table 3, Figure 1 | `table3_metrics.csv`, `../Figure1.png` |
+| Figure S2 | `../filtering_by_reason.csv`, `../FigureS2.png` |
+| Table S17 (Ai et al.) | `../ai_metrics.csv` |
+| Table S18 | `table_s18.csv` |
+| Table S19 | `step_table_structure_eligible.csv` |
+| Table S20 | `end_to_end_bounds.csv`, `table2_metrics_lenient.csv`, `table3_metrics.csv` |
+| Table S21 | `weighted_extrapolation.csv`, `population_bounds.csv` |
+| Table S22 | `threshold_sensitivity.csv` |
+| Tables S23 and S24 | the same files in `../curated/` |
+| Table S25 | `table2_metrics_strict.csv` |
+| Table S26 | `extraction_paired_tests_lenient.csv` |
+| Table S27 | `denoising_paired_tests.csv`, `end_to_end_paired_tests.csv` |
+| Table S28 | `selection_adjustment.csv` |
+| Table S30 | `../provenance_accuracy.csv` |
+| Table S32 | `../noisy_reason_counts.csv` |
+| Section 2.5 | `../summary.json`, `../label_changes.csv` |
+
+The row-level flags (`table2_flags_*.csv`, `table3_flags.csv` and
+`step_flags_structure_endpoint.csv`) give the outcome behind every count.
+`input_hashes.json` records the SHA-256 of every input file.
+
+### Statistical analyses
+
+- Exact McNemar tests with a Holm correction within each family: the selected
+  configuration against the other 18 and against the original USPTO record,
+  and the template anomaly against each ORDerly heuristic.
+- Selection-adjusted accuracy: the 400 records both select and score the
+  configuration, so nested 5-fold cross-validation stratified by sampling
+  stratum (200 repeats), leave-one-stratum-out and an out-of-bag stratified
+  bootstrap (2,000 resamples) estimate the accuracy of the selection
+  procedure.
+- Population totals: stratified estimates with a finite-population
+  correction on the 454,475-record single-label sampling frame.
+
+The random seeds are fixed (`evaluation/benchmark_statistics.py`), so the
+results are reproduced to the last digit.
+
+### Rebuild the model outputs (optional)
+
+```bash
+python evaluation/rebuild_revised_outputs.py
+```
+
+This builds `result/revised/model_outputs/` from the first-release outputs
+and the replacement runs. It writes to `result/revised/rebuilt/` and reports
+whether every rebuilt file equals the released copy. It needs the `mapping`
+extra, because steps whose components change are re-mapped with LocalMapper.
+
+## Benchmark
+
+`evaluation/data/revised/` contains:
+
+- `ground_truth.csv`: one row per paragraph with `label` (noise-free or
+  noisy), `noisy_reason`, `salt_formation`, `structure_evaluation_eligible`,
+  `structure_exclusion_reason`, `reference_source` and up to two reference
+  reactions (`ground_truth_*` and `ground_truth_2_*`, as reactant, reagent,
+  product and reaction SMILES);
+- `input.csv`: the 400 titles and paragraphs with the original USPTO reaction
+  SMILES (`Lowe_smiles`);
+- `benchmark_sample_membership.csv` and `input_with_provenance.csv`: the
+  stratum, population row, patent and template frequency of every record.
+
+There are 292 noise-free and 108 noisy paragraphs. The noisy reasons are
+untraceable cross-references (75), erroneous chemical names (26) and no
+reaction (7). Of the noise-free paragraphs, 289 have complete molecular
+references. Records 14, 215 and 235 (a dendrimer, a whole-cell catalyst with
+an adsorption resin, and a resin-bound complex) cannot be written as complete
+molecular SMILES. They keep their noise-free label and are left out of the
+structure endpoints only.
+
+Structures are compared after RDKit normalization that removes
+stereochemistry, formal charges, isotope labels and atom-map numbers; the
+primary comparison accepts either reference reaction. Strict matching keeps
+these features and accepts only the first reference.
+
+The labels and references follow these conventions:
+
+- A paragraph that describes several steps is compared on the step that forms
+  the title compound. Each prediction is compared on its step that forms the
+  extracted product whose name best matches the title, or on its last step.
+- Salt formation, salt exchange and diastereomeric salt resolution are
+  noise-free. `salt_formation` marks these 28 paragraphs; one of them is noisy
+  because of an untraceable cross-reference. `summary.json` gives the
+  denoising accuracy if the other 27 were labeled noisy (312/400).
+- An element named as a reagent is the diatomic molecule (H₂, N₂, Cl₂, Br₂ or
+  I₂), and carbon monoxide is `[C-]#[O+]`, in the references and in the
+  outputs of every configuration.
+- Records 15 and 315 of the first release repeated reactions already in the
+  sample (records 8 and 309, from other patents of the same families). Each
+  was replaced by the first eligible record of the same stratum in a
+  reproducible random order (seed 20261021), and all 19 configurations were
+  run on the replacements with the same settings.
+
+`label_changes.csv` in the results lists the paragraphs whose label differs
+from the first release.
+
+## Model outputs
+
+`result/revised/model_outputs/fully_automatic/` (primary) and `curated/` hold
+the reaction SMILES and atom maps of the 19 configurations:
+
+- base and fine-tuned qwen-3.5-9B with reasoning off, low and high;
+- base and fine-tuned gpt-4.1-mini;
+- gpt-5.4 and gpt-5.6-sol with reasoning none, low and high;
+- gemini-2.5-flash with reasoning off;
+- gemini-3.1-pro-preview and gemini-3.6-flash with reasoning low and high.
+
+`result/configuration_settings.csv` gives the model identifier, reasoning
+parameter, output-token limit, API mode and query dates of each
+configuration. Fields that were not recorded are marked `UNKNOWN`.
+
+## Name-to-SMILES resolution
+
+Names are resolved in two passes:
+
+1. the alias table, the local cache and OPSIN;
+2. for names still unresolved: PubChem, OPSIN, NCI CIR, ChEBI and, if
+   `CHEMSPIDER_API_KEY` is set, ChemSpider, queried concurrently. The first
+   non-empty result in that order is kept, and names that look ambiguous or
+   non-molecular are skipped.
+
+Every structure is validated and canonicalized with RDKit. Disagreements
+between resolvers (by InChIKey) are written to `resolver_audit.csv`;
+`--resolver-conflict-policy reject` leaves such names unresolved. An element
+name returned as a single atom (`[H]`, `[N]`, `[Cl]`, `[Br]`, `[I]`) becomes the
+diatomic molecule, and the radical `[C]=O` becomes `[C-]#[O+]`.
+
+Two name-resolution scenarios are evaluated:
+
+- **Fully automatic (primary).** Only the automatic resolvers are used. The
+  127 distinct spellings of the names covered by curated rules were re-queried
+  on 2026-10-16 against PubChem, OPSIN, NCI CIR and ChEBI. The responses are in
+  `result/name_resolution/` and are replayed offline
+  (`evaluation/name_resolution_replay.py`).
+- **Curated (secondary).** In addition, 46 name-resolution overrides
+  (`config/nosmi_overrides.json`) and 44 record-level decisions
+  (`result/nosmi_human_review.csv`) are applied. These rules were written with
+  knowledge of the benchmark.
+
+The API configurations were resolved offline with
+`scripts/name_resolution/run_offline_final_pipeline.py` and the shared name
+cache (`result/name_resolution/shared_master_smiles_cache.csv`); the Qwen
+configurations were resolved with the live pipeline.
+
+## Population counts and sampling frame (Table 1)
+
+The ORDerly-flagged population (`grants_issue.csv`, 623,290 rows) is
+distributed as the release asset
+[`grants_issue.zip`](https://github.com/snu-micc/uspto-revisit/releases/download/data-v1.0.0/grants_issue.zip)
+(SHA-256 `C5F6A5D1FEF673F247FCE5A481438E33594C32FFDB09807F7A2478D8E1D0EEBF`).
+Download it to `evaluation/data/` and run:
+
+```bash
+python evaluation/build_sampling_frame.py --strict
+python evaluation/build_template_threshold_audit.py
+```
+
+| Population | Count |
+| --- | --- |
+| Many-products / many-reactants / many-reagents / no-reagent, any combination | 82,203 / 52,758 / 236,368 / 200,594 |
+| Union of the four flags | 536,372 |
+| Exactly one flag and no other label (sampling frame) | 454,475 (59,282 / 20,163 / 207,221 / 167,809) |
+
+The seed of the original 100-per-stratum draw was not recorded; the membership
+files give the population row of every record instead. `TemplateFreq` is the
+precomputed upstream template frequency. See
+[evaluation/data/README.md](evaluation/data/README.md) for the schema.
+
+## First-release evaluation
+
+The first-release benchmark (283 noise-free and 117 noisy labels in
+`evaluation/ground_truth_review.csv`, outputs in `result/model_outputs/`) is
+scored by:
 
 ```bash
 python evaluation/build_ground_truth_review.py
@@ -77,200 +269,40 @@ python evaluation/evaluate_threshold_sensitivity.py
 python evaluation/evaluate_weighted_extrapolation.py
 ```
 
-The principal outputs are:
-
-```text
-evaluation/results/table2/table2.csv
-evaluation/results/table2/table2_metrics.csv
-evaluation/results/table2_best_models.csv
-evaluation/results/table3/table3.csv
-evaluation/results/table3/table3_metrics.csv
-evaluation/results/step_by_step/step_by_step_summary_gemini-3.6-flash-high.csv
-evaluation/results/template_threshold_sensitivity.csv
-evaluation/results/weighted_extrapolation.csv
-```
-
-Expected headline values for the selected `gemini-3.6-flash-high`
-configuration are:
-
-- reaction-level exact-match accuracy: **86.6%** (245/283);
-- template-anomaly denoising accuracy: **74.8%** (299/400);
-- strict end-to-end accuracy: **68.0%** (272/400);
-- noise-free reactions saved: **86.2%**;
-- noisy reactions filtered: **47.0%**.
-
-See [evaluation/README.md](evaluation/README.md) for definitions and the exact
-denominators used by every metric.
-
-## ORDerly-flagged population data artifact
-
-The population file used to link the exploratory template-frequency analysis
-to the 400-paragraph benchmark is distributed as the versioned release artifact
-[`grants_issue.zip`](https://github.com/snu-micc/uspto-revisit/releases/download/data-v1.0.0/grants_issue.zip)
-from the `data-v1.0.0` release. It is kept outside the Git history because of
-its size. The archive contains `grants_issue.csv` with 623,290 data rows and the
-following columns:
-
-```text
-Year, PatentNumber, ParagraphNum, ReactionSmiles, Template, Reagent,
-NAtomChanges, TemplateFreq, NMolecules, Issue
-```
-
-Expected SHA-256:
-
-```text
-C5F6A5D1FEF673F247FCE5A481438E33594C32FFDB09807F7A2478D8E1D0EEBF
-```
-
-Download the archive to `evaluation/data/grants_issue.zip`, verify the
-checksum, and rebuild the 400-row audit and sensitivity table:
-
-```bash
-curl -L https://github.com/snu-micc/uspto-revisit/releases/download/data-v1.0.0/grants_issue.zip -o evaluation/data/grants_issue.zip
-python evaluation/build_template_threshold_audit.py
-python evaluation/evaluate_threshold_sensitivity.py
-```
-
-PowerShell checksum verification:
-
-```powershell
-Get-FileHash evaluation/data/grants_issue.zip -Algorithm SHA256
-```
-
-`grants_issue.zip` is the released ORDerly-flagged subset, not the complete
-approximately 1.9-million-reaction USPTO corpus. Its `Template` and
-`TemplateFreq` columns are precomputed upstream fields used in the reported
-exploratory analysis; `TemplateFreq` is not obtained by counting templates only
-within the 623,290 released rows. The release and scripts reproduce the link
-from those published values to the benchmark and the resulting threshold
-sensitivity table. They do **not** regenerate the historical template
-assignments or corpus-level frequencies from the raw/full USPTO corpus. See
-[evaluation/data/README.md](evaluation/data/README.md) for the schema, checksum,
-and provenance boundary.
-
-## Benchmark and annotations
-
-The evaluation set contains 400 patent paragraphs sampled equally from four
-ORDerly flag categories. Every ground-truth record was manually reviewed by
-a human evaluator. The public `ground_truth_valid` column uses a single
-Boolean label: `True` means that a valid ground-truth reaction was established
-and `False` means that no valid reaction could be established. The final set
-contains 283 `True` (noise-free) and 117 `False` (noisy) paragraphs. The
-400-paragraph benchmark was used only for evaluation. The 70 fine-tuning
-examples are stored separately and do not overlap with the benchmark.
-
-`evaluation/ground_truth_review.csv` is the authoritative, human-validated
-annotation file. For every `ground_truth_valid=True` row, the final reactant,
-reagent, product, and reaction fields are explicitly materialized; no automatic
-approval label is used.
-Running `evaluation/build_ground_truth_review.py` creates the local working file
-`evaluation/benchmark_all_configurations.csv` from the released annotations and
-model outputs. Because it is fully reproducible, this generated file is not
-versioned.
-
-## Model outputs
-
-`result/model_outputs/` contains the final reaction-SMILES and LocalMapper
-outputs for:
-
-- base and fine-tuned qwen-3.5-9B at none, low, and high reasoning;
-- base and fine-tuned gpt-4.1-mini;
-- gpt-5.4 and gpt-5.6-sol at none, low, and high reasoning;
-- gemini-2.5-flash with reasoning disabled;
-- gemini-3.1-pro-preview and gemini-3.6-flash at low and high reasoning.
-
-Reasoning-specific results are retained for auditability, while
-`evaluation/results/table2_best_models.csv` reports one best-performing
-configuration per model family. Exact reaction-accuracy ties prefer higher
-reasoning effort, so the selected gpt-5.4 row uses `high` and its corresponding
-component precision/recall values.
+These reproduce `evaluation/results/` (gemini-3.6-flash-high: 245/283
+extraction, 299/400 denoising). Their options for name-resolution and
+matching variants are described in [evaluation/README.md](evaluation/README.md).
 
 ## Run a new extraction
 
-Copy the environment template and add only the provider key you intend to use:
-
 ```bash
-cp .env.example .env
+cp .env.example .env          # add the key of the provider you use
+python main.py gpt-extract --provider gemini --model gemini-3.6-flash --input examples/input.csv
+python main.py --input result/my_model_output.csv --model-column prediction \
+  --output-prefix my_model --fix-names --map-atoms
 ```
 
-PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Run extraction on the included input:
-
-```bash
-python main.py gpt-extract --input examples/input.csv
-```
-
-Select Gemini explicitly:
-
-```bash
-python main.py gpt-extract \
-  --provider gemini \
-  --model gemini-3.6-flash \
-  --input examples/input.csv
-```
-
-Generate reaction SMILES and atom mappings from an extraction output:
-
-```bash
-python main.py \
-  --input result/my_model_output.csv \
-  --model-column prediction \
-  --output-prefix my_model \
-  --fix-names \
-  --map-atoms
-```
-
-Chemical names are resolved through PubChem, OPSIN, NCI CIR, ChEBI, and
-optionally ChemSpider. Recovered SMILES are validated and canonicalized with
-RDKit before reaction construction and atom mapping.
+The API extractions were run with `scripts/extraction/`:
+`run_reasoning_controlled_extraction.py` (direct calls with an explicit
+reasoning level) and `run_gemini_low_batch.py` (Gemini Batch API).
 
 ## Fine-tuning data
 
-The exact fine-tuning examples are provided under `examples/finetuning/`:
+`examples/finetuning/` holds the 70 fine-tuning examples, in chat format for
+gpt-4.1-mini (`openai/`) and in the conversational format for qwen-3.5-9B
+(`qwen3.5-9b/`, with the conversion script). Qwen3.5-9B was adapted with 4-bit
+QLoRA on 56 training and 14 evaluation examples; the selected adapter is
+`checkpoint-42`, released as a
+[GitHub Release](https://github.com/snu-micc/uspto-revisit/releases/tag/qwen3.5-9b-qlora-checkpoint-42).
+The training settings are in
+[examples/finetuning/qwen3.5-9b/README.md](examples/finetuning/qwen3.5-9b/README.md).
 
-- `openai/samples_for_finetuning_final.jsonl`: chat-format examples used for
-  gpt-4.1-mini fine-tuning;
-- `qwen3.5-9b/qwen3_5_9b_sft_messages.jsonl`: the same targets converted to the
-  conversational format used for qwen-3.5-9B;
-- `qwen3.5-9b/convert_gpt_examples_to_qwen35.py`: deterministic conversion and
-  validation script.
+## Prior approaches
 
-Qwen3.5-9B was adapted using **4-bit QLoRA**, with 56 examples for training
-and 14 for evaluation. The selected adapter was `checkpoint-42` (epoch 3),
-which had the lowest evaluation loss, 0.0712597. The full reported workflow,
-base-model revision, hyperparameters, and hardware/software versions are in
-the [Qwen training record](examples/finetuning/qwen3.5-9b/README.md#reported-training-workflow)
-and [JSON configuration record](examples/finetuning/qwen3.5-9b/reported_run_config.json).
-Original training/inference/comparison modules, the exact 56/14 split, and
-14-example baseline/fine-tuned outputs are included in that directory. The
-[checkpoint-42 adapter](https://github.com/snu-micc/uspto-revisit/releases/tag/qwen3.5-9b-qlora-checkpoint-42)
-is distributed as a GitHub Release with SHA-256 checksums.
-
-The fine-tuning examples and the 400 evaluation paragraphs are disjoint. See
-[examples/finetuning/README.md](examples/finetuning/README.md) for details.
-
-## Contextual benchmarks
-
-Outputs from Zhang et al. and Ai et al. are included under `benchmarks/` for
-contextual analysis. They are not treated as direct Table 2 comparators because
-their inputs, output schemas, and training objectives differ from the task used
-in this repository.
-
-## Data and security policy
-
-- `.env`, API keys, logs, caches, and batch-job metadata are excluded.
-- Publication outputs and the final annotation files are versioned.
-- The large `grants_issue.zip` population artifact is distributed through a
-  versioned data release rather than committed to Git history.
-- No train/test split was applied to the 400-paragraph benchmark because it was
-  used exclusively for evaluation.
-- The source patent data and third-party tools remain subject to their original
-  licenses and terms.
+`benchmarks/` holds the outputs of Zhang et al. and Ai et al. The Ai et al.
+components scored in Table S17 are in `benchmarks/ai_et_al/preprocessing/`
+and are regenerated by `evaluation/prepare_ai_baseline.py`. The Ai et al.
+model was not run on the two replacement records, so its denominator is 288.
 
 ## Tests
 
@@ -278,5 +310,18 @@ in this repository.
 pytest
 ```
 
-Tests cover JSON parsing, reaction-step processing, SMILES resolution,
-atom-mapping interfaces, CLI behavior, and annotation/evaluation utilities.
+## Environment
+
+`pyproject.toml` defines the dependencies; `requirements.txt` mirrors it. The
+results were verified with the versions in `requirements-lock.txt` (Python
+3.10, pandas 2.3, numpy 2.2, RDKit 2025.09).
+
+## License
+
+No license has been chosen yet; see [LICENSE-PENDING.md](LICENSE-PENDING.md).
+The population data artifact is CC BY-SA 4.0
+([evaluation/data/DATA_LICENSE.md](evaluation/data/DATA_LICENSE.md)).
+
+## Citation
+
+Citation metadata is in [CITATION.cff](CITATION.cff).

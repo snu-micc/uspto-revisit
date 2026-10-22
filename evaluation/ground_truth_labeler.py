@@ -656,9 +656,9 @@ def main() -> None:
         "Ground truth valid", VALIDITY_OPTIONS, key="ground_truth_status"
     )
     st.caption(
-        "True = 사람이 검토하여 유효한 ground-truth reaction을 확정 | "
-        "False = 사람이 검토했으나 유효한 reaction을 확정할 수 없음 | "
-        "unreviewed = 아직 검토하지 않음"
+        "True = reviewed; a valid ground-truth reaction was established | "
+        "False = reviewed; no valid reaction could be established | "
+        "unreviewed = not yet reviewed"
     )
     st.caption("One SMILES per line. The combined ground-truth reaction is generated automatically.")
     ground_truth_1 = ground_truth_editor(1)

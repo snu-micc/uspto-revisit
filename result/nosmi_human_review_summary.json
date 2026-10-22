@@ -1,0 +1,95 @@
+﻿{
+  "review": "result/nosmi_human_review.csv",
+  "decisions": {
+    "keep_unresolved": 82,
+    "exclude_from_mapping": 19,
+    "use_smiles": 44
+  },
+  "approved_row_names": 44,
+  "excluded_row_names": 19,
+  "matched_reviewed_row_names": 19,
+  "unmatched_reviewed_row_names": [
+    "row-0__tartratesaltofethylnipecotate",
+    "row-102__nitricacidsulfuricacidmixture",
+    "row-107__14pyridin2ylphenyl4hydroxy2amino5nnmethoxycarbonyllisoleucylamino6phenyl2azahexanetrihydrochloride",
+    "row-107__14pyridin2ylphenyl4hydroxy2nnmethoxycarbonyllvalylamino5nnmethoxycarbonyllisoleucylamino6phenyl2azahexane",
+    "row-10__3beta5beta14beta17betamethyl14amino32s2hydroxy1phenylmethylethylcarbamoyloxyandrostane17carboxylatehydrochloride",
+    "row-10__3betas5beta14beta17beta14amino32hydroxy1phenylmethylethylaminocarbonyloxyandrostane17carboxylicacidmethylesterhydrochloride",
+    "row-125__11betafluor7alpha5methyl4455667788999tridecafluorononylaminopentylestra13510triene317betadiol",
+    "row-128__5hydroxy5h134thiadiazolo32apyrimidine6carboxamides",
+    "row-128__polyphosphoricacid",
+    "row-135__orthoanisidineormetaanisidine",
+    "row-148__hexanes",
+    "row-14__pamam40",
+    "row-14__pamam40dendrimer",
+    "row-168__164methyl2oxo23dihydrobenzdoxazol6yloxypyrimidin4ylspiropiperidin44pyrido23d13oxazin21hone",
+    "row-16__alacholesterol",
+    "row-16__zalacholesterol",
+    "row-218__dichloro11bisdiphenylphosphinoferrocenepalladiumiidichloromethaneadduct",
+    "row-220__hydrochloridesaltofcis35bistrifluoromethylbenzyl1butyl67dimethoxy2methyl1234tetrahydroquinolin4ylcarbamicacidmethylester",
+    "row-228__r1azabicyclo222oct3ylcarbamicacidbenzylester",
+    "row-235__1a122trifluoromethylphenylsulfanylphenylpiperazine",
+    "row-239__hexanes",
+    "row-249__tetrahydrofuranmethanolmixture",
+    "row-275__disodiumsaltof1carboxymethyl5mercaptotetrazole",
+    "row-289__zmethyl34amino35dimethylphenyl2benzyloxycarbonylacrylatemixtureofzeisomers",
+    "row-313__polyphosphoricacid",
+    "row-337__272mercaptoethylamino9999tetramethyl9h9h22bifluoreny7yl14nitrophenylethanone",
+    "row-337__7bromo9999tetramethyl9h9h22bifluoreny7ylamine",
+    "row-337__n9999tetramethyl74nitrophenylethynyl9h9h22bifluoreny7ylacetamide",
+    "row-364__paraformaldehyde",
+    "row-40__2sethoxy3463heptyl1methylureidopyrid2ylphenylpropanoicacid",
+    "row-40__2sethoxy3463heptyl1methylureidopyrid2ylphenylpropanoicacidhydrochloride",
+    "row-42__styrenemethylstyrenecopolymer",
+    "row-47__2tertbutoxycarbonylethylaminomethyl46ethoxypyridin3yl6methoxybiphenyl3ylaceticacidethylester",
+    "row-4__benzhydrol2235bistrifluoromethylphenylsulfonamido4trifluoromethylphenoxybenzoate",
+    "row-4__benzhydrol22amino4trifluoromethylphenoxybenzoate",
+    "row-51__tertbutylesterof11difluoro6azaspiro25octane6carboxylicacid",
+    "row-79__2s2alpha4alpharr24444224difluorophenyl21h124triazol1ylmethyl13dioxolan4ylmethoxyphenyl1piperazinylphenyl45dihydro5oxo1h124triazol1yl1methylpropyllphenylalaninez2butenedioate",
+    "row-79__2s2alpha4alpharr24444224difluorophenyl21h124triazol1ylmethyl13dioxolan4ylmethoxyphenyl1piperazinylphenyl45dihydro5oxo1h124triazol1yl1methylpropyllphenylalaninez2butenedioate11",
+    "row-80__56methoxy24methoxy35dimethylpyridin2ylmethylsulfinyl1hbenzimidazole",
+    "row-80__56methoxy24methoxy35dimethylpyridin2ylmethylsulfinyl1hbenzimidazolesodiumsalt",
+    "row-80__6methoxy24methoxy35dimethyl2pyridinylmethylsulfinyl1hbenzimidazole",
+    "row-84__alcohol",
+    "row-84__alcoholicsolution",
+    "row-89__lanthanumdi2ethylhexylphosphatesolutionincyclohexane"
+  ],
+  "atom_mapping_rerun": true,
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "replacements": 0,
+      "excluded_components": 12,
+      "changed_rows": 10,
+      "csv": "result\\gemini-3.1-pro-preview_reaction_smiles_final.csv",
+      "smiles_dict": "result\\smiles_batches\\gemini-3.1-pro-preview\\smiles_dict_final.json"
+    },
+    "gpt-4.1-mini": {
+      "replacements": 0,
+      "excluded_components": 11,
+      "changed_rows": 9,
+      "csv": "result\\gpt-4.1-mini_reaction_smiles_final.csv",
+      "smiles_dict": "result\\smiles_batches\\gpt-4.1-mini\\smiles_dict_final.json"
+    },
+    "gpt-5.4": {
+      "replacements": 0,
+      "excluded_components": 10,
+      "changed_rows": 8,
+      "csv": "result\\gpt-5.4_reaction_smiles_final.csv",
+      "smiles_dict": "result\\smiles_batches\\gpt-5.4\\smiles_dict_final.json"
+    },
+    "gpt-5.6-sol": {
+      "replacements": 0,
+      "excluded_components": 14,
+      "changed_rows": 10,
+      "csv": "result\\gpt-5.6-sol_reaction_smiles_final.csv",
+      "smiles_dict": "result\\smiles_batches\\gpt-5.6-sol\\smiles_dict_final.json"
+    },
+    "gpt_4.1_mini_ft": {
+      "replacements": 0,
+      "excluded_components": 12,
+      "changed_rows": 10,
+      "csv": "result\\gpt_4.1_mini_ft_reaction_smiles_final.csv",
+      "smiles_dict": "result\\smiles_batches\\gpt_4.1_mini_ft\\smiles_dict_final.json"
+    }
+  }
+}

@@ -15,21 +15,27 @@ try:
     from evaluation.evaluate_table3 import (
         COMPONENT_FIELDS,
         MODELS,
+        add_sensitivity_arguments,
         build_ground_truth_manifest,
         comparison_smiles,
         components_from_row,
         parse_bool,
+        prepare_sensitivity,
         signature_text,
+        write_sensitivity_record,
     )
 except ModuleNotFoundError:
     from evaluate_table3 import (  # type: ignore[no-redef]
         COMPONENT_FIELDS,
         MODELS,
+        add_sensitivity_arguments,
         build_ground_truth_manifest,
         comparison_smiles,
         components_from_row,
         parse_bool,
+        prepare_sensitivity,
         signature_text,
+        write_sensitivity_record,
     )
 
 RDLogger.DisableLog("rdApp.*")
@@ -230,7 +236,17 @@ def build_flags(
     review: pd.DataFrame,
     input_frame: pd.DataFrame,
     models: tuple[str, ...],
+    *,
+    ai_scoring: str = "coverage",
 ) -> pd.DataFrame:
+    """Row-level Table 2 comparison.
+
+    ``ai_scoring`` applies only to the optional Ai et al. row: ``coverage``
+    (default) counts a reaction as correct when every reference component is
+    present; ``exact`` applies the same exact-match rule as every other method,
+    which is the rule behind the 3.9% (11/283) in SI Table S17.
+    """
+    ai_coverage = ai_scoring == "coverage"
     if len(review) != len(input_frame):
         raise ValueError(
             f"Review CSV has {len(review)} rows but input CSV has "
@@ -291,12 +307,12 @@ def build_flags(
                 slot, selected_ground_truth, comparison = choose_ground_truth(
                     predicted,
                     alternatives,
-                    prefer_coverage=method == AI_METHOD,
+                    prefer_coverage=method == AI_METHOD and ai_coverage,
                 )
                 row.update(comparison)
                 row["matched_ground_truth"] = slot
                 row["ground_truth_signature"] = signature_text(selected_ground_truth)
-                if method == AI_METHOD:
+                if method == AI_METHOD and ai_coverage:
                     row["reaction_correct"] = int(
                         all(
                             bool(comparison[f"{field}_ground_truth_covered"])
@@ -439,7 +455,15 @@ def build_parser() -> argparse.ArgumentParser:
         default="examples/input.csv",
         help="Input CSV containing Lowe_smiles.",
     )
-    parser.add_argument("--output-dir", default="evaluation/results/table2")
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help=(
+            "Default: evaluation/results/table2, or "
+            "evaluation/results/sensitivity/<variant>/table2 when a sensitivity "
+            "option is used."
+        ),
+    )
     parser.add_argument("--models", nargs="*", default=list(MODELS))
     parser.add_argument(
         "--ai-components",
@@ -449,6 +473,22 @@ def build_parser() -> argparse.ArgumentParser:
             "prepare_ai_baseline.py."
         ),
     )
+    parser.add_argument(
+        "--results-dir",
+        default="result/model_outputs",
+        help="Released model outputs; read only by --no-overrides/--no-row-decisions.",
+    )
+    parser.add_argument(
+        "--ai-scoring",
+        choices=("coverage", "exact"),
+        default="coverage",
+        help=(
+            "Reaction-level rule for the optional Ai et al. row only: 'coverage' "
+            "(default) or 'exact' (same rule as all other methods; reproduces SI "
+            "Table S17)."
+        ),
+    )
+    add_sensitivity_arguments(parser)
     return parser
 
 
@@ -516,13 +556,21 @@ def main() -> int:
             models.append(AI_METHOD)
     models_tuple = tuple(models)
     methods = (ORIGINAL_METHOD, *models_tuple)
+    # The curated-resolution switches apply to the 19 configurations only.
+    review, output_dir, options, audit, _outputs = prepare_sensitivity(
+        args,
+        review,
+        tuple(model for model in models_tuple if model != AI_METHOD),
+        "table2",
+        args.results_dir,
+    )
 
     input_frame = pd.read_csv(args.input, encoding="utf-8-sig").fillna("")
-    flags = build_flags(review, input_frame, models_tuple)
+    flags = build_flags(review, input_frame, models_tuple, ai_scoring=args.ai_scoring)
     metrics = build_metrics(flags, methods)
 
-    output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    write_sensitivity_record(output_dir, options, audit)
     flags.to_csv(
         output_dir / "table2_flags.csv",
         index=False,
@@ -552,6 +600,8 @@ def main() -> int:
             "table2.csv is open in another program; wrote the current table "
             f"to {publication_path} instead."
         )
+    if options["variant"]:
+        print(f"Sensitivity variant: {options['variant']}")
     evaluated = int(metrics.iloc[0]["evaluated_reactions"])
     excluded = int(metrics.iloc[0]["excluded_reactions"])
     print(

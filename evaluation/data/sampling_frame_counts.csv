@@ -1,0 +1,23 @@
+﻿frame,group,n,manuscript_value,matches_manuscript,definition
+all_rows,total,623290,623290,1,Every data row of grants_issue.csv.
+exactly_one_of_four,many_products,67030,,,Rows carrying exactly one of the four sampled flags; rare_temp and duplicated may also be present (weighted-extrapolation population).
+exactly_one_of_four,many_reactants,30709,,,Rows carrying exactly one of the four sampled flags; rare_temp and duplicated may also be present (weighted-extrapolation population).
+exactly_one_of_four,many_reagents,224249,,,Rows carrying exactly one of the four sampled flags; rare_temp and duplicated may also be present (weighted-extrapolation population).
+exactly_one_of_four,no_reagent,180009,,,Rows carrying exactly one of the four sampled flags; rare_temp and duplicated may also be present (weighted-extrapolation population).
+exactly_one_of_four,total,501997,501997,1,Rows carrying exactly one of the four sampled flags; rare_temp and duplicated may also be present (weighted-extrapolation population).
+label_any,duplicated,63155,,,Rows whose Issue list contains the label (any combination).
+label_any,many_product (> 1),82203,,,Rows whose Issue list contains the label (any combination).
+label_any,many_reactant (> 2),52758,,,Rows whose Issue list contains the label (any combination).
+label_any,many_reagent (> 5),236368,,,Rows whose Issue list contains the label (any combination).
+label_any,no_reagent,200594,,,Rows whose Issue list contains the label (any combination).
+label_any,rare_temp,79074,,,Rows whose Issue list contains the label (any combination).
+single_label_frame,many_products,59282,59282,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
+single_label_frame,many_reactants,20163,20163,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
+single_label_frame,many_reagents,207221,207221,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
+single_label_frame,no_reagent,167809,167809,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
+single_label_frame,total,454475,454475,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
+table1_any_flag,many_products,82203,82203,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
+table1_any_flag,many_reactants,52758,52758,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
+table1_any_flag,many_reagents,236368,236368,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
+table1_any_flag,no_reagent,200594,200594,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
+table1_any_flag,union,536372,536372,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."

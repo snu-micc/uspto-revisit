@@ -1,0 +1,61 @@
+{
+  "before": {
+    "parsed_unique_names": 183,
+    "occurrences": 398
+  },
+  "after": {
+    "parsed_unique_names": 140,
+    "occurrences": 292
+  },
+  "recovered": {
+    "parsed_unique_names": 43,
+    "occurrences": 106
+  },
+  "models": {
+    "gpt-4.1-mini": {
+      "before_no_smi_occurrences": 117,
+      "after_no_smi_occurrences": 74,
+      "mapped_steps": 346,
+      "total_steps": 424
+    },
+    "gpt_4.1_mini_ft": {
+      "before_no_smi_occurrences": 95,
+      "after_no_smi_occurrences": 74,
+      "mapped_steps": 380,
+      "total_steps": 448
+    },
+    "gpt-5.4": {
+      "before_no_smi_occurrences": 109,
+      "after_no_smi_occurrences": 83,
+      "mapped_steps": 352,
+      "total_steps": 422
+    },
+    "gpt-5.6-sol": {
+      "before_no_smi_occurrences": 77,
+      "after_no_smi_occurrences": 61,
+      "mapped_steps": 379,
+      "total_steps": 434
+    }
+  },
+  "outputs": {
+    "gpt-4.1-mini": {
+      "csv": "result/gpt-4.1-mini_reaction_smiles_final.csv",
+      "smiles_dict": "result/smiles_batches/gpt-4.1-mini/smiles_dict_final.json"
+    },
+    "gpt_4.1_mini_ft": {
+      "csv": "result/gpt_4.1_mini_ft_reaction_smiles_final.csv",
+      "smiles_dict": "result/smiles_batches/gpt_4.1_mini_ft/smiles_dict_final.json"
+    },
+    "gpt-5.4": {
+      "csv": "result/gpt-5.4_reaction_smiles_final.csv",
+      "smiles_dict": "result/smiles_batches/gpt-5.4/smiles_dict_final.json"
+    },
+    "gpt-5.6-sol": {
+      "csv": "result/gpt-5.6-sol_reaction_smiles_final.csv",
+      "smiles_dict": "result/smiles_batches/gpt-5.6-sol/smiles_dict_final.json"
+    }
+  },
+  "audit": "result/nosmi_recovery_audit.csv",
+  "audit_name_scope": "All NoSmi names referenced by reaction skeleton codes are included, including names with nested square brackets.",
+  "override_count": 44
+}

@@ -30,9 +30,27 @@ if str(_bootstrap_root) not in sys.path:
     sys.path.insert(0, str(_bootstrap_root))
 
 try:
-    from evaluation.evaluate_table3 import build_ground_truth_manifest, signature_text
+    from evaluation.evaluate_table3 import (
+        ablate,
+        add_sensitivity_arguments,
+        automatic_ablate,
+        build_ground_truth_manifest,
+        configure_matching,
+        resolve_sensitivity,
+        sensitivity_root,
+        signature_text,
+    )
 except ModuleNotFoundError:
-    from evaluate_table3 import build_ground_truth_manifest, signature_text
+    from evaluate_table3 import (
+        ablate,
+        add_sensitivity_arguments,
+        automatic_ablate,
+        build_ground_truth_manifest,
+        configure_matching,
+        resolve_sensitivity,
+        sensitivity_root,
+        signature_text,
+    )
 
 
 NO_VALUE = {"", "none", "null", "nan", "nosmi", "not found", "not_found"}
@@ -393,12 +411,21 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--table2-flags", type=Path)
     parser.add_argument("--table3-flags", type=Path)
     parser.add_argument("--output-dir", type=Path)
+    add_sensitivity_arguments(parser)
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
     root = args.project_root.resolve()
+    options = resolve_sensitivity(args)
+    # Non-default variants read and write evaluation/results/sensitivity/<variant>/;
+    # run evaluate_table2.py and evaluate_table3.py with the same options first.
+    results_root = (
+        root / sensitivity_root(options["variant"])
+        if options["variant"]
+        else root / "evaluation" / "results"
+    )
     ground_truth = (
         args.ground_truth
         or root / "evaluation" / "benchmark_all_configurations.csv"
@@ -409,18 +436,48 @@ def main() -> int:
     )
     table2_flags = (
         args.table2_flags
-        or root / "evaluation" / "results" / "table2" / "table2_flags.csv"
+        or results_root / "table2" / "table2_flags.csv"
     )
     table3_flags = (
         args.table3_flags
-        or root / "evaluation" / "results" / "table3" / "table3_flags.csv"
+        or results_root / "table3" / "table3_flags.csv"
     )
-    output_dir = args.output_dir or root / "evaluation" / "results" / "step_by_step"
+    output_dir = args.output_dir or results_root / "step_by_step"
 
     review = pd.read_csv(ground_truth, encoding="utf-8-sig").fillna("")
     pipeline = pd.read_csv(pipeline_csv, encoding="utf-8-sig", low_memory=False).fillna("")
     table2 = pd.read_csv(table2_flags, encoding="utf-8-sig", low_memory=False).fillna("")
     table3 = pd.read_csv(table3_flags, encoding="utf-8-sig", low_memory=False).fillna("")
+
+    configure_matching(
+        strict_structures=options["strict_structures"],
+        first_reference_only=options["first_reference_only"],
+    )
+    if options["name_resolution"] == "fully-automatic":
+        # Score the stages on the output rebuilt with automatic name resolution.
+        review, _audit, outputs = automatic_ablate(
+            review.assign(idx=review["idx"].astype(int)),
+            (args.model,),
+            override_path=root / options["override_path"],
+            row_decision_path=root / options["row_decision_path"],
+            requery_log=root / options["requery_log"],
+            order=options["resolution_order"],
+            results_dir=pipeline_csv.parent,
+        )
+        pipeline = outputs[args.model].fillna("")
+    elif options["override_path"] or options["row_decision_path"]:
+        # Score the stages on the output rebuilt without the curated choices.
+        review, _audit, outputs = ablate(
+            review.assign(idx=review["idx"].astype(int)),
+            (args.model,),
+            override_path=root / options["override_path"] if options["override_path"] else None,
+            row_decision_path=(
+                root / options["row_decision_path"] if options["row_decision_path"] else None
+            ),
+            override_scope=options["override_scope"],
+            results_dir=pipeline_csv.parent,
+        )
+        pipeline = outputs[args.model].fillna("")
 
     flags = build_row_flags(review, pipeline, table2, table3, args.model)
     summary = build_summary(flags)
@@ -443,6 +500,8 @@ def main() -> int:
     extraction = headline.loc["Exact extraction (noise-free only)"]
     denoising = headline.loc["Correct denoising decision"]
     end_to_end = headline.loc["Strict end-to-end"]
+    if options["variant"]:
+        print(f"Sensitivity variant: {options['variant']}")
     print(f"Model: {args.model}")
     print(f"Exact extraction: {int(extraction.success_n)}/{int(extraction.evaluated_n)} ({100*extraction.conditional_success_rate:.1f}%)")
     print(f"Denoising: {int(denoising.success_n)}/{int(denoising.evaluated_n)} ({100*denoising.conditional_success_rate:.1f}%)")

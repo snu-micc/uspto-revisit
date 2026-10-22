@@ -1,0 +1,78 @@
+{
+  "query_started_utc": "2026-10-16T08:19:01+00:00",
+  "query_finished_utc": "2026-10-16T08:22:10+00:00",
+  "resolvers": [
+    "PubChem",
+    "OPSIN",
+    "CIR",
+    "ChEBI"
+  ],
+  "not_queried": "ChemSpider (not approved)",
+  "endpoints": {
+    "PubChem": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/SMILES/JSON",
+    "OPSIN": "https://opsin.ch.cam.ac.uk/opsin/{name}.smi",
+    "CIR": "http://cactus.nci.nih.gov/chemical/structure/{name}/smiles",
+    "ChEBI": "https://www.ebi.ac.uk/chebi/backend/api/public/es_search?term={name}&page=1&size=3 and .../public/compound/{id}/"
+  },
+  "min_interval_seconds_per_host": {
+    "pubchem.ncbi.nlm.nih.gov": 0.25,
+    "opsin.ch.cam.ac.uk": 0.2,
+    "cactus.nci.nih.gov": 1.0,
+    "www.ebi.ac.uk": 0.2
+  },
+  "concurrency": 4,
+  "timeout_seconds": 120,
+  "resolver_module_sha256": "56a87b81b15923d9537b1d048082ad36f6ca2cc78824faa81ddd965ef68eb6a1",
+  "names": 127,
+  "requests": 568,
+  "responses_by_host_and_status": {
+    "pubchem.ncbi.nlm.nih.gov 404": 77,
+    "cactus.nci.nih.gov 500": 56,
+    "www.ebi.ac.uk 404": 89,
+    "opsin.ch.cam.ac.uk 404": 73,
+    "pubchem.ncbi.nlm.nih.gov 200": 17,
+    "opsin.ch.cam.ac.uk 200": 22,
+    "cactus.nci.nih.gov 200": 10,
+    "www.ebi.ac.uk 200": 11,
+    "cactus.nci.nih.gov ClientConnectorError: Cannot c": 104,
+    "cactus.nci.nih.gov ClientOSError: [WinError 64] \uc9c0": 10,
+    "pubchem.ncbi.nlm.nih.gov 400": 1
+  },
+  "raw_sha256": "66f8dcff029d9f1a27e327bdb23d5d93e80c65282b23b3a493451c6b4be98f3f",
+  "retries": [
+    {
+      "started_utc": "2026-10-16T08:23:09+00:00",
+      "finished_utc": "2026-10-16T08:29:52+00:00",
+      "interval_seconds": 5.0,
+      "max_attempts_per_url": 6,
+      "urls_retried": 58,
+      "requests": 65,
+      "answered": 57,
+      "still_unanswered": [
+        "http://cactus.nci.nih.gov/chemical/structure/sodium%20meta-periodate/smiles"
+      ]
+    },
+    {
+      "started_utc": "2026-10-16T08:30:10+00:00",
+      "finished_utc": "2026-10-16T08:30:17+00:00",
+      "interval_seconds": 5.0,
+      "max_attempts_per_url": 6,
+      "urls_retried": 1,
+      "requests": 1,
+      "answered": 1,
+      "still_unanswered": []
+    }
+  ],
+  "first_pass_fill": [
+    {
+      "started_utc": "2026-10-16T10:42:53+00:00",
+      "finished_utc": "2026-10-16T10:43:15+00:00",
+      "resolver": "OPSIN only (first-pass get_smiles requests absent from the recording)",
+      "requests": 32,
+      "urls": 32,
+      "status_counts": {
+        "404": 32
+      }
+    }
+  ]
+}

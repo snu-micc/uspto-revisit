@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: >-
+  If you use this code or data, please cite the article below and this
+  repository.
+title: "uspto-revisit: LLM extraction and template-anomaly denoising of USPTO reaction data"
+type: software
+version: 0.1.0
+repository-code: "https://github.com/snu-micc/uspto-revisit"
+# license: add the SPDX identifier here once the authors choose one (see LICENSE-PENDING.md).
+# doi: add the archived release DOI (e.g. Zenodo) when it exists.
+authors:
+  - given-names: Chaewon
+    family-names: Lee
+    affiliation: Seoul National University
+  - given-names: Shuan
+    family-names: Chen
+    affiliation: Seoul National University
+  - given-names: Kai Tzu-iunn
+    family-names: Ong
+    affiliation: Yonsei University
+  - given-names: Jinyoung
+    family-names: Yeo
+    affiliation: Yonsei University
+  - given-names: Jangwook
+    family-names: Choi
+    affiliation: Seoul National University
+  - given-names: Yousung
+    family-names: Jung
+    affiliation: Seoul National University
+keywords:
+  - reaction data curation
+  - USPTO
+  - large language models
+  - atom mapping
+  - reaction templates
+preferred-citation:
+  type: article
+  title: "Clean Reactions from Noisy Patents: LLM Extraction and Template-Aware Denoising for Reaction Data Curation"
+  journal: Digital Discovery
+  notes: "Manuscript DD-ART-09-2026-000710, under review; update with volume, pages and DOI on publication."
+  authors:
+    - given-names: Chaewon
+      family-names: Lee
+    - given-names: Shuan
+      family-names: Chen
+    - given-names: Kai Tzu-iunn
+      family-names: Ong
+    - given-names: Jinyoung
+      family-names: Yeo
+    - given-names: Jangwook
+      family-names: Choi
+    - given-names: Yousung
+      family-names: Jung
