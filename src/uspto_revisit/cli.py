@@ -248,7 +248,7 @@ def build_parser() -> argparse.ArgumentParser:
         choices=RESOLVER_CONFLICT_POLICIES,
         default="log",
         help=(
-            "How NoSmi retry handles PubChem/OPSIN/CIR/ChEBI/ChemSpider results whose "
+            "How NoSmi retry handles PubChem/OPSIN/CIR/ChEBI results whose "
             "InChIKey connectivity blocks disagree. 'log' (default) keeps the "
             "first result in priority order, as in the released runs, and only "
             "records the conflict; 'reject' leaves such names unresolved."
@@ -444,7 +444,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--skip-reprocess",
         action="store_true",
-        help="Skip PubChem/OPSIN/CIR/ChEBI/ChemSpider retry for unresolved compounds.",
+        help="Skip PubChem/OPSIN/CIR/ChEBI retry for unresolved compounds.",
     )
     parser.add_argument(
         "--overrides",
@@ -459,7 +459,7 @@ def build_parser() -> argparse.ArgumentParser:
         choices=RESOLVER_CONFLICT_POLICIES,
         default="log",
         help=(
-            "How NoSmi retry handles PubChem/OPSIN/CIR/ChEBI/ChemSpider results whose "
+            "How NoSmi retry handles PubChem/OPSIN/CIR/ChEBI results whose "
             "InChIKey connectivity blocks disagree. 'log' (default) keeps the "
             "first result in priority order, as in the released runs, and only "
             "records the conflict; 'reject' leaves such names unresolved."

@@ -10,7 +10,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "aiohttp>=3.14.3,<4",
-    "ChemSpiPy>=2,<3",
     "rdkit>=2022.3.4",
     "numpy>=1.26,<3",
     "scipy>=1.11,<2",

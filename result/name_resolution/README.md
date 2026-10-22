@@ -34,11 +34,6 @@ and every exchange was recorded.
   - ChEBI search and record:
     `https://www.ebi.ac.uk/chebi/backend/api/public/es_search?term={name}&page=1&size=3`
     and `https://www.ebi.ac.uk/chebi/backend/api/public/compound/{id}/`
-- **ChemSpider was not queried.** It requires a personal Royal Society of
-  Chemistry API key, and the authors approved queries only to the four public
-  services that need no key. In the released pipeline ChemSpider is the last
-  fallback of the NoSmi retry and is skipped when no key is set, so leaving it
-  out does not change the order of the other resolvers.
 - **Request rules:**
   - The released resolver code (`src/uspto_revisit/smiles_fetch.py`) was used,
     with its own retry rules (back-off on HTTP 429 or busy, no retry on other

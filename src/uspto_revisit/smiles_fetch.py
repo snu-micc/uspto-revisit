@@ -18,7 +18,6 @@ import nest_asyncio
 from rdkit import Chem
 from tqdm import tqdm
 
-from uspto_revisit.chemspider import get_smiles_from_chemspider_async
 from uspto_revisit.json_utils import fix_json_string, fix_name, parse_json_object
 
 nest_asyncio.apply()
@@ -148,7 +147,7 @@ resolution_overrides = {}
 # retried name is also compared across resolvers. "log" (default) only records
 # the comparison in resolver_audit and the log, so outputs are unchanged;
 # "reject" leaves a name unresolved when resolvers disagree on connectivity.
-RESOLVER_PRIORITY = ("PubChem", "OPSIN", "CIR", "ChEBI", "ChemSpider")
+RESOLVER_PRIORITY = ("PubChem", "OPSIN", "CIR", "ChEBI")
 RESOLVER_CONFLICT_POLICIES = ("log", "reject")
 RESOLVER_AUDIT_FIELDS = (
     "normalized_name",
@@ -731,7 +730,6 @@ async def resolve_no_smi_name(compound_name, session, semaphore):
         get_smiles_from_opsin(session, lookup_name, semaphore, max_retries=2),
         get_smiles_from_cir(session, lookup_name, semaphore, max_retries=2),
         get_smiles_from_chebi(session, lookup_name, semaphore, max_retries=2),
-        get_smiles_from_chemspider_async(lookup_name),
         return_exceptions=True,
     )
     # Results stay in RESOLVER_PRIORITY order; the first one is selected as before.

@@ -202,11 +202,6 @@ def _patch_resolvers(monkeypatch, results):
     monkeypatch.setattr(smiles_fetch, "get_smiles_from_opsin", make("OPSIN"))
     monkeypatch.setattr(smiles_fetch, "get_smiles_from_cir", make("CIR"))
     monkeypatch.setattr(smiles_fetch, "get_smiles_from_chebi", make("ChEBI"))
-
-    async def fake_chemspider(name):
-        return results.get("ChemSpider", (None, None))
-
-    monkeypatch.setattr(smiles_fetch, "get_smiles_from_chemspider_async", fake_chemspider)
     monkeypatch.setattr(smiles_fetch, "smiles_cache", {})
 
 

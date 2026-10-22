@@ -22,10 +22,9 @@ Two resolution orders are available:
     result in that priority order is kept.
 
 Curated overrides, row decisions and the shared cache are disabled during the
-replay, and ChemSpider is not consulted (it was not queried live). For each
-URL the last recorded attempt is used, as in the live run; a URL without a
-recorded HTTP 200 response yields nothing. Requests that the recording does
-not contain are listed in ``missing_urls``.
+replay. For each URL the last recorded attempt is used, as in the live run; a
+URL without a recorded HTTP 200 response yields nothing. Requests that the
+recording does not contain are listed in ``missing_urls``.
 """
 
 from __future__ import annotations
@@ -90,17 +89,12 @@ class RecordedResolver:
     def _patched_resolver(self):
         from uspto_revisit import smiles_fetch as sf
 
-        async def no_chemspider(name):
-            return None, None
-
         saved = (
             sf.fetch_smiles,
-            sf.get_smiles_from_chemspider_async,
             sf.resolution_overrides,
             sf.smiles_cache,
         )
         sf.fetch_smiles = self._fetch
-        sf.get_smiles_from_chemspider_async = no_chemspider
         sf.resolution_overrides = {}
         sf.smiles_cache = {}
         previous_disable = logging.root.manager.disable
@@ -111,14 +105,13 @@ class RecordedResolver:
             logging.disable(previous_disable)
             (
                 sf.fetch_smiles,
-                sf.get_smiles_from_chemspider_async,
                 sf.resolution_overrides,
                 sf.smiles_cache,
             ) = saved
 
     @staticmethod
     async def _retry_path(sf, name: str) -> dict[str, Any]:
-        """``resolve_no_smi_name`` without overrides, cache or ChemSpider."""
+        """``resolve_no_smi_name`` without overrides or cache."""
         original = sf._clean_compound_name(name)
         known = sf._known_smiles(original)
         if known:

@@ -12,9 +12,8 @@ layer resolved in the 19 released configurations (override names, row-level
 Each spelling goes through the released resolver code exactly as
 ``name_resolution_replay`` replays it: the first pass (abbreviation table, then
 OPSIN, also for ``fix_name(name)``) and the NoSmi retry path (refusal of
-ambiguous names, alias, then PubChem, OPSIN, NCI CIR and ChEBI). ChemSpider is
-not queried: it needs a personal API key and was not part of the recorded
-re-query. Overrides, row decisions and the shared cache are disabled.
+ambiguous names, alias, then PubChem, OPSIN, NCI CIR and ChEBI). Overrides,
+row decisions and the shared cache are disabled.
 
 Every HTTP exchange (UTC time, URL, attempt, status, body or error) is written
 to ``--output``; a capture file with query times, endpoints, rate limits,
@@ -254,7 +253,6 @@ def main(argv: list[str] | None = None) -> int:
         "query_started_utc": started,
         "query_finished_utc": utc_now(),
         "resolvers": ["PubChem", "OPSIN", "CIR", "ChEBI"],
-        "not_queried": "ChemSpider (requires a personal API key; not part of the recorded re-query)",
         "endpoints": ENDPOINTS,
         "min_interval_seconds_per_host": MIN_INTERVAL,
         "timeout_seconds": TIMEOUT_SECONDS,

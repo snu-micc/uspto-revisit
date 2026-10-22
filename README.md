@@ -202,10 +202,9 @@ configuration. Fields that were not recorded are marked `UNKNOWN`.
 Names are resolved in two passes:
 
 1. the alias table, the local cache and OPSIN;
-2. for names still unresolved: PubChem, OPSIN, NCI CIR, ChEBI and, if
-   `CHEMSPIDER_API_KEY` is set, ChemSpider, queried concurrently. The first
-   non-empty result in that order is kept, and names that look ambiguous or
-   non-molecular are skipped.
+2. for names still unresolved: PubChem, OPSIN, NCI CIR and ChEBI, queried
+   concurrently. The first non-empty result in that order is kept, and names
+   that look ambiguous or non-molecular are skipped.
 
 Every structure is validated and canonicalized with RDKit. Disagreements
 between resolvers (by InChIKey) are written to `resolver_audit.csv`;
