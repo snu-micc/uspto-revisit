@@ -13,7 +13,7 @@ The revised benchmark used for the manuscript and SI
 | --- | --- |
 | `ground_truth.csv` | One row per paragraph (`idx` 0–399): `title`, `paragraph`, `label` (`noise-free` or `noisy`), `noisy_reason` (untraceable cross-references, erroneous chemical names or no reaction), `salt_formation`, `structure_evaluation_eligible`, `structure_exclusion_reason`, `reference_source` (`retained_consensus_candidate` or `saved_gt`), and the reference reactions `ground_truth_{reactants,reagents,products,reaction}_smiles` with an optional alternative `ground_truth_2_*`. References are given only for the 289 eligible records. |
 | `input.csv` | The extraction input: `Issue`, `title`, `paragraph` and the original USPTO reaction SMILES `Lowe_smiles`. Rows 15 and 315 hold the two redrawn records. |
-| `benchmark_sample_membership.csv` | As the first-release file below, with the population rows of the two redrawn records and `template_frequency` for every record. |
+| `benchmark_sample_membership.csv` | As the first-release file below, with `template_frequency` for every record. `source_row` is the candidate record whose paragraph in Lowe's CML files is the benchmark paragraph, where the paragraph text can be matched (otherwise the first candidate); the two redrawn records keep the row actually drawn. |
 | `input_with_provenance.csv` | `input.csv` with stratum, population row and patent metadata. |
 
 ## `grants_issue.zip`
