@@ -85,7 +85,8 @@ folder is given:
 | Manuscript or SI | File |
 | --- | --- |
 | Table 2 | `table2.csv` (`table2_raw.csv` unrounded) |
-| Table 3, Figure 1 | `table3_metrics.csv`, `../Figure1.png` |
+| Table 3 | `table3_metrics.csv` |
+| Figure 1 | `../Figure1.png` (Stage 2 panel; the Stage 1 accuracies are in `table2.csv`) |
 | Figure S2 | `../filtering_by_reason.csv`, `../FigureS2.png` |
 | Table S17 (Ai et al.) | `../ai_metrics.csv` |
 | Table S18 | `table_s18.csv` |
@@ -130,7 +131,7 @@ python evaluation/rebuild_revised_outputs.py
 
 This builds `result/revised/model_outputs/` from the first-release outputs
 and the replacement runs. It writes to `result/revised/rebuilt/` and reports
-whether every rebuilt file equals the released copy. It needs the `mapping`
+whether every rebuilt file equals the released copy (line endings aside). It needs the `mapping`
 extra, because steps whose components change are re-mapped with LocalMapper.
 
 ## Benchmark

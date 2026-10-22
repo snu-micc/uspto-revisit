@@ -10,7 +10,8 @@ released two-pass order). In both, an element named as a reagent that the resolv
 steps whose components change are re-mapped with LocalMapper on the CPU.
 
 The released copies are in ``result/revised/model_outputs/``. This script writes to a separate folder and reports
-whether each rebuilt file equals the released one. Offline; needs ``python -m pip install -e ".[mapping]"``.
+whether each rebuilt file equals the released one, ignoring line endings (a Windows checkout writes CRLF, also
+inside the multi-line reasoning cells). Offline; needs ``python -m pip install -e ".[mapping]"``.
 
     python evaluation/rebuild_revised_outputs.py
 """
@@ -96,9 +97,12 @@ def main(argv: list[str] | None = None) -> int:
     audit.to_csv(out / "fully_automatic_audit.csv", index=False, encoding="utf-8-sig")
     print("fully automatic:", audit.reason.value_counts().to_dict(), flush=True)
 
+    def content(path: Path) -> bytes:
+        return path.read_bytes().replace(b"\r\n", b"\n")
+
     different = [f"{scenario}/{path.name}" for scenario in ("curated", "fully_automatic")
                  for path in sorted((out / scenario).glob("*.csv"))
-                 if path.read_bytes() != (RELEASED / scenario / path.name).read_bytes()]
+                 if content(path) != content(RELEASED / scenario / path.name)]
     print("all rebuilt outputs equal the released copies" if not different else f"different: {different}")
     return int(bool(different))
 

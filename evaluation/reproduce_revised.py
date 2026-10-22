@@ -318,7 +318,7 @@ def score_scenario(scenario: str, gt: pd.DataFrame, lowe: pd.DataFrame, membersh
     write(steps, out / "step_flags_structure_endpoint.csv")
     write(SBS.build_noise_free_step_table(steps), out / "step_table_structure_eligible.csv")
     lenient = metrics["lenient"]
-    return {"review": review, "flags2": flags2, "flags3": f3, "metrics": lenient, "table3": table3,
+    return {"review": review, "flags2": flags2, "flags3": f3, "table3": table3,
             "summary": {"primary": lenient.set_index("method").loc[PRIMARY].to_dict(),
                         "best_method": lenient.loc[lenient.reaction_accuracy.idxmax(), "method"]}}
 
@@ -391,66 +391,75 @@ def salt_sensitivity(flags3: pd.DataFrame, gt: pd.DataFrame) -> dict:
 
 
 # --------------------------------------------------------------------- figures
-def figure1(metrics: pd.DataFrame, table3: pd.DataFrame, gt: pd.DataFrame, path: Path) -> None:
+def figure1(table3: pd.DataFrame, path: Path) -> None:
+    """Stage 2 panel of Figure 1: retained and filtered noise-free/noisy reactions mirrored on the left, the
+    heuristics in the middle and denoising accuracy on the right, sorted by accuracy (selected configuration)."""
     import matplotlib
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    from matplotlib.patches import FancyBboxPatch
+    from matplotlib.patches import Patch
 
-    m = metrics.set_index("method")
-    rows = table3[table3.model.eq(PRIMARY)].sort_values("denoising_accuracy", ascending=False)
+    blue, red, purple = "#36A3D9", "#D9574F", "#7657B5"
+    rows = table3[table3.model.eq(PRIMARY)]
+    counts = pd.DataFrame({
+        "heuristic": rows.heuristic,
+        "saved": list(zip(rows.passed_tp, rows.passed_tp + rows.filtered_fn)),
+        "filtered": list(zip(rows.filtered_tn, rows.filtered_tn + rows.passed_fp)),
+        "accuracy": list(zip(rows.passed_tp + rows.filtered_tn,
+                             rows.passed_tp + rows.filtered_fn + rows.passed_fp + rows.filtered_tn)),
+    })
+    counts = counts.assign(order=[k / n for k, n in counts.accuracy]).sort_values("order", ascending=False)
+    spacing, pair = 1.18, 0.34
+    centers = [i * spacing for i in range(len(counts))]
+    upper, lower = [c - pair / 2 for c in centers], [c + pair / 2 for c in centers]
 
-    def accuracy(method):
-        k, n = int(m.at[method, "reaction_correct"]), int(m.at[method, "evaluated_reactions"])
-        return f"{k}/{n} = {pct(k, n)}%"
+    def style(ax, reverse=False):
+        ax.set_xlim((100, 0) if reverse else (0, 100))
+        ax.set_xticks([100, 50, 0] if reverse else [0, 50, 100])
+        ax.tick_params(axis="x", labelsize=36, length=7, width=1.4, color="#595959", labelcolor="#262626", pad=8)
+        ax.tick_params(axis="y", left=False, labelleft=False)
+        ax.grid(axis="x", color="#D0D4DC", linewidth=1.0, zorder=0)
+        for side, spine in ax.spines.items():
+            spine.set_visible(side == "bottom")
+        ax.spines["bottom"].set_linewidth(1.4)
+        ax.spines["bottom"].set_color("#595959")
 
-    plt.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "DejaVu Sans"], "font.size": 12})
-    fig = plt.figure(figsize=(13, 7.6), facecolor="white")
-    ax = fig.add_axes([.04, .61, .92, .36])
-    ax.set_axis_off()
-    ax.text(0, 1, "Stage 1  Reaction extraction", fontsize=17, weight="bold", va="top")
+    def bars(ax, values, positions, height, color, size, reverse=False):
+        """Bars with the value in white inside, or just beyond the end of a short bar."""
+        ax.barh(positions, [100 * k / n for k, n in values], height, color=color, edgecolor="none", zorder=3)
+        for (k, n), y in zip(values, positions):
+            v, inside = 100 * k / n, 100 * k / n >= 10
+            ax.text(v - 1.6 if inside else v + 1.2, y, pct(k, n), va="center", fontsize=size, fontweight="bold",
+                    ha=("left" if reverse else "right") if inside else ("right" if reverse else "left"),
+                    color="white" if inside else "#404040", zorder=5)
 
-    def box(x, y, w, h, text, color):
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.02", facecolor=color, edgecolor="none"))
-        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center",
-                color="black" if color == "#e9e5f1" else "white", fontsize=13)
-
-    box(.02, .24, .27, .47, f"{len(gt)} patent paragraphs\n{int(gt.noise_free.sum())} noise-free / "
-        f"{int((~gt.noise_free).sum())} noisy\n{int(gt.eligible.sum())} complete structure references", "#e9e5f1")
-    box(.41, .40, .22, .32, "Original USPTO\n" + accuracy(T2.ORIGINAL_METHOD), "#737373")
-    box(.73, .40, .23, .32, "gemini-3.6-flash\n" + accuracy(PRIMARY), "#9400a7")
-    ax.annotate("", (.40, .56), (.30, .56), arrowprops={"arrowstyle": "->", "lw": 2})
-    ax.annotate("", (.72, .31), (.30, .31), arrowprops={"arrowstyle": "->", "lw": 2, "color": "#9400a7"})
-    ax.text(.52, .08, "Fully automatic name resolution · primary structure matching", ha="center", fontsize=11)
-    fig.text(.04, .57, f"Stage 2  Denoising on all {len(gt)} paragraph labels", fontsize=17, weight="bold")
-    left, right = fig.add_axes([.20, .12, .38, .35]), fig.add_axes([.70, .12, .25, .35])
-    y = np.arange(len(rows))
-    saved = [(r.passed_tp, r.passed_tp + r.filtered_fn) for r in rows.itertuples()]
-    removed = [(r.filtered_tn, r.filtered_tn + r.passed_fp) for r in rows.itertuples()]
-    total = [(r.passed_tp + r.filtered_tn, r.passed_tp + r.filtered_fn + r.passed_fp + r.filtered_tn)
-             for r in rows.itertuples()]
-    left.barh(y - .16, [100 * k / n for k, n in saved], height=.29, color="#36a5d4", label="Noise-free retained")
-    left.barh(y + .16, [100 * k / n for k, n in removed], height=.29, color="#d65c53", label="Noisy filtered")
-    left.set_yticks(y, rows.heuristic_type.tolist())
+    plt.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "DejaVu Sans"]})
+    fig = plt.figure(figsize=(31, 13.5), facecolor="white")
+    grid = fig.add_gridspec(1, 3, width_ratios=(1.0, 0.44, 1.0), wspace=0.08)
+    left = fig.add_subplot(grid[0, 0])
+    middle = fig.add_subplot(grid[0, 1], sharey=left)
+    right = fig.add_subplot(grid[0, 2], sharey=left)
+    style(left, reverse=True)
+    style(right)
+    bars(left, counts.saved, upper, pair, blue, 28, reverse=True)
+    bars(left, counts.filtered, lower, pair, red, 28, reverse=True)
+    bars(right, counts.accuracy, centers, 0.68, purple, 34)
+    left.set_ylim(-0.72, centers[-1] + 0.72)
     left.invert_yaxis()
-    left.set_xlim(0, 110)
-    left.set_xlabel("Percentage (%)")
-    for j, ((ks, ns), (kr, nr)) in enumerate(zip(saved, removed)):
-        left.text(100 * ks / ns + 1, j - .16, pct(ks, ns), va="center", fontsize=10)
-        left.text(100 * kr / nr + 1, j + .16, pct(kr, nr), va="center", fontsize=10)
-    right.barh(y, [100 * k / n for k, n in total], color="#7854b0")
-    right.set_yticks(y, [])
-    right.invert_yaxis()
-    right.set_xlim(0, 100)
-    right.set_title("Denoising accuracy")
-    right.set_xlabel("Percentage (%)")
-    for j, (k, n) in enumerate(total):
-        right.text(100 * k / n + 1, j, pct(k, n), va="center", fontsize=11)
-    for axis in (left, right):
-        axis.spines[["top", "right"]].set_visible(False)
-    left.legend(loc="upper center", bbox_to_anchor=(.5, -.21), ncol=2, frameon=False, fontsize=10)
-    fig.savefig(path, dpi=250, bbox_inches="tight")
+    middle.set_xlim(0, 1)
+    middle.axis("off")
+    for y, heuristic in zip(centers, counts.heuristic):
+        middle.text(0.5, y, T3.HEURISTIC_LABELS[heuristic].replace("-", " ").capitalize(), ha="center", va="center",
+                    fontsize=40, fontweight="bold")
+    for ax, title in ((left, "Saved and filtered reactions"), (middle, "Heuristic"), (right, "Denoising accuracy")):
+        ax.set_title(title, fontsize=46, fontweight="bold", pad=22)
+    fig.legend(handles=[Patch(facecolor=blue, label="Clean saved"), Patch(facecolor=red, label="Noisy filtered")],
+               loc="lower left", bbox_to_anchor=(0.08, 0.025), ncol=2, frameon=False, fontsize=36, handlelength=1.1,
+               handletextpad=0.5, columnspacing=1.2)
+    fig.supxlabel("Percentage (%)", fontsize=40, y=0.105)
+    fig.subplots_adjust(left=0.055, right=0.985, top=0.80, bottom=0.20)
+    fig.savefig(path, dpi=150)
     plt.close(fig)
 
 
@@ -519,7 +528,7 @@ def main(argv: list[str] | None = None) -> int:
     by_reason = filtering_by_reason(flags3, gt)
     write(by_reason, out / "filtering_by_reason.csv")
     write(label_changes(gt, replaced), out / "label_changes.csv")
-    figure1(primary["metrics"], primary["table3"], gt, out / "Figure1.png")
+    figure1(primary["table3"], out / "Figure1.png")
     figure_s2(by_reason, out / "FigureS2.png")
 
     unavailable = gt.index[gt.noise_free & ~gt.eligible]
@@ -529,7 +538,9 @@ def main(argv: list[str] | None = None) -> int:
                **{scenario: result["summary"] for scenario, result in results.items()}}
     (out / "summary.json").write_text(json.dumps(summary, indent=2, default=_plain), encoding="utf-8")
     inputs = [*sorted(DATA.glob("*.csv")), *sorted(OUTPUTS.rglob("*.csv"))]
-    hashes = {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
+    # Line endings are normalized, so the hashes do not depend on how Git checked the files out.
+    hashes = {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+              for p in inputs}
     (out / "input_hashes.json").write_text(json.dumps(hashes, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2, default=_plain))
     return 0
