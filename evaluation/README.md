@@ -231,9 +231,11 @@ python evaluation/build_sampling_frame.py --strict
 
 The script reads `data/grants_issue.zip` and writes:
 
-- `data/sampling_frame_counts.csv`: the Table 1 counts (82,203 / 52,758 /
-  236,368 / 200,594; union 536,372), the 501,997 reactions flagged by exactly
-  one of the four sampled flags, and the 454,475-reaction single-label frame
+- `data/sampling_frame_counts.csv`: the Table 1 counts from the reaction
+  SMILES and Reagent field (82,203 / 100,777 / 236,253 / 201,761; union
+  550,070), the released flags (82,203 / 52,758 / 236,368 / 200,594; union
+  536,372), the 501,997 reactions flagged by exactly one of the four sampled
+  flags, and the 454,475-reaction single-label frame
   (59,282 / 20,163 / 207,221 / 167,809). The frame has no other `Issue`
   label, in particular no `rare_temp` or `duplicated`. Each row is compared
   with the manuscript value; `--strict` fails on any difference.

@@ -244,9 +244,17 @@ python evaluation/build_template_threshold_audit.py
 
 | Population | Count |
 | --- | --- |
-| Many-products / many-reactants / many-reagents / no-reagent, any combination | 82,203 / 52,758 / 236,368 / 200,594 |
-| Union of the four flags | 536,372 |
-| Exactly one flag and no other label (sampling frame) | 454,475 (59,282 / 20,163 / 207,221 / 167,809) |
+| Table 1: many products / many reactants / many reagents / no reagent | 82,203 / 100,777 / 236,253 / 201,761 |
+| Table 1: total unique reactions | 550,070 |
+| Released flags, any combination | 82,203 / 52,758 / 236,368 / 200,594 (union 536,372) |
+| Exactly one released flag and no other label (sampling frame) | 454,475 (59,282 / 20,163 / 207,221 / 167,809) |
+
+Table 1 counts each criterion from the atom-mapped reaction SMILES and the
+Reagent field: a reactant is a molecule that shares an atom-map number with a
+product. Its percentages are relative to the 1,808,937 reactions of Lowe's
+grant files. The released flags counted one extra reactant when a reaction
+lists no agents; the sampling frame keeps them, because the benchmark was drawn
+from them.
 
 The seed of the original 100-per-stratum draw was not recorded; the membership
 files give the population row of every record instead. `TemplateFreq` is the

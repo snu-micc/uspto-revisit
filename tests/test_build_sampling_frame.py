@@ -78,3 +78,14 @@ def test_frames_and_membership(tmp_path):
     with (out / "weighted_sampling_summary_single_label_frame.csv").open(encoding="utf-8-sig") as handle:
         weights = {row["orderly_sampling_category"]: row["population_n"] for row in csv.DictReader(handle)}
     assert weights["no_reagent"] == "2"
+
+
+def test_table1_criteria_count_molecules_explicitly():
+    criteria = build_sampling_frame.table1_criteria
+    # Three molecules share atom maps with a product, and the product side holds two mapped molecules.
+    three = "[CH3:1][OH:2].[Cl:3][CH2:4][CH3:5].[NH3:6]>>[CH3:1][O:2][CH2:4][CH2:5][NH2:6].[Na+:7]"
+    assert criteria(three, "") == ("many_products", "many_reactants", "no_reagent")
+    # An empty agent field adds no reactant, and an empty entry in the Reagent field is not a reagent.
+    two = "[CH3:1][OH:2].[Cl:3][CH3:4]>>[CH3:1][O:2][CH3:4] |f:0.1|"
+    assert criteria(two, ".CCO") == ()
+    assert criteria(two, "O.CCO.C1CCOC1.CN(C)C=O.N.CCN(CC)CC") == ("many_reagents",)

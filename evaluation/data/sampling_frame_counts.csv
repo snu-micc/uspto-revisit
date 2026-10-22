@@ -16,8 +16,13 @@ single_label_frame,many_reactants,20163,20163,1,Rows whose Issue is exactly one 
 single_label_frame,many_reagents,207221,207221,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
 single_label_frame,no_reagent,167809,167809,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
 single_label_frame,total,454475,454475,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
-table1_any_flag,many_products,82203,82203,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
-table1_any_flag,many_reactants,52758,52758,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
-table1_any_flag,many_reagents,236368,236368,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
-table1_any_flag,no_reagent,200594,200594,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
-table1_any_flag,union,536372,536372,1,"Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1)."
+table1,many_products,82203,82203,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
+table1,many_reactants,100777,100777,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
+table1,many_reagents,236253,236253,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
+table1,no_reagent,201761,201761,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
+table1,union,550070,550070,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
+table1_any_flag,many_products,82203,,,"Rows carrying the sampled ORDerly flag as released, alone or with other labels."
+table1_any_flag,many_reactants,52758,,,"Rows carrying the sampled ORDerly flag as released, alone or with other labels."
+table1_any_flag,many_reagents,236368,,,"Rows carrying the sampled ORDerly flag as released, alone or with other labels."
+table1_any_flag,no_reagent,200594,,,"Rows carrying the sampled ORDerly flag as released, alone or with other labels."
+table1_any_flag,union,536372,,,"Rows carrying the sampled ORDerly flag as released, alone or with other labels."

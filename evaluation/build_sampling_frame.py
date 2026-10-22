@@ -4,9 +4,18 @@ Reads the released ``grants_issue.csv`` (or ``grants_issue.zip``), whose
 ``Issue`` column holds a Python-style list of labels per reaction, and
 reproduces:
 
-* Table 1: reactions carrying each of the four sampled ORDerly flags
-  (many-products 82,203; many-reactants 52,758; many-reagents 236,368;
-  no-reagent 200,594) and their union (536,372);
+* Table 1: reactions meeting each criterion, counted from the reaction SMILES
+  and the Reagent field. A product is a product-side molecule with mapped
+  atoms, a reactant is a molecule that shares an atom-map number with a
+  product, and the reagents are the molecules in the Reagent field: many
+  reactants (> 2) 100,777; many products (> 1) 82,203; many reagents (> 5)
+  236,253; no reagent 201,761; union 550,070. Table 1 gives
+  them as percentages of the 1,808,937 reactions of Lowe's grant files.
+* The released ``Issue`` flags (82,203; 52,758; 236,368; 200,594; union
+  536,372). Their reactant count included one extra molecule when no agents
+  were listed, and their reagent count an empty entry, so they differ from
+  Table 1. The sampling frames below use these flags, from which the benchmark
+  was drawn.
 * the 501,997 reactions flagged by exactly one of the four (any ``rare_temp``
   or ``duplicated`` labels allowed), the population used for the weighted
   extrapolation in Table S18/S21;
@@ -28,6 +37,7 @@ import ast
 import csv
 import hashlib
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -53,12 +63,15 @@ STRATA = {
     "no_reagent": "no_reagent",
 }
 OTHER_LABELS = ("rare_temp", "duplicated")
+ATOM_MAP = re.compile(r":(\d+)\]")
+# Reactions in the patent-grant files of Lowe's release (figshare, version 1); Table 1 percentages use it.
+LOWE_GRANT_REACTIONS = 1_808_937
 EXPECTED = {
-    ("table1_any_flag", "many_products"): 82203,
-    ("table1_any_flag", "many_reactants"): 52758,
-    ("table1_any_flag", "many_reagents"): 236368,
-    ("table1_any_flag", "no_reagent"): 200594,
-    ("table1_any_flag", "union"): 536372,
+    ("table1", "many_products"): 82203,
+    ("table1", "many_reactants"): 100777,
+    ("table1", "many_reagents"): 236253,
+    ("table1", "no_reagent"): 201761,
+    ("table1", "union"): 550070,
     ("exactly_one_of_four", "total"): 501997,
     ("single_label_frame", "many_products"): 59282,
     ("single_label_frame", "many_reactants"): 20163,
@@ -70,7 +83,11 @@ EXPECTED = {
 FRAME_DESCRIPTIONS = {
     "all_rows": "Every data row of grants_issue.csv.",
     "label_any": "Rows whose Issue list contains the label (any combination).",
-    "table1_any_flag": "Rows carrying the sampled ORDerly flag, alone or with other labels (Table 1).",
+    "table1": (
+        "Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map "
+        "number with a mapped product) and the Reagent field (Table 1)."
+    ),
+    "table1_any_flag": "Rows carrying the sampled ORDerly flag as released, alone or with other labels.",
     "exactly_one_of_four": (
         "Rows carrying exactly one of the four sampled flags; rare_temp and "
         "duplicated may also be present (weighted-extrapolation population)."
@@ -106,9 +123,32 @@ def parse_issue(value: str, cache: dict[str, tuple[str, ...]]) -> tuple[str, ...
     return cache[value]
 
 
+def table1_criteria(reaction_smiles: str, reagents: str) -> tuple[str, ...]:
+    """Table 1 criteria met by one record, counted from its atom-mapped reaction SMILES and Reagent field."""
+    parts = reaction_smiles.split(" |")[0].split(">")
+    if len(parts) != 3:
+        return ()
+    left, agents, right = parts
+    products = [m for m in right.split(".") if ATOM_MAP.search(m)]
+    product_maps = set(ATOM_MAP.findall(".".join(products)))
+    reactants = sum(1 for m in left.split(".") + agents.split(".") if m and set(ATOM_MAP.findall(m)) & product_maps)
+    n_reagents = sum(1 for m in reagents.split(".") if m)
+    met = []
+    if len(products) > 1:
+        met.append("many_products")
+    if reactants > 2:
+        met.append("many_reactants")
+    if n_reagents > 5:
+        met.append("many_reagents")
+    if n_reagents == 0:
+        met.append("no_reagent")
+    return tuple(met)
+
+
 def scan(population: Path, member: str | None, targets: set[str]) -> dict[str, Any]:
-    """Count label combinations and collect population rows matching ``targets``."""
+    """Count label combinations and Table 1 criteria, and collect population rows matching ``targets``."""
     combinations: Counter[tuple[str, ...]] = Counter()
+    table1: Counter[tuple[str, ...]] = Counter()
     matches: dict[str, list[dict[str, Any]]] = defaultdict(list)
     issue_cache: dict[str, tuple[str, ...]] = {}
     with open_population_csv(population, member) as (handle, metadata):
@@ -116,6 +156,7 @@ def scan(population: Path, member: str | None, targets: set[str]) -> dict[str, A
         for source_row, row in enumerate(reader):
             labels = parse_issue(row.get("Issue", ""), issue_cache)
             combinations[labels] += 1
+            table1[table1_criteria(row.get("ReactionSmiles", ""), row.get("Reagent", ""))] += 1
             reaction = normalize_reaction(row.get("ReactionSmiles", ""))
             if reaction in targets:
                 matches[reaction].append(
@@ -129,16 +170,23 @@ def scan(population: Path, member: str | None, targets: set[str]) -> dict[str, A
                         "reaction_smiles": row.get("ReactionSmiles", ""),
                     }
                 )
-    return {"combinations": combinations, "matches": matches, "metadata": metadata}
+    return {"combinations": combinations, "table1": table1, "matches": matches, "metadata": metadata}
 
 
 def stratum_of_single_label(labels: tuple[str, ...]) -> str | None:
     return STRATA.get(labels[0]) if len(labels) == 1 else None
 
 
-def frame_counts(combinations: Counter[tuple[str, ...]]) -> list[dict[str, Any]]:
+def frame_counts(
+    combinations: Counter[tuple[str, ...]], table1: Counter[tuple[str, ...]] | None = None
+) -> list[dict[str, Any]]:
     """Rows of (frame, group, n) for every population definition."""
     counts: Counter[tuple[str, str]] = Counter()
+    for criteria, n in (table1 or {}).items():
+        for criterion in criteria:
+            counts[("table1", criterion)] += n
+        if criteria:
+            counts[("table1", "union")] += n
     for labels, n in combinations.items():
         counts[("all_rows", "total")] += n
         sampled = [STRATA[label] for label in labels if label in STRATA]
@@ -295,7 +343,7 @@ def main(argv: list[str] | None = None) -> int:
     targets = {normalize_reaction(record["Lowe_smiles"]) for record in benchmark}
     scanned = scan(args.population, args.population_member, targets)
 
-    counts = frame_counts(scanned["combinations"])
+    counts = frame_counts(scanned["combinations"], scanned["table1"])
     membership, provenance = link_benchmark(benchmark, scanned["matches"])
 
     output_dir = args.output_dir
@@ -333,7 +381,8 @@ def main(argv: list[str] | None = None) -> int:
     for row in counts:
         if row["manuscript_value"] != "":
             status = "ok" if row["matches_manuscript"] else "MISMATCH"
-            print(f"{row['frame']:22s} {row['group']:16s} {row['n']:>8,d}  [{status}]")
+            share = f"  {100 * row['n'] / LOWE_GRANT_REACTIONS:.2f}%" if row["frame"] == "table1" else ""
+            print(f"{row['frame']:22s} {row['group']:16s} {row['n']:>8,d}  [{status}]{share}")
     per_stratum = Counter(row["stratum"] for row in membership)
     unique = sum(row["source_row_unique"] for row in membership)
     print(f"Benchmark rows linked: {len(membership)} {dict(sorted(per_stratum.items()))}")
