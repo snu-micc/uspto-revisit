@@ -15,6 +15,13 @@ OPSIN, also for ``fix_name(name)``) and the NoSmi retry path (refusal of
 ambiguous names, alias, then PubChem, OPSIN, NCI CIR and ChEBI). Overrides,
 row decisions and the shared cache are disabled.
 
+``--names lookup-tables`` instead queries every distinct extracted spelling
+that either lookup table of the resolver answers or rewrites
+(``smiles_fetch.DEFAULT_KNOWN_SMILES`` and ``SAFE_NAME_ALIASES``) in the outputs
+with the tables on (``result/revised/model_outputs/fully_automatic_with_tables``),
+with both tables disabled; the primary scenario is built from this recording
+(``requery_2026-10-23_no_tables_raw.jsonl``, 42 spellings).
+
 Every HTTP exchange (UTC time, URL, attempt, status, body or error) is written
 to ``--output``; a capture file with query times, endpoints, rate limits,
 counts and the SHA-256 of the recording is written next to it. Requests are
@@ -60,7 +67,10 @@ from evaluation.curation_ablation import (  # noqa: E402
     read_model_output,
 )
 from evaluation.evaluate_table3 import MODELS  # noqa: E402
+from evaluation.lookup_tables import table_components  # noqa: E402
 from evaluation.name_resolution_replay import RecordedResolver, capture_path, clean_name  # noqa: E402
+
+WITH_TABLES_RESULTS_DIR = Path("result/revised/model_outputs/fully_automatic_with_tables")
 
 MIN_INTERVAL = {  # seconds between requests to one host
     "pubchem.ncbi.nlm.nih.gov": 0.25,  # at most 4 requests per second (PubChem allows 5)
@@ -90,6 +100,11 @@ def curated_spellings(results_dir: Path, overrides: Path, row_decisions: Path) -
     return sorted({clean_name(name) for name in audit["name"]})
 
 
+def lookup_table_spellings(results_dir: Path) -> list[str]:
+    outputs = {model: read_model_output(results_dir, model) for model in MODELS}
+    return sorted(set(table_components(outputs)["spelling"]))
+
+
 def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
@@ -97,10 +112,11 @@ def utc_now() -> str:
 class LiveRecorder(RecordedResolver):
     """Resolve with live HTTP requests and record every exchange."""
 
-    def __init__(self):
+    def __init__(self, *, lookup_tables: bool = True):
         self.responses = {}
         self.missing_urls = set()
         self.requested = []
+        self.lookup_tables = lookup_tables
         self.records: list[dict] = []
         self._last_request: dict[str, float] = {}
         self._lock = asyncio.Lock()
@@ -207,7 +223,11 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--dry-run", action="store_true", help="List the spellings; no network access.")
     mode.add_argument("--live", action="store_true", help="Query the resolvers and record every exchange.")
     parser.add_argument("--output", type=Path, help="Recording to write (JSON lines); required with --live.")
-    parser.add_argument("--results-dir", type=Path, default=REPOSITORY_ROOT / DEFAULT_RESULTS_DIR)
+    parser.add_argument("--names", choices=("curated", "lookup-tables"), default="curated",
+                        help="Names covered by the curated layers (default) or answered by the lookup tables.")
+    parser.add_argument("--results-dir", type=Path,
+                        help="Model outputs to read the names from. Default: the first-release outputs for "
+                             "curated names, the outputs with the lookup tables on for lookup-table names.")
     parser.add_argument("--overrides", type=Path, default=REPOSITORY_ROOT / DEFAULT_OVERRIDES)
     parser.add_argument("--row-decisions", type=Path, default=REPOSITORY_ROOT / DEFAULT_ROW_DECISIONS)
     parser.add_argument("--retry-interval", type=float, default=5.0)
@@ -219,7 +239,11 @@ def main(argv: list[str] | None = None) -> int:
         sys.stdout.reconfigure(encoding="utf-8")  # spellings contain Greek letters
     except AttributeError:  # pragma: no cover - non-reconfigurable stream
         pass
-    spellings = curated_spellings(args.results_dir, args.overrides, args.row_decisions)
+    if args.names == "curated":
+        spellings = curated_spellings(args.results_dir or REPOSITORY_ROOT / DEFAULT_RESULTS_DIR,
+                                      args.overrides, args.row_decisions)
+    else:
+        spellings = lookup_table_spellings(args.results_dir or REPOSITORY_ROOT / WITH_TABLES_RESULTS_DIR)
     if args.dry_run:
         for spelling in spellings:
             print(spelling)
@@ -232,7 +256,7 @@ def main(argv: list[str] | None = None) -> int:
 
     from uspto_revisit import smiles_fetch as sf
 
-    recorder = LiveRecorder()
+    recorder = LiveRecorder(lookup_tables=args.names == "curated")
     started = utc_now()
     results = recorder.resolve(spellings, order="two-pass")
     retries = []
@@ -253,6 +277,8 @@ def main(argv: list[str] | None = None) -> int:
         "query_started_utc": started,
         "query_finished_utc": utc_now(),
         "resolvers": ["PubChem", "OPSIN", "CIR", "ChEBI"],
+        "names_source": args.names,
+        "lookup_tables": recorder.lookup_tables,
         "endpoints": ENDPOINTS,
         "min_interval_seconds_per_host": MIN_INTERVAL,
         "timeout_seconds": TIMEOUT_SECONDS,

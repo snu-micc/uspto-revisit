@@ -120,6 +120,68 @@ def test_dry_run_sends_nothing(capsys):
     assert len(capsys.readouterr().out.splitlines()) == 127
 
 
+NO_TABLES_LOG = ROOT / "result" / "name_resolution" / "requery_2026-10-23_no_tables_raw.jsonl"
+REVISED_OUTPUTS = ROOT / "result" / "revised" / "model_outputs"
+
+
+def test_lookup_tables_can_be_disabled(tmp_path):
+    from uspto_revisit import smiles_fetch
+
+    probe = tmp_path / "probe_raw.jsonl"
+    probe.write_text("", encoding="utf-8")
+    assert RecordedResolver(probe).resolve(["THF"])["THF"]["selected_source"] == "KnownAlias"
+    resolver = RecordedResolver(probe, lookup_tables=False)
+    assert resolver.resolve(["THF", "DIEA"])["THF"]["selected_smiles"] == ""
+    assert any("pubchem" in url for url in resolver.missing_urls)
+    # Without the synonym list DIEA is looked up as written, not as DIPEA.
+    assert any("DIEA" in url for url in resolver.missing_urls)
+    assert not any("DIPEA" in url for url in resolver.missing_urls)
+    assert smiles_fetch.DEFAULT_KNOWN_SMILES["THF"] == "C1CCOC1"  # restored after the replay
+    assert smiles_fetch.SAFE_NAME_ALIASES["diea"] == "DIPEA"
+    # The first pass also reaches the table through fix_name ("anhydrous ether" -> "ether").
+    assert name_resolution_replay.builtin_table_smiles("anhydrous ether") == "CCOCC"
+    assert name_resolution_replay.builtin_table_smiles("dimethylformamide") is None
+    assert name_resolution_replay.alias_used("RuPHOS") and not name_resolution_replay.alias_used("RuPhos ligand")
+
+
+def test_lookup_tables_dry_run_lists_the_recorded_names(capsys):
+    assert _load_script().main(["--dry-run", "--names", "lookup-tables"]) == 0
+    listed = capsys.readouterr().out.splitlines()
+    capture = json.loads(name_resolution_replay.capture_path(NO_TABLES_LOG).read_text(encoding="utf-8"))
+    assert listed == capture["spellings"] and len(listed) == 42
+
+
+def test_replay_of_no_tables_recording():
+    names = _load_script().lookup_table_spellings(REVISED_OUTPUTS / "fully_automatic_with_tables")
+    resolver = RecordedResolver(NO_TABLES_LOG, lookup_tables=False)
+    result = resolver.resolve(names, order="two-pass")
+    assert not resolver.missing_urls
+    # 28 resolve; the capture's 27 counts the live pass before 15 unanswered CIR URLs were re-sent.
+    assert sum(bool(row["selected_smiles"]) for row in result.values()) == 28
+    assert result["THF"]["selected_smiles"] == "C1CCOC1"
+    assert result["brine"]["selected_smiles"] == "" and result["Pd/C"]["selected_smiles"] == ""
+    # Without the tables, CIR reads DCM as deoxycytidine monophosphate.
+    assert result["DCM"]["selected_source"] == "CIR" and "P(=O)(O)O" in result["DCM"]["selected_smiles"]
+
+
+def test_no_tables_scenario_from_the_recording():
+    """Step 5 of rebuild_revised_outputs.py, with a stub mapper: the released structures and reactions."""
+    from evaluation import evaluate_table3, lookup_tables
+
+    def stub(reaction):
+        return {"localmapper_rxn": reaction, "mapped_rxn": "", "mapping_template": "",
+                "mapping_confident": False, "mapping_error": ""}
+
+    outputs = {m: curation_ablation.read_model_output(REVISED_OUTPUTS / "fully_automatic_with_tables", m)
+               for m in evaluate_table3.MODELS}
+    rebuilt, components, _ = lookup_tables.without_tables(outputs, remap=stub)
+    assert components.outcome.value_counts().to_dict() == {"unchanged": 1196, "unresolved": 801, "replaced": 144}
+    for model in evaluate_table3.MODELS:
+        released = curation_ablation.read_model_output(REVISED_OUTPUTS / "fully_automatic", model)
+        for column in (f"{model}_smiles", f"{model}_rxn"):
+            assert rebuilt[model][column].fillna("").tolist() == released[column].fillna("").tolist(), column
+
+
 def test_fully_automatic_rebuild_with_stub_mapper(tmp_path):
     spec = importlib.util.spec_from_file_location(
         "curation_ablation_tests", ROOT / "tests" / "test_curation_ablation.py"

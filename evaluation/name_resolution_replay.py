@@ -25,6 +25,14 @@ Curated overrides, row decisions and the shared cache are disabled during the
 replay. For each URL the last recorded attempt is used, as in the live run; a
 URL without a recorded HTTP 200 response yields nothing. Requests that the
 recording does not contain are listed in ``missing_urls``.
+
+``lookup_tables=False`` also disables the two lookup tables of the resolver:
+the table of 19 abbreviations and trivial names
+(``smiles_fetch.DEFAULT_KNOWN_SMILES``) and the 13 spelling variants and
+synonyms looked up under a standard name (``SAFE_NAME_ALIASES``). Names they
+would answer or rewrite then go to the resolvers as written;
+``requery_2026-10-23_no_tables_raw.jsonl`` records those names with both
+tables disabled.
 """
 
 from __future__ import annotations
@@ -72,10 +80,11 @@ def load_requery_log(path: str | Path, *, verify: bool = True) -> dict[str, dict
 class RecordedResolver:
     """Resolve names with the released resolver code and recorded responses."""
 
-    def __init__(self, log_path: str | Path = DEFAULT_REQUERY_LOG):
+    def __init__(self, log_path: str | Path = DEFAULT_REQUERY_LOG, *, lookup_tables: bool = True):
         self.responses = load_requery_log(log_path)
         self.missing_urls: set[str] = set()
         self.requested: list[str] = []
+        self.lookup_tables = lookup_tables
 
     async def _fetch(self, session, url, semaphore, max_retries):
         self.requested.append(url)
@@ -93,10 +102,15 @@ class RecordedResolver:
             sf.fetch_smiles,
             sf.resolution_overrides,
             sf.smiles_cache,
+            sf.DEFAULT_KNOWN_SMILES,
+            sf.SAFE_NAME_ALIASES,
         )
         sf.fetch_smiles = self._fetch
         sf.resolution_overrides = {}
         sf.smiles_cache = {}
+        if not self.lookup_tables:
+            sf.DEFAULT_KNOWN_SMILES = {}
+            sf.SAFE_NAME_ALIASES = {}
         previous_disable = logging.root.manager.disable
         logging.disable(logging.WARNING)  # the resolvers log every miss
         try:
@@ -107,6 +121,8 @@ class RecordedResolver:
                 sf.fetch_smiles,
                 sf.resolution_overrides,
                 sf.smiles_cache,
+                sf.DEFAULT_KNOWN_SMILES,
+                sf.SAFE_NAME_ALIASES,
             ) = saved
 
     @staticmethod
@@ -196,3 +212,24 @@ class RecordedResolver:
 def clean_name(name: str) -> str:
     """Same as ``uspto_revisit.smiles_fetch._clean_compound_name``."""
     return " ".join(str(name).replace("′", "'").split())
+
+
+def builtin_table_smiles(name: str) -> str | None:
+    """The SMILES the first pass (``get_smiles_dict`` with ``--fix-names``) takes from the built-in table, if any."""
+    from uspto_revisit import smiles_fetch as sf
+    from uspto_revisit.json_utils import fix_name
+
+    for start in (clean_name(name), clean_name(fix_name(name))):
+        for candidate in (start, sf.resolve_name_alias(fix_name(sf.resolve_name_alias(start)))):
+            smiles = sf._known_smiles(candidate)
+            if smiles:
+                return smiles
+    return None
+
+
+def alias_used(name: str) -> bool:
+    """True when the first pass or the retry path looks the name up under a listed synonym (``SAFE_NAME_ALIASES``)."""
+    from uspto_revisit import smiles_fetch as sf
+    from uspto_revisit.json_utils import fix_name
+
+    return any(sf._clean_compound_name(x).casefold() in sf.SAFE_NAME_ALIASES for x in (name, fix_name(name)))

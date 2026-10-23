@@ -4,8 +4,8 @@ Used by ``reproduce_revised.py``. All functions work on per-record 0/1
 matrices (``RecordFlags``) built from the Table 2 and Table 3 flag frames.
 
 * Exact (binomial) McNemar tests with a Holm correction inside each family:
-  the best configuration against each of the other 18 and against the
-  original USPTO record (Table 2), the template anomaly against each ORDerly
+  the best (or the selected) configuration against each of the other 18 and
+  against the original USPTO record (Table 2), the template anomaly against each ORDerly
   heuristic for the selected configuration (denoising decision and
   end-to-end outcome), and every configuration against the selected one
   (end-to-end).
@@ -42,6 +42,8 @@ STRATUM_LABELS = {
     "many_reagent (> 5)": "Many-reagents",
     "no_reagent": "No-reagent",
 }
+# Frames of the first release, by the released Issue flags: exactly one flag and no other label, and exactly one of
+# the four flags with rare_temp or duplicated allowed.
 FRAME_SINGLE_LABEL = {
     "many_product (> 1)": 59282,
     "many_reactant (> 2)": 20163,
@@ -53,6 +55,14 @@ FRAME_EXACTLY_ONE = {
     "many_reactant (> 2)": 30709,
     "many_reagent (> 5)": 224249,
     "no_reagent": 180009,
+}
+# Frame of the revised benchmark: exactly one Table 1 criterion counted from the reaction SMILES and the Reagent
+# field, and no rare_temp or duplicated label (build_sampling_frame.py).
+FRAME_SINGLE_CRITERION = {
+    "many_product (> 1)": 44157,
+    "many_reactant (> 2)": 20157,
+    "many_reagent (> 5)": 198305,
+    "no_reagent": 167809,
 }
 Z95 = 1.959963984540054
 SEED = 20261016
@@ -159,12 +169,13 @@ def pick_best(scores: pd.Series) -> str:
     return PRIMARY if PRIMARY in top else top[0]
 
 
-def table2_tests(f: RecordFlags) -> pd.DataFrame:
+def table2_tests(f: RecordFlags, reference: str | None = None) -> pd.DataFrame:
+    """The best configuration (or ``reference``) against the other 18 and against the original USPTO record."""
     c = f.correct_nf()
     n = len(c)
     configs = list(f.models)
     totals = c[configs].sum()
-    best = pick_best(totals)
+    best = reference or pick_best(totals)
     rows = []
     for other in [m for m in configs if m != best] + [ORIGINAL]:
         a, b, p = mcnemar_exact(c[best], c[other])

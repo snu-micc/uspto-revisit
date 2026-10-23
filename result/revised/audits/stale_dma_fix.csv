@@ -1,0 +1,13 @@
+﻿scenario,model,idx,label,name,stored,table_now
+curated,qwen-3.5-9b-low,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+curated,qwen-3.5-9b-high,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+curated,gemini-3.1-pro-preview-low,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+curated,gemini-3.1-pro-preview-high,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+curated,gemini-3.6-flash-low,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+curated,gemini-3.6-flash-high,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+fully_automatic_with_tables,qwen-3.5-9b-low,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+fully_automatic_with_tables,qwen-3.5-9b-high,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+fully_automatic_with_tables,gemini-3.1-pro-preview-low,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+fully_automatic_with_tables,gemini-3.1-pro-preview-high,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+fully_automatic_with_tables,gemini-3.6-flash-low,136,D,DMA,CC(N)=O,CC(=O)N(C)C
+fully_automatic_with_tables,gemini-3.6-flash-high,136,D,DMA,CC(N)=O,CC(=O)N(C)C

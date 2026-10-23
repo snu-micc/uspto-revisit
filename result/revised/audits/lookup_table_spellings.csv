@@ -1,0 +1,43 @@
+﻿spelling,table,with_tables,without_tables,selected_source,resolved_by,resolver_agreement,resolver_candidates,components
+"1,1'-carbonylbis(imidazole)",synonym,O=C(n1ccnc1)n1ccnc1,O=C(n1ccnc1)n1ccnc1,OPSIN,retry_path,agree,OPSIN=O=C(n1ccnc1)n1ccnc1 | CIR=O=C(n1ccnc1)n1ccnc1,1
+Brine,built-in,O.[Cl-].[Na+],,,unresolved,none,,2
+DCM,built-in,ClCCl,Nc1ccn([C@H]2C[C@H](O)[C@@H](COP(=O)(O)O)O2)c(=O)n1,CIR,retry_path,single_source,CIR=Nc1ccn([C@H]2C[C@H](O)[C@@H](COP(=O)(O)O)O2)c(=O)n1,74
+DIEA,synonym,CCN(C(C)C)C(C)C,CCN(C(C)C)C(C)C,PubChem,retry_path,single_source,PubChem=CCN(C(C)C)C(C)C,13
+DMA,built-in,CC(=O)N(C)C,COc1ccc(-c2nc3ccc(-c4nc5ccc(N6CCN(C)CC6)cc5[nH]4)cc3[nH]2)cc1OC,PubChem,retry_path,conflict,PubChem=COc1ccc(-c2nc3ccc(-c4nc5ccc(N6CCN(C)CC6)cc5[nH]4)cc3[nH]2)cc1OC | CIR=CC(C)=CCOP(=O)(O)OP(=O)(O)O,6
+DMF,built-in,CN(C)C=O,CN(C)C=O,PubChem,retry_path,agree,PubChem=CN(C)C=O | CIR=CN(C)C=O,128
+Ether,built-in,CCOCC,CCOCC,PubChem,retry_path,agree,PubChem=CCOCC | CIR=CCOCC | ChEBI=CCOCC,9
+LiAlH4,built-in,[AlH4-].[Li+],[AlH4-].[Li+],PubChem,retry_path,agree,PubChem=[AlH4-].[Li+] | ChEBI=[AlH4-].[Li+],24
+Mo(CO)6,synonym,[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[Mo],[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[Mo],PubChem,retry_path,single_source,PubChem=[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[C-]#[O+].[Mo],8
+"N,N'-carbonyldiimidazole",synonym,O=C(n1ccnc1)n1ccnc1,O=C(n1ccnc1)n1ccnc1,PubChem,retry_path,agree,PubChem=O=C(n1ccnc1)n1ccnc1 | CIR=O=C(n1ccnc1)n1ccnc1,18
+Pd/C,built-in,[Pd],,,unresolved,none,,7
+Phosphorous pentachloride,synonym,ClP(Cl)(Cl)(Cl)Cl,ClP(Cl)(Cl)(Cl)Cl,PubChem,retry_path,agree,PubChem=ClP(Cl)(Cl)(Cl)Cl | CIR=ClP(Cl)(Cl)(Cl)Cl,2
+RuPHOS,synonym,CC(C)Oc1cccc(OC(C)C)c1-c1ccccc1P(C1CCCCC1)C1CCCCC1,CCOP(=S)(OCC)SC1OCCOC1SP(=S)(OCC)OCC,PubChem,retry_path,agree,PubChem=CCOP(=S)(OCC)SC1OCCOC1SP(=S)(OCC)OCC | CIR=CCOP(=S)(OCC)SC1OCCOC1SP(=S)(OCC)OCC,9
+RuPhos,synonym,CC(C)Oc1cccc(OC(C)C)c1-c1ccccc1P(C1CCCCC1)C1CCCCC1,CCOP(=S)(OCC)SC1OCCOC1SP(=S)(OCC)OCC,PubChem,retry_path,agree,PubChem=CCOP(=S)(OCC)SC1OCCOC1SP(=S)(OCC)OCC | CIR=CCOP(=S)(OCC)SC1OCCOC1SP(=S)(OCC)OCC,7
+THF,built-in,C1CCOC1,C1CCOC1,PubChem,retry_path,agree,PubChem=C1CCOC1 | CIR=C1CCOC1,203
+Tetrakis(triphenylphosphine)palladium,synonym,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,PubChem,retry_path,agree,PubChem=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1 | CIR=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,5
+absolute ethanol,built-in,CCO,CCO,PubChem,retry_path,agree,PubChem=CCO | CIR=CCO,2
+anhydrous ether,built-in,CCOCC,CCOCC,PubChem,retry_path,single_source,PubChem=CCOCC,3
+bis(triphenylphosphine)palladium(II) chloride,synonym,[Cl-].[Cl-].[Pd+2].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,[Cl][Pd][Cl].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,PubChem,retry_path,single_source,PubChem=[Cl][Pd][Cl].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,38
+bis-(triphenylphosphine)palladium(II) dichloride,synonym,[Cl-].[Cl-].[Pd+2].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,[Cl][Pd][Cl].c1ccc([PH+](c2ccccc2)c2ccccc2)cc1.c1ccc([PH+](c2ccccc2)c2ccccc2)cc1,PubChem,retry_path,single_source,PubChem=[Cl][Pd][Cl].c1ccc([PH+](c2ccccc2)c2ccccc2)cc1.c1ccc([PH+](c2ccccc2)c2ccccc2)cc1,1
+brine,built-in,O.[Cl-].[Na+],,,unresolved,none,,753
+brine (NaCl/water solution),built-in,O.[Cl-].[Na+],,,unresolved,none,,1
+brine solution,built-in,O.[Cl-].[Na+],,,unresolved,none,,2
+dry acetone,built-in,CC(C)=O,,,unresolved,none,,1
+dry ether,built-in,CCOCC,,,unresolved,none,,8
+dry tetrahydrofuran,built-in,C1CCOC1,,,unresolved,none,,1
+dry toluene,built-in,Cc1ccccc1,,,unresolved,none,,1
+ether,built-in,CCOCC,CCOCC,PubChem,retry_path,agree,PubChem=CCOCC | CIR=CCOCC | ChEBI=CCOCC,545
+ice,built-in,O,O,CIR,retry_path,single_source,CIR=O,77
+lithiumaluminium hydride,built-in,[AlH4-].[Li+],[Al+3].[H-].[H-].[H-].[H-].[Li+],PubChem,retry_path,single_source,PubChem=[Al+3].[H-].[H-].[H-].[H-].[Li+],9
+palladium tetrakis(triphenylphosphine),synonym,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,PubChem,retry_path,agree,PubChem=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1 | OPSIN=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1 | CIR=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,2
+phosphorous pentachloride,synonym,ClP(Cl)(Cl)(Cl)Cl,ClP(Cl)(Cl)(Cl)Cl,PubChem,retry_path,agree,PubChem=ClP(Cl)(Cl)(Cl)Cl | CIR=ClP(Cl)(Cl)(Cl)Cl,7
+saturated brine,built-in,O.[Cl-].[Na+],,,unresolved,none,,5
+saturated brine solution,built-in,O.[Cl-].[Na+],,,unresolved,none,,1
+sodium methylate,built-in,C[O-].[Na+],C[O-].[Na+],PubChem,retry_path,agree,PubChem=C[O-].[Na+] | CIR=C[O-].[Na+],21
+tetrakis(triphenylphosphine)palladium,synonym,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,PubChem,retry_path,agree,PubChem=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1 | CIR=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,73
+tetrakis(triphenylphosphine)palladium(0),synonym,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,PubChem,retry_path,agree,PubChem=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1 | CIR=[Pd].c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1.c1ccc(P(c2ccccc2)c2ccccc2)cc1,40
+tri(dibenzylidenacetone)dipalladium(0),synonym,O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],,,unresolved,none,,11
+tri(dibenzylideneacetone)dipalladium(0),synonym,O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],,,unresolved,none,,3
+tris(dibenzylideneacetone)dipalladium,synonym,O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],PubChem,retry_path,single_source,PubChem=O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],1
+tris(dibenzylideneacetone)dipalladium(0),synonym,O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],PubChem,retry_path,agree,PubChem=O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd] | CIR=O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.O=C(/C=C/c1ccccc1)/C=C/c1ccccc1.[Pd].[Pd],14
+ultrapure water,built-in,O,,,unresolved,none,,5

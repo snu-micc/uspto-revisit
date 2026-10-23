@@ -11,10 +11,11 @@ The revised benchmark used for the manuscript and SI
 
 | File | Contents |
 | --- | --- |
-| `ground_truth.csv` | One row per paragraph (`idx` 0–399): `title`, `paragraph`, `label` (`noise-free` or `noisy`), `noisy_reason` (untraceable cross-references, erroneous chemical names or no reaction), `salt_formation`, `structure_evaluation_eligible`, `structure_exclusion_reason`, `reference_source` (`retained_consensus_candidate` or `saved_gt`), and the reference reactions `ground_truth_{reactants,reagents,products,reaction}_smiles` with an optional alternative `ground_truth_2_*`. References are given only for the 289 eligible records. |
-| `input.csv` | The extraction input: `Issue`, `title`, `paragraph` and the original USPTO reaction SMILES `Lowe_smiles`. Rows 15 and 315 hold the two redrawn records. |
-| `benchmark_sample_membership.csv` | As the first-release file below, with `template_frequency` for every record. `source_row` is the candidate record whose paragraph in Lowe's CML files is the benchmark paragraph, where the paragraph text can be matched (otherwise the first candidate); the two redrawn records keep the row actually drawn. |
+| `ground_truth.csv` | One row per paragraph (`idx` 0–399): `title`, `paragraph`, `label` (`noise-free` or `noisy`), `noisy_reason` (untraceable cross-references, erroneous chemical names or no reaction), `salt_formation`, `structure_evaluation_eligible`, `structure_exclusion_reason`, `reference_source` (`retained_consensus_candidate` or `saved_gt`), and the reference reactions `ground_truth_{reactants,reagents,products,reaction}_smiles` with an optional alternative `ground_truth_2_*`. References are given only for the 291 eligible records. |
+| `input.csv` | The extraction input: `Issue`, `title`, `paragraph` and the original USPTO reaction SMILES `Lowe_smiles`. Thirty rows hold redrawn records: 15 and 315 (first draw) and the 28 records of the second draw (`replacement_draws.csv`). |
+| `benchmark_sample_membership.csv` | As the first-release file below, with `template_frequency` for every record. `source_row` is the candidate record whose paragraph in Lowe's CML files is the benchmark paragraph, where the paragraph text can be matched (otherwise the first candidate); the 30 redrawn records keep the row actually drawn. Every record lies in the single-criterion frame of its stratum. |
 | `input_with_provenance.csv` | `input.csv` with stratum, population row and patent metadata. |
+| `replacement_draws.csv` | The candidates examined by the two replacement draws (all were accepted): `round` (1: seed 20261021; 2: seed 20261022), `stratum`, `rank` in the random order, population `source_row`, `patent_number`, the record it replaces (`replaces_idx`), and the paragraph of Lowe's text files it is linked to (`text_file`, and SHA-1 and length of the whitespace-normalized text). `evaluation/draw_replacements.py` re-runs the draws and checks the paragraph rules against this file. |
 
 ## `grants_issue.zip`
 
@@ -149,9 +150,11 @@ The following files are written by `evaluation/build_sampling_frame.py` from
 
 | File | Contents |
 | --- | --- |
-| `sampling_frame_counts.csv` | One row per population definition and group: `frame`, `group`, `n`, the manuscript value, whether they match, and the definition. `table1` gives the Table 1 counts and union (criteria counted from the reaction SMILES and the Reagent field), `table1_any_flag` the same groups from the released flags, `exactly_one_of_four` the weighting population, and `single_label_frame` the frame the benchmark was drawn from. `label_any` and `all_rows` are for reference. |
+| `sampling_frame_counts.csv` | One row per population definition and group: `frame`, `group`, `n`, the manuscript value, whether they match, and the definition. `table1` gives the Table 1 counts and union (criteria counted from the reaction SMILES and the Reagent field), `single_criterion_frame` the frame of the revised benchmark (exactly one Table 1 criterion, no `rare_temp` or `duplicated` label), `table1_any_flag` the same groups from the released flags, `exactly_one_of_four` the first-release weighting population, and `single_label_frame` the frame the first-release benchmark was drawn from. `label_any` and `all_rows` are for reference. |
 | `sampling_frame_label_combinations.csv` | Count of each `Issue` label combination, and whether it belongs to the single-label frame. |
 | `benchmark_sample_membership.csv` | One row per benchmark record (`idx`), with columns: `stratum`, the ORDerly label, `source_row` (0-based data row of `grants_issue.csv`; the first match when several rows share the reaction SMILES and label), `source_row_unique`, `candidate_count`, `candidate_source_rows`, year, patent and paragraph number of `source_row`, all candidate patent numbers, `TemplateFreq` and the SHA-256 of the trimmed reaction SMILES. |
 | `weighted_sampling_summary_single_label_frame.csv` | `weighted_sampling_summary.csv` with `population_n` replaced by the single-label-frame counts, for use with `evaluate_weighted_extrapolation.py --input`. |
 
-The random seed of the original draw was not recorded.
+The random seed of the original draw was not recorded. The two replacement
+draws of the revised benchmark have recorded seeds and are re-run by
+`evaluation/draw_replacements.py`.

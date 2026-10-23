@@ -11,23 +11,30 @@ reproduces:
   reactants (> 2) 100,777; many products (> 1) 82,203; many reagents (> 5)
   236,253; no reagent 201,761; union 550,070. Table 1 gives
   them as percentages of the 1,808,937 reactions of Lowe's grant files.
+* the 430,428 reactions that meet exactly one Table 1 criterion and carry no
+  ``rare_temp`` or ``duplicated`` label: many-products 44,157; many-reactants
+  20,157; many-reagents 198,305; no-reagent 167,809. This single-criterion
+  frame is the sampling frame of the revised benchmark and of its population
+  estimates.
 * The released ``Issue`` flags (82,203; 52,758; 236,368; 200,594; union
   536,372). Their reactant count included one extra molecule when no agents
   were listed, and their reagent count an empty entry, so they differ from
-  Table 1. The sampling frames below use these flags, from which the benchmark
-  was drawn.
+  Table 1. The first-release benchmark was drawn from these flags:
 * the 501,997 reactions flagged by exactly one of the four (any ``rare_temp``
-  or ``duplicated`` labels allowed), the population used for the weighted
-  extrapolation in Table S18/S21;
+  or ``duplicated`` labels allowed), the population of the first-release
+  weighted extrapolation;
 * the 454,475 reactions whose ``Issue`` is exactly one of the four labels and
   nothing else (no ``rare_temp``/``duplicated``): many-products 59,282;
   many-reactants 20,163; many-reagents 207,221; no-reagent 167,809. All 400
-  benchmark reactions come from this single-label frame.
+  first-release benchmark reactions come from this single-label frame; 28 of
+  them meet two Table 1 criteria and were redrawn from the single-criterion
+  frame (``evaluation/draw_replacements.py``).
 
 It also links each benchmark row to its population rows by exact (trimmed)
-reaction SMILES and writes the 400-row membership list. The random seed used
-to draw the original 100-per-stratum sample was not recorded, so the draw
-itself cannot be re-run; this script documents the frame and the membership.
+reaction SMILES, writes the 400-row membership list and reports how many rows
+fall in the single-criterion frame (400 for the revised benchmark). The random
+seed used to draw the original 100-per-stratum sample was not recorded, so that
+draw cannot be re-run; this script documents the frames and the membership.
 """
 
 from __future__ import annotations
@@ -72,6 +79,11 @@ EXPECTED = {
     ("table1", "many_reagents"): 236253,
     ("table1", "no_reagent"): 201761,
     ("table1", "union"): 550070,
+    ("single_criterion_frame", "many_products"): 44157,
+    ("single_criterion_frame", "many_reactants"): 20157,
+    ("single_criterion_frame", "many_reagents"): 198305,
+    ("single_criterion_frame", "no_reagent"): 167809,
+    ("single_criterion_frame", "total"): 430428,
     ("exactly_one_of_four", "total"): 501997,
     ("single_label_frame", "many_products"): 59282,
     ("single_label_frame", "many_reactants"): 20163,
@@ -87,6 +99,10 @@ FRAME_DESCRIPTIONS = {
         "Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map "
         "number with a mapped product) and the Reagent field (Table 1)."
     ),
+    "single_criterion_frame": (
+        "Rows meeting exactly one Table 1 criterion and carrying no rare_temp or duplicated label; the frame of "
+        "the revised benchmark and its population estimates."
+    ),
     "table1_any_flag": "Rows carrying the sampled ORDerly flag as released, alone or with other labels.",
     "exactly_one_of_four": (
         "Rows carrying exactly one of the four sampled flags; rare_temp and "
@@ -94,7 +110,7 @@ FRAME_DESCRIPTIONS = {
     ),
     "single_label_frame": (
         "Rows whose Issue is exactly one sampled flag and nothing else; the "
-        "frame all 400 benchmark rows were drawn from."
+        "frame all 400 first-release benchmark rows were drawn from."
     ),
 }
 MEMBERSHIP_FIELDS = (
@@ -145,10 +161,16 @@ def table1_criteria(reaction_smiles: str, reagents: str) -> tuple[str, ...]:
     return tuple(met)
 
 
+def stratum_of_criteria(criteria: tuple[str, ...], labels: tuple[str, ...]) -> str | None:
+    """The single-criterion-frame stratum: exactly one Table 1 criterion and no rare_temp or duplicated label."""
+    return criteria[0] if len(criteria) == 1 and not set(labels) & set(OTHER_LABELS) else None
+
+
 def scan(population: Path, member: str | None, targets: set[str]) -> dict[str, Any]:
     """Count label combinations and Table 1 criteria, and collect population rows matching ``targets``."""
     combinations: Counter[tuple[str, ...]] = Counter()
     table1: Counter[tuple[str, ...]] = Counter()
+    single_criterion: Counter[str] = Counter()
     matches: dict[str, list[dict[str, Any]]] = defaultdict(list)
     issue_cache: dict[str, tuple[str, ...]] = {}
     with open_population_csv(population, member) as (handle, metadata):
@@ -156,13 +178,18 @@ def scan(population: Path, member: str | None, targets: set[str]) -> dict[str, A
         for source_row, row in enumerate(reader):
             labels = parse_issue(row.get("Issue", ""), issue_cache)
             combinations[labels] += 1
-            table1[table1_criteria(row.get("ReactionSmiles", ""), row.get("Reagent", ""))] += 1
+            criteria = table1_criteria(row.get("ReactionSmiles", ""), row.get("Reagent", ""))
+            table1[criteria] += 1
+            stratum = stratum_of_criteria(criteria, labels)
+            if stratum:
+                single_criterion[stratum] += 1
             reaction = normalize_reaction(row.get("ReactionSmiles", ""))
             if reaction in targets:
                 matches[reaction].append(
                     {
                         "source_row": source_row,
                         "labels": labels,
+                        "criteria_stratum": stratum,
                         "year": str(row.get("Year", "")).strip(),
                         "patent_number": str(row.get("PatentNumber", "")).strip(),
                         "paragraph_num": str(row.get("ParagraphNum", "")).strip(),
@@ -170,7 +197,8 @@ def scan(population: Path, member: str | None, targets: set[str]) -> dict[str, A
                         "reaction_smiles": row.get("ReactionSmiles", ""),
                     }
                 )
-    return {"combinations": combinations, "table1": table1, "matches": matches, "metadata": metadata}
+    return {"combinations": combinations, "table1": table1, "single_criterion": single_criterion,
+            "matches": matches, "metadata": metadata}
 
 
 def stratum_of_single_label(labels: tuple[str, ...]) -> str | None:
@@ -178,7 +206,9 @@ def stratum_of_single_label(labels: tuple[str, ...]) -> str | None:
 
 
 def frame_counts(
-    combinations: Counter[tuple[str, ...]], table1: Counter[tuple[str, ...]] | None = None
+    combinations: Counter[tuple[str, ...]],
+    table1: Counter[tuple[str, ...]] | None = None,
+    single_criterion: Counter[str] | None = None,
 ) -> list[dict[str, Any]]:
     """Rows of (frame, group, n) for every population definition."""
     counts: Counter[tuple[str, str]] = Counter()
@@ -187,6 +217,9 @@ def frame_counts(
             counts[("table1", criterion)] += n
         if criteria:
             counts[("table1", "union")] += n
+    for stratum, n in (single_criterion or {}).items():
+        counts[("single_criterion_frame", stratum)] += n
+        counts[("single_criterion_frame", "total")] += n
     for labels, n in combinations.items():
         counts[("all_rows", "total")] += n
         sampled = [STRATA[label] for label in labels if label in STRATA]
@@ -343,8 +376,10 @@ def main(argv: list[str] | None = None) -> int:
     targets = {normalize_reaction(record["Lowe_smiles"]) for record in benchmark}
     scanned = scan(args.population, args.population_member, targets)
 
-    counts = frame_counts(scanned["combinations"], scanned["table1"])
+    counts = frame_counts(scanned["combinations"], scanned["table1"], scanned["single_criterion"])
     membership, provenance = link_benchmark(benchmark, scanned["matches"])
+    criteria_stratum = {item["source_row"]: item["criteria_stratum"]
+                        for items in scanned["matches"].values() for item in items}
 
     output_dir = args.output_dir
     write_csv(
@@ -385,11 +420,13 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{row['frame']:22s} {row['group']:16s} {row['n']:>8,d}  [{status}]{share}")
     per_stratum = Counter(row["stratum"] for row in membership)
     unique = sum(row["source_row_unique"] for row in membership)
+    in_frame = sum(criteria_stratum[row["source_row"]] == row["stratum"] for row in membership)
     print(f"Benchmark rows linked: {len(membership)} {dict(sorted(per_stratum.items()))}")
     print(
         f"Unique population row: {unique}/{len(membership)}; the rest match several "
         "rows with the same reaction SMILES and label (first listed as source_row)."
     )
+    print(f"In the single-criterion frame of their stratum: {in_frame}/{len(membership)}")
     print(f"Wrote {output_dir / 'sampling_frame_counts.csv'} and related files.")
     return 1 if (args.strict and mismatches) else 0
 

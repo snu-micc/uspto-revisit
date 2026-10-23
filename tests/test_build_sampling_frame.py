@@ -66,6 +66,9 @@ def test_frames_and_membership(tmp_path):
     assert counts[("exactly_one_of_four", "total")] == 4
     assert counts[("single_label_frame", "total")] == 3
     assert counts[("single_label_frame", "no_reagent")] == 2
+    # Without atom maps or a Reagent field every row meets only "no reagent"; rare_temp and duplicated rows are out.
+    assert counts[("single_criterion_frame", "no_reagent")] == 4
+    assert counts[("single_criterion_frame", "total")] == 4
 
     with (out / "benchmark_sample_membership.csv").open(encoding="utf-8-sig") as handle:
         membership = list(csv.DictReader(handle))

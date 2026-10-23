@@ -72,29 +72,41 @@ def test_threshold_table_reproduces_first_release(first_release_flags):
     assert formatted.iloc[0]["Denoising accuracy (%, 95% CI)"].startswith("74.8")
 
 
+REPLACED = [4, 8, 9, 10, 11, 14, 15, 20, 28, 32, 34, 42, 52, 62, 66, 68, 71, 73, 76, 77, 84, 94, 96,
+            212, 218, 234, 235, 281, 296, 315]
+
+
 def test_revised_ground_truth():
     gt = R.load_ground_truth()
     assert len(gt) == 400 and gt.index.tolist() == list(range(400))
     assert gt.label.value_counts().to_dict() == {"noise-free": 292, "noisy": 108}
-    assert int(gt.eligible.sum()) == 289 and not (gt.eligible & ~gt.noise_free).any()
-    assert gt.index[gt.noise_free & ~gt.eligible].tolist() == [14, 215, 235]
+    assert int(gt.eligible.sum()) == 291 and not (gt.eligible & ~gt.noise_free).any()
+    assert gt.index[gt.noise_free & ~gt.eligible].tolist() == [215]
     assert set(gt.noisy_reason[~gt.noise_free]) == set(R.NOISY_REASONS)
     references = gt[[c for c in gt if c.startswith("ground_truth_") and c.endswith("_reaction_smiles")]]
     assert references[gt.eligible].ne("").any(axis=1).all()
     assert references[~gt.noise_free].eq("").all(axis=None)
-    assert gt.salt_formation.eq("True").sum() == 28
+    assert gt.salt_formation.eq("True").sum() == 34
 
 
 def test_revised_input_and_membership():
     lowe = pd.read_csv(R.DATA / "input.csv", encoding="utf-8-sig").fillna("")
-    assert R.replaced_records(lowe) == [15, 315]
+    assert R.replaced_records(lowe) == REPLACED
     revised = pd.read_csv(R.DATA / "benchmark_sample_membership.csv", encoding="utf-8-sig").set_index("idx")
     first = pd.read_csv(DATA / "benchmark_sample_membership.csv", encoding="utf-8-sig").set_index("idx")
-    assert revised.issue_label.equals(first.issue_label)
-    kept = revised.index.difference([15, 315])
+    assert revised.issue_label.equals(first.issue_label)  # every replacement comes from the same stratum
+    kept = revised.index.difference(REPLACED)
     audit = pd.read_csv(DATA / "template_threshold_audit.csv", encoding="utf-8-sig").set_index("source_row")
     assert revised.template_frequency.loc[kept].equals(audit.template_frequency.loc[kept])
     assert revised.loc[[15, 315], "template_frequency"].tolist() == [21688, 4265]
+    draws = pd.read_csv(R.DATA / "replacement_draws.csv", encoding="utf-8-sig")
+    assert sorted(draws.replaces_idx) == REPLACED
+    assert (revised.loc[draws.replaces_idx, "source_row"].to_numpy() == draws.source_row.to_numpy()).all()
+
+
+def test_revised_sampling_frame():
+    assert sum(BS.FRAME_SINGLE_CRITERION.values()) == 430428
+    assert R.FRAME is BS.FRAME_SINGLE_CRITERION
 
 
 def test_revised_results_headline():
@@ -103,9 +115,21 @@ def test_revised_results_headline():
         pytest.skip("run python evaluation/reproduce_revised.py first")
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     primary = summary["fully_automatic"]["primary"]
-    assert (primary["reaction_correct"], primary["evaluated_reactions"]) == (216, 289)
-    assert summary["fully_automatic"]["best_method"] == R.PRIMARY
-    assert summary["salt_formation"]["denoising_correct"] == 285
+    assert (primary["reaction_correct"], primary["evaluated_reactions"]) == (210, 291)
+    # Without the lookup tables gpt-5.4 (none) is one record higher; with them the selected configuration is highest.
+    assert summary["fully_automatic"]["best_method"] == "gpt-5.4-none"
+    assert summary["fully_automatic_with_tables"]["best_method"] == R.PRIMARY
+    assert summary["fully_automatic_with_tables"]["primary"]["reaction_correct"] == 215
+    assert summary["curated"]["primary"]["reaction_correct"] == 234
+    assert summary["salt_formation"]["denoising_correct"] == 280
+    assert summary["salt_formation"]["denoising_correct_if_noisy"] == 311
     bounds = pd.read_csv(RESULTS / "revised" / "fully_automatic" / "end_to_end_bounds.csv", encoding="utf-8-sig")
     row = bounds[bounds.model.eq(R.PRIMARY) & bounds.heuristic.eq(R.TEMPLATE) & bounds.scoring.eq("lenient")].iloc[0]
-    assert (row.lower_correct, row.full_n) == (246, 400)
+    assert (row.assessable_correct, row.assessable_n, row.lower_correct, row.full_n) == (235, 399, 235, 400)
+    tests = pd.read_csv(RESULTS / "revised" / "fully_automatic" / "extraction_paired_tests_primary_lenient.csv",
+                        encoding="utf-8-sig")
+    assert set(tests.best) == {R.PRIMARY}
+    assert int((tests[tests.family.eq("T2")].p_holm >= 0.05).sum()) == 12
+    population = pd.read_csv(RESULTS / "revised" / "fully_automatic" / "population_bounds.csv", encoding="utf-8-sig")
+    exact = population[population.quantity.eq("exact_retained_lower") & population.scoring.eq("lenient")].iloc[0]
+    assert (round(exact.total), exact.frame_n) == (223803, 430428)

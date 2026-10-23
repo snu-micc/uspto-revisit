@@ -1,8 +1,8 @@
 # Name-resolution records
 
 This folder documents how chemical names in the released model outputs were
-turned into structures. It also holds the recording that the fully automatic
-sensitivity analysis replays offline.
+turned into structures. It also holds the two recordings from which the fully
+automatic scenario is built offline.
 
 | File | Contents |
 | --- | --- |
@@ -13,6 +13,7 @@ sensitivity analysis replays offline.
 | `nosmi_recovery_audit.csv`, `nosmi_recovery_summary.json` | The earlier NoSmi recovery, including which names the curated overrides resolved. |
 | `requery_2026-10-16_raw.jsonl` | Every HTTP exchange of the 2026-10-16 re-query of the curated names (see below). |
 | `requery_2026-10-16_capture.json` | Query times, endpoints, rate limits, response counts and the SHA-256 of the recording. |
+| `requery_2026-10-23_no_tables_raw.jsonl`, `..._capture.json` | The same for the 2026-10-23 re-query, with both lookup tables off, of the names those tables answer or rewrite (see the end of this file). |
 
 ## The 2026-10-16 re-query
 
@@ -84,3 +85,41 @@ python scripts/name_resolution/requery_curated_names.py --live --output result/n
 ```
 
 Pass the new file to the evaluation scripts with `--requery-log`.
+
+## The 2026-10-23 re-query without the lookup tables
+
+The resolver answers names from two fixed tables in
+`src/uspto_revisit/smiles_fetch.py`: `DEFAULT_KNOWN_SMILES`, 19 abbreviations
+and trivial names (DCM, THF, brine, ...) answered before OPSIN, and
+`SAFE_NAME_ALIASES`, 13 spelling variants and synonyms of catalysts and
+reagents that are looked up under a standard name (DIEA as DIPEA, RuPhos by its
+systematic name, misspelled tris(dibenzylideneacetone)dipalladium). Eleven of
+the 19 entries and all 13 synonyms were added in July 2026, after the benchmark
+paragraphs had been inspected, so the primary (fully automatic) scenario does
+not use them (`evaluation/lookup_tables.py`). Every distinct extracted spelling
+that either table answers or rewrites in the 19 outputs with the tables on
+(42 spellings) was sent once to the same four resolvers with both tables
+disabled, under the request rules above (`--names lookup-tables`).
+
+- **Date and time:** 2026-10-23, 05:51–05:58 UTC; 232 requests. CIR dropped
+  connections for 15 URLs; they were re-sent one at a time (20 requests) until
+  every URL had an HTTP answer.
+- **Redirects:** the client follows redirects (OPSIN's move to
+  `www.ebi.ac.uk/opsin/ws/`, CIR's to HTTPS); each record keeps the requested
+  URL.
+- **Answers:** 28 of 42 spellings resolve (27 in the capture file, which counts
+  the main run before the re-sent requests). Most get the table's structure
+  (THF, DMF, ether, DIEA, LiAlH4, the palladium complexes under their usual
+  names). Some get another compound: CIR reads DCM as deoxycytidine
+  monophosphate, PubChem reads DMA as a bis-benzimidazole dye and RuPhos as an
+  unrelated phosphorus compound, and the bis(triphenylphosphine)palladium
+  chlorides and "lithiumaluminium hydride" get other salt or bonding forms.
+  Brine and its variants, Pd/C, the "dry ..." solvents, ultrapure water and
+  the misspelled "tri(dibenzylidene(a)cetone)dipalladium(0)" are not resolved.
+- **Effect:** of the 2,141 table-answered components of the 19 outputs, 144
+  get another structure and 801 become unresolved (97 and 32 of those in a
+  reaction skeleton; most unresolved ones are work-up brine).
+  `evaluation/rebuild_revised_outputs.py` (step 5) replays the recording and
+  re-maps the changed steps; the audits are in `result/revised/audits/`. With
+  the tables on, every configuration extracts 1 to 7 more reactions correctly
+  (`evaluation/results/revised/fully_automatic_with_tables/`).

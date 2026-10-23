@@ -233,12 +233,14 @@ The script reads `data/grants_issue.zip` and writes:
 
 - `data/sampling_frame_counts.csv`: the Table 1 counts from the reaction
   SMILES and Reagent field (82,203 / 100,777 / 236,253 / 201,761; union
-  550,070), the released flags (82,203 / 52,758 / 236,368 / 200,594; union
-  536,372), the 501,997 reactions flagged by exactly one of the four sampled
-  flags, and the 454,475-reaction single-label frame
-  (59,282 / 20,163 / 207,221 / 167,809). The frame has no other `Issue`
-  label, in particular no `rare_temp` or `duplicated`. Each row is compared
-  with the manuscript value; `--strict` fails on any difference.
+  550,070), the 430,428-reaction single-criterion frame of the revised
+  benchmark (exactly one Table 1 criterion and no `rare_temp` or `duplicated`
+  label; 44,157 / 20,157 / 198,305 / 167,809), the released flags (82,203 /
+  52,758 / 236,368 / 200,594; union 536,372), the 501,997 reactions flagged by
+  exactly one of the four sampled flags, and the 454,475-reaction single-label
+  frame of the first release (59,282 / 20,163 / 207,221 / 167,809), which has
+  no other `Issue` label. Each row is compared with the manuscript value;
+  `--strict` fails on any difference.
 - `data/sampling_frame_label_combinations.csv`: the count of every `Issue`
   label combination.
 - `data/benchmark_sample_membership.csv` and
@@ -247,9 +249,13 @@ The script reads `data/grants_issue.zip` and writes:
 - `data/weighted_sampling_summary_single_label_frame.csv`: the weighting input
   with single-label populations.
 
-All 400 records lie in the single-label frame, 100 per stratum. The random
-seed used for the original draw was not recorded, so the draw cannot be
-re-run. In this file `source_row` is the 0-based data row of
+All 400 first-release records lie in the single-label frame, 100 per stratum;
+371 of them lie in the single-criterion frame of their stratum (the 28 records
+redrawn for the revised benchmark and record 15, which repeats record 8). With
+`--input data/revised/input.csv` the script reports 400 of 400. The random
+seed used for the original draw was not recorded, so that draw cannot be
+re-run; the two replacement draws of the revised benchmark can
+(`draw_replacements.py`, Section 8). In this file `source_row` is the 0-based data row of
 `grants_issue.csv`. Elsewhere in `results/`, `source_row` is the benchmark
 index, `idx`. When a benchmark reaction occurs in several population rows
 (247 of 400 records), `source_row` is the first such row and
@@ -348,42 +354,63 @@ published values are 245/283, 299/400 and 272/400.
 ## 8. Revised benchmark (manuscript and SI)
 
 `reproduce_revised.py` reads `data/revised/` and the stored outputs in
-`result/revised/model_outputs/{fully_automatic,curated}/`, and writes
-`results/revised/`. It makes no model, resolver or network call.
+`result/revised/model_outputs/<scenario>/`, and writes `results/revised/`. It
+makes no model, resolver or network call.
 
-- **Scenarios.** Fully automatic name resolution is primary; curated name
-  resolution (overrides and record-level decisions) is secondary.
+- **Scenarios.** `fully_automatic` is primary: names are resolved only by
+  OPSIN, PubChem, NCI CIR and ChEBI, without the curated layers and without the
+  two lookup tables of the resolver (`lookup_tables.py`).
+  `fully_automatic_with_tables` turns the lookup tables on (sensitivity
+  analysis), and `curated` adds the overrides and record-level decisions
+  (secondary).
 - **Labels.** All 400 paragraph labels (292 noise-free, 108 noisy) enter the
-  denoising metrics. Extraction uses the 289 noise-free records with complete
-  molecular references; records 14, 215 and 235 are left out of the structure
-  endpoints only.
+  denoising metrics. Extraction uses the 291 noise-free records with complete
+  molecular references; record 215 is left out of the structure endpoints
+  only.
 - **Step scope.** Each prediction is compared on its step that forms the
   title compound (`build_ground_truth_review.configure_step_scope`).
 - **End-to-end:** a noise-free record counts when its extraction is exact and
   the heuristic keeps it; a noisy record counts when the heuristic removes it.
-  `end_to_end_bounds.csv` gives the 397 assessable records and lower and upper
-  bounds over all 400, which treat the three unavailable references as wrong
-  or right.
+  `end_to_end_bounds.csv` gives the 399 assessable records and lower and upper
+  bounds over all 400, which treat the unavailable reference as wrong or right.
 - **Population totals:** stratified totals with finite-population correction,
   `T = sum_h N_h ybar_h` and `Var = sum_h N_h^2 (1 - n_h/N_h) s_h^2 / n_h`,
-  with a 95% Wald interval, on the 454,475-record single-label frame.
+  with a 95% Wald interval, on the 430,428-record single-criterion frame
+  (`benchmark_statistics.FRAME_SINGLE_CRITERION`).
 - **Statistics:** exact two-sided McNemar tests with a Holm correction within
-  each family; selection-adjusted accuracy by nested 5-fold cross-validation
-  (200 repeats), leave-one-stratum-out and the out-of-bag stratified bootstrap
-  (2,000 resamples), all with seed 20261016. Three selection procedures are
-  reported: extraction only, extraction then filter (`two_stage`), and
-  configuration and filter chosen jointly by end-to-end accuracy (`joint`).
-  The implementation is in `benchmark_statistics.py`.
+  each family. Extraction tests compare the selected configuration
+  (gemini-3.6-flash, high) with the other 18 and with the original USPTO
+  record (`extraction_paired_tests_primary_*.csv`), and, separately, the
+  configuration of highest accuracy (`extraction_paired_tests_*.csv`; without
+  the lookup tables this is gpt-5.4 with no reasoning, one record higher).
+  Selection-adjusted accuracy by nested 5-fold cross-validation (200 repeats),
+  leave-one-stratum-out and the out-of-bag stratified bootstrap (2,000
+  resamples), all with seed 20261016. Three selection procedures are reported:
+  extraction only, extraction then filter (`two_stage`), and configuration and
+  filter chosen jointly by end-to-end accuracy (`joint`). The implementation is
+  in `benchmark_statistics.py`.
 - **Template-frequency cutoffs:** the frequencies come from
   `data/revised/benchmark_sample_membership.csv`.
 - **Reference provenance:** `reference_source` in `ground_truth.csv` separates
-  references retained from the consensus candidate (185) from references saved
-  as reviewed decisions (104).
+  references retained from the consensus candidate (169) from references saved
+  as reviewed decisions (122).
 
-`rebuild_revised_outputs.py` rebuilds the stored outputs from the first-release
-outputs and the replacement runs (Section 7's `--name-resolution
-fully-automatic` replay, with the element and carbon monoxide convention) and
-checks that they equal the released copies.
+`rebuild_revised_outputs.py` rebuilds the stored outputs of the three
+scenarios from the first-release outputs, the runs on the replacement records
+and the two recorded re-queries, in the order the released outputs were built
+(the docstring lists the five steps), and checks that they and the audits in
+`result/revised/audits/` equal the released copies. It needs the `mapping`
+extra.
+
+`draw_replacements.py` re-runs the two replacement draws from the population
+file (`data/grants_issue.zip`): records 15 and 315, which repeated records 8
+and 309 (seed 20261021, frame of the released flags), and the 28 records that
+meet two Table 1 criteria (seed 20261022, single-criterion frame). The rules on
+Lowe's paragraphs are checked against `data/revised/replacement_draws.csv`,
+because Lowe's CML files are not part of the repository. It writes every
+examined candidate to `results/revised/replacement_draw_candidates.csv` and
+checks that the accepted rows are the population rows of the replacement
+records.
 
 ## Contextual benchmarks
 

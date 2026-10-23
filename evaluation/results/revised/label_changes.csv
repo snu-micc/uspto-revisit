@@ -3,8 +3,6 @@
 2,"N-Ethyl-3,4-dihydroxyphenethylamine hydrobromide",noisy,noise-free
 3,"5,6,7,8-tetrahydroimidazo[1,2-a]pyridine-7-carboxylic acid·hydrochloride",noisy,noise-free
 5,di(p-t-butylphenyl)iodonium tetraphenylborate,noisy,noise-free
-11,4-isopropylphenylacetimidate hydrochloride,noise-free,noisy
-14,"sodium 3, 6, 8-trisulfonaphthylthiourea",noisy,noise-free
 63,"1-methyl-1,2,5,6-tetrahydropyridine-3-carboxylic acid hydrochloride",noise-free,noisy
 74,"4-benzyl-6-chloro-3,4-dihydro-2-methyl-3-oxo-N-(3-quinuclidinyl)-2H-1,4-benzoxazine-8-carboxamide hydrochloride",noise-free,noisy
 89,sodium di(2-ethylhexyl) phosphate,noisy,noise-free
@@ -39,7 +37,6 @@
 194,"4-[2,5-Dioxo-4-[(2-propenyloxy)methyl]imidazolidin-4-yl]benzonitrile",noisy,noise-free
 198,A466.3: 1-(6-Bromo-pyridin-2-yl)-propylamine,noise-free,noisy
 226,"[4-[4-[4-(hydroxydiphenylmethyl)-1-piperidinyl]-1-oxobutyl]phenyl]methyl-propanedioic acid, diethyl ester",noise-free,noisy
-235,"1a, 1-[2-(2-Trifluoromethylphenylsulfanyl)phenyl]piperazine",noisy,noise-free
 276,3-Allyl-3-methyl-pent-4-en-2-ol,noise-free,noisy
 308,(6-methoxy-2-cyclopentylbenzo[b]thien-3-yl)[4-[2-(dimethylamino)ethoxy]phenyl]methanone,noise-free,noisy
 334,4-allyl-1H-indol-5-ol,noisy,noise-free

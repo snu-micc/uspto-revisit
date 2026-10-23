@@ -4,12 +4,17 @@ Reads
   evaluation/data/revised/ground_truth.csv                  400 paragraph labels and the structure references
   evaluation/data/revised/input.csv                         benchmark input with the original USPTO reaction SMILES
   evaluation/data/revised/benchmark_sample_membership.csv   sampling stratum and template frequency of each record
-  result/revised/model_outputs/{fully_automatic,curated}/   stored outputs of the 19 configurations
+  result/revised/model_outputs/<scenario>/                   stored outputs of the 19 configurations
 
-and writes every table, test and figure to ``evaluation/results/revised/``. The fully automatic name-resolution
-scenario is the primary analysis; the curated scenario adds the released overrides and row decisions. Each
-prediction is compared on its step that forms the title compound. Percentages are rounded half up to one decimal
-and intervals are 95% Wilson score intervals unless stated.
+and writes every table, test and figure to ``evaluation/results/revised/``. Three name-resolution scenarios are
+scored. ``fully_automatic`` is the primary analysis: names are resolved only by OPSIN, PubChem, NCI CIR and ChEBI,
+without the two lookup tables of the resolver (``DEFAULT_KNOWN_SMILES`` and ``SAFE_NAME_ALIASES``).
+``fully_automatic_with_tables`` turns the lookup tables on (sensitivity analysis), and ``curated`` adds the released
+overrides and row decisions. Each prediction is compared on its step that forms the title compound. Paired
+extraction tests use the selected configuration (gemini-3.6-flash, high) as reference and, separately, the
+configuration with the highest accuracy. Population totals use the single-criterion sampling frame
+(``benchmark_statistics.FRAME_SINGLE_CRITERION``). Percentages are rounded half up to one decimal and intervals are
+95% Wilson score intervals unless stated.
 
 Offline and deterministic: no model, name-resolver or network call. The paired tests, selection analyses and
 population estimates take a few minutes on a CPU.
@@ -49,7 +54,8 @@ DEFAULT_OUTPUT_DIR = ROOT / "evaluation" / "results" / "revised"
 MODELS = tuple(T3.MODELS)
 PRIMARY = BS.PRIMARY
 TEMPLATE = BS.TEMPLATE
-SCENARIOS = ("fully_automatic", "curated")
+SCENARIOS = ("fully_automatic", "curated", "fully_automatic_with_tables")
+FRAME = BS.FRAME_SINGLE_CRITERION
 SCORINGS = ("lenient", "strict")
 UNAVAILABLE = "noise-free; outside complete molecular-SMILES reference scope"
 NOISY_REASONS = ("Untraceable cross-references", "Erroneous chemical names", "no reaction")
@@ -208,7 +214,7 @@ def end_to_end_bounds(flags2: pd.DataFrame, flags3: pd.DataFrame, gt: pd.DataFra
                                 ("exact_retained_upper", labels & (right | ~eligible) & passed),
                                 ("noise_free_retained", labels & passed),
                                 ("noisy_removed", ~labels & ~passed)):
-                    estimate = BS.stratified_total(y.astype(int), strata.loc[gt.index].to_numpy(), BS.FRAME_SINGLE_LABEL)
+                    estimate = BS.stratified_total(y.astype(int), strata.loc[gt.index].to_numpy(), FRAME)
                     population.append({"quantity": name, "scoring": scoring, **estimate})
     return bounds, population
 
@@ -237,7 +243,7 @@ def weighted_extrapolation(flags3: pd.DataFrame, strata: pd.Series) -> pd.DataFr
     outcomes = {"tp": noise_free & passed, "fn": noise_free & ~passed, "fp": ~noise_free & passed,
                 "tn": ~noise_free & ~passed}
     rows = []
-    for stratum, population in BS.FRAME_SINGLE_LABEL.items():
+    for stratum, population in FRAME.items():
         members = strata.index[strata.eq(stratum)]
         counts = {k: int(v.loc[members].sum()) for k, v in outcomes.items()}
         weight = population / len(members)
@@ -295,6 +301,8 @@ def score_scenario(scenario: str, gt: pd.DataFrame, lowe: pd.DataFrame, membersh
     for scoring, f2 in flags2.items():
         f = BS.RecordFlags(f2[~f2.source_row.isin(unavailable)], f3[~f3.source_row.isin(unavailable)], strata, MODELS)
         write(BS.table2_tests(f).assign(scenario=scenario, scoring=scoring), out / f"extraction_paired_tests_{scoring}.csv")
+        write(BS.table2_tests(f, reference=PRIMARY).assign(scenario=scenario, scoring=scoring),
+              out / f"extraction_paired_tests_primary_{scoring}.csv")
         tests = BS.table3_tests(f)
         e2e_tests.append(tests[tests.outcome.eq("end_to_end")].assign(scoring=scoring, scope="assessable_subset"))
         for kind in ("extraction", "two_stage", "joint"):

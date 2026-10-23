@@ -11,11 +11,16 @@ label_any,many_reactant (> 2),52758,,,Rows whose Issue list contains the label (
 label_any,many_reagent (> 5),236368,,,Rows whose Issue list contains the label (any combination).
 label_any,no_reagent,200594,,,Rows whose Issue list contains the label (any combination).
 label_any,rare_temp,79074,,,Rows whose Issue list contains the label (any combination).
-single_label_frame,many_products,59282,59282,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
-single_label_frame,many_reactants,20163,20163,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
-single_label_frame,many_reagents,207221,207221,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
-single_label_frame,no_reagent,167809,167809,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
-single_label_frame,total,454475,454475,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 benchmark rows were drawn from.
+single_criterion_frame,many_products,44157,44157,1,Rows meeting exactly one Table 1 criterion and carrying no rare_temp or duplicated label; the frame of the revised benchmark and its population estimates.
+single_criterion_frame,many_reactants,20157,20157,1,Rows meeting exactly one Table 1 criterion and carrying no rare_temp or duplicated label; the frame of the revised benchmark and its population estimates.
+single_criterion_frame,many_reagents,198305,198305,1,Rows meeting exactly one Table 1 criterion and carrying no rare_temp or duplicated label; the frame of the revised benchmark and its population estimates.
+single_criterion_frame,no_reagent,167809,167809,1,Rows meeting exactly one Table 1 criterion and carrying no rare_temp or duplicated label; the frame of the revised benchmark and its population estimates.
+single_criterion_frame,total,430428,430428,1,Rows meeting exactly one Table 1 criterion and carrying no rare_temp or duplicated label; the frame of the revised benchmark and its population estimates.
+single_label_frame,many_products,59282,59282,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 first-release benchmark rows were drawn from.
+single_label_frame,many_reactants,20163,20163,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 first-release benchmark rows were drawn from.
+single_label_frame,many_reagents,207221,207221,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 first-release benchmark rows were drawn from.
+single_label_frame,no_reagent,167809,167809,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 first-release benchmark rows were drawn from.
+single_label_frame,total,454475,454475,1,Rows whose Issue is exactly one sampled flag and nothing else; the frame all 400 first-release benchmark rows were drawn from.
 table1,many_products,82203,82203,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
 table1,many_reactants,100777,100777,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
 table1,many_reagents,236253,236253,1,Rows meeting the criterion counted from the reaction SMILES (reactants share an atom-map number with a mapped product) and the Reagent field (Table 1).
