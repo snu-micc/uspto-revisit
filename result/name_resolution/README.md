@@ -88,16 +88,18 @@ Pass the new file to the evaluation scripts with `--requery-log`.
 
 ## The 2026-10-23 re-query without the lookup tables
 
-The resolver answers names from two fixed tables in
-`src/uspto_revisit/smiles_fetch.py`: `DEFAULT_KNOWN_SMILES`, 19 abbreviations
-and trivial names (DCM, THF, brine, ...) answered before OPSIN, and
-`SAFE_NAME_ALIASES`, 13 spelling variants and synonyms of catalysts and
-reagents that are looked up under a standard name (DIEA as DIPEA, RuPhos by its
-systematic name, misspelled tris(dibenzylideneacetone)dipalladium). Eleven of
-the 19 entries and all 13 synonyms were added in July 2026, after the benchmark
-paragraphs had been inspected, so the primary (fully automatic) scenario does
-not use them (`evaluation/lookup_tables.py`). Every distinct extracted spelling
-that either table answers or rewrites in the 19 outputs with the tables on
+Until 2026-10-23 the resolver answered names from two fixed tables (now kept
+only in `evaluation/historical_lookup_tables.py`): 19 abbreviations and trivial
+names (DCM, THF, brine, ...) answered before OPSIN, and 13 spelling variants
+and synonyms of catalysts and reagents that were looked up under a standard
+name (DIEA as DIPEA, RuPhos by its systematic name, misspelled
+tris(dibenzylideneacetone)dipalladium). Eleven of the 19 entries and all 13
+synonyms were added in July 2026, after the benchmark paragraphs had been
+inspected, so they were removed from the resolver, and the primary (fully
+automatic) scenario does without them (`evaluation/lookup_tables.py`). The
+2026-10-16 re-query above was recorded while the tables were in place, and its
+replay installs them. Every distinct extracted spelling that either table
+answered or rewrote in the 19 outputs with the tables on
 (42 spellings) was sent once to the same four resolvers with both tables
 disabled, under the request rules above (`--names lookup-tables`).
 

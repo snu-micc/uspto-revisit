@@ -12,15 +12,16 @@ layer resolved in the 19 released configurations (override names, row-level
 Each spelling goes through the released resolver code exactly as
 ``name_resolution_replay`` replays it: the first pass (abbreviation table, then
 OPSIN, also for ``fix_name(name)``) and the NoSmi retry path (refusal of
-ambiguous names, alias, then PubChem, OPSIN, NCI CIR and ChEBI). Overrides,
-row decisions and the shared cache are disabled.
+ambiguous names, synonym, then PubChem, OPSIN, NCI CIR and ChEBI). As on
+2026-10-16, the lookup tables the resolver had then are installed for curated
+names (``evaluation/historical_lookup_tables.py``). Overrides, row decisions
+and the shared cache are disabled.
 
 ``--names lookup-tables`` instead queries every distinct extracted spelling
-that either lookup table of the resolver answers or rewrites
-(``smiles_fetch.DEFAULT_KNOWN_SMILES`` and ``SAFE_NAME_ALIASES``) in the outputs
-with the tables on (``result/revised/model_outputs/fully_automatic_with_tables``),
-with both tables disabled; the primary scenario is built from this recording
-(``requery_2026-10-23_no_tables_raw.jsonl``, 42 spellings).
+that either of those tables answered or rewrote in the outputs with the tables
+on (``result/revised/model_outputs/fully_automatic_with_tables``), without the
+tables, as the resolver now runs; the primary scenario is built from this
+recording (``requery_2026-10-23_no_tables_raw.jsonl``, 42 spellings).
 
 Every HTTP exchange (UTC time, URL, attempt, status, body or error) is written
 to ``--output``; a capture file with query times, endpoints, rate limits,

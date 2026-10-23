@@ -9,11 +9,10 @@ import pytest
 from uspto_revisit import cli
 
 
-def test_pipeline_parser_uses_repository_no_smi_overrides():
-    args = cli.build_parser().parse_args([])
-
-    assert args.overrides is not None
-    assert Path(args.overrides).as_posix().endswith("config/nosmi_overrides.json")
+def test_pipeline_parser_resolves_names_fully_automatically_by_default():
+    assert cli.build_parser().parse_args([]).overrides is None
+    args = cli.build_parser().parse_args(["--overrides", "config/nosmi_overrides.json"])
+    assert Path(args.overrides).as_posix() == "config/nosmi_overrides.json"
 
 
 def test_default_final_paths_are_model_scoped():

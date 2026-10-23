@@ -136,8 +136,8 @@ def test_lookup_tables_can_be_disabled(tmp_path):
     # Without the synonym list DIEA is looked up as written, not as DIPEA.
     assert any("DIEA" in url for url in resolver.missing_urls)
     assert not any("DIPEA" in url for url in resolver.missing_urls)
-    assert smiles_fetch.DEFAULT_KNOWN_SMILES["THF"] == "C1CCOC1"  # restored after the replay
-    assert smiles_fetch.SAFE_NAME_ALIASES["diea"] == "DIPEA"
+    # The replay installs the historical tables only while it runs; the resolver has none.
+    assert smiles_fetch.DEFAULT_KNOWN_SMILES == {} and smiles_fetch.SAFE_NAME_ALIASES == {}
     # The first pass also reaches the table through fix_name ("anhydrous ether" -> "ether").
     assert name_resolution_replay.builtin_table_smiles("anhydrous ether") == "CCOCC"
     assert name_resolution_replay.builtin_table_smiles("dimethylformamide") is None

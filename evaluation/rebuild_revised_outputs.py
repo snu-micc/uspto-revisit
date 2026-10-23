@@ -13,11 +13,11 @@ The steps follow the order in which the released outputs were built:
    2026-10-16 re-query in ``result/name_resolution/`` in the released two-pass order.
 3. The 28 records redrawn second replace their rows in both (their runs used automatic name resolution and already
    write elements and carbon monoxide as molecules).
-4. Components that still hold an earlier lookup-table value ("DMA" as acetamide, record 136) get the current table
+4. Components that still hold the June 2026 lookup-table value ("DMA" as acetamide, record 136) get the July 2026
    entry. This gives ``curated`` and ``fully_automatic_with_tables``.
-5. Every component that either lookup table of the resolver answered or rewrote gets what the resolvers return with
-   both tables off, replayed from the 2026-10-23 re-query (``evaluation/lookup_tables.py``). This gives the primary
-   ``fully_automatic`` scenario.
+5. Every component that either lookup table answered or rewrote (the tables the resolver had then,
+   ``evaluation/historical_lookup_tables.py``) gets what the resolvers return without them, replayed from the
+   2026-10-23 re-query (``evaluation/lookup_tables.py``). This gives the primary ``fully_automatic`` scenario.
 
 Steps whose components change are re-mapped with LocalMapper on the CPU. The released copies are in
 ``result/revised/model_outputs/`` and the audits of steps 4 and 5 in ``result/revised/audits/``. This script writes to

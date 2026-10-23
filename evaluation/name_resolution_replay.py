@@ -12,27 +12,28 @@ Two resolution orders are available:
 
 ``two-pass`` (the released pipeline's order; default)
     First pass, as ``smiles_fetch.get_smiles_dict`` runs it with
-    ``--fix-names``: the abbreviation table, then OPSIN, for the name and, if
-    that fails, for ``fix_name(name)``. Names still unresolved go to the NoSmi
-    retry below.
+    ``--fix-names``: the abbreviation table (if installed), then OPSIN, for
+    the name and, if that fails, for ``fix_name(name)``. Names still
+    unresolved go to the NoSmi retry below.
 ``retry``
-    The NoSmi retry path alone (``resolve_no_smi_name``): abbreviation table,
-    refusal of ambiguous or non-molecular names, identity-preserving alias,
-    then PubChem, OPSIN, CIR and ChEBI concurrently; the first non-empty
-    result in that priority order is kept.
+    The NoSmi retry path alone (``resolve_no_smi_name``): abbreviation table
+    (if installed), refusal of ambiguous or non-molecular names, synonym (if
+    installed), then PubChem, OPSIN, CIR and ChEBI concurrently; the first
+    non-empty result in that priority order is kept.
 
 Curated overrides, row decisions and the shared cache are disabled during the
 replay. For each URL the last recorded attempt is used, as in the live run; a
 URL without a recorded HTTP 200 response yields nothing. Requests that the
 recording does not contain are listed in ``missing_urls``.
 
-``lookup_tables=False`` also disables the two lookup tables of the resolver:
-the table of 19 abbreviations and trivial names
-(``smiles_fetch.DEFAULT_KNOWN_SMILES``) and the 13 spelling variants and
-synonyms looked up under a standard name (``SAFE_NAME_ALIASES``). Names they
-would answer or rewrite then go to the resolvers as written;
-``requery_2026-10-23_no_tables_raw.jsonl`` records those names with both
-tables disabled.
+The resolver now has no lookup tables, but the 2026-10-16 re-query was
+recorded while it had two (``historical_lookup_tables.py``: 19 abbreviations
+and trivial names answered before OPSIN, and 13 spelling variants and synonyms
+looked up under a standard name). ``lookup_tables=True`` (the default)
+installs them for the replay, so that it sends the requests that were
+recorded; ``lookup_tables=False`` replays the resolver as released, without
+them. ``requery_2026-10-23_no_tables_raw.jsonl`` records, without the tables,
+the names they had answered or rewritten.
 """
 
 from __future__ import annotations
@@ -96,34 +97,20 @@ class RecordedResolver:
 
     @contextlib.contextmanager
     def _patched_resolver(self):
-        from uspto_revisit import smiles_fetch as sf
+        from evaluation.historical_lookup_tables import installed
 
-        saved = (
-            sf.fetch_smiles,
-            sf.resolution_overrides,
-            sf.smiles_cache,
-            sf.DEFAULT_KNOWN_SMILES,
-            sf.SAFE_NAME_ALIASES,
-        )
-        sf.fetch_smiles = self._fetch
-        sf.resolution_overrides = {}
-        sf.smiles_cache = {}
-        if not self.lookup_tables:
-            sf.DEFAULT_KNOWN_SMILES = {}
-            sf.SAFE_NAME_ALIASES = {}
-        previous_disable = logging.root.manager.disable
-        logging.disable(logging.WARNING)  # the resolvers log every miss
-        try:
-            yield sf
-        finally:
-            logging.disable(previous_disable)
-            (
-                sf.fetch_smiles,
-                sf.resolution_overrides,
-                sf.smiles_cache,
-                sf.DEFAULT_KNOWN_SMILES,
-                sf.SAFE_NAME_ALIASES,
-            ) = saved
+        with installed(self.lookup_tables) as sf:
+            saved = (sf.fetch_smiles, sf.resolution_overrides, sf.smiles_cache)
+            sf.fetch_smiles = self._fetch
+            sf.resolution_overrides = {}
+            sf.smiles_cache = {}
+            previous_disable = logging.root.manager.disable
+            logging.disable(logging.WARNING)  # the resolvers log every miss
+            try:
+                yield sf
+            finally:
+                logging.disable(previous_disable)
+                sf.fetch_smiles, sf.resolution_overrides, sf.smiles_cache = saved
 
     @staticmethod
     async def _retry_path(sf, name: str) -> dict[str, Any]:
@@ -215,21 +202,24 @@ def clean_name(name: str) -> str:
 
 
 def builtin_table_smiles(name: str) -> str | None:
-    """The SMILES the first pass (``get_smiles_dict`` with ``--fix-names``) takes from the built-in table, if any."""
-    from uspto_revisit import smiles_fetch as sf
+    """The SMILES the first pass (``get_smiles_dict`` with ``--fix-names``) took from the historical table of
+    abbreviations and trivial names, if any."""
+    from evaluation.historical_lookup_tables import installed
     from uspto_revisit.json_utils import fix_name
 
-    for start in (clean_name(name), clean_name(fix_name(name))):
-        for candidate in (start, sf.resolve_name_alias(fix_name(sf.resolve_name_alias(start)))):
-            smiles = sf._known_smiles(candidate)
-            if smiles:
-                return smiles
+    with installed() as sf:
+        for start in (clean_name(name), clean_name(fix_name(name))):
+            for candidate in (start, sf.resolve_name_alias(fix_name(sf.resolve_name_alias(start)))):
+                smiles = sf._known_smiles(candidate)
+                if smiles:
+                    return smiles
     return None
 
 
 def alias_used(name: str) -> bool:
-    """True when the first pass or the retry path looks the name up under a listed synonym (``SAFE_NAME_ALIASES``)."""
+    """True when the first pass or the retry path looked the name up under a historical synonym."""
+    from evaluation.historical_lookup_tables import NAME_ALIASES
     from uspto_revisit import smiles_fetch as sf
     from uspto_revisit.json_utils import fix_name
 
-    return any(sf._clean_compound_name(x).casefold() in sf.SAFE_NAME_ALIASES for x in (name, fix_name(name)))
+    return any(sf._clean_compound_name(x).casefold() in NAME_ALIASES for x in (name, fix_name(name)))

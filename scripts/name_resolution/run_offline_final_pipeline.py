@@ -7,12 +7,14 @@ from those sources remain explicit ``NoSmi`` entries.
 This is the post-processing used for the 13 API configurations in result/model_outputs (both gpt-4.1-mini
 configurations, gpt-5.4, gpt-5.6-sol, gemini-2.5-flash, gemini-3.1-pro-preview
 and gemini-3.6-flash). With result/name_resolution/shared_master_smiles_cache.csv,
-config/nosmi_overrides.json and the alias table of the released commit it
-regenerates every published ``<config>_smiles`` dictionary (400/400 rows for
-each of the 13 configurations). Only the import bootstrap and CSV cache
-support were changed for the release. Note that the alias fixes for "DMA" and
-"Pd/C" (see README) change rows 136, 288, 296 and 386 of the Gemini 3.x and
-gemini-2.5-flash configurations if the pipeline is rerun with current code.
+config/nosmi_overrides.json and the lookup tables the resolver had then
+(installed from evaluation/historical_lookup_tables.py; the resolver itself no
+longer has them) it regenerates every published ``<config>_smiles`` dictionary
+(400/400 rows for each of the 13 configurations). Only the import bootstrap,
+CSV cache support and the installation of these tables were changed for the
+release. Note that the July 2026 entries for "DMA" and "Pd/C" change rows 136,
+288, 296 and 386 of the Gemini 3.x and gemini-2.5-flash configurations, which
+were resolved with the June 2026 entries.
 
 Example::
 
@@ -39,8 +41,9 @@ import pandas as pd
 # Release note: the research copy pointed at a sibling checkout; here the
 # repository's own src/ is used.
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
+sys.path[:0] = [str(REPOSITORY_ROOT / "src"), str(REPOSITORY_ROOT)]
 
+from evaluation.historical_lookup_tables import installed  # noqa: E402
 from uspto_revisit.atom_mapping import add_atom_mapping_columns  # noqa: E402
 from uspto_revisit.reaction_smiles import process_smiles_data  # noqa: E402
 from uspto_revisit import smiles_fetch as sf  # noqa: E402
@@ -147,7 +150,8 @@ def main() -> int:
     if args.model_column not in frame:
         raise ValueError(f"Missing column: {args.model_column}")
     predictions = frame[args.model_column].fillna("").astype(str).tolist()
-    smiles_dicts = [prediction_to_smiles_dict(value) for value in predictions]
+    with installed():
+        smiles_dicts = [prediction_to_smiles_dict(value) for value in predictions]
 
     smiles_dict_path = Path(args.smiles_dict_output)
     smiles_dict_path.parent.mkdir(parents=True, exist_ok=True)

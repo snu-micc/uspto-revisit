@@ -42,17 +42,6 @@ from uspto_revisit.smiles_fetch import (
 )
 
 
-def default_no_smi_overrides_path() -> str | None:
-    """Return the repository override file when it is available."""
-    candidates = (
-        Path("config/nosmi_overrides.json"),
-        Path(__file__).resolve().parents[2] / "config" / "nosmi_overrides.json",
-    )
-    for candidate in candidates:
-        if candidate.is_file():
-            return str(candidate)
-    return None
-
 
 def load_env_file(path: str | Path = ".env") -> None:
     """Load simple KEY=VALUE pairs from .env without overriding existing env vars."""
@@ -237,10 +226,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     retry_parser.add_argument(
         "--overrides",
-        default=default_no_smi_overrides_path(),
+        default=None,
         help=(
             "Optional JSON file with auditable dataset-specific lookup aliases or "
-            "active-component SMILES. Default: config/nosmi_overrides.json when present."
+            "active-component SMILES, e.g. config/nosmi_overrides.json (the curated "
+            "scenario). Default: none, so names are resolved fully automatically."
         ),
     )
     retry_parser.add_argument(
@@ -448,10 +438,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--overrides",
-        default=default_no_smi_overrides_path(),
+        default=None,
         help=(
             "JSON file with auditable name aliases or active-component SMILES used "
-            "during final NoSmi recovery. Default: config/nosmi_overrides.json when present."
+            "during final NoSmi recovery, e.g. config/nosmi_overrides.json (the curated "
+            "scenario). Default: none, so names are resolved fully automatically."
         ),
     )
     parser.add_argument(

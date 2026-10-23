@@ -306,9 +306,10 @@ variant folder.
     reviewed SMILES reused by name in other rows.
   - The resolver answers are replayed offline from
     `result/name_resolution/requery_2026-10-16_raw.jsonl` with the released
-    resolver code.
-  - The default `two-pass` order is the pipeline's: alias table and OPSIN
-    first (also on `fix_name(name)`), then the NoSmi retry (refusal, alias,
+    resolver code and, as when the recording was made, the lookup tables the
+    resolver had then (`historical_lookup_tables.py`).
+  - The default `two-pass` order is the pipeline's: lookup table and OPSIN
+    first (also on `fix_name(name)`), then the NoSmi retry (refusal, synonym,
     PubChem/OPSIN/CIR/ChEBI, first non-empty). `retry` uses the NoSmi retry
     path alone.
   - A component whose structure changes gets the new SMILES; one that no
@@ -358,11 +359,11 @@ published values are 245/283, 299/400 and 272/400.
 makes no model, resolver or network call.
 
 - **Scenarios.** `fully_automatic` is primary: names are resolved only by
-  OPSIN, PubChem, NCI CIR and ChEBI, without the curated layers and without the
-  two lookup tables of the resolver (`lookup_tables.py`).
-  `fully_automatic_with_tables` turns the lookup tables on (sensitivity
-  analysis), and `curated` adds the overrides and record-level decisions
-  (secondary).
+  OPSIN, PubChem, NCI CIR and ChEBI, as the released resolver does, without
+  the curated layers and without the two lookup tables the resolver had when
+  the outputs were produced (`historical_lookup_tables.py`, `lookup_tables.py`).
+  `fully_automatic_with_tables` keeps those tables (sensitivity analysis), and
+  `curated` adds the overrides and record-level decisions (secondary).
 - **Labels.** All 400 paragraph labels (292 noise-free, 108 noisy) enter the
   denoising metrics. Extraction uses the 291 noise-free records with complete
   molecular references; record 215 is left out of the structure endpoints

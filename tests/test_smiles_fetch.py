@@ -28,13 +28,27 @@ def test_canonicalize_smiles_rejects_invalid_value():
     assert smiles_fetch.canonicalize_smiles("not-a-smiles") is None
 
 
-def test_safe_aliases_and_ambiguous_names_are_distinguished():
-    assert smiles_fetch.resolve_name_alias("N,N'-carbonyldiimidazole") == (
-        "1,1'-carbonyldiimidazole"
-    )
-    assert smiles_fetch.resolve_name_alias("RuPhos") == (
-        "2-dicyclohexylphosphino-2',6'-diisopropoxybiphenyl"
-    )
+def test_resolver_has_no_lookup_tables():
+    assert smiles_fetch.DEFAULT_KNOWN_SMILES == {} and smiles_fetch.SAFE_NAME_ALIASES == {}
+    assert smiles_fetch._known_smiles("DCM") is None
+    assert smiles_fetch.resolve_name_alias(" RuPhos ") == "RuPhos"
+
+
+def test_historical_lookup_tables_are_installed_only_for_replay():
+    from evaluation.historical_lookup_tables import KNOWN_SMILES, installed
+
+    for name, smiles in KNOWN_SMILES.items():
+        assert smiles_fetch.canonicalize_smiles(smiles), name
+    with installed():
+        assert smiles_fetch.resolve_name_alias("N,N'-carbonyldiimidazole") == "1,1'-carbonyldiimidazole"
+        assert smiles_fetch.resolve_name_alias("RuPhos") == "2-dicyclohexylphosphino-2',6'-diisopropoxybiphenyl"
+        dma = smiles_fetch._known_smiles("DMA")
+        assert smiles_fetch.structure_identity(dma)[0] == "FXHOOIRPVKKKFG-UHFFFAOYSA-N"
+        assert smiles_fetch._known_smiles("Pd/C") == "[Pd]"
+    assert smiles_fetch.DEFAULT_KNOWN_SMILES == {} and smiles_fetch.SAFE_NAME_ALIASES == {}
+
+
+def test_ambiguous_names_are_refused():
     assert smiles_fetch.should_skip_automatic_resolution("compound 3")
     assert smiles_fetch.should_skip_automatic_resolution("palladium on carbon")
     assert smiles_fetch.should_skip_automatic_resolution("silica gel")
@@ -165,14 +179,6 @@ def test_chebi_does_not_accept_short_acronym_synonym(monkeypatch):
     )
 
     assert result == (None, None)
-
-
-def test_known_smiles_table_parses_and_dma_is_dimethylacetamide():
-    for name, smiles in smiles_fetch.DEFAULT_KNOWN_SMILES.items():
-        assert smiles_fetch.canonicalize_smiles(smiles), name
-    dma = smiles_fetch._known_smiles("DMA")
-    assert smiles_fetch.structure_identity(dma)[0] == "FXHOOIRPVKKKFG-UHFFFAOYSA-N"
-    assert smiles_fetch._known_smiles("Pd/C") == "[Pd]"
 
 
 def test_compare_resolver_results_classifies_agreement():

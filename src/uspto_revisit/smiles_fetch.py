@@ -22,65 +22,15 @@ from uspto_revisit.json_utils import fix_json_string, fix_name, parse_json_objec
 
 nest_asyncio.apply()
 
-# Every value must parse with RDKit; tests/test_smiles_fetch.py checks this.
-# "DMA" is N,N-dimethylacetamide (the solvent sense used in the patents); it was
-# previously mis-encoded as acetamide (CC(=O)N). "Pd/C" follows the
-# active-component convention of config/nosmi_overrides.json; the earlier value
-# "Pd" was not valid SMILES and was silently ignored. "brine" is a deliberate
-# water + NaCl representation of the aqueous mixture.
-DEFAULT_KNOWN_SMILES = {
-    "ice": "O",
-    "DCM": "C(Cl)Cl",
-    "DMA": "CN(C)C(C)=O",
-    "DMF": "CN(C)C=O",
-    "THF": "C1CCOC1",
-    "ether": "CCOCC",
-    "absolute ethanol": "CCO",
-    "dry acetone": "CC(=O)C",
-    "dry ether": "CCOCC",
-    "dry tetrahydrofuran": "C1CCOC1",
-    "dry toluene": "Cc1ccccc1",
-    "ultrapure water": "O",
-    "sodium methylate": "C[O-].[Na+]",
-    "lithiumaluminium hydride": "[Li+].[AlH4-]",
-    "racemic phenylalanine": "NC(Cc1ccccc1)C(=O)O",
-    "brine": "O.[Na+].[Cl-]",
-    "Pd/C": "[Pd]",
-    "DMSO": "CS(=O)C",
-    "LiAlH4": "[Li+].[AlH4-]",
-}
-
-# Only aliases that preserve a specific chemical identity belong here. Mixtures,
-# supported catalysts, and patent-local labels are deliberately not aliased.
-SAFE_NAME_ALIASES = {
-    "1,1'-carbonylbis(imidazole)": "1,1'-carbonyldiimidazole",
-    "n,n'-carbonyldiimidazole": "1,1'-carbonyldiimidazole",
-    "bis-(triphenylphosphine)palladium(ii) dichloride": (
-        "bis(triphenylphosphine)palladium(II) dichloride"
-    ),
-    "bis(triphenylphosphine)palladium(ii) chloride": (
-        "bis(triphenylphosphine)palladium(II) dichloride"
-    ),
-    "diea": "DIPEA",
-    "mo(co)6": "molybdenum hexacarbonyl",
-    "palladium tetrakis(triphenylphosphine)": (
-        "tetrakis(triphenylphosphine)palladium(0)"
-    ),
-    "phosphorous pentachloride": "phosphorus pentachloride",
-    "ruphos": "2-dicyclohexylphosphino-2',6'-diisopropoxybiphenyl",
-    "tetrakis(triphenylphosphine)palladium": (
-        "tetrakis(triphenylphosphine)palladium(0)"
-    ),
-    "tri(dibenzylidenacetone)dipalladium(0)": (
-        "tris(dibenzylideneacetone)dipalladium(0)"
-    ),
-    "tri(dibenzylideneacetone)dipalladium(0)": (
-        "tris(dibenzylideneacetone)dipalladium(0)"
-    ),
-    "tris(dibenzylideneacetone)dipalladium": (
-        "tris(dibenzylideneacetone)dipalladium(0)"
-    ),
-}
+# The resolver has no lookup tables: a name is resolved only by OPSIN, PubChem,
+# NCI CIR and ChEBI (and by curated overrides when they are loaded explicitly).
+# Until 2026-10-23 these tables held 19 abbreviations and trivial names and 13
+# spelling variants and synonyms; most entries had been added after the
+# benchmark paragraphs were inspected, so they were removed. The stored outputs
+# were produced with them, and evaluation/historical_lookup_tables.py keeps them
+# to replay those runs.
+DEFAULT_KNOWN_SMILES: dict[str, str] = {}
+SAFE_NAME_ALIASES: dict[str, str] = {}
 
 AMBIGUOUS_EXACT_NAMES = {
     "4a molecular sieve",

@@ -8,9 +8,9 @@ Reads
 
 and writes every table, test and figure to ``evaluation/results/revised/``. Three name-resolution scenarios are
 scored. ``fully_automatic`` is the primary analysis: names are resolved only by OPSIN, PubChem, NCI CIR and ChEBI,
-without the two lookup tables of the resolver (``DEFAULT_KNOWN_SMILES`` and ``SAFE_NAME_ALIASES``).
-``fully_automatic_with_tables`` turns the lookup tables on (sensitivity analysis), and ``curated`` adds the released
-overrides and row decisions. Each prediction is compared on its step that forms the title compound. Paired
+as the released resolver does, without the two lookup tables the resolver had when the outputs were produced
+(``historical_lookup_tables.py``). ``fully_automatic_with_tables`` keeps those tables (sensitivity analysis), and
+``curated`` adds the released overrides and row decisions. Each prediction is compared on its step that forms the title compound. Paired
 extraction tests use the selected configuration (gemini-3.6-flash, high) as reference and, separately, the
 configuration with the highest accuracy. Population totals use the single-criterion sampling frame
 (``benchmark_statistics.FRAME_SINGLE_CRITERION``). Percentages are rounded half up to one decimal and intervals are

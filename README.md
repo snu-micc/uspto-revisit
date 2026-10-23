@@ -229,17 +229,21 @@ configuration. Fields that were not recorded are marked `UNKNOWN`.
 
 ## Name-to-SMILES resolution
 
-Names are resolved in two passes:
+Names are resolved fully automatically, in two passes:
 
-1. the lookup tables, the local cache and OPSIN;
+1. the local cache and OPSIN;
 2. for names still unresolved: PubChem, OPSIN, NCI CIR and ChEBI, queried
    concurrently. The first non-empty result in that order is kept, and names
    that look ambiguous or non-molecular are skipped.
 
-The two lookup tables in `src/uspto_revisit/smiles_fetch.py` are
-`DEFAULT_KNOWN_SMILES` (19 abbreviations and trivial names such as DCM, THF
-and brine) and `SAFE_NAME_ALIASES` (13 spelling variants and synonyms of
-catalyst and reagent names, looked up under a standard name).
+The resolver has no lookup tables, and curated overrides are applied only when
+they are passed with `--overrides`. Until 2026-10-23 the resolver also
+answered names from two tables: 19 abbreviations and trivial names (DCM, THF,
+brine, ...) and 13 spelling variants and synonyms of catalyst and reagent
+names looked up under a standard name. Most entries had been added after the
+benchmark paragraphs were inspected, so the tables were removed. The stored
+outputs were produced with them; `evaluation/historical_lookup_tables.py`
+keeps them to replay those runs and for the sensitivity analysis below.
 
 Every structure is validated and canonicalized with RDKit. Disagreements
 between resolvers (by InChIKey) are written to `resolver_audit.csv`;
@@ -250,9 +254,9 @@ diatomic molecule, and the radical `[C]=O` becomes `[C-]#[O+]`.
 Three name-resolution scenarios are evaluated:
 
 - **Fully automatic (primary).** Only OPSIN, PubChem, NCI CIR and ChEBI are
-  used: no curated rules and no lookup tables. Eleven of the 19 table entries
-  and all 13 synonyms were added in July 2026, after the benchmark paragraphs
-  had been inspected, so they are switched off like the curated rules. The 127
+  used: no curated rules and no lookup tables, as the released resolver runs.
+  Eleven of the 19 table entries and all 13 synonyms had been added in July
+  2026, after the benchmark paragraphs were inspected. The 127
   distinct spellings of the names covered by curated rules were re-queried on
   2026-10-16, and the 42 spellings that either lookup table answers or
   rewrites were re-queried on 2026-10-23 with both tables off. The responses
@@ -262,7 +266,8 @@ Three name-resolution scenarios are evaluated:
   deoxycytidine monophosphate, DMA as a bis-benzimidazole dye) or not at all
   (brine, Pd/C); these errors are kept.
 - **Fully automatic with the lookup tables (sensitivity).** As above, with the
-  tables on. Every configuration extracts 1 to 7 more reactions correctly.
+  two historical tables. Every configuration extracts 1 to 7 more reactions
+  correctly.
 - **Curated (secondary).** In addition, 46 name-resolution overrides
   (`config/nosmi_overrides.json`) and 44 record-level decisions
   (`result/nosmi_human_review.csv`) are applied. These rules were written with
@@ -270,7 +275,7 @@ Three name-resolution scenarios are evaluated:
 
 The June 2026 version of the abbreviation table read "DMA" as acetamide; six
 stored outputs of record 136 kept that value, and the two scenarios that use
-the table carry the current entry (N,N-dimethylacetamide) instead
+the table carry the July 2026 entry (N,N-dimethylacetamide) instead
 (`result/revised/audits/stale_dma_fix.csv`).
 
 The API configurations were resolved offline with
@@ -342,6 +347,9 @@ python main.py gpt-extract --provider gemini --model gemini-3.6-flash --input ex
 python main.py --input result/my_model_output.csv --model-column prediction \
   --output-prefix my_model --fix-names --map-atoms
 ```
+
+Names are resolved fully automatically. To apply the curated overrides of the
+study as well, add `--overrides config/nosmi_overrides.json`.
 
 The API extractions were run with `scripts/extraction/`:
 `run_reasoning_controlled_extraction.py` (direct calls with an explicit

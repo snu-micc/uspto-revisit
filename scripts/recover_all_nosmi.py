@@ -44,8 +44,11 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--overrides",
-        default="config/nosmi_overrides.json",
-        help="Auditable NoSmi override JSON. Default: config/nosmi_overrides.json",
+        default=None,
+        help=(
+            "Auditable NoSmi override JSON, e.g. config/nosmi_overrides.json (the curated "
+            "scenario). Default: none, so names are resolved fully automatically."
+        ),
     )
     parser.add_argument("--cache", default=None, help="Shared successful-resolution cache.")
     parser.add_argument(

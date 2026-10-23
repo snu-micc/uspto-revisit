@@ -1,13 +1,13 @@
-"""The two lookup tables of the resolver and the primary (fully automatic) scenario without them.
+"""The primary (fully automatic) scenario without the lookup tables the resolver had.
 
-``smiles_fetch`` answers names from two fixed tables before or while asking the public resolvers:
-``DEFAULT_KNOWN_SMILES`` (19 abbreviations and trivial names, e.g. DCM, THF and brine) and ``SAFE_NAME_ALIASES``
-(13 spelling variants and synonyms of catalysts and reagents looked up under a standard name, e.g. DIEA and
+The stored outputs were resolved while ``smiles_fetch`` answered names from two fixed tables before or while asking
+the public resolvers (``historical_lookup_tables.py``): 19 abbreviations and trivial names (e.g. DCM, THF and brine)
+and 13 spelling variants and synonyms of catalysts and reagents looked up under a standard name (e.g. DIEA and
 RuPhos). Eleven of the 19 entries and all 13 synonyms were added in July 2026, after the benchmark paragraphs had
-been inspected, so the primary scenario switches both off: a name is resolved only by OPSIN, PubChem, NCI CIR and
-ChEBI, in the released two-pass order. Results with the tables on (``fully_automatic_with_tables``) are a
-sensitivity analysis. Writing element names and carbon monoxide as molecules, and refusing mixtures and
-patent-local labels, are rules rather than lookup tables and stay on.
+been inspected, so they were removed from the resolver and the primary scenario does without them: a name is
+resolved only by OPSIN, PubChem, NCI CIR and ChEBI, in the released two-pass order. Results with the tables
+(``fully_automatic_with_tables``) are a sensitivity analysis. Writing element names and carbon monoxide as molecules,
+and refusing mixtures and patent-local labels, are rules rather than lookup tables and stay.
 
 * ``table_components``: every resolved component of the stored outputs whose name either table answers or
   rewrites.
@@ -15,7 +15,7 @@ patent-local labels, are rules rather than lookup tables and stay on.
   ``result/name_resolution/requery_2026-10-23_no_tables_raw.jsonl`` (NoSmi when none answers); changed steps are
   re-mapped.
 * ``stale_dma_edits``: the June 2026 table read "DMA" as acetamide; the stored outputs of record 136 kept that value
-  in six configurations, and it is replaced by the current entry (N,N-dimethylacetamide) in the scenarios that use
+  in six configurations, and it is replaced by the July 2026 entry (N,N-dimethylacetamide) in the scenarios that use
   the table.
 """
 
@@ -94,7 +94,7 @@ def without_tables(
 
 
 def stale_dma_edits(outputs: dict[str, pd.DataFrame]) -> tuple[dict[tuple[str, int], dict[str, str]], pd.DataFrame]:
-    """Components that still hold an earlier table value (acetamide for "DMA") with the current table entry."""
+    """Components that still hold the June 2026 table value (acetamide for "DMA"), with the July 2026 entry."""
     acetamide = CA.canonicalize_smiles(ACETAMIDE)
     edits: dict[tuple[str, int], dict[str, str]] = {}
     rows = []
