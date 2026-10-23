@@ -20,7 +20,9 @@ Two modes are available:
     and optionally from external services (``--lookup-external``). It needs
     the per-model SMILES caches of the original runs, which are not distributed. A rerun in
     2026-10 with RDKit 2025.09 differed from the released file in 16 of 400
-    rows, mainly in how RDKit writes some metal-containing SMILES.
+    rows, mainly in how RDKit writes some metal-containing SMILES. The
+    original external lookups also applied the curated overrides
+    (``config/nosmi_overrides.json``); the resolver no longer applies them.
 
 Outputs go to ``evaluation/results/ai_baseline/`` by default so that the
 released files are never overwritten.
@@ -52,7 +54,6 @@ from uspto_revisit.json_utils import fix_name, parse_json_object
 from uspto_revisit import smiles_fetch
 from uspto_revisit.smiles_fetch import (
     canonicalize_smiles,
-    load_resolution_overrides,
     normalize_name_key,
     resolve_no_smi_name,
 )
@@ -601,10 +602,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="rebuild: refreshed review queue (decisions from --ai-review are kept).",
     )
     parser.add_argument(
-        "--overrides",
-        default="config/nosmi_overrides.json",
-    )
-    parser.add_argument(
         "--output",
         default=str(DEFAULT_OUTPUT_DIR / "ai_baseline_components.csv"),
     )
@@ -811,7 +808,6 @@ def main() -> int:
     selected.update(ai_cache)
     selected_sources.update(ai_sources)
 
-    load_resolution_overrides(args.overrides if Path(args.overrides).is_file() else None)
     existing_review = load_row_review(Path(args.existing_review))
     ai_review = load_row_review(Path(args.ai_review))
 

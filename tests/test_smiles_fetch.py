@@ -87,35 +87,13 @@ def test_normalize_name_key_handles_greek_symbols_and_punctuation():
     )
 
 
-def test_load_resolution_overrides_validates_direct_smiles(tmp_path):
-    override_path = tmp_path / "overrides.json"
-    override_path.write_text(
-        json.dumps(
-            {
-                "overrides": [
-                    {
-                        "name": "supported catalyst",
-                        "smiles": "[Pd]",
-                        "kind": "active_component",
-                    }
-                ]
-            }
-        ),
-        encoding="utf-8",
-    )
-
-    try:
-        loaded = smiles_fetch.load_resolution_overrides(override_path)
-        assert loaded["supportedcatalyst"]["smiles"] == "[Pd]"
-        assert asyncio.run(
-            smiles_fetch.resolve_no_smi_name(
-                "supported catalyst",
-                session=object(),
-                semaphore=object(),
-            )
-        ) == ("[Pd]", "Curated:active_component")
-    finally:
-        smiles_fetch.load_resolution_overrides(None)
+def test_resolver_applies_no_curated_overrides():
+    # The study's overrides gave Pd/C its active component; the resolver now refuses the supported catalyst.
+    assert not hasattr(smiles_fetch, "load_resolution_overrides")
+    assert "override_kind" not in smiles_fetch.RESOLVER_AUDIT_FIELDS
+    assert asyncio.run(
+        smiles_fetch.resolve_no_smi_name("palladium on carbon", session=object(), semaphore=object())
+    ) == (None, None)
 
 
 def test_chebi_primary_name_requires_exact_match(monkeypatch):

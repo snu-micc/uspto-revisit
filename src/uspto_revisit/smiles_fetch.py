@@ -22,8 +22,10 @@ from uspto_revisit.json_utils import fix_json_string, fix_name, parse_json_objec
 
 nest_asyncio.apply()
 
-# The resolver has no lookup tables: a name is resolved only by OPSIN, PubChem,
-# NCI CIR and ChEBI (and by curated overrides when they are loaded explicitly).
+# The resolver has no lookup tables and applies no curated overrides: a name is
+# resolved only by OPSIN, PubChem, NCI CIR and ChEBI. The 46 overrides written
+# for the study (config/nosmi_overrides.json) are released as data for its
+# curated analysis and are not read by the pipeline.
 # Until 2026-10-23 these tables held 19 abbreviations and trivial names and 13
 # spelling variants and synonyms; most entries had been added after the
 # benchmark paragraphs were inspected, so they were removed. The stored outputs
@@ -90,7 +92,6 @@ AMBIGUOUS_NAME_PATTERNS = (
 )
 
 smiles_cache = {}
-resolution_overrides = {}
 
 # NoSmi retry queries several resolvers concurrently and, as in the released
 # runs, keeps the first non-empty result in RESOLVER_PRIORITY order. Every
@@ -103,7 +104,6 @@ RESOLVER_AUDIT_FIELDS = (
     "normalized_name",
     "name",
     "lookup_name",
-    "override_kind",
     "resolver_candidates",
     "resolver_inchikeys",
     "resolver_agreement",
@@ -132,41 +132,6 @@ def normalize_name_key(compound_name: str) -> str:
     cleaned = unicodedata.normalize("NFKD", cleaned)
     cleaned = cleaned.encode("ascii", "ignore").decode("ascii").casefold()
     return re.sub(r"[^a-z0-9]+", "", cleaned)
-
-
-def load_resolution_overrides(path: str | Path | None) -> dict:
-    """Load auditable, dataset-specific aliases or active-component choices."""
-    global resolution_overrides
-    resolution_overrides = {}
-    if not path:
-        return resolution_overrides
-
-    override_path = Path(path)
-    with override_path.open("r", encoding="utf-8-sig") as handle:
-        payload = json.load(handle)
-    entries = payload.get("overrides", payload) if isinstance(payload, dict) else payload
-    if not isinstance(entries, list):
-        raise ValueError("NoSmi overrides must be a list or an object with 'overrides'.")
-
-    for entry in entries:
-        if not isinstance(entry, dict) or not entry.get("name"):
-            raise ValueError("Every NoSmi override must contain a non-empty 'name'.")
-        if not entry.get("lookup_name") and not entry.get("smiles"):
-            raise ValueError(
-                f"Override for {entry['name']!r} needs 'lookup_name' or 'smiles'."
-            )
-        normalized = normalize_name_key(entry["name"])
-        if not normalized:
-            raise ValueError(f"Override name cannot be normalized: {entry['name']!r}")
-        if normalized in resolution_overrides:
-            raise ValueError(f"Duplicate NoSmi override name: {entry['name']!r}")
-        copied = dict(entry)
-        if copied.get("smiles"):
-            copied["smiles"] = canonicalize_smiles(copied["smiles"])
-            if not copied["smiles"]:
-                raise ValueError(f"Invalid override SMILES for {entry['name']!r}")
-        resolution_overrides[normalized] = copied
-    return resolution_overrides
 
 
 def resolve_name_alias(compound_name: str) -> str:
@@ -648,32 +613,23 @@ async def process_batch(json_responses, fix_name_bool, semaphore):
 
 
 async def resolve_no_smi_name(compound_name, session, semaphore):
-    """Resolve one previously missing name with aliases and source validation."""
+    """Resolve one previously missing name with the public resolvers and source validation."""
     original_name = _clean_compound_name(compound_name)
-    override = resolution_overrides.get(normalize_name_key(original_name))
-    if override and override.get("smiles"):
-        return override["smiles"], f"Curated:{override.get('kind', 'override')}"
-
     known_smiles = _known_smiles(original_name)
     if known_smiles:
         return known_smiles, "KnownAlias"
-    if not override and should_skip_automatic_resolution(original_name):
+    if should_skip_automatic_resolution(original_name):
         logging.info(
             "Skipping ambiguous or non-molecular name during automatic resolution: %s",
             original_name,
         )
         return None, None
 
-    lookup_name = (
-        _clean_compound_name(override["lookup_name"])
-        if override and override.get("lookup_name")
-        else resolve_name_alias(original_name)
-    )
+    lookup_name = resolve_name_alias(original_name)
     for cache_key in (original_name, lookup_name):
         cached_smiles = canonicalize_smiles(smiles_cache.get(cache_key))
         if cached_smiles:
-            source = f"Curated:{override.get('kind', 'alias')}+Cache" if override else "Cache"
-            return cached_smiles, source
+            return cached_smiles, "Cache"
 
     results = await asyncio.gather(
         get_smiles_from_pubchem(session, lookup_name, semaphore, max_retries=3),
@@ -708,7 +664,6 @@ async def resolve_no_smi_name(compound_name, session, semaphore):
         "normalized_name": normalize_name_key(original_name),
         "name": original_name,
         "lookup_name": lookup_name,
-        "override_kind": override.get("kind", "") if override else "",
         **comparison,
         "conflict_policy": resolver_conflict_policy,
         "selected_source": selected[0] or "",
@@ -719,8 +674,6 @@ async def resolve_no_smi_name(compound_name, session, semaphore):
     if smiles:
         smiles_cache[original_name] = smiles
         smiles_cache[lookup_name] = smiles
-        if override:
-            source = f"Curated:{override.get('kind', 'alias')}+{source}"
         return smiles, source
     return None, None
 

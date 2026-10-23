@@ -18,7 +18,6 @@ from uspto_revisit.reaction_smiles import _coerce_mapping, process_smiles_data
 from uspto_revisit.smiles_fetch import (
     RESOLVER_CONFLICT_POLICIES,
     load_cache,
-    load_resolution_overrides,
     normalize_name_key,
     process_batch_final,
     resolver_audit,
@@ -41,14 +40,6 @@ def parse_args() -> argparse.Namespace:
         metavar=("PREFIX", "CSV", "SMILES_DICT"),
         required=True,
         help="Repeat for each model: output prefix, current CSV, and current JSON dictionary.",
-    )
-    parser.add_argument(
-        "--overrides",
-        default=None,
-        help=(
-            "Auditable NoSmi override JSON, e.g. config/nosmi_overrides.json (the curated "
-            "scenario). Default: none, so names are resolved fully automatically."
-        ),
     )
     parser.add_argument("--cache", default=None, help="Shared successful-resolution cache.")
     parser.add_argument(
@@ -249,7 +240,6 @@ async def run(args: argparse.Namespace) -> None:
 
     if args.cache:
         load_cache(args.cache)
-    loaded_overrides = load_resolution_overrides(args.overrides)
     set_resolver_conflict_policy(args.resolver_conflict_policy)
     resolver_audit.clear()
 
@@ -323,14 +313,13 @@ async def run(args: argparse.Namespace) -> None:
     ):
         after_count = union_after.get(key, {}).get("occurrences", 0)
         display_name = before["names"].most_common(1)[0][0]
-        override = loaded_overrides.get(key, {})
         resolution = resolution_cache.get(key, (None, None))
         smiles = resolved_values.get(key, Counter())
         if after_count == 0:
             status = "resolved"
         elif after_count < before["occurrences"]:
             status = "partially_resolved"
-        elif should_skip_automatic_resolution(display_name) and not override:
+        elif should_skip_automatic_resolution(display_name):
             status = "retained_ambiguous_or_nonmolecular"
         else:
             status = "not_found"
@@ -352,12 +341,8 @@ async def run(args: argparse.Namespace) -> None:
                 "rows_zero_based": ";".join(map(str, sorted(before["rows"]))),
                 "resolved_smiles": " | ".join(smiles),
                 "resolver_source": resolution[1] or "",
-                "override_kind": override.get("kind", ""),
-                "lookup_name": override.get("lookup_name", ""),
-                "evidence_url": override.get("evidence_url", ""),
-                "note": override.get("note", ""),
                 # Empty when the name was not sent to the external resolvers
-                # (override SMILES, known alias, cache hit or ambiguity filter).
+                # (cache hit or ambiguity filter).
                 "resolver_agreement": resolver_audit.get(key, {}).get("resolver_agreement", ""),
                 "resolver_disagreement": resolver_audit.get(key, {}).get("resolver_disagreement", ""),
                 "resolver_candidates": resolver_audit.get(key, {}).get("resolver_candidates", ""),
@@ -394,7 +379,6 @@ async def run(args: argparse.Namespace) -> None:
             "Unique-name counts cover parseable placeholders; occurrence counts "
             "include every literal (NoSmi), including nested-bracket names."
         ),
-        "override_count": len(loaded_overrides),
         "resolver_conflict_policy": args.resolver_conflict_policy,
         "resolver_conflicts": sum(
             int(row.get("resolver_disagreement", 0)) for row in resolver_audit.values()

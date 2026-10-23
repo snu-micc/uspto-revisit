@@ -21,8 +21,8 @@ Two resolution orders are available:
     installed), then PubChem, OPSIN, CIR and ChEBI concurrently; the first
     non-empty result in that priority order is kept.
 
-Curated overrides, row decisions and the shared cache are disabled during the
-replay. For each URL the last recorded attempt is used, as in the live run; a
+The resolver applies no curated overrides, and row decisions and the shared
+cache are disabled during the replay. For each URL the last recorded attempt is used, as in the live run; a
 URL without a recorded HTTP 200 response yields nothing. Requests that the
 recording does not contain are listed in ``missing_urls``.
 
@@ -100,9 +100,8 @@ class RecordedResolver:
         from evaluation.historical_lookup_tables import installed
 
         with installed(self.lookup_tables) as sf:
-            saved = (sf.fetch_smiles, sf.resolution_overrides, sf.smiles_cache)
+            saved = (sf.fetch_smiles, sf.smiles_cache)
             sf.fetch_smiles = self._fetch
-            sf.resolution_overrides = {}
             sf.smiles_cache = {}
             previous_disable = logging.root.manager.disable
             logging.disable(logging.WARNING)  # the resolvers log every miss
@@ -110,7 +109,7 @@ class RecordedResolver:
                 yield sf
             finally:
                 logging.disable(previous_disable)
-                sf.fetch_smiles, sf.resolution_overrides, sf.smiles_cache = saved
+                sf.fetch_smiles, sf.smiles_cache = saved
 
     @staticmethod
     async def _retry_path(sf, name: str) -> dict[str, Any]:

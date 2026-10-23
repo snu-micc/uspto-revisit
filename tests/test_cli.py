@@ -9,10 +9,10 @@ import pytest
 from uspto_revisit import cli
 
 
-def test_pipeline_parser_resolves_names_fully_automatically_by_default():
-    assert cli.build_parser().parse_args([]).overrides is None
-    args = cli.build_parser().parse_args(["--overrides", "config/nosmi_overrides.json"])
-    assert Path(args.overrides).as_posix() == "config/nosmi_overrides.json"
+def test_pipeline_has_no_curated_overrides():
+    assert not hasattr(cli.build_parser().parse_args([]), "overrides")
+    with pytest.raises(SystemExit):
+        cli.build_parser().parse_args(["--overrides", "config/nosmi_overrides.json"])
 
 
 def test_default_final_paths_are_model_scoped():
@@ -59,14 +59,10 @@ def test_nosmi_human_review_commands_have_repository_defaults():
     assert apply_args.output_dir == "result"
 
 
-def test_final_reprocess_loads_overrides(tmp_path, monkeypatch):
+def test_final_reprocess_runs_on_the_initial_dictionary(tmp_path, monkeypatch):
     initial_path = tmp_path / "smiles_dict_initial.json"
     initial_path.write_text(json.dumps([]), encoding="utf-8")
-    override_path = tmp_path / "overrides.json"
     calls = {}
-
-    def fake_load_overrides(path):
-        calls["overrides"] = path
 
     async def fake_reprocess(
         input_file,
@@ -79,7 +75,6 @@ def test_final_reprocess_loads_overrides(tmp_path, monkeypatch):
         calls["batch_size"] = batch_size
         output_file.write_text(json.dumps([]), encoding="utf-8")
 
-    monkeypatch.setattr(cli, "load_resolution_overrides", fake_load_overrides)
     monkeypatch.setattr(cli, "reprocess_no_smi", fake_reprocess)
     monkeypatch.setattr(cli, "aiohttp_ssl_context", lambda: None)
 
@@ -105,11 +100,9 @@ def test_final_reprocess_loads_overrides(tmp_path, monkeypatch):
             batch_size=25,
             reprocess_concurrency=2,
             skip_reprocess=False,
-            overrides=override_path,
         )
     )
 
-    assert calls["overrides"] == override_path
     assert calls["input"] == initial_path
     assert calls["batch_size"] == 25
     assert final_path == tmp_path / "smiles_dict_final.json"

@@ -32,7 +32,6 @@ from uspto_revisit.smiles_fetch import (
     RESOLVER_CONFLICT_POLICIES,
     audit_name_smiles_consistency,
     load_cache,
-    load_resolution_overrides,
     process_batch,
     reprocess_no_smi,
     resolver_audit,
@@ -223,15 +222,6 @@ def build_parser() -> argparse.ArgumentParser:
         "--cache",
         default=None,
         help="Optional shared pickle cache for successful recovery lookups.",
-    )
-    retry_parser.add_argument(
-        "--overrides",
-        default=None,
-        help=(
-            "Optional JSON file with auditable dataset-specific lookup aliases or "
-            "active-component SMILES, e.g. config/nosmi_overrides.json (the curated "
-            "scenario). Default: none, so names are resolved fully automatically."
-        ),
     )
     retry_parser.add_argument(
         "--resolver-conflict-policy",
@@ -437,15 +427,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Skip PubChem/OPSIN/CIR/ChEBI retry for unresolved compounds.",
     )
     parser.add_argument(
-        "--overrides",
-        default=None,
-        help=(
-            "JSON file with auditable name aliases or active-component SMILES used "
-            "during final NoSmi recovery, e.g. config/nosmi_overrides.json (the curated "
-            "scenario). Default: none, so names are resolved fully automatically."
-        ),
-    )
-    parser.add_argument(
         "--resolver-conflict-policy",
         choices=RESOLVER_CONFLICT_POLICIES,
         default="log",
@@ -645,7 +626,6 @@ async def run_retry_no_smi(args: argparse.Namespace) -> Path:
     else:
         cache_path = None
 
-    load_resolution_overrides(args.overrides)
     set_resolver_conflict_policy(getattr(args, "resolver_conflict_policy", "log"))
     resolver_audit.clear()
 
@@ -746,7 +726,6 @@ async def maybe_reprocess_no_smi(
     batch_size: int,
     reprocess_concurrency: int,
     skip_reprocess: bool,
-    overrides: str | Path | None = None,
     resolver_conflict_policy: str = "log",
     resolver_audit_path: str | Path | None = None,
 ) -> Path:
@@ -757,7 +736,6 @@ async def maybe_reprocess_no_smi(
     if skip_reprocess:
         return initial_path
 
-    load_resolution_overrides(overrides)
     set_resolver_conflict_policy(resolver_conflict_policy)
     resolver_audit.clear()
     semaphore = asyncio.Semaphore(reprocess_concurrency)
@@ -837,7 +815,6 @@ async def run_pipeline(args: argparse.Namespace) -> Path:
         batch_size=args.batch_size,
         reprocess_concurrency=args.reprocess_concurrency,
         skip_reprocess=args.skip_reprocess,
-        overrides=args.overrides,
         resolver_conflict_policy=args.resolver_conflict_policy,
         resolver_audit_path=args.resolver_audit,
     )

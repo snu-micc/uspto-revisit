@@ -27,7 +27,7 @@ result/revised/replacement_runs/       The 19 configurations on the 30 redrawn r
 result/model_outputs/                  Outputs on the first-release input
 result/name_resolution/                Shared name cache and the recorded resolver re-queries
 result/configuration_settings.csv      Run settings and query dates of the 19 configurations
-config/nosmi_overrides.json            Curated name-resolution overrides
+config/nosmi_overrides.json            Curated name-resolution overrides (data; not used by the pipeline)
 result/nosmi_human_review.csv          Record-level name-resolution decisions
 src/uspto_revisit/                     Extraction, name resolution and atom mapping
 prompts/prompt.txt                     Extraction prompt
@@ -236,8 +236,8 @@ Names are resolved fully automatically, in two passes:
    concurrently. The first non-empty result in that order is kept, and names
    that look ambiguous or non-molecular are skipped.
 
-The resolver has no lookup tables, and curated overrides are applied only when
-they are passed with `--overrides`. Until 2026-10-23 the resolver also
+The resolver has no lookup tables and applies no curated overrides. Until
+2026-10-23 the resolver also
 answered names from two tables: 19 abbreviations and trivial names (DCM, THF,
 brine, ...) and 13 spelling variants and synonyms of catalyst and reagent
 names looked up under a standard name. Most entries had been added after the
@@ -271,7 +271,8 @@ Three name-resolution scenarios are evaluated:
 - **Curated (secondary).** In addition, 46 name-resolution overrides
   (`config/nosmi_overrides.json`) and 44 record-level decisions
   (`result/nosmi_human_review.csv`) are applied. These rules were written with
-  knowledge of the benchmark.
+  knowledge of the benchmark; they are released as data for this analysis, and
+  the pipeline does not apply them.
 
 The June 2026 version of the abbreviation table read "DMA" as acetamide; six
 stored outputs of record 136 kept that value, and the two scenarios that use
@@ -348,8 +349,8 @@ python main.py --input result/my_model_output.csv --model-column prediction \
   --output-prefix my_model --fix-names --map-atoms
 ```
 
-Names are resolved fully automatically. To apply the curated overrides of the
-study as well, add `--overrides config/nosmi_overrides.json`.
+Names are resolved fully automatically, with no lookup tables and no curated
+overrides.
 
 The API extractions were run with `scripts/extraction/`:
 `run_reasoning_controlled_extraction.py` (direct calls with an explicit

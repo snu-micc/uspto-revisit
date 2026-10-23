@@ -8,11 +8,12 @@ This is the post-processing used for the 13 API configurations in result/model_o
 configurations, gpt-5.4, gpt-5.6-sol, gemini-2.5-flash, gemini-3.1-pro-preview
 and gemini-3.6-flash). With result/name_resolution/shared_master_smiles_cache.csv,
 config/nosmi_overrides.json and the lookup tables the resolver had then
-(installed from evaluation/historical_lookup_tables.py; the resolver itself no
-longer has them) it regenerates every published ``<config>_smiles`` dictionary
-(400/400 rows for each of the 13 configurations). Only the import bootstrap,
-CSV cache support and the installation of these tables were changed for the
-release. Note that the July 2026 entries for "DMA" and "Pd/C" change rows 136,
+(installed from evaluation/historical_lookup_tables.py) it regenerates every
+published ``<config>_smiles`` dictionary (400/400 rows for each of the 13
+configurations). The released pipeline itself no longer has lookup tables or
+applies curated overrides; this script reads the override file and installs the
+tables only to reproduce those outputs. Only the import bootstrap, CSV cache
+support and these two steps were changed for the release. Note that the July 2026 entries for "DMA" and "Pd/C" change rows 136,
 288, 296 and 386 of the Gemini 3.x and gemini-2.5-flash configurations, which
 were resolved with the June 2026 entries.
 
@@ -63,6 +64,16 @@ def load_cache_file(path: str | Path) -> dict[str, str]:
         return pickle.load(handle)
 
 
+overrides: dict[str, dict[str, Any]] = {}
+
+
+def load_overrides(path: str | Path) -> dict[str, dict[str, Any]]:
+    """The curated overrides by normalized name, as the pipeline of the study read them."""
+    payload = json.loads(Path(path).read_text(encoding="utf-8-sig"))
+    entries = payload.get("overrides", payload) if isinstance(payload, dict) else payload
+    return {sf.normalize_name_key(entry["name"]): entry for entry in entries}
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True)
@@ -91,7 +102,7 @@ def cached_smiles(name: Any) -> str | None:
         if candidate and candidate not in candidates:
             candidates.append(candidate)
 
-    override = sf.resolution_overrides.get(sf.normalize_name_key(original))
+    override = overrides.get(sf.normalize_name_key(original))
     if override and override.get("smiles"):
         value = sf.canonicalize_smiles(override["smiles"])
         if value:
@@ -144,7 +155,7 @@ def prediction_to_smiles_dict(value: Any) -> dict[str, str]:
 def main() -> int:
     args = build_parser().parse_args()
     sf.smiles_cache = load_cache_file(args.cache)
-    sf.load_resolution_overrides(args.overrides)
+    overrides.update(load_overrides(args.overrides))
 
     frame = pd.read_csv(args.input)
     if args.model_column not in frame:
