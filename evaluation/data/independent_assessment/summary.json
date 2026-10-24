@@ -1,0 +1,19 @@
+{
+  "paired_binary_n": 45,
+  "agree": 37,
+  "disagree": 8,
+  "agreement": 0.8222222222222222,
+  "agreement_percent": 82.22222222222221,
+  "agreement_wilson95": [
+    0.6867017537354023,
+    0.9070561048589585
+  ],
+  "cohen_kappa": 0.6035242290748898,
+  "contingency": {
+    "noise-free / noise-free": 26,
+    "noise-free / noisy": 6,
+    "noisy / noise-free": 2,
+    "noisy / noisy": 11
+  },
+  "paired_labels_sha256": "4dd16a417a5dba0b650cc312f76a0559e5ca3412aa0db40b19114fdf529c0629"
+}
