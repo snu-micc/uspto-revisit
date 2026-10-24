@@ -39,22 +39,25 @@ def first_release_flags():
     return BS.RecordFlags(flags2, flags3, strata, R.MODELS), flags3
 
 
+FIRST = BS.FIRST_RELEASE_PRIMARY
+
+
 def test_record_flags_reproduce_first_release_headline(first_release_flags):
     flags, _ = first_release_flags
-    assert int(flags.correct_nf()[R.PRIMARY].sum()) == 245
-    assert int(flags.denoise(R.TEMPLATE)[R.PRIMARY].sum()) == 299
-    assert int(flags.e2e(R.TEMPLATE)[R.PRIMARY].sum()) == 272
+    assert int(flags.correct_nf()[FIRST].sum()) == 245
+    assert int(flags.denoise(R.TEMPLATE)[FIRST].sum()) == 299
+    assert int(flags.e2e(R.TEMPLATE)[FIRST].sum()) == 272
     tests = BS.table2_tests(flags)
-    assert set(tests["best"]) == {R.PRIMARY}
+    assert set(tests["best"]) == {FIRST}
     assert len(tests) == 19
 
 
 def test_population_estimates_on_first_release_flags(first_release_flags):
     flags, _ = first_release_flags
     strata = flags.strata.to_numpy()
-    e2e = BS.stratified_total(flags.e2e_tp(R.TEMPLATE)[R.PRIMARY], strata, BS.FRAME_SINGLE_LABEL)
-    tp = BS.stratified_total(flags.denoise_tp(R.TEMPLATE)[R.PRIMARY], strata, BS.FRAME_SINGLE_LABEL)
-    tp_paper = BS.stratified_total(flags.denoise_tp(R.TEMPLATE)[R.PRIMARY], strata, BS.FRAME_EXACTLY_ONE)
+    e2e = BS.stratified_total(flags.e2e_tp(R.TEMPLATE)[FIRST], strata, BS.FRAME_SINGLE_LABEL)
+    tp = BS.stratified_total(flags.denoise_tp(R.TEMPLATE)[FIRST], strata, BS.FRAME_SINGLE_LABEL)
+    tp_paper = BS.stratified_total(flags.denoise_tp(R.TEMPLATE)[FIRST], strata, BS.FRAME_EXACTLY_ONE)
     assert round(e2e["total"]) == 276344
     assert round(tp["total"]) == 298706
     assert round(tp_paper["total"]) == 328986
@@ -64,7 +67,7 @@ def test_population_estimates_on_first_release_flags(first_release_flags):
 def test_threshold_table_reproduces_first_release(first_release_flags):
     _, flags3 = first_release_flags
     audit = pd.read_csv(DATA / "template_threshold_audit.csv", encoding="utf-8-sig")
-    raw, formatted = R.threshold_tables(flags3, audit.set_index("source_row")["template_frequency"])
+    raw, formatted = R.threshold_tables(flags3, audit.set_index("source_row")["template_frequency"], FIRST)
     published = pd.read_csv(RESULTS / "template_threshold_sensitivity.csv", encoding="utf-8-sig")
     mine = raw[raw["template_anomaly_frequency_threshold"] != "none (primary criterion)"]
     columns = ["passed_tp", "filtered_fn", "passed_fp", "filtered_tn"]
@@ -115,21 +118,23 @@ def test_revised_results_headline():
         pytest.skip("run python evaluation/reproduce_revised.py first")
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     primary = summary["fully_automatic"]["primary"]
-    assert (primary["reaction_correct"], primary["evaluated_reactions"]) == (210, 291)
-    # Without the lookup tables gpt-5.4 (none) is one record higher; with them the selected configuration is highest.
-    assert summary["fully_automatic"]["best_method"] == "gpt-5.4-none"
-    assert summary["fully_automatic_with_tables"]["best_method"] == R.PRIMARY
-    assert summary["fully_automatic_with_tables"]["primary"]["reaction_correct"] == 215
-    assert summary["curated"]["primary"]["reaction_correct"] == 234
-    assert summary["salt_formation"]["denoising_correct"] == 280
-    assert summary["salt_formation"]["denoising_correct_if_noisy"] == 311
+    assert R.PRIMARY == "gpt-5.4-none"
+    assert (primary["reaction_correct"], primary["evaluated_reactions"]) == (211, 291)
+    # The selected configuration has the highest extraction accuracy in the primary scenario; with the lookup tables
+    # or the curated rules, gemini-3.6-flash (high) is highest.
+    assert summary["fully_automatic"]["best_method"] == R.PRIMARY
+    assert summary["fully_automatic_with_tables"]["best_method"] == BS.FIRST_RELEASE_PRIMARY
+    assert summary["fully_automatic_with_tables"]["primary"]["reaction_correct"] == 213
+    assert summary["curated"]["primary"]["reaction_correct"] == 227
+    assert summary["salt_formation"]["denoising_correct"] == 285
+    assert summary["salt_formation"]["denoising_correct_if_noisy"] == 316
     bounds = pd.read_csv(RESULTS / "revised" / "fully_automatic" / "end_to_end_bounds.csv", encoding="utf-8-sig")
     row = bounds[bounds.model.eq(R.PRIMARY) & bounds.heuristic.eq(R.TEMPLATE) & bounds.scoring.eq("lenient")].iloc[0]
-    assert (row.assessable_correct, row.assessable_n, row.lower_correct, row.full_n) == (235, 399, 235, 400)
+    assert (row.assessable_correct, row.assessable_n, row.lower_correct, row.full_n) == (242, 399, 242, 400)
     tests = pd.read_csv(RESULTS / "revised" / "fully_automatic" / "extraction_paired_tests_primary_lenient.csv",
                         encoding="utf-8-sig")
     assert set(tests.best) == {R.PRIMARY}
-    assert int((tests[tests.family.eq("T2")].p_holm >= 0.05).sum()) == 12
+    assert int((tests[tests.family.eq("T2")].p_holm >= 0.05).sum()) == 11
     population = pd.read_csv(RESULTS / "revised" / "fully_automatic" / "population_bounds.csv", encoding="utf-8-sig")
     exact = population[population.quantity.eq("exact_retained_lower") & population.scoring.eq("lenient")].iloc[0]
-    assert (round(exact.total), exact.frame_n) == (223803, 430428)
+    assert (round(exact.total), exact.frame_n) == (223176, 430428)

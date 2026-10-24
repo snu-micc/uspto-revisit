@@ -379,11 +379,13 @@ makes no model, resolver or network call.
   with a 95% Wald interval, on the 430,428-record single-criterion frame
   (`benchmark_statistics.FRAME_SINGLE_CRITERION`).
 - **Statistics:** exact two-sided McNemar tests with a Holm correction within
-  each family. Extraction tests compare the selected configuration
-  (gemini-3.6-flash, high) with the other 18 and with the original USPTO
-  record (`extraction_paired_tests_primary_*.csv`), and, separately, the
-  configuration of highest accuracy (`extraction_paired_tests_*.csv`; without
-  the lookup tables this is gpt-5.4 with no reasoning, one record higher).
+  each family. Extraction tests compare the selected configuration, the one of
+  highest extraction accuracy in the primary scenario (gpt-5.4 with no
+  reasoning, `benchmark_statistics.PRIMARY`), with the other 18 and with the
+  original USPTO record (`extraction_paired_tests_primary_*.csv`), and,
+  separately, the configuration of highest accuracy in each scenario
+  (`extraction_paired_tests_*.csv`; with the lookup tables or the curated rules
+  this is gemini-3.6-flash with high reasoning, the first-release selection).
   Selection-adjusted accuracy by nested 5-fold cross-validation (200 repeats),
   leave-one-stratum-out and the out-of-bag stratified bootstrap (2,000
   resamples), all with seed 20261016. Three selection procedures are reported:

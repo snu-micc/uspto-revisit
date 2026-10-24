@@ -1,16 +1,16 @@
 ﻿category,heuristic,n,filtered,rate
-Erroneous chemical names,many_products,23,1,0.043478260869565216
-Erroneous chemical names,many_reactants,23,13,0.5652173913043478
-Erroneous chemical names,many_reagents,23,2,0.08695652173913043
-Erroneous chemical names,no_reagent,23,1,0.043478260869565216
-Erroneous chemical names,rare_template,23,3,0.13043478260869565
-Untraceable cross-references,many_products,78,7,0.08974358974358974
-Untraceable cross-references,many_reactants,78,5,0.0641025641025641
+Erroneous chemical names,many_products,23,2,0.08695652173913043
+Erroneous chemical names,many_reactants,23,11,0.4782608695652174
+Erroneous chemical names,many_reagents,23,3,0.13043478260869565
+Erroneous chemical names,no_reagent,23,2,0.08695652173913043
+Erroneous chemical names,rare_template,23,4,0.17391304347826086
+Untraceable cross-references,many_products,78,8,0.10256410256410256
+Untraceable cross-references,many_reactants,78,4,0.05128205128205128
 Untraceable cross-references,many_reagents,78,0,0.0
-Untraceable cross-references,no_reagent,78,29,0.3717948717948718
-Untraceable cross-references,rare_template,78,45,0.5769230769230769
+Untraceable cross-references,no_reagent,78,19,0.24358974358974358
+Untraceable cross-references,rare_template,78,51,0.6538461538461539
 no reaction,many_products,7,1,0.14285714285714285
-no reaction,many_reactants,7,0,0.0
+no reaction,many_reactants,7,1,0.14285714285714285
 no reaction,many_reagents,7,0,0.0
 no reaction,no_reagent,7,0,0.0
 no reaction,rare_template,7,7,1.0

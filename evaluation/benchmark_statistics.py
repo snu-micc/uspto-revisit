@@ -32,7 +32,10 @@ import pandas as pd
 from scipy import stats
 
 ORIGINAL = "original_data"
-PRIMARY = "gemini-3.6-flash-high"
+# The selected configuration: the highest extraction accuracy in the primary (fully automatic) scenario of the
+# revised benchmark. The first release selected gemini-3.6-flash at high reasoning.
+PRIMARY = "gpt-5.4-none"
+FIRST_RELEASE_PRIMARY = "gemini-3.6-flash-high"
 TEMPLATE = "rare_template"
 HEURISTICS = ("many_products", "many_reactants", "many_reagents", "no_reagent", "rare_template")
 STRATA = ("many_product (> 1)", "many_reactant (> 2)", "many_reagent (> 5)", "no_reagent")

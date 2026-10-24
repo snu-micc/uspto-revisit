@@ -1,9 +1,9 @@
 ﻿quantity,scoring,counts,total,se,ci_low,ci_high,frame_n
-exact_retained_lower,lenient,"{'many_product (> 1)': 43, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 63, 'no_reagent': 44}",223802.71999999997,12971.680325264982,198378.69374351378,249226.74625648616,430428
-exact_retained_upper,lenient,"{'many_product (> 1)': 43, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 63, 'no_reagent': 44}",223802.71999999997,12971.680325264982,198378.69374351378,249226.74625648616,430428
-noise_free_retained,lenient,"{'many_product (> 1)': 51, 'many_reactant (> 2)': 55, 'many_reagent (> 5)': 74, 'no_reagent': 45}",255866.16999999998,12355.804912172975,231649.23737213787,280083.1026278621,430428
-noisy_removed,lenient,"{'many_product (> 1)': 8, 'many_reactant (> 2)': 13, 'many_reagent (> 5)': 13, 'no_reagent': 21}",67172.51000000001,9693.92477065029,48172.766580684736,86172.25341931528,430428
-exact_retained_lower,strict,"{'many_product (> 1)': 43, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 60, 'no_reagent': 44}",217853.57,13076.847204837628,192223.420447185,243483.71955281502,430428
-exact_retained_upper,strict,"{'many_product (> 1)': 43, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 60, 'no_reagent': 44}",217853.57,13076.847204837628,192223.420447185,243483.71955281502,430428
-noise_free_retained,strict,"{'many_product (> 1)': 51, 'many_reactant (> 2)': 55, 'many_reagent (> 5)': 74, 'no_reagent': 45}",255866.16999999998,12355.804912172975,231649.23737213787,280083.1026278621,430428
-noisy_removed,strict,"{'many_product (> 1)': 8, 'many_reactant (> 2)': 13, 'many_reagent (> 5)': 13, 'no_reagent': 21}",67172.51000000001,9693.92477065029,48172.766580684736,86172.25341931528,430428
+exact_retained_lower,lenient,"{'many_product (> 1)': 44, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 65, 'no_reagent': 41}",223176.12,12836.957973688015,198016.1447005172,248336.09529948278,430428
+exact_retained_upper,lenient,"{'many_product (> 1)': 44, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 65, 'no_reagent': 41}",223176.12,12836.957973688015,198016.1447005172,248336.09529948278,430428
+noise_free_retained,lenient,"{'many_product (> 1)': 51, 'many_reactant (> 2)': 52, 'many_reagent (> 5)': 75, 'no_reagent': 45}",257244.51,12277.17759744466,233181.68407720648,281307.33592279354,430428
+noisy_removed,lenient,"{'many_product (> 1)': 8, 'many_reactant (> 2)': 14, 'many_reagent (> 5)': 12, 'no_reagent': 28}",77137.66,10058.473989062277,57423.413242005015,96851.90675799499,430428
+exact_retained_lower,strict,"{'many_product (> 1)': 44, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 61, 'no_reagent': 41}",215243.92,12996.788241196942,189770.68313256034,240717.15686743968,430428
+exact_retained_upper,strict,"{'many_product (> 1)': 44, 'many_reactant (> 2)': 30, 'many_reagent (> 5)': 61, 'no_reagent': 41}",215243.92,12996.788241196942,189770.68313256034,240717.15686743968,430428
+noise_free_retained,strict,"{'many_product (> 1)': 51, 'many_reactant (> 2)': 52, 'many_reagent (> 5)': 75, 'no_reagent': 45}",257244.51,12277.17759744466,233181.68407720648,281307.33592279354,430428
+noisy_removed,strict,"{'many_product (> 1)': 8, 'many_reactant (> 2)': 14, 'many_reagent (> 5)': 12, 'no_reagent': 28}",77137.66,10058.473989062277,57423.413242005015,96851.90675799499,430428

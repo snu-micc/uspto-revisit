@@ -66,23 +66,28 @@ references. It writes every table, statistical test and figure to
 model, name-resolver or network call. Percentages are rounded half up to one
 decimal, and intervals are 95% Wilson score intervals unless stated.
 
-Expected values for the selected configuration, gemini-3.6-flash with high
-reasoning and fully automatic name resolution (without the curated rules and
-without the lookup tables of the resolver; see
+Expected values for the selected configuration, the one with the highest
+extraction accuracy: gpt-5.4 without reasoning, with fully automatic name
+resolution (without the curated rules and without the lookup tables; see
 [Name-to-SMILES resolution](#name-to-smiles-resolution)):
 
 | Quantity | Value |
 | --- | --- |
-| Reaction-level exact-match extraction | 210/291 (72.2%; 95% CI 66.8–77.0%) |
+| Reaction-level exact-match extraction | 211/291 (72.5%; 95% CI 67.1–77.3%) |
 | Strict matching | 204/291 |
 | Original USPTO record, same references | 102/291 (35.1%) |
-| Highest configuration (gpt-5.4, no reasoning) | 211/291 (72.5%; paired exact McNemar p = 1.00) |
-| Extraction with the lookup tables on | 215/291 (73.9%) |
-| Extraction with curated name resolution | 234/291 (80.4%) |
-| Template-anomaly denoising, all 400 labels | 280/400 (70.0%) |
-| Noise-free retained / noisy removed | 225/292 / 55/108 |
-| End-to-end, 399 assessable / all 400 records | 235/399 (58.9%) / 235/400 (58.8%) |
-| Correct retained reactions in the 430,428-record sampling frame | about 224,000 (95% CI 198,000–249,000) |
+| gemini-3.6-flash (high), selected in the first release | 210/291 (72.2%; paired exact McNemar p = 1.00) |
+| Extraction with the lookup tables on | 213/291 (73.2%) |
+| Extraction with curated name resolution | 227/291 (78.0%) |
+| Template-anomaly denoising, all 400 labels | 285/400 (71.3%) |
+| Noise-free retained / noisy removed | 223/292 / 62/108 |
+| End-to-end, 399 assessable / all 400 records | 242/399 (60.7%) / 242/400 (60.5%) |
+| Correct retained reactions in the 430,428-record sampling frame | about 223,000 (95% CI 198,000–248,000) |
+
+The same model, gpt-5.4, was one of the six configurations whose consensus
+seeded the references (a separate earlier run). Table S30
+(`provenance_accuracy.csv`) separates references retained from consensus
+candidates from those set by the reviewer.
 
 Files are in `evaluation/results/revised/fully_automatic/` unless another
 folder is given:

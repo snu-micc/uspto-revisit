@@ -10,9 +10,10 @@ and writes every table, test and figure to ``evaluation/results/revised/``. Thre
 scored. ``fully_automatic`` is the primary analysis: names are resolved only by OPSIN, PubChem, NCI CIR and ChEBI,
 as the released resolver does, without the two lookup tables the resolver had when the outputs were produced
 (``historical_lookup_tables.py``). ``fully_automatic_with_tables`` keeps those tables (sensitivity analysis), and
-``curated`` adds the released overrides and row decisions. Each prediction is compared on its step that forms the title compound. Paired
-extraction tests use the selected configuration (gemini-3.6-flash, high) as reference and, separately, the
-configuration with the highest accuracy. Population totals use the single-criterion sampling frame
+``curated`` adds the released overrides and row decisions. Each prediction is compared on its step that forms the
+title compound. The selected configuration is the one of highest extraction accuracy in the primary scenario, gpt-5.4
+without reasoning (``benchmark_statistics.PRIMARY``); paired extraction tests use it as reference and, separately,
+the configuration of highest accuracy in each scenario. Population totals use the single-criterion sampling frame
 (``benchmark_statistics.FRAME_SINGLE_CRITERION``). Percentages are rounded half up to one decimal and intervals are
 95% Wilson score intervals unless stated.
 
@@ -154,9 +155,9 @@ def table2_rows(metrics: pd.DataFrame, strict: pd.DataFrame, methods) -> tuple[p
     return pd.DataFrame(raw), pd.DataFrame(formatted)
 
 
-def threshold_tables(flags3: pd.DataFrame, frequency: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame]:
+def threshold_tables(flags3: pd.DataFrame, frequency: pd.Series, model: str = PRIMARY) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Template-anomaly filtering with an added template-frequency cutoff (selected configuration)."""
-    selected = flags3[flags3["model"].eq(PRIMARY)].set_index("source_row").sort_index()
+    selected = flags3[flags3["model"].eq(model)].set_index("source_row").sort_index()
     rows = [{"template_frequency": int(frequency.loc[idx]), "template_failure": int(row["template_failure"]),
              "identical_structures": int(row["identical_structures"]), "noise_free": int(row["noise_free"])}
             for idx, row in selected.iterrows()]
@@ -170,7 +171,7 @@ def threshold_tables(flags3: pd.DataFrame, frequency: pd.Series) -> tuple[pd.Dat
                "passed_fp": fp, "filtered_tn": tn, "noise_free_data_saved_rate": tp / (tp + fn),
                "noisy_data_filtered_rate": tn / (tn + fp), "denoising_accuracy": (tp + tn) / (tp + fn + fp + tn)}
     raw = pd.concat([pd.DataFrame([primary]), pd.DataFrame(threshold_rows(rows))], ignore_index=True)
-    raw.insert(0, "model", PRIMARY)
+    raw.insert(0, "model", model)
     formatted = pd.DataFrame([{
         "Frequency cutoff": r.template_anomaly_frequency_threshold,
         "Passed (TP)": r.passed_tp, "Filtered (FN)": r.filtered_fn, "Passed (FP)": r.passed_fp,
