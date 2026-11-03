@@ -1,0 +1,105 @@
+import asyncio
+import json
+import sys
+from types import SimpleNamespace
+
+import pytest
+
+from uspto_revisit import cli
+
+
+def test_pipeline_has_no_curated_overrides():
+    assert not hasattr(cli.build_parser().parse_args([]), "overrides")
+    with pytest.raises(SystemExit):
+        cli.build_parser().parse_args(["--overrides", "config/nosmi_overrides.json"])
+
+
+def test_default_final_paths_are_model_scoped():
+    assert cli.default_reaction_smiles_output_path("gpt-5.4").as_posix() == (
+        "result/gpt-5.4_reaction_smiles_final.csv"
+    )
+
+
+@pytest.mark.parametrize(
+    ("provider", "environment_variable", "fallback"),
+    [
+        ("openai", "OPENAI_MODEL", "gpt-4.1-mini"),
+        ("gemini", "GEMINI_MODEL", "gemini-2.5-flash"),
+    ],
+)
+def test_default_model_is_provider_scoped(
+    monkeypatch,
+    provider,
+    environment_variable,
+    fallback,
+):
+    monkeypatch.delenv(environment_variable, raising=False)
+    assert cli.default_model_for_provider(provider) == fallback
+
+    monkeypatch.setenv(environment_variable, "custom-model")
+    assert cli.default_model_for_provider(provider) == "custom-model"
+
+
+def test_llm_extract_accepts_gemini_provider():
+    args = cli.build_parser().parse_args(
+        ["llm-extract", "--provider", "gemini", "--model", "gemini-test"]
+    )
+
+    assert args.provider == "gemini"
+    assert args.model == "gemini-test"
+    assert args.max_output_tokens == 16384
+
+    args = cli.build_parser().parse_args(
+        ["llm-extract", "--max-output-tokens", "2048"]
+    )
+    assert args.max_output_tokens == 2048
+
+
+def test_final_reprocess_runs_on_the_initial_dictionary(tmp_path, monkeypatch):
+    initial_path = tmp_path / "smiles_dict_initial.json"
+    initial_path.write_text(json.dumps([]), encoding="utf-8")
+    calls = {}
+
+    async def fake_reprocess(
+        input_file,
+        output_file,
+        session,
+        semaphore,
+        batch_size,
+    ):
+        calls["input"] = input_file
+        calls["batch_size"] = batch_size
+        output_file.write_text(json.dumps([]), encoding="utf-8")
+
+    monkeypatch.setattr(cli, "reprocess_no_smi", fake_reprocess)
+    monkeypatch.setattr(cli, "aiohttp_ssl_context", lambda: None)
+
+    class FakeClientSession:
+        def __init__(self, **_kwargs):
+            pass
+
+        async def __aenter__(self):
+            return object()
+
+        async def __aexit__(self, *_args):
+            return False
+
+    fake_aiohttp = SimpleNamespace(
+        ClientSession=FakeClientSession,
+        TCPConnector=lambda **_kwargs: object(),
+    )
+    monkeypatch.setitem(sys.modules, "aiohttp", fake_aiohttp)
+
+    final_path = asyncio.run(
+        cli.maybe_reprocess_no_smi(
+            batch_dir=tmp_path,
+            batch_size=25,
+            reprocess_concurrency=2,
+            skip_reprocess=False,
+        )
+    )
+
+    assert calls["input"] == initial_path
+    assert calls["batch_size"] == 25
+    assert final_path == tmp_path / "smiles_dict_final.json"
+    assert final_path.exists()

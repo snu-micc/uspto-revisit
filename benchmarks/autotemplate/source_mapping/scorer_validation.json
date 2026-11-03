@@ -1,0 +1,30 @@
+{
+  "all_per_record_flags_reproduced": true,
+  "results": {
+    "lenient": {
+      "original_data": {
+        "per_record_flags_checked": 292,
+        "correct": 99
+      },
+      "gpt-5.4-none": {
+        "per_record_flags_checked": 292,
+        "correct": 209
+      }
+    },
+    "strict": {
+      "original_data": {
+        "per_record_flags_checked": 292,
+        "correct": 95
+      },
+      "gpt-5.4-none": {
+        "per_record_flags_checked": 292,
+        "correct": 205
+      }
+    }
+  },
+  "ground_truth_sha256": "995dd98bd975ec17cbf39988a2a6b97c09dd824703294b4b56ee3787a75bff42",
+  "scorer_sha256": {
+    "analysis/evaluate_table2.py": "58e017afc34763b87f2df4f6b7a36964b5607948e00bed12bf37a5147c42a178",
+    "analysis/evaluate_table3.py": "1dab96d89b59ff0c36f72022ed6cf95f38927a003bacf23d202e0573a20a3c94"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "input_sha256": "b0dde63c032e152665881953ec095629660b81a55f5aa34c58ceed455349fe29",
+  "records": 400,
+  "strata": {
+    "many_products": 100,
+    "many_reactants": 100,
+    "many_reagents": 100,
+    "no_reagent": 100
+  },
+  "assigned_criterion_met": 400,
+  "single_criterion_match": 400,
+  "count_criteria_replacement_ids": [],
+  "scope": "four molecular-count flags only; rarity and duplication are separate audits"
+}

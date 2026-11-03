@@ -1,0 +1,36 @@
+{
+  "policy": "lowe-grants-raw-v3",
+  "raw_sha256": "5e91117efdb228642647ff26fc5f41b8babf544ca60b2967d76adf243352b626",
+  "raw_path": "1976_Sep2016_USPTOgrants_smiles.rsmi",
+  "builder_sha256": "d18cacbfc8aa8ce95812f1e7b3154ba3c937d4ac7a4435311b534b4763de410b",
+  "rdkit": "2025.09.6",
+  "localmapper": "0.1.5",
+  "extractor_sha256": {
+    "template_extract_extention.py": "d06f02eb649f288b209ceabaad75a91560ef0de474a434f862620963614f653a",
+    "template_extract_utils.py": "da22a7327dff1d725a0f9a3ae8f5756762b2664e1419b45bebc44d77fd4ee64f",
+    "template_extractor.py": "8621bda76633689bc1b28fabd00a69b80e42715ee5e275a50873e9e66bd54412"
+  },
+  "settings": {
+    "include_neighbors": false,
+    "use_stereo": false,
+    "use_symbol": true,
+    "max_unmap": 5,
+    "retro": false,
+    "remote": false,
+    "least_atom_num": 2,
+    "verbose": false
+  },
+  "max_template_permutations": 4096,
+  "batch_size": 500,
+  "limit": null,
+  "status": "complete",
+  "output_sha256": {
+    "grants_issue.csv": "84ed91b296ea8e3b9232278161a29fabb36b2a7441af746feeb7f54e1080403f",
+    "sampling_frame.csv.gz": "772b18df93b6fbefe037420031f1ddb5aa7883fef23bfa5757059b645ef8238c",
+    "table1.csv": "2ead07ee7aab8c49893df887e009e8f6ba2a755696da426da39c7ff766eae214",
+    "summary.json": "35ba114d52d2b50d3f0ca90618b80ad951543d081936dd8177cedc2f49582e6c"
+  },
+  "reused_template_stage_manifest_sha256": "2873ec077a9bdbe4e535770207c8fa98ff9663a9fd3304e84285920f62dc855d",
+  "reused_fields": "counts, reagents, templates, statuses, atom changes unchanged; all duplicate identities recomputed including reagents",
+  "migration_script_sha256": "081bcca2ff2f487a6cbcef92ccb093408c7067464360f789f300ea14e30731c9"
+}

@@ -1,0 +1,30 @@
+# Inference bundle for outputs/input_predictions_job6285*.csv
+
+Base model (not included, 16 GB): HF `NousResearch/Meta-Llama-3-8B-Instruct`
+(ungated copy of meta-llama/Meta-Llama-3-8B-Instruct). Server path: ~/chemtext_reaction2role/models/llama3-8b
+
+| file | role |
+|---|---|
+| scripts/predict_csv.py | inference: pretokenize -> stage 1 prod (LoRA) -> stage 2 role (LoRA) via vLLM; tag parsing |
+| scripts/common.py | prompt template (`<s>[INST] {instruction}{text} [/INST]`) and task instructions |
+| scripts/collapse_predictions.py | (paragraph, product) rows -> one row per paragraph (`*_per_paragraph.csv`) |
+| slurm/predict_input_1g.sh | the sbatch job that produced job 6285 (1g.24gb MIG, 4 CPU, 24G) |
+| slurm/env.sh | environment: conda env `chemtext`, VLLM_WORKER_MULTIPROC_METHOD=spawn |
+| adapters/prod | LoRA r64, lr 1e-4, completion-only loss, epoch 1 (checkpoint-3082); test F1 0.705 |
+| adapters/role | LoRA r64, lr 1e-5, full-text loss, epoch 4 (checkpoint-1200); test F1 0.659 |
+| requirements_freeze.txt | exact package versions (torch 2.13+cu130, vllm 0.32.0, transformers 5.19.0, ...) |
+| logs/r2r-predict-6285.out | run log |
+
+Command used (job 6285):
+    sbatch slurm/predict_input_1g.sh <base_model> <prod_run_dir> <role_run_dir>
+    -> python predict_csv.py --model <base> --prod_adapter <prod> --role_adapter <role>
+         --csv input.csv --text_col paragraph --id_col idx
+    then: python collapse_predictions.py outputs/input_predictions_job6285.csv
+Generation: temperature 0, top_p 1, max_tokens 3072, stop "!!!", max_model_len 8192.
+On the server the adapters were given as run dirs (the script follows train_summary.json ->
+best_checkpoint). In this bundle the summaries are renamed train_summary_server.json, so
+adapters/prod and adapters/role are used as-is when passed to --prod_adapter / --role_adapter.
+
+Note: predict_csv.py was refactored after job 6285 (optional sentence-level prod stage added,
+default `--prod_unit paragraph`). The paragraph path uses the same matching logic, but this file
+is not byte-identical to the version that ran job 6285 (no earlier copy was kept).

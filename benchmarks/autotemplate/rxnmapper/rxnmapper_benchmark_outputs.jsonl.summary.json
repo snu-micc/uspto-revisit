@@ -1,0 +1,23 @@
+{
+  "rows": 400,
+  "statuses": {
+    "no_template_match": 123,
+    "retained": 277
+  },
+  "no_change_return": 28,
+  "own_template_statuses": {
+    "no_reconstructable_template": 65,
+    "valid_template": 335
+  },
+  "skip_top3_kept": 21,
+  "skip_top3_statuses": {
+    "no_template_match": 123,
+    "retained": 277
+  },
+  "seconds": 642.2970000000205,
+  "timeout": 3600.0,
+  "extract_timeout": 600.0,
+  "workers": 20,
+  "library_sha256": "c00a9a9230394d487dc208db3ba49c53a7ecdff4baad4ed00a4677a403062f44",
+  "benchmark_maps_sha256": "40a45a8ba46107a8565a3726086d94474ce1bfcbfd10678a39731caddb0e1cb1"
+}

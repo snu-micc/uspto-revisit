@@ -1,0 +1,19 @@
+{
+  "task": "role",
+  "base_model": "<server_home>/chemtext_reaction2role/models/llama3-8b",
+  "eval_split": "valid",
+  "best_checkpoint": "<server_home>/chemtext_reaction2role/outputs/role/llama3-8b_qlora_r64_lr1e-05_ep20_eval-valid/checkpoint-1200",
+  "best_eval_loss": 0.9731935858726501,
+  "args": {
+    "task": "role",
+    "model": "<server_home>/chemtext_reaction2role/models/llama3-8b",
+    "tag": null,
+    "eval_split": "valid",
+    "epochs": 20,
+    "lr": 1e-05,
+    "lora_r": 64,
+    "batch_size": 2,
+    "max_seq_length": 4096,
+    "max_steps": -1
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "repository": "https://github.com/Lung-Yi/AutoTemplate",
+  "commit": "6b17ea08cc3dded90a9eee8e25b74e8a60e4cb94",
+  "files": [
+    {
+      "path": "LICENSE",
+      "git_blob_sha1": "b3f913a394f66594f050d71463146f4bf768da57",
+      "size": 1069
+    },
+    {
+      "path": "auto_process.py",
+      "git_blob_sha1": "bc4936d3698c41d58a624dbbf9c380958bae1343",
+      "size": 13166
+    },
+    {
+      "path": "autotemplate/analyze_utils/__init__.py",
+      "git_blob_sha1": "2cdaa97f80f98497470adbb9a5fa448b937c9e62",
+      "size": 59
+    },
+    {
+      "path": "autotemplate/analyze_utils/analyze_functions.py",
+      "git_blob_sha1": "c4510b4aa56d5732b0ef7cf1e63f95f79174864c",
+      "size": 798
+    },
+    {
+      "path": "autotemplate/extract_utils/__init__.py",
+      "git_blob_sha1": "1c15b1ab68f64fa6752967a8558b4ae43ff187d4",
+      "size": 67
+    },
+    {
+      "path": "autotemplate/extract_utils/extract_functions.py",
+      "git_blob_sha1": "e28e2134e7d8e4a106b5d89206f015fc3c4f04de",
+      "size": 29822
+    },
+    {
+      "path": "autotemplate/extract_utils/ori.py",
+      "git_blob_sha1": "a484bc2c2e07d0980b6371896ebf167e30eab5f3",
+      "size": 36740
+    },
+    {
+      "path": "autotemplate/graph_utils/__init__.py",
+      "git_blob_sha1": "8694a1a45066943b4e98961c2ac61c06704f2de7",
+      "size": 233
+    },
+    {
+      "path": "autotemplate/graph_utils/networkx_GraphMatch.py",
+      "git_blob_sha1": "9d8f3cf6c129d0b4051ab2157b0a1f58ced6a4a1",
+      "size": 16241
+    },
+    {
+      "path": "autotemplate/graph_utils/reaction_balancing.py",
+      "git_blob_sha1": "659393d42e4bf626142e7e5f23d9d2088206a5e6",
+      "size": 6016
+    },
+    {
+      "path": "autotemplate/module/GetBondChangeNumber.py",
+      "git_blob_sha1": "95f7622f208d00ea9b4e015f51586e93ea91cf7e",
+      "size": 16270
+    },
+    {
+      "path": "autotemplate/module/__init__.py",
+      "git_blob_sha1": "b44aae9688e00b3a6d9ca480e68eca102bfd982a",
+      "size": 1296
+    },
+    {
+      "path": "autotemplate/module/backup/networkx_GraphMatch.py",
+      "git_blob_sha1": "b8f65f9c05a9da30088d421bf5b9fce11c98417c",
+      "size": 10321
+    },
+    {
+      "path": "autotemplate/module/backup/template_extractor.py",
+      "git_blob_sha1": "22a70d460f30c2fcc50212efc80f2972b13ae5be",
+      "size": 44802
+    },
+    {
+      "path": "autotemplate/module/draw.py",
+      "git_blob_sha1": "117a19c885d53cbf45472877ddc8fec24bb52c99",
+      "size": 10592
+    },
+    {
+      "path": "autotemplate/module/edit_mol_function.py",
+      "git_blob_sha1": "0d6f857d55c37e0e52613f800d67d5248268615c",
+      "size": 8020
+    },
+    {
+      "path": "autotemplate/module/networkx_GraphMatch.py",
+      "git_blob_sha1": "cf730e86184ce2d231afb387c78f9ef422549389",
+      "size": 15638
+    },
+    {
+      "path": "autotemplate/module/rdchiral_main_modified.py",
+      "git_blob_sha1": "3c0615838a9eb743f4b0fe492a77f5976f17adb2",
+      "size": 18446
+    },
+    {
+      "path": "autotemplate/module/sg_template.py",
+      "git_blob_sha1": "c6a4e6b2be6665a2a6f8b0280ce87c9a3d8af3be",
+      "size": 7645
+    },
+    {
+      "path": "autotemplate/module/template_extractor.py",
+      "git_blob_sha1": "94ab1708f21b730dfa05af12450cdb349b7dc736",
+      "size": 47925
+    },
+    {
+      "path": "autotemplate/run_utils/__init__.py",
+      "git_blob_sha1": "c6a52f411dafd80b99c5a1318e1a052684e98089",
+      "size": 152
+    },
+    {
+      "path": "autotemplate/run_utils/run_functions.py",
+      "git_blob_sha1": "67c649e0ceb225d8af7326d559ebf10de0518979",
+      "size": 12369
+    },
+    {
+      "path": "docs/environment.yml",
+      "git_blob_sha1": "da6980a8427ef1eb36c55b3e9da5652be9eb5a43",
+      "size": 5311
+    },
+    {
+      "path": "rxnmapper_mapping.py",
+      "git_blob_sha1": "8dc6ea6cc56a4a2aa6c065077f62922b4b4b43d0",
+      "size": 3523
+    }
+  ]
+}

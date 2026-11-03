@@ -1,0 +1,17 @@
+Built with Meta Llama 3
+
+Meta Llama 3 is licensed under the Meta Llama 3 Community License,
+Copyright © Meta Platforms, Inc. All Rights Reserved.
+
+This archive contains the product and reaction-role LoRA adapters supplied for
+the llama3-8b benchmark reproduction in Supplementary Information S13.
+Base model: NousResearch/Meta-Llama-3-8B-Instruct (base weights not included).
+These are the checkpoints used for the supplied job-6285 predictions; this is
+not a claim that they are the original Zhang et al. authors' released weights.
+
+Extract this archive into benchmarks/zhang_et_al/ in snu-micc/uspto-revisit.
+The adapters/prod/ and adapters/role/ directories will then contain the weights.
+See the repository README for inference instructions and known provenance limits.
+
+Meta license and acceptable-use policy: LLAMA3_LICENSE.txt
+Source: https://github.com/meta-llama/llama3/blob/main/LICENSE

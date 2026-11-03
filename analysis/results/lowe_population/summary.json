@@ -1,0 +1,49 @@
+{
+  "policy": "lowe-grants-raw-v3",
+  "complete_source": true,
+  "source_rows": 1808937,
+  "flagged_rows": 1188575,
+  "table1": {
+    "union": 677316,
+    "no_reagent": 222957,
+    "many_products": 142390,
+    "many_reagents": 249291,
+    "many_reactants": 172536
+  },
+  "table1_percent": {
+    "union": 37.44276334665055,
+    "no_reagent": 12.325304861363332,
+    "many_products": 7.871473688691204,
+    "many_reagents": 13.781076952928709,
+    "many_reactants": 9.537977276157212
+  },
+  "sampling_frame": {
+    "no_reagent": 179488,
+    "many_products": 74585,
+    "many_reagents": 211304,
+    "many_reactants": 70653
+  },
+  "sampling_frame_total": 536030,
+  "processing_status": {
+    "ok": 1738016,
+    "template_unassigned": 70139,
+    "molecular_parse_error": 764,
+    "template_error": 15,
+    "template_complexity_limit": 3
+  },
+  "issue_counts": {
+    "duplicated": 719507,
+    "no_reagent": 222957,
+    "many_product (> 1)": 142390,
+    "template_unassigned": 70139,
+    "rare_temp": 97984,
+    "many_reagent (> 5)": 249291,
+    "many_reactant (> 2)": 172536,
+    "molecular_parse_error": 764,
+    "template_error": 15,
+    "template_complexity_limit": 3
+  },
+  "benchmark_rows": 400,
+  "benchmark_eligible": 400,
+  "benchmark_ineligible_ids": []
+}

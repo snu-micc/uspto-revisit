@@ -1,0 +1,6 @@
+Below is a description of an organic reaction. Extract information from it to an ORD JSON record.
+
+### Procedure:
+{}
+
+### ORD JSON:

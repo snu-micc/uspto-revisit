@@ -1,0 +1,1002 @@
+[
+  {
+    "row_id": 1,
+    "name": "2-coumaranone",
+    "smiles": "O=C1Oc2ccccc2C1"
+  },
+  {
+    "row_id": 2,
+    "name": "5-cyano-2-hydroxy-6-methyl-3-pyridine-carboxylic acid, ethyl ester",
+    "smiles": "CCOC(=O)c1c(O)nc(C)c(C#N)c1"
+  },
+  {
+    "row_id": 3,
+    "name": "α-bromo-γ-butyrolactone",
+    "smiles": "O=C1OCC(CBr)C1"
+  },
+  {
+    "row_id": 4,
+    "name": "di(p-t-butylphenyl)iodonium camphor sulfonate",
+    "smiles": "CC(C)(C)c1ccc([I+](c2ccc(C(C)(C)C)cc2)c2ccc(C(C)(C)C)cc2)cc1.C[C@H]1CC[C@@H]2[C@@H](C1)C(C)(C)S(=O)(=O)[O-]2"
+  },
+  {
+    "row_id": 5,
+    "name": "[4-(4,9-dimethoxy-1-oxo-1,3-dihydro-2H-benzo[f]isoindol-2-yl)phenyl]acetic acid",
+    "smiles": "COc1ccc2c(c1OC)cc3C(=O)N(c4ccc(cc4)CC(=O)O)Cc3c2"
+  },
+  {
+    "row_id": 6,
+    "name": "8-hydroxy-7-phenylpyrido[3,4-d]pyridazine-1,4-(2H,3H)-dione",
+    "smiles": "O=c1[nH]nc2ncc(O)c(c2c(=O)[nH]1)c3ccccc3"
+  },
+  {
+    "row_id": 7,
+    "name": "naphthalene-1,5-disulfonic acid",
+    "smiles": "O=S(=O)(O)c1cccc2cc(S(=O)(=O)O)ccc12"
+  },
+  {
+    "row_id": 8,
+    "name": "4-biphenylbenzoic acid",
+    "smiles": "O=C(O)c1ccc(cc1)c2ccc(cc2)c3ccccc3"
+  },
+  {
+    "row_id": 9,
+    "name": "2-chloro-4-morpholin-4-yl-thieno[3,2-d]pyrimidine-6-carbaldehyde",
+    "smiles": "O=CC1=NC(Cl)=NC2=C1SC=C2N3CCOCC3"
+  },
+  {
+    "row_id": 10,
+    "name": "4-(2-hydroxy-pyrimidin-4-yl)-benzoic acid",
+    "smiles": "O=C(O)c1ccc(cc1)c2ncc(O)nc2"
+  },
+  {
+    "row_id": 11,
+    "name": "5-aminobenzimidazole",
+    "smiles": "Nc1ccc2[nH]c(nc2c1)"
+  },
+  {
+    "row_id": 12,
+    "name": "2-(1H-Indol-4-yl)-6-(4-methyl-piperazin-1-ylmethyl)-4-morpholin-4-yl-thieno[3.2-d]pyrimidine",
+    "smiles": "CN1CCN(CC1)Cc2nc(N3CCOCC3)c3sccc3n2-c4cccc5[nH]ccc45"
+  },
+  {
+    "row_id": 13,
+    "name": "(R)-8-(5-bromo-2-fluoro-phenyl)-8-methyl-6,6-dioxo-6λ6-thia-9-aza-spiro[4.5]deca-2,9-dien-10-ylamine",
+    "smiles": "N[C@]1(Cc2ccc(Br)cc2F)CC=C[S](=O)(=O)C12CC=CN2"
+  },
+  {
+    "row_id": 14,
+    "name": "MEK",
+    "smiles": "CC(=O)C"
+  },
+  {
+    "row_id": 15,
+    "name": "1,3-diallyl-5,6-diaminouracil",
+    "smiles": "NC1=NC(=O)N(CC=C)C(=O)C(N)=C1CC=C"
+  },
+  {
+    "row_id": 16,
+    "name": "nitrosonium tetrafluoroborate",
+    "smiles": "[N+]#O.[B-](F)(F)(F)F"
+  },
+  {
+    "row_id": 17,
+    "name": "(R)-3-(4′-Cyano-biphenyl-4-yl)-2-{[(3R,7S)-3-[4-(3,4-dichloro-benzyloxy)-phenyl]-1-methyl-2-oxo-6-((S)-1-phenyl-propyl)-2,3,5,6,7,8-hexahydro-1H-4-oxa-1,6-diaza-anthracene-7-carbonyl]-amino}-propionic acid methyl ester",
+    "smiles": "COC(=O)[C@H](Cc1ccc(-c2ccc(C#N)cc2)cc1)NC(=O)[C@H]1N(C)C2=C(CC[C@H](CC[C@H]2Oc2ccc(OCCc3cc(Cl)c(Cl)cc3)cc2)[C@H](CC)c2ccccc2)N=C(c2ccc(cc2)OCCc2cc(Cl)c(Cl)cc2)O1"
+  },
+  {
+    "row_id": 18,
+    "name": "2-(1-Piperazinyl)-4-amino-6,7-dimethoxyquinazoline",
+    "smiles": "COc1cc2nc(N)nc(N3CCNCC3)c2cc1OC"
+  },
+  {
+    "row_id": 19,
+    "name": "4-amino-6-chloro-3-nitro-pyridine-2-carbonitrile",
+    "smiles": "N#Cc1nc(N)c(Cl)cc1[N+](=O)[O-]"
+  },
+  {
+    "row_id": 20,
+    "name": "N-(ethyl)-2-dimethylamino-1,2,3,4-tetrahydrodibenzofuran-8-carboxamide",
+    "smiles": "CCNC(=O)c1cccc2c1OC3CCN(C)C(c23)C"
+  },
+  {
+    "row_id": 21,
+    "name": "methyl 4,5-diamino-2-methylbenzoate",
+    "smiles": "COC(=O)c1cc(N)c(N)c(C)c1"
+  },
+  {
+    "row_id": 22,
+    "name": "triphenylsulfonium 2-acetoxy-1,1,3,3,3-pentafluoropropane-1-sulfonate",
+    "smiles": "CC(=O)OC(C(F)(F)F)C(F)(F)S(=O)(=O)[O-].C1=CC=CC=C1[S+](C2=CC=CC=C2)C3=CC=CC=C3"
+  },
+  {
+    "row_id": 23,
+    "name": "6-{trans-[4-(2-methyl-3-phenylpropylamino)-cyclohexyl]}-3H-benzoxazol-2-one",
+    "smiles": "O=C1Oc2cccc(N[C@@H](CCc3ccccc3)C[C@H]4CCC(CC4)Nc5nc6ccccc6o5)c2N1"
+  },
+  {
+    "row_id": 24,
+    "name": "di(p-t-butylphenyl)iodonium toluenesulfonate",
+    "smiles": "CC(C)(C)c1ccc([I+](c2ccc(C(C)(C)C)cc2)c2ccc(C(C)(C)C)cc2)cc1.Cc1ccc(S(=O)(=O)[O-])cc1"
+  },
+  {
+    "row_id": 25,
+    "name": "2-chloro-5-(methylthio)benzoic acid",
+    "smiles": "O=C(O)c1cc(SC)ccc1Cl"
+  },
+  {
+    "row_id": 26,
+    "name": "2,6-lutidine",
+    "smiles": "Cc1cccc(C)n1"
+  },
+  {
+    "row_id": 27,
+    "name": "3-benzo[b]thiophen-2-yl-1-perhydro-2H-pyran-2-yl-1H-indazole-5-carboxamide",
+    "smiles": "NC(=O)c1ccc2[nH]n(c(c2c1)-c1sccc2ccccc12)C1CCCCO1"
+  },
+  {
+    "row_id": 28,
+    "name": "N-[2-(2-methoxy-1-naphthyl)ethyl]propionamide",
+    "smiles": "CCC(=O)NCCc1c(OC)ccc2ccccc12"
+  },
+  {
+    "row_id": 29,
+    "name": "4,5-methylenedioxyindole-2-carboxylic acid methyl ester",
+    "smiles": "COC(=O)c1[nH]c2cc3OCOc3cc2c1"
+  },
+  {
+    "row_id": 30,
+    "name": "(3R,5S)—N-butyl-3,5,6-trihydroxyhexanamide",
+    "smiles": "CCCCNC(=O)[C@H](O)C[C@H](O)[C@H](O)C"
+  },
+  {
+    "row_id": 31,
+    "name": "2-Bromo-6-ethyl-5-[(4-methoxy-3-methylphenyl)sulfonyl]-5,6-dihydrophenanthridine",
+    "smiles": "CCOc1ccc(C)c(OC)c1S(=O)(=O)C1c2cccc(Br)c2N=c2ccccc21"
+  },
+  {
+    "row_id": 32,
+    "name": "Cis-3-[2-[2-methyl-3-[4-(aminoiminomethyl)phenyl]-isoxazolidin-5-yl]acetyl]amino-N-(3-methylphenylsulfonyl)-L-alanine methyl ester",
+    "smiles": "COC(=O)[C@H](NC(=O)CC1ON(C(C)c2ccc(C(=N)N)cc2)C[C@H]1)S(=O)(=O)Nc1cccc(C)c1"
+  },
+  {
+    "row_id": 33,
+    "name": "(R,R)-di-p-anisoyltartaric acid",
+    "smiles": "COC1=CC=C(C=C1)C(=O)O[C@H](C(=O)O)[C@H](OC(=O)C2=CC=C(OC)C=C2)C(=O)O"
+  },
+  {
+    "row_id": 34,
+    "name": "3-[2-[4-(2-methoxyphenyl)-1-piperazinyl]ethyl]-7-acetylamino-1,2,3,4-tetrahydroquinazoline-2,4-dione",
+    "smiles": "COc1ccccc1N2CCN(CCc3n(c(=O)[nH]c4cc(NC(C)=O)ccc34)CC2)CC"
+  },
+  {
+    "row_id": 35,
+    "name": "8-bromo-3,4-dihydrobenzo[f][1,4]oxazepin-5(2H)-one",
+    "smiles": "Brc1ccc2OCCNC(=O)c2c1"
+  },
+  {
+    "row_id": 36,
+    "name": "N-(1S,2R)-{1-(3,5-Difluoro-benzyl)-2-hydroxy-2-[(5R,2R)-5-pent-4-enyloxy-piperdin-2-yl]-ethyl}-acetamide hydrochloride",
+    "smiles": "CC(=O)N[C@H](Cc1cc(F)cc(F)c1)[C@@](O)([C@H]1CCCC[C@H](OCCCC=C)N1)Cl"
+  },
+  {
+    "row_id": 37,
+    "name": "ethyl N-triethoxysilylpropylcarbamate",
+    "smiles": "CCOC(=O)NCCC[Si](OCC)(OCC)OCC"
+  },
+  {
+    "row_id": 38,
+    "name": "3-[2-difluoromethyl-5-(4-methoxy-phenyl)-2H-[1,2,4]triazol-3-yl]-benzaldehyde",
+    "smiles": "COc1ccc(cc1)c2nnc(n2C(F)F)c3cccc(c3)C=O"
+  },
+  {
+    "row_id": 39,
+    "name": "6-Chloro-2-pyridinamine",
+    "smiles": "Nc1nc(Cl)ccc1"
+  },
+  {
+    "row_id": 40,
+    "name": "N-[1-methyl-prop-(E)-ylidene]-N'-phenyl-hydrazine",
+    "smiles": "CC/C(=N/NC1=CC=CC=C1)C"
+  },
+  {
+    "row_id": 41,
+    "name": "N-2-hydroxypropyl-5-methyl-oxazolidine",
+    "smiles": "CC1=NCC(O)CO1CCO"
+  },
+  {
+    "row_id": 42,
+    "name": "N-(2-chloroethyl)-2-methyl-3-hydroxy-4-pyridinone",
+    "smiles": "CC1=NC(=O)C(O)=CC1NCCCl"
+  },
+  {
+    "row_id": 43,
+    "name": "4-bromothiazole-2-carbohydrazide",
+    "smiles": "NNC(=O)c1nc(sc1)Br"
+  },
+  {
+    "row_id": 44,
+    "name": "(2aR, 4S)-1-Benzoyl-4-amino-6-bromo-1,2,2a,3,4,5-hexahydrobenz[cd]indole",
+    "smiles": "O=C(c1ccccc1)N2CC[C@H](N)c3c(Br)cc1cc[c@H]2c31"
+  },
+  {
+    "row_id": 45,
+    "name": "N-(4-propargylpiperazin-1-ylethyl)-2-methyl-3-hydroxy-4-pyridinone",
+    "smiles": "CC1=NC(CCN2CCN(CC#C)CC2)=CC(=O)O1"
+  },
+  {
+    "row_id": 46,
+    "name": "CDCl3",
+    "smiles": "[2H]C(Cl)(Cl)Cl"
+  },
+  {
+    "row_id": 47,
+    "name": "5-[5-(3-methoxybenzyl)-1,3,4-oxadiazol-2-ylamino]-1H-indazole hydrochloride",
+    "smiles": "Cl.COc1cccc(CC2=NN=C(O2)Nc3ccc4[nH]ncc4c3)c1"
+  },
+  {
+    "row_id": 48,
+    "name": "cis methyl N-t-butoxycarbonyl-4-(2-bromoethyl)pyrrolidine-2-carboxylate",
+    "smiles": "COC(=O)[C@H]1CC[C@H](CCBr)N1C(=O)OC(C)(C)C"
+  },
+  {
+    "row_id": 49,
+    "name": "Cefoxitin Sodium",
+    "smiles": "CC1(C(=O)[O-])N2C(S1)C(C(=O)N[C@H](C(=O)[O-])COC(N)=O)=C(CSC3=NC(=CS3)N(=O)=O)OC2=O.[Na+].[Na+]"
+  },
+  {
+    "row_id": 50,
+    "name": "N′-(4-nitrophenyl)-N,N′-di-n-hexylbenzene-1,4-diamine",
+    "smiles": "CCCCCCN(c1ccc(N(CCCCCC)c2ccc([N+](=O)[O-])cc2)cc1)"
+  },
+  {
+    "row_id": 51,
+    "name": "(3R)-3-(2-Hydroxy-2-thien-2-ylpent-4-enoyloxy)-1-(3-phenoxypropyl)-1-azoniabicyclo[2.2.2]octane bromide",
+    "smiles": "[Br-].C=CC[C@](O)(c1cccs1)C(=O)O[C@H]1CC[C@@H]2CC[N+]3(CCC(CC3)C12)CCCOc4ccccc4"
+  },
+  {
+    "row_id": 52,
+    "name": "5-chloro-3-nitropicolinonitrile",
+    "smiles": "N#Cc1cc([N+](=O)[O-])nc(Cl)c1"
+  },
+  {
+    "row_id": 53,
+    "name": "triflic acid",
+    "smiles": "OS(=O)(=O)C(F)(F)F"
+  },
+  {
+    "row_id": 54,
+    "name": "2,3-dihydro-N-benzyloxy-1H-cyclopenta[b]quinoline-9-amine",
+    "smiles": "N(OCC1=CC=CC=C1)C2=CC3=C(C=C2)C4CCCC4=N3"
+  },
+  {
+    "row_id": 55,
+    "name": "Dimethyl-(1H-pyrrol-3-ylmethylene)-ammonium chlorid",
+    "smiles": "C[N+](C)=C(c1cc[nH]c1).[Cl-]"
+  },
+  {
+    "row_id": 56,
+    "name": "1-(2-methoxyphenyl)-4-[3-(cyclohexanecarbonyl)-3-(phenyl)butyl]piperazine",
+    "smiles": "COc1ccccc1N2CCN(CCCC(c3ccccc3)(C(=O)C4CCCCC4))CC2"
+  },
+  {
+    "row_id": 57,
+    "name": "(S)-α-methyl-1,3 benzodioxole-5-ethanol",
+    "smiles": "C[C@H](CO)c1ccc2OCOc2c1"
+  },
+  {
+    "row_id": 58,
+    "name": "[4′-(6-Ethoxy-pyridin-3-yl)-2′-ethylaminomethyl-6-methoxy-biphenyl-3-yl]-acetic acid ethyl ester, hydrochloride",
+    "smiles": "CCOC(=O)Cc1cc(OC)c(c(c1)Cc2cc(OC)nc(c2)OCC)CNCCc3ccccc3.Cl"
+  },
+  {
+    "row_id": 59,
+    "name": "N,N′-bis-Boc-(2R)-2,5-diamino-N-[(1R)-1-[(RS)-(5-tert-butyl-2-benzoxazolyl)-hydroxymethyl]-3-phenylpropyl]-valeramide",
+    "smiles": "CC(C)(C)OC(=O)N[C@@H](CCCNC(=O)OC(C)(C)C)C(=O)N[C@H](CCc1ccccc1)C(O)c2nc3ccccc3o2C(C)(C)C"
+  },
+  {
+    "row_id": 60,
+    "name": "BnMgCl",
+    "smiles": "[Mg](Cl)Cc1ccccc1"
+  },
+  {
+    "row_id": 61,
+    "name": "[(6-hydroxy-4-oxo-4H-chromen-3-yl)methyl]phosphonic acid",
+    "smiles": "OC(=O)P(CC1=C(O)C2=CC=CC=C2OC1=O)O"
+  },
+  {
+    "row_id": 62,
+    "name": "2,4-dihydroxy-4b,5,6,7,8,8a,9,10-octahydro-9-oxo-phenanthrene",
+    "smiles": "Oc1ccc2C(=O)CCC3CCCCCc3c2c1O"
+  },
+  {
+    "row_id": 63,
+    "name": "2-chloro-5-fluoro-N-(3-hydroxyphenyl)-4-pyrimidineamine",
+    "smiles": "Nc1nc(Cl)c(F)nc1Nc2cccc(O)c2"
+  },
+  {
+    "row_id": 64,
+    "name": "2-(4,5,6,7-tetrahydro-1-phenyl-1H-indazol-4-yl)ethanol",
+    "smiles": "OCCc1ccc2n(n(c2c1)C3=CC=CC=C3)CCCC2"
+  },
+  {
+    "row_id": 65,
+    "name": "5-((4S)-2-oxo-4-phenyl(1,3-oxazolidin-3-yl))-1-(4-fluorophenyl)pentane-1,5-dione",
+    "smiles": "O=C(CCCCC(=O)c1ccc(F)cc1)N1CC(O[C@H](c2ccccc2)C1)=O"
+  },
+  {
+    "row_id": 66,
+    "name": "Diethyl-3-iodophenylphosphonate",
+    "smiles": "CCOP(=O)(OC)c1cccc(I)c1"
+  },
+  {
+    "row_id": 67,
+    "name": "1-amino-2,3-dihydroindole",
+    "smiles": "NC1Cc2ccccc2N1"
+  },
+  {
+    "row_id": 68,
+    "name": "5-methoxyhomophthalic anhydride",
+    "smiles": "COc1cc2C(=O)OC(=O)Cc2cc1"
+  },
+  {
+    "row_id": 69,
+    "name": "ethyl 2-(4,5,6,7-tetrahydro-1-phenyl-1H-indazol-4-yl)acetate",
+    "smiles": "CCOC(=O)CC1CCC2=NN(c3ccccc3)CC2C1"
+  },
+  {
+    "row_id": 70,
+    "name": "6-cyano-1-(2-ethoxycarbonylvinyl)-2-naphthol",
+    "smiles": "CCOC(=O)C=Cc1c(O)c2cccc(C#N)c2cc1"
+  },
+  {
+    "row_id": 71,
+    "name": "(S)-amino-cyclohexyl-acetic acid methyl ester",
+    "smiles": "COC(=O)C[C@H](N)C1CCCCC1"
+  },
+  {
+    "row_id": 72,
+    "name": "Diethyl-Dithiocarbamic Acid 4-Vinyl-Phenyl Ester",
+    "smiles": "CCN(CC)C(=S)Sc1ccc(C=C)cc1"
+  },
+  {
+    "row_id": 73,
+    "name": "potassium tert-butoxide",
+    "smiles": "CC(C)(C)[O-].[K+]"
+  },
+  {
+    "row_id": 74,
+    "name": "HATU",
+    "smiles": "CCN1N=C(N(C1=O)C(C)(C)C)N=C(N(C)C)N(C)C.C1=NC(=NC(=N1)N(C)C)N(C)C.O=P([O-])([O-])[O-].[PF6-]"
+  },
+  {
+    "row_id": 75,
+    "name": "ethyl 1-(2,4-dimethoxybenzyl)-7-(2-(S)-hydroxymethyl-azetidin-1-yl)-4-oxo-1,4-dihydro-[1,8]naphthyridine-3-carboxylate",
+    "smiles": "CCOC(=O)C1=C(N(CC2=CC(OC)=CC(OC)=C2)C3=NC=C(C=C13)N4CC[C@H](CO)C4)C(=O)N"
+  },
+  {
+    "row_id": 76,
+    "name": "t-butyl 4-(6-acetoxy-methylpyridine-2-carbonyl)piperazine-1-carboxylate",
+    "smiles": "CC(C)(C)OC(=O)N1CCN(CC1)C(=O)c2nc(COC(=O)C)ccc2"
+  },
+  {
+    "row_id": 77,
+    "name": "3-(3-cyano-phenyl)-acrylic acid methyl ester",
+    "smiles": "COC(=O)C=Cc1cccc(c1)C#N"
+  },
+  {
+    "row_id": 78,
+    "name": "(R)-2-amino-3-(4′-cyano-biphenyl-4-yl)-propionic acid methyl ester",
+    "smiles": "COC(=O)[C@H](N)Cc1ccc(cc1)c2ccc(cc2)C#N"
+  },
+  {
+    "row_id": 79,
+    "name": "tert-butyl [6-aminomethyl-3-ethylbicyclo[3.2.0]hept-3-en-6-yl]acetate",
+    "smiles": "CC(C)(C)OC(=O)CC1(CN)CC2CC1=C(CC)C2"
+  },
+  {
+    "row_id": 80,
+    "name": "1-acetyl-3-(3,4-methylenedioxyphenyl)-1,3-dihydroimidazo[4,5-b]pyridin-2-one",
+    "smiles": "CC(=O)N1c2nccnc2NC(=O)C1c3cc4OCOc4cc3"
+  },
+  {
+    "row_id": 81,
+    "name": "1,3-dimethyl-5-(3,5-dichloro-(4-(2-(1,1,2,2,3,3,3-heptafluoropropoxy)-1,1,2-trifluoroethoxy))-phenylcarbamoyl)barbituric acid",
+    "smiles": "CN1C(=O)NC(=O)C(C(=O)N(C)C1=O)C(=O)Nc1cc(Cl)cc(Cl)c1Oc(C(F)(F)F)COC(C(F)(F)F)C(F)(F)F"
+  },
+  {
+    "row_id": 82,
+    "name": "(E)-5-methoxy-2-[2-[3-[2-[4-(cyclobutyl)-2-thiazolyl]ethenyl]phenylamino]-2-oxoethyl]benzoic acid",
+    "smiles": "COc1cc(/C=C/c2cccc(NCC(=O)c3cc(OC)ccc3C(=O)O)c2)c(s1)C1CCC1"
+  },
+  {
+    "row_id": 83,
+    "name": "methyl N-{4-[2-(4-chlorophenyl)-1-propylpent-4-en-1-yl]benzoyl}-beta-alaninate",
+    "smiles": "COC(=O)CCNC(=O)c1ccc(cc1)C(CC(CC)CC)c2ccc(Cl)cc2C=C"
+  },
+  {
+    "row_id": 84,
+    "name": "6-[(4-Fluorophenyl)oxy]-N-methyl-N-(4-{[(3S)-3-methyl-1-piperazinyl]methyl}phenyl)-3-pyridinecarboxamide fumarate",
+    "smiles": "CN(c1ccc(CN2CCN[C@H](C)C2)cc1)C(=O)c1cc(Oc2ccc(F)cc2)nc(c1)C=CC(=O)O.C=CC(=O)O"
+  },
+  {
+    "row_id": 85,
+    "name": "3-Amino-5-chloropicolinamide",
+    "smiles": "NC(=O)c1ncc(N)cc1Cl"
+  },
+  {
+    "row_id": 86,
+    "name": "3-bromo-5-(methoxycarbonyl)-1-phenyl-1,2-dihydropyridin-2-one",
+    "smiles": "COC(=O)c1cc(Br)cc(=O)n1-c2ccccc2"
+  },
+  {
+    "row_id": 87,
+    "name": "N-methylcyanoacetamide",
+    "smiles": "CNC(=O)CC#N"
+  },
+  {
+    "row_id": 88,
+    "name": "dibenzylamine",
+    "smiles": "N(Cc1ccccc1)Cc1ccccc1"
+  },
+  {
+    "row_id": 89,
+    "name": "(S)-2-(tert-butoxycarbonyl)amino-1-(oxazolo[4,5-b]pyridin-2-yl)propan-1-ol",
+    "smiles": "CC(C)(C)OC(=O)N[C@H](C(O)c1nc2nccnc2o1)C"
+  },
+  {
+    "row_id": 90,
+    "name": "2,6-Dimethylphenyl 4-[(tert-butoxycarbonyl)amino]butanoate",
+    "smiles": "CC(C)(C)OC(=O)NCCCC(=O)Oc1c(C)cccc1C"
+  },
+  {
+    "row_id": 91,
+    "name": "ferrocenylmethyltrimethylammonium iodide",
+    "smiles": "C[N+](C)(C)Cc1cccc(c1)[Fe]c2ccccc2.[I-]"
+  },
+  {
+    "row_id": 92,
+    "name": "2-tetrahydropyranyl-but-3-yne",
+    "smiles": "CC(C#C)OC1CCCCO1"
+  },
+  {
+    "row_id": 93,
+    "name": "(2E)-3-(5-{(tert-butoxycarbonyl){(3R)-1-(2-ethylbutyl)-3-pyrrolidinyl}amino}-2-pyridinyl)-N-(tetrahydro-2H-pyran-2-yloxy)acrylamide",
+    "smiles": "CCC(CC)C[C@H]1CCN(C1)Nc2cncc(c2)/C=C/C(=O)NOC3CCCCO3C(=O)OC(C)(C)C"
+  },
+  {
+    "row_id": 94,
+    "name": "(3R,7S)-3-[4-(3,4-dichloro-benzyloxy)-phenyl]-1-methyl-2-oxo-6-((S)-1-phenyl-propyl)-2,3,5,6,7,8-hexahydro-1H-4-oxa-1,6-diaza-anthracene-7-carboxylic acid",
+    "smiles": "CN1C(=O)[C@H](c2ccc(OCH2c3cc(Cl)c(Cl)cc3)cc2)N[C@@H](CCC[C@H](Cc2ccccc2)C)Oc2ccccc12C(=O)O"
+  },
+  {
+    "row_id": 95,
+    "name": "5-Ethyl-2-methylpyridine borane",
+    "smiles": "CCc1ccc(C)nc1.B"
+  },
+  {
+    "row_id": 96,
+    "name": "methyl iodide",
+    "smiles": "CI"
+  },
+  {
+    "row_id": 97,
+    "name": "(±)-N-Boc-trans-3-(N-methyl-4-phenoxybenzenesulfonamido)-4-tertbutylmercaptopyrrolidine",
+    "smiles": "CC(C)(C)OC(=O)N1C[C@H](S(C)(C)C)[C@@H](NS(=O)(=O)c2ccc(Oc3ccccc3)cc2)C1"
+  },
+  {
+    "row_id": 98,
+    "name": "3,4-dihydroxy-5-(1,1′-biphenyl)-2(5H)-furanone",
+    "smiles": "O=C1OC(c2ccccc2-c2ccccc2)C(O)C1O"
+  },
+  {
+    "row_id": 99,
+    "name": "potassium phthalimide",
+    "smiles": "[K+].O=C1N([K?])C(=O)c2ccccc12"
+  },
+  {
+    "row_id": 100,
+    "name": "methyl 2-benzyloxycarbonylamino-3-(2,4-dichlorobenzenesulfonylamino)-2-methylpropionate",
+    "smiles": "COC(=O)C(C)(NC(=O)OCc1ccccc1)CNS(=O)(=O)c1ccc(Cl)cc1Cl"
+  },
+  {
+    "row_id": 101,
+    "name": "2,3,4-trimethoxy-benzaldehyde",
+    "smiles": "COc1c(C=O)c(OC)c(OC)cc1"
+  },
+  {
+    "row_id": 102,
+    "name": "3-[2-(2-diethylamino-ethyl)-cyclopropyl]-1-(toluene-4-sulfonyl)-1H-indole-5-carbonitrile",
+    "smiles": "CCN(CC)CCC1CC1c2c(C#N)cc3ccccc3n2S(=O)(=O)c4ccc(C)cc4"
+  },
+  {
+    "row_id": 103,
+    "name": "2-Oxo-4-phenylbutyric acid",
+    "smiles": "O=C(O)CC(=O)Cc1ccccc1"
+  },
+  {
+    "row_id": 104,
+    "name": "5-(2,2-dimethyl-1,3-dioxan-5-yl)pentanoic acid, methyl ester",
+    "smiles": "COC(=O)CCCCC1COC(C)(C)OC1"
+  },
+  {
+    "row_id": 105,
+    "name": "2-(2-Hydroxyphenyl)-1-(4-methylpiperazino)-1-ethanone",
+    "smiles": "CC1=CC=C(C=C1)N2CCN(CC2)C(=O)CC3=CC=CC=C3O"
+  },
+  {
+    "row_id": 106,
+    "name": "5-cyclopropyl-2-tetrahydropyranyl-pent-3-yne",
+    "smiles": "CCC(C1CC1)C#CC1CCCCO1"
+  },
+  {
+    "row_id": 107,
+    "name": "1-(2-Fluorobenzyl)-3-[5chlorosulphinylfuran2-yl]pyrazolo[3,4-b]-pyridine",
+    "smiles": "Fc1ccccc1Cn2ncc3ncc(cc23)c4oc(cc4)S(=O)Cl"
+  },
+  {
+    "row_id": 108,
+    "name": "fluorenylmethyloxycarbonyl isothiocyanate",
+    "smiles": "O=C(N=C=S)OCC1c2ccccc2-c2ccccc21"
+  },
+  {
+    "row_id": 109,
+    "name": "(1R,4S,6S)-4-benzhydryl-3,7-dioxa-bicyclo[4.1.0]heptane",
+    "smiles": "C1[C@H]2O[C@@H](C[C@]12OC(c3ccccc3)c4ccccc4)"
+  },
+  {
+    "row_id": 110,
+    "name": "diethylmalonate",
+    "smiles": "CCOC(=O)CH(C(=O)OCC)"
+  },
+  {
+    "row_id": 111,
+    "name": "[2-Chloro-4-(3-methyl-pyrazol-1-yl)-phenyl]-(11H-5-oxa-4,10-diaza-dibenzo[a,d]cyclohepten-10-yl)-methanone",
+    "smiles": "Cc1ccnn1-c1ccc(Cl)cc1C(=O)N1c2ccccc2COc2ccccc21"
+  },
+  {
+    "row_id": 112,
+    "name": "1-amino-2,4-dibromoanthraquinone",
+    "smiles": "Nc1c(Br)cc2C(=O)c3cc(Br)cc(N)c3C(=O)c12"
+  },
+  {
+    "row_id": 113,
+    "name": "1,3-dimethyl-5-hydroxypyrazole",
+    "smiles": "Cc1cc(O)[nH]n1C"
+  },
+  {
+    "row_id": 114,
+    "name": "1-hydroxy-6-propyl-3,4-dimethoxybenzene",
+    "smiles": "CCCc1cc(OC)c(O)c(OC)c1"
+  },
+  {
+    "row_id": 115,
+    "name": "3-Cyano-8-fluoro-5-methoxy-2-H-chromen",
+    "smiles": "COc1cc2occc(F)c2cc1C#N"
+  },
+  {
+    "row_id": 116,
+    "name": "methyl 2-(4-(bis(4-chlorophenyl)methyl)-2-oxopiperazin-1-yl)acetate",
+    "smiles": "COC(=O)CN1CC(=O)NCC1C(c2ccc(Cl)cc2)c3ccc(Cl)cc3"
+  },
+  {
+    "row_id": 117,
+    "name": "sodium thiosulfate",
+    "smiles": "[Na+].[Na+].[O-]S(=O)(=S)[O-]"
+  },
+  {
+    "row_id": 118,
+    "name": "2-Isoquinolin-3-yl-chromen-4-one",
+    "smiles": "O=C1C(c2ncc3ccccc3c2)=Cc2ccccc2O1"
+  },
+  {
+    "row_id": 119,
+    "name": "N-Isopropyl-4-methyl-N-[2-(2-methyl-4H-inden-7-yl)ethyl]benzenesulfonamide",
+    "smiles": "CC(C)N(CCc1ccc2c(c1)CC=C2C)S(=O)(=O)c1ccc(C)cc1"
+  },
+  {
+    "row_id": 120,
+    "name": "thionyl chloride",
+    "smiles": "O=S(Cl)Cl"
+  },
+  {
+    "row_id": 121,
+    "name": "2-(1H-Indazol-4-yl)-4-morpholin-4-yl-thieno[3,2-d]pyrimidine-6-carbaldehyde",
+    "smiles": "O=Cc1nc(N2CCOCC2)c2scc(-c3ccc4[nH]ncc4c3)n2n1"
+  },
+  {
+    "row_id": 122,
+    "name": "1-[(1R,2R)-2-(2,4-difluorophenyl)-2-hydroxy-1-methyl-3-(1H-1,2,4-triazol-1-yl)propyl]-3-[4-(1H-tetrazol-1-yl)phenyl]-2-imidazolidinone",
+    "smiles": "C[C@H](Cn1cncn1)[C@](O)(c1ccc(F)cc1F)CN1CC(=O)N(c2ccc(cc2)n3nnnc3)C1"
+  },
+  {
+    "row_id": 123,
+    "name": "4-tert-Butylbenzenediazonium tetrafluoroborate",
+    "smiles": "CC(C)(C)c1ccc([N+]#N)cc1.[B-](F)(F)(F)F"
+  },
+  {
+    "row_id": 124,
+    "name": "HBF4",
+    "smiles": "F[B-](F)(F)F.[H+]"
+  },
+  {
+    "row_id": 125,
+    "name": "(2,2-diphenyl-1,3-benzodioxolan-5-yl)acetyl chloride",
+    "smiles": "O=C(Cl)Cc1ccc2OCOc2c1C(c1ccccc1)(c1ccccc1)"
+  },
+  {
+    "row_id": 126,
+    "name": "hypophosphorous acid",
+    "smiles": "OP(O)O"
+  },
+  {
+    "row_id": 127,
+    "name": "4-(3-{[4-(4-acetyl-2-chloro-3-hydroxy-phenoxymethyl)-phenyl]-hydroxy-methyl}-phenyl)-3H-thiazol-2-one",
+    "smiles": "CC(=O)c1cc(Cl)c(O)c(Oc2ccc(C(O)c3cccc(c3)c4nc(=O)sc4)cc2)c1"
+  },
+  {
+    "row_id": 128,
+    "name": "3-aminopropyltriethoxysilane",
+    "smiles": "NCC[Si](OCC)(OCC)OCC"
+  },
+  {
+    "row_id": 129,
+    "name": "benzyl 3-bromopropyl ether",
+    "smiles": "BrCCCOCc1ccccc1"
+  },
+  {
+    "row_id": 130,
+    "name": "tetrakis(triphenylphosphine)palladium(0)",
+    "smiles": "[Pd](P(c1ccccc1)(c1ccccc1)c1ccccc1)(P(c1ccccc1)(c1ccccc1)c1ccccc1)(P(c1ccccc1)(c1ccccc1)c1ccccc1)P(c1ccccc1)(c1ccccc1)c1ccccc1"
+  },
+  {
+    "row_id": 131,
+    "name": "(2-methyl-4-{2-[4-(3-phenoxy-propoxy)-phenyl]-ethyl}-4,5-dihydro-oxazol-4-yl)-methanol",
+    "smiles": "CC1=NCC(O)C1CCc2ccc(OCCCOc3ccccc3)cc2"
+  },
+  {
+    "row_id": 132,
+    "name": "phosphorous pentachloride",
+    "smiles": "P(Cl)(Cl)(Cl)(Cl)Cl"
+  },
+  {
+    "row_id": 133,
+    "name": "6-methoxybenzisothiazole-3-carboxylic acid",
+    "smiles": "COc1ccc2nscc(c2c1)C(=O)O"
+  },
+  {
+    "row_id": 134,
+    "name": "6-propyl-4-(3-trifluoromethylphenyl)-1H-pyrimidin-2-one",
+    "smiles": "O=c1[nH]cc(CCC)nc1-c2cccc(c2)C(F)(F)F"
+  },
+  {
+    "row_id": 135,
+    "name": "1,3-diazidoacetone",
+    "smiles": "N=[N+]=NCC(=O)CN=[N+]=N"
+  },
+  {
+    "row_id": 136,
+    "name": "HBTU",
+    "smiles": "CC(C)(C)N=C(N(C)C)N(C)C.CN(C)C1=[O+]C=CC(=C1)N(C)C.[PF6-]"
+  },
+  {
+    "row_id": 137,
+    "name": "palladium tetrakistriphenylphosphine",
+    "smiles": "[Pd](P(c1ccccc1)(c1ccccc1)c1ccccc1)(P(c1ccccc1)(c1ccccc1)c1ccccc1)(P(c1ccccc1)(c1ccccc1)c1ccccc1)P(c1ccccc1)(c1ccccc1)c1ccccc1"
+  },
+  {
+    "row_id": 138,
+    "name": "sodium azide",
+    "smiles": "[Na+].[N-]=[N+]=N"
+  },
+  {
+    "row_id": 139,
+    "name": "tert-Butyl 4-cyano-4-(morpholin-4-ylcarbonyl)piperidine-1-carboxylate",
+    "smiles": "CC(C)(C)OC(=O)N1CCC(CC1)(C#N)C(=O)N2CCOCC2"
+  },
+  {
+    "row_id": 140,
+    "name": "carbon monoxide",
+    "smiles": "[C-]#[O+]"
+  },
+  {
+    "row_id": 141,
+    "name": "3-(3-fluoro-5-nitrophenoxy)pyridine",
+    "smiles": "n1cc(ccc1)Oc2cc(F)cc([N+](=O)[O-])c2"
+  },
+  {
+    "row_id": 142,
+    "name": "thiourea",
+    "smiles": "NC(=S)N"
+  },
+  {
+    "row_id": 143,
+    "name": "glutaric acid mono-amide",
+    "smiles": "NC(=O)CCCC(=O)O"
+  },
+  {
+    "row_id": 144,
+    "name": "sodium iodide",
+    "smiles": "[Na+].[I-]"
+  },
+  {
+    "row_id": 145,
+    "name": "methyl[4-(benzyloxy)phenyl]acetate",
+    "smiles": "COC(=O)Cc1ccc(OCH2c2ccccc2)cc1"
+  },
+  {
+    "row_id": 146,
+    "name": "4-(3-cyclopentyl-indole-1-sulfonyl)-benzoic acid",
+    "smiles": "O=C(O)c1ccc(cc1)S(=O)(=O)n2cc(c3ccccc23)C4CCCC4"
+  },
+  {
+    "row_id": 147,
+    "name": "MTBE",
+    "smiles": "COC(C)(C)C"
+  },
+  {
+    "row_id": 148,
+    "name": "hydrogen sulfide",
+    "smiles": "S"
+  },
+  {
+    "row_id": 149,
+    "name": "1-amino-3-phenoxypropan-2-ol hydrochloride",
+    "smiles": "Cl.NCC(O)COc1ccccc1"
+  },
+  {
+    "row_id": 150,
+    "name": "2-amino-4-acetylphenol",
+    "smiles": "CC(=O)c1ccc(N)c(O)c1"
+  },
+  {
+    "row_id": 151,
+    "name": "sodium (Z)-3-(4-chlorophenyl)-3-(4-methanesulphonylphenyl)-2-(2-hydroxyethyl)prop-2-enoate",
+    "smiles": "[Na+].[O-]C(=O)/C(CCO)=C(\\c1ccc(Cl)cc1)c2ccc(S(=O)(=O)C)cc2"
+  },
+  {
+    "row_id": 152,
+    "name": "calcium hydroxide",
+    "smiles": "[Ca+2].[OH-].[OH-]"
+  },
+  {
+    "row_id": 153,
+    "name": "citric acid",
+    "smiles": "OC(=O)CC(O)(CC(=O)O)C(=O)O"
+  },
+  {
+    "row_id": 154,
+    "name": "6-methoxy-2-cyclopentylbenzo[b]thiophene",
+    "smiles": "COc1ccc2sccc(C3CCCC3)c2c1"
+  },
+  {
+    "row_id": 155,
+    "name": "N-ethylethylenediamine",
+    "smiles": "CCNCCN"
+  },
+  {
+    "row_id": 156,
+    "name": "para-toluenesulfonic acid monohydrate",
+    "smiles": "Cc1ccc(cc1)S(=O)(=O)O.O"
+  },
+  {
+    "row_id": 157,
+    "name": "4-bromobut-1-ene",
+    "smiles": "C=CCCBr"
+  },
+  {
+    "row_id": 158,
+    "name": "2-methyl-2-(3-pyridin-3-yl-phenoxy)-propionic acid ethyl ester",
+    "smiles": "CCOC(=O)C(C)(C)Oc1cccc(c1)c2cccnc2"
+  },
+  {
+    "row_id": 159,
+    "name": "3-methoxyphenylboronic acid",
+    "smiles": "B(c1cccc(OC)c1)(O)O"
+  },
+  {
+    "row_id": 160,
+    "name": "sodium ethoxide",
+    "smiles": "[Na+].[O-]CC"
+  },
+  {
+    "row_id": 161,
+    "name": "1-hydroxy-3,4-dimethoxybenzene",
+    "smiles": "Oc1cc(OC)c(OC)cc1"
+  },
+  {
+    "row_id": 162,
+    "name": "1-(bromomethyl)piperidine",
+    "smiles": "BrCC1CCNCC1"
+  },
+  {
+    "row_id": 163,
+    "name": "1,1-difluoroethylene",
+    "smiles": "C(=C)(F)F"
+  },
+  {
+    "row_id": 164,
+    "name": "cyclopropyl amine",
+    "smiles": "NC1CC1"
+  },
+  {
+    "row_id": 165,
+    "name": "N-(triisopropylsilyl)-pyrrole",
+    "smiles": "CC(C)[Si](N1C=CC=C1)(C(C)C)C(C)C"
+  },
+  {
+    "row_id": 166,
+    "name": "NaNO2",
+    "smiles": "[N+](=O)([O-])[O-].[Na+]"
+  },
+  {
+    "row_id": 167,
+    "name": "carbon tetrachloride",
+    "smiles": "ClC(Cl)(Cl)Cl"
+  },
+  {
+    "row_id": 168,
+    "name": "Imidazo[1,2-a]pyridin-6-ylamine",
+    "smiles": "Nc1ccc2nccn2c1"
+  },
+  {
+    "row_id": 169,
+    "name": "phenoxypropylbromide",
+    "smiles": "BrCCCOc1ccccc1"
+  },
+  {
+    "row_id": 170,
+    "name": "hydantoin",
+    "smiles": "O=C1NC(=O)NC1"
+  },
+  {
+    "row_id": 171,
+    "name": "2-(5-amino-1-phenyl-1H-pyrazol-3-yl)-2-methylpropanoic acid",
+    "smiles": "CC(C)(c1cc(N)nn1-c1ccccc1)C(=O)O"
+  },
+  {
+    "row_id": 172,
+    "name": "1-methyl-piperidine-4-carboxylic acid hydrochloride salt",
+    "smiles": "Cl.CN1CCC(CC1)C(=O)O"
+  },
+  {
+    "row_id": 173,
+    "name": "4-n-butoxyaniline",
+    "smiles": "CCCCOc1ccc(N)cc1"
+  },
+  {
+    "row_id": 174,
+    "name": "1-Azido-5-chloro-2,4-dimethoxy-benzene",
+    "smiles": "COc1cc(Cl)cc(OC)c1N=[N+]=[N-]"
+  },
+  {
+    "row_id": 175,
+    "name": "4-butoxybenzaldehyde",
+    "smiles": "CCCCOc1ccc(C=O)cc1"
+  },
+  {
+    "row_id": 176,
+    "name": "acetonitrile",
+    "smiles": "CC#N"
+  },
+  {
+    "row_id": 177,
+    "name": "t-butylbenzene",
+    "smiles": "CC(C)(C)c1ccccc1"
+  },
+  {
+    "row_id": 178,
+    "name": "2,6-difluorobenzoic acid",
+    "smiles": "O=C(O)c1c(F)cccc(F)c1"
+  },
+  {
+    "row_id": 179,
+    "name": "sodium sulfate",
+    "smiles": "[Na+].[Na+].[O-]S(=O)(=O)[O-]"
+  },
+  {
+    "row_id": 180,
+    "name": "hydrochloric acid",
+    "smiles": "Cl"
+  },
+  {
+    "row_id": 181,
+    "name": "lithium chloride",
+    "smiles": "[Li+].[Cl-]"
+  },
+  {
+    "row_id": 182,
+    "name": "propionic anhydride",
+    "smiles": "CCC(=O)OC(=O)CC"
+  },
+  {
+    "row_id": 183,
+    "name": "MeI",
+    "smiles": "CI"
+  },
+  {
+    "row_id": 184,
+    "name": "phenylpropionyl chloride",
+    "smiles": "O=C(Cl)CCc1ccccc1"
+  },
+  {
+    "row_id": 185,
+    "name": "3-Amino-2-Phenylindole",
+    "smiles": "Nc1c(c2ccccc2)[nH]c2ccccc12"
+  },
+  {
+    "row_id": 186,
+    "name": "2-nitrobenzoic acid",
+    "smiles": "O=[N+]([O-])c1ccccc1C(=O)O"
+  },
+  {
+    "row_id": 187,
+    "name": "dimethoxymethane",
+    "smiles": "COCOC"
+  },
+  {
+    "row_id": 188,
+    "name": "TFA",
+    "smiles": "FC(F)(F)C(=O)O"
+  },
+  {
+    "row_id": 189,
+    "name": "pyrrolidin",
+    "smiles": "N1CCCC1"
+  },
+  {
+    "row_id": 190,
+    "name": "N-methyl-4-piperidone",
+    "smiles": "CN1CCC(=O)CC1"
+  },
+  {
+    "row_id": 191,
+    "name": "Cs2CO3",
+    "smiles": "[Cs+].[Cs+].[O-]C([O-])=O"
+  },
+  {
+    "row_id": 192,
+    "name": "1-(pyrrolidino)-1-cyclohexene",
+    "smiles": "C1CCC(=C(N2CCCC2))CC1"
+  },
+  {
+    "row_id": 193,
+    "name": "1-Nitro-3-[(propan-2-ylsulfonyl)methyl]benzene",
+    "smiles": "CC(C)S(=O)(=O)Cc1cccc([N+](=O)[O-])c1"
+  },
+  {
+    "row_id": 194,
+    "name": "paraformaldehyde",
+    "smiles": "C=O"
+  },
+  {
+    "row_id": 195,
+    "name": "acetone",
+    "smiles": "CC(=O)C"
+  },
+  {
+    "row_id": 196,
+    "name": "C-[1-(toluene-4-sulfonyl)-cyclopentyl]-methylamine",
+    "smiles": "CC1(CCCC1)CN[S](=O)(=O)c1ccc(C)cc1"
+  },
+  {
+    "row_id": 197,
+    "name": "AIBN",
+    "smiles": "CC(C)(C#N)N=NC(C)(C)C#N"
+  },
+  {
+    "row_id": 198,
+    "name": "dimethyl sulfate",
+    "smiles": "COS(=O)(=O)OC"
+  },
+  {
+    "row_id": 199,
+    "name": "caesium fluoride",
+    "smiles": "[F-].[Cs+]"
+  },
+  {
+    "row_id": 200,
+    "name": "2-methyl-piperidine",
+    "smiles": "CC1CCCCN1"
+  }
+]

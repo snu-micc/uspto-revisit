@@ -1,0 +1,7 @@
+method,noise_free_retained,noise_free_denominator,noisy_rejected_completed,noisy_denominator,execution_unresolved,retained_total
+AutoTemplate_RXNMapper,213,292,44,108,0,277
+AutoTemplate_RXNMapper_skip_top3,213,292,44,108,0,277
+AutoTemplate_source_mapping,199,292,19,108,78,261
+AutoTemplate_RXNMapper_no_change_as_failure,213,292,39,108,28,277
+Original_USPTO,292,292,0,108,0,400
+GPT_5.4_none,221,292,62,108,0,267

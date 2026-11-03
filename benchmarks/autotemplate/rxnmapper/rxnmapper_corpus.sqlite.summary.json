@@ -1,0 +1,10 @@
+{
+  "rows": 1808937,
+  "seconds_this_run": 2151.0,
+  "workers": 3,
+  "statuses": {
+    "invalid_input": 764,
+    "mapped": 1807864,
+    "mapping_failed": 309
+  }
+}

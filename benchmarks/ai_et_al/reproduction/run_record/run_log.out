@@ -1,0 +1,292 @@
+========================================
+Job ID   : 21177
+Job Name : llama_rep36
+Start    : Tue Oct 27 09:26:34 PM KST 2026
+Node     : alpha
+========================================
+GPU free 24724 MiB >= 16384 MiB, starting at 2026-10-27T21:26:36+09:00
+Device: cuda
+입력 42건
+
+[1] MetaModel 로드 중...
+mp_group not provided. Load model with model parallel size == 1
+rope theta: 10000
+create prefix-tuning model with prefix_len 10 and prefix_layers 30
+Model Args:
+ ModelArgs(dim=4096, n_layers=32, n_heads=32, n_kv_heads=None, vocab_size=32000, multiple_of=256, ffn_dim_multiplier=None, norm_eps=1e-05, rope_theta=10000, max_batch_size=32, max_seq_len=2048, rope_scaling=None, prefix_layers=30, prefix_len=10, use_prefix_new_gate=False, lora_rank=-1, bias_tuning=True, norm_tuning=True, trainable_mode='sg')
+Model is Peft: True
+Trainable parameter count : 2593728 (local rank), 2593728 (all).
+Loading pretrained weights from ['<server_home>/llama_benchmark/finetuned_model/accessory_pretrained'] ...
+Loading from checkpoint at: <server_home>/llama_benchmark/finetuned_model/accessory_pretrained (1 of 1, format is "consolidated)"
+all params match perfectly!
+모델 준비 완료
+
+[2] repetition_penalty=1.0 시작 (42건)
+======================================================================
+
+[rp=1.0 1/42] NEW3 (E)-4-(Acetylsulfanyl)-3-({1-[2-(methoxycarbonyl)e
+[Accessory] (45.3s) valid_json=True {"inputs": {"m1_m3_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "(E)-4-(acetylsulfanyl)-3-({1-[2-(methoxycarbonyl)ethyl]-1H-1,2,3-triazol-5-yl}methylidene)-1-(triphenylmethyl)piperi
+
+[rp=1.0 2/42] NEW4 DPC MA
+[Accessory] (43.0s) valid_json=True {"inputs": {"m1_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "Melamine"}], "amount": {"mass": {"value": 126.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"identifiers": [{"ty
+
+[rp=1.0 3/42] NEW6 2,4-diaminothiophenol
+[Accessory] (15.0s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "2,4-dinitrophenylmercaptan"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifiers": [{"type": "NAME", "va
+
+[rp=1.0 4/42] NEW8 succinimide 3,4-dihydrocarbostyril-6-carboxylate
+[Accessory] (52.8s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "dioxane"}], "amount": {"volume": {"value": 200.0, "units": "MILLILITER"}}, "reaction_role": "SOLVENT"}]}, "m3_m5": {"compo
+
+[rp=1.0 5/42] NEW9 1-(1-methyl-1H-tetrazol-5-yl)thiomethyl-6,7-dihydr
+[Accessory] (52.4s) valid_json=True {"inputs": {"m1_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "1-(1-methyl-1H-tetrazol-5-yl)thiomethyl-6,7-dihydroxy-3,4-dihydroisoquinoline hydrochloride"}], "amount": {"mass": {"va
+
+[rp=1.0 6/42] NEW10 3β-Hydroxyandrostane-11,17-dione acetate
+[Accessory] (73.4s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "pyridine"}], "reaction_role": "SOLVENT"}]}, "m1_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "Acetic
+
+[rp=1.0 7/42] NEW11 ADP
+[Accessory] (19.2s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "( 10 )"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifiers": [{"type": "NAME", "value": "ADP"}], "reac
+
+[rp=1.0 8/42] NEW13 (E)-1,14-Di-ethyl-1,5,10,14-tetraazatetradec-7-ene
+[Accessory] (24.1s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "(E)-1,14-di-ethyl-1,5,10,14-tetra-BOC-1,5,10,14-tetraazatetradec-7-ene"}], "amount": {"mass": {"value": 1.97, "units": 
+
+[rp=1.0 9/42] NEW14 1-(2-hydroxyl-ethyl)-3-vinylimidazolium bromide
+[Accessory] (43.2s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "1-vinylimidazole"}], "reaction_role": "REACTANT"}]}, "m1": {"components": [{"identifiers": [{"type": "NAME", "value": "1-v
+
+[rp=1.0 10/42] NEW15 1-cyclooctylmethylimidazole hydrochloride
+[Accessory] (28.9s) valid_json=True {"inputs": {"m1_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "1-Cyclooctylmethylimidazole"}], "amount": {"mass": {"value": 0.3, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"id
+
+[rp=1.0 11/42] NEW20 2-amino-N-{5-[2-cyano-1-(3,4,5-trimethoxy-phenyl)-
+[Accessory] (53.4s) valid_json=True {"inputs": {"m1_m2_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "HCl dioxane"}], "amount": {"volume": {"value": 1.0, "units": "MILLILITER"}}, "reaction_role": "REACTANT"}, {"identif
+
+[rp=1.0 12/42] NEW28 2-(4-fluorophenyl)-3-(pyridin-4-yl)-4,5,6,7-tetrah
+[Accessory] (32.9s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "2-(4-Fluorophenyl)-3-(pyridin-4-yl)-4,5,6,7-tetrahydropyrazolo[1,5-a]pyrimidine dihydrochloride"}], "amount": {"mass": 
+
+[rp=1.0 13/42] NEW32 Imatinib mesylate
+[Accessory] (41.1s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "Imatinib"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifiers": [{"type": "NAME", "value": "methane sul
+
+[rp=1.0 14/42] NEW34 morpholinium 3-(3,5-di-tertiary-butyl-4-hydroxyani
+[Accessory] (34.1s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "3-(3,5-di-tertiary-butyl-4-hydroxyanilino)benzoic acid"}], "amount": {"mass": {"value": 1.7, "units": "GRAM"}}, "reacti
+
+[rp=1.0 15/42] NEW42 Cyclopropyldiphenylsulfonium acetate
+[Accessory] (50.1s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "acetic acid"}], "reaction_role": "REACTANT"}]}, "m1": {"components": [{"identifiers": [{"type": "NAME", "value": "cyclopro
+
+[rp=1.0 16/42] NEW50 A. (4,4'-dimethoxydesyl)isoquinolinium bromide
+[Accessory] (32.6s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "chloroform"}], "amount": {"volume": {"value": 50.0, "units": "MILLILITER"}}, "reaction_role": "SOLVENT"}]}, "m1_m2": {"com
+
+[rp=1.0 17/42] NEW52 Taurinamide Succinate
+[Accessory] (26.9s) valid_json=True {"inputs": {"m1_m3_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "Cbz-Taurinamide"}], "amount": {"mass": {"value": 100.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"identifie
+
+[rp=1.0 18/42] NEW62 N-(4-((R)-3-aminopiperidin-1-yl)-5-bromo-1H-pyrrol
+[Accessory] (75.1s) valid_json=False {"inputs": {"m1_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "tert-butyl (3R)-1-(5-bromo-3-(tetrahydrofuran-3-carboxamido)-1H-pyrrolo[2,3-b]pyridin-4-yl)piperidin-3-ylcarbamate"}], 
+
+[rp=1.0 19/42] NEW66 L-alanine methyl ester benzenesulfonate
+[Accessory] (64.2s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "L-Ala-OMe HCl salt"}], "amount": {"mass": {"value": 1.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}]}, "m2": {"compon
+
+[rp=1.0 20/42] NEW68 1-benzoyl-3-(1-methyl-4-piperidinyl)-5-nitro-1H-in
+[Accessory] (44.3s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "3-(1-methyl-4-piperidinyl)-5-nitro-1H-indazole"}], "amount": {"mass": {"value": 4.0, "units": "GRAM"}}, "reaction_role"
+
+[rp=1.0 21/42] NEW69 3-{4-[(R)-{[(1S)-1-(methoxycarbonyl)-3-methylbutyl
+[Accessory] (26.7s) valid_json=True {"inputs": {"m1_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "methyl (2S)-4-methyl-2-{[(R)-phenyl(4-pyridin-3-ylphenyl)methyl]oxy}pentanoate"}], "amount": {"mass": {"value": 740.
+
+[rp=1.0 22/42] NEW71 N-t-butyl anilino dimethyl sulfonium trifluoroacet
+[Accessory] (60.4s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "trifluoroacetate"}], "reaction_role": "REACTANT"}]}, "m2_m5": {"components": [{"identifiers": [{"type": "NAME", "value": "
+
+[rp=1.0 23/42] NEW73 S-methyl-N-[2-((5-methyl-4-imidazolyl)methylthio)e
+[Accessory] (25.3s) valid_json=True {"inputs": {"m1_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "N-[2-((5-methyl-4-imidazolyl)methylthio)ethyl] thiourea"}], "amount": {"mass": {"value": 2.29, "units": "GRAM"}}, "r
+
+[rp=1.0 24/42] NEW76 5-bromo-2-(4-phenethylthiazol-2-ylamino)pyridin-4-
+[Accessory] (45.1s) valid_json=True {"inputs": {"m1_m4_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "4-(benzyloxy)-5-bromo-N-(4-phenethylthiazol-2-yl)pyridin-2-amine"}], "amount": {"mass": {"value": 1.0, "units": "
+
+[rp=1.0 25/42] NEW77 hydrochloride
+[Accessory] (37.2s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "hydrochloric acid"}], "reaction_role": "REACTANT"}]}, "m6": {"components": [{"identifiers": [{"type": "NAME", "value": "et
+
+[rp=1.0 26/42] NEW82 5′-Amino-2′-chloro-biphenyl-4-carboxylic acid ethy
+[Accessory] (29.3s) valid_json=True {"inputs": {"m1_m3_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "2\u2032-Chloro-5\u2032-nitro-biphenyl-4-carboxylic acid ethyl ester"}], "amount": {"mass": {"value": 1.04, "units": 
+
+[rp=1.0 27/42] NEW84 lithium diisobutylamide
+[Accessory] (17.3s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "toluene"}], "reaction_role": "SOLVENT"}]}, "m1": {"components": [{"identifiers": [{"type": "NAME", "value": "diisobutyl am
+
+[rp=1.0 28/42] NEW94 3β,17β-di(dimethyltert-butylsilyloxy)-androstane-6
+[Accessory] (44.7s) valid_json=True {"inputs": {"m1_m2_m5_m3_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "3\u03b2,17\u03b2-di(dimethyltert-butylsilyloxy)androstane-6\u03b1-ol"}], "reaction_role": "REACTANT"}, {"ident
+
+[rp=1.0 29/42] NEW96 [4-amino-2-(piperidin-3-ylamino)-pyrimidin-5-yl]-(
+[Accessory] (35.0s) valid_json=True {"inputs": {"m2_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "3-[4-Amino-5-(2-methoxy-benzoyl)-pyrimidin-2-ylamino]-piperidine-1-carboxylic acid tert-butyl ester"}], "amount": {"mas
+
+[rp=1.0 30/42] NEW212 Preparation of Campholenic Aldehyde ##STR97##
+[Accessory] (46.7s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "sodium chloride"}], "reaction_role": "REACTANT"}]}, "m6": {"components": [{"identifiers": [{"type": "NAME", "value": "tolu
+
+[rp=1.0 31/42] NEW218 1(4-methylthiophenyl)-1-propanone
+[Accessory] (42.3s) valid_json=True {"inputs": {"m1_m2_m6": {"components": [{"identifiers": [{"type": "NAME", "value": "thioanisole"}], "amount": {"mass": {"value": 5.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"identifiers": [
+
+[rp=1.0 32/42] NEW234 6-ethoxycarbonylmethylene-1,3,5(10)-estratriene-3,
+[Accessory] (43.0s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "tetrahydrofuran"}], "reaction_role": "REACTANT"}]}, "m6": {"components": [{"identifiers": [{"type": "NAME", "value": "meth
+
+[rp=1.0 33/42] NEW235 N-benzyloxycarbonyl-L-leucinyl-L-leucine methyl es
+[Accessory] (74.0s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "1-(3-dimethylaminopropyl)-3-ethylcarbodiimide hydrochloride"}], "amount": {"mass": {"value": 1.05, "units": "GRAM"}}, "rea
+
+[rp=1.0 34/42] NEW281 citric acid
+[Accessory] (67.0s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "KH2PO4"}], "reaction_role": "REACTANT"}]}, "m1": {"components": [{"identifiers": [{"type": "NAME", "value": "urea"}], "rea
+
+[rp=1.0 35/42] NEW296 4-FLUORO-N-[4-(3-TRIFLUOROMETHYL-PHENYL)-INDAN-2-Y
+[Accessory] (51.2s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "tetrakis-triphenylphosphine palladium"}], "amount": {"mass": {"value": 20.0, "units": "MILLIGRAM"}}, "reaction_role": "REA
+
+[rp=1.0 36/42] NEW315 methyl 8-(4-cyano-3-fluoro-phenyl)-1-cyclopropyl-9
+[Accessory] (46.0s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "methyl 8-chloro-1-cyclopropyl-9-methyl-4-oxo-4H-quinolizine-3-carboxylate"}], "amount": {"mass": {"value": 100.0, "units":
+
+[rp=1.0 37/42] CHK98 1-(N-Methyl-aminoacetamido)-2-(2-chlorobenzoyl)pyr
+[Accessory] (39.9s) valid_json=True {"inputs": {"m1_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "2-(2-chlorobenzoyl)pyrrole"}], "amount": {"mass": {"value": 24.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"id
+
+[rp=1.0 38/42] CHK311 5-[[4-Methoxy-3-(phenylmethoxy)phenyl]methylene]-2
+[Accessory] (8.9s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "3-benzyloxy-4-methoxybenzaldehyde"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "hydanto
+
+[rp=1.0 39/42] CHK388 (3S,4R,6S)-6-benzhydryl-4-benzylamino-tetrahydropy
+[Accessory] (23.2s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "(1R,4S,6S)-4-benzhydryl-3,7-dioxa-bicyclo[4.1.0]heptane"}], "amount": {"mass": {"value": 0.03, "units": "GRAM"}}, "reac
+
+[rp=1.0 40/42] CHK393 5-Methyl-2[3-(N,N-diethylamino)-2-hydroxypropylami
+[Accessory] (15.5s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "3-methoxy-5-methyl-1-phenylindole-2-carboxylic acid"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifier
+
+[rp=1.0 41/42] CHK198 A466.3: 1-(6-Bromo-pyridin-2-yl)-propylamine
+[Accessory] (72.7s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "sodium borohydride"}], "amount": {"mass": {"value": 115.0, "units": "MILLIGRAM"}}, "reaction_role": "REACTANT"}]}, "m1_m2_
+
+[rp=1.0 42/42] CHK289 (Z)-Methyl 3-(4-amino-3,5-dimethylphenyl)-2-(benzy
+[Accessory] (75.4s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "Triethylamine"}], "amount": {"volume": {"value": 10.0, "units": "MILLILITER"}}, "reaction_role": "REACTANT"}]}, "m1_m2_m3_
+
+rp=1.0 완료 → <server_home>/llama_benchmark/rep36/output/llama_output_rp1.0.json
+
+[2] repetition_penalty=1.2 시작 (42건)
+======================================================================
+
+[rp=1.2 1/42] NEW3 (E)-4-(Acetylsulfanyl)-3-({1-[2-(methoxycarbonyl)e
+[Accessory] (47.3s) valid_json=True {"inputs": {"m1_m3_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "(E)-4-(acetylsulfanyl)-3-({1-[2-(methoxycarbonyl)ethyl]-1H-1,2,3-triazol-5-yl}methylidene)-1-(triphenylmethyl)piperi
+
+[rp=1.2 2/42] NEW4 DPC MA
+[Accessory] (38.9s) valid_json=True {"inputs": {"m1_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "Melamine"}], "amount": {"mass": {"value": 126.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"identifiers": [{"ty
+
+[rp=1.2 3/42] NEW6 2,4-diaminothiophenol
+[Accessory] (13.8s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "hydrochloric acid"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifiers": [{"type": "NAME", "value": "zi
+
+[rp=1.2 4/42] NEW8 succinimide 3,4-dihydrocarbostyril-6-carboxylate
+[Accessory] (51.6s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "dioxane"}], "amount": {"volume": {"value": 200.0, "units": "MILLILITER"}}, "reaction_role": "SOLVENT"}]}, "m3_m5": {"compo
+
+[rp=1.2 5/42] NEW9 1-(1-methyl-1H-tetrazol-5-yl)thiomethyl-6,7-dihydr
+[Accessory] (56.1s) valid_json=True {"inputs": {"m1_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "1-(1-methyl-1H-tetrazol-5-yl)thiomethyl-6,7-dihydroxy-3,4-dihydroisoquinoline hydrochloride"}], "amount": {"mass": {"va
+
+[rp=1.2 6/42] NEW10 3β-Hydroxyandrostane-11,17-dione acetate
+[Accessory] (77.2s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "pyridine"}], "reaction_role": "SOLVENT"}]}, "m1_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "Acetic
+
+[rp=1.2 7/42] NEW11 ADP
+[Accessory] (28.1s) valid_json=True {"inputs": {"m6_m7": {"components": [{"identifiers": [{"type": "NAME", "value": "( 1 )"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "( 5 )"}], "reaction_role": "REACTAN
+
+[rp=1.2 8/42] NEW13 (E)-1,14-Di-ethyl-1,5,10,14-tetraazatetradec-7-ene
+[Accessory] (24.6s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "(E)-1,14-di-ethyl-1,5,10,14-tetra-BOC-1,5,10,14-tetraazatetradec-7-ene"}], "amount": {"mass": {"value": 1.97, "units": 
+
+[rp=1.2 9/42] NEW14 1-(2-hydroxyl-ethyl)-3-vinylimidazolium bromide
+[Accessory] (37.1s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "toluene"}], "amount": {"volume": {"value": 50.0, "units": "MILLILITER"}}, "reaction_role": "SOLVENT"}]}, "m1": {"component
+
+[rp=1.2 10/42] NEW15 1-cyclooctylmethylimidazole hydrochloride
+[Accessory] (29.6s) valid_json=True {"inputs": {"m1_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "1-Cyclooctylmethylimidazole"}], "amount": {"mass": {"value": 0.3, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"id
+
+[rp=1.2 11/42] NEW20 2-amino-N-{5-[2-cyano-1-(3,4,5-trimethoxy-phenyl)-
+[Accessory] (58.1s) valid_json=True {"inputs": {"m1_m2_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "HCl dioxane"}], "amount": {"volume": {"value": 1.0, "units": "MILLILITER"}}, "reaction_role": "REACTANT"}, {"identif
+
+[rp=1.2 12/42] NEW28 2-(4-fluorophenyl)-3-(pyridin-4-yl)-4,5,6,7-tetrah
+[Accessory] (34.7s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "2-(4-Fluorophenyl)-3-(pyridin-4-yl)-4,5,6,7-tetrahydropyrazolo[1,5-a]pyrimidine dihydrochloride"}], "amount": {"mass": 
+
+[rp=1.2 13/42] NEW32 Imatinib mesylate
+[Accessory] (44.7s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "Imatinib"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifiers": [{"type": "NAME", "value": "methane sul
+
+[rp=1.2 14/42] NEW34 morpholinium 3-(3,5-di-tertiary-butyl-4-hydroxyani
+[Accessory] (48.3s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "3-(3,5-di-tertiary-butyl-4-hydroxyanilino)benzoic acid"}], "amount": {"mass": {"value": 1.7, "units": "GRAM"}}, "reacti
+
+[rp=1.2 15/42] NEW42 Cyclopropyldiphenylsulfonium acetate
+[Accessory] (44.1s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "cyclopropyldiphenylsulfonium tetrafluoroborate"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifiers": [
+
+[rp=1.2 16/42] NEW50 A. (4,4'-dimethoxydesyl)isoquinolinium bromide
+[Accessory] (34.5s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "chloroform"}], "amount": {"volume": {"value": 50.0, "units": "MILLILITER"}}, "reaction_role": "SOLVENT"}]}, "m1_m2": {"com
+
+[rp=1.2 17/42] NEW52 Taurinamide Succinate
+[Accessory] (29.5s) valid_json=True {"inputs": {"m1_m3_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "Cbz Taurinamide"}], "amount": {"mass": {"value": 100.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"identifie
+
+[rp=1.2 18/42] NEW62 N-(4-((R)-3-aminopiperidin-1-yl)-5-bromo-1H-pyrrol
+[Accessory] (77.6s) valid_json=False {"inputs": {"m1_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "tert-butyl (3R)-1-(5-bromo-3-(tetrahydrofuran-3-carboxamido)-1H-pyrrolo[2,3-b]pyridin-4-yl)piperidin-3-ylcarbamate"}], 
+
+[rp=1.2 19/42] NEW66 L-alanine methyl ester benzenesulfonate
+[Accessory] (57.1s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "L-Ala-OMe HCl"}], "amount": {"mass": {"value": 1.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}]}, "m2": {"components"
+
+[rp=1.2 20/42] NEW68 1-benzoyl-3-(1-methyl-4-piperidinyl)-5-nitro-1H-in
+[Accessory] (43.7s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "3-(1-methyl-4-piperidinyl)-5-nitro-1H-indazole"}], "amount": {"mass": {"value": 4.0, "units": "GRAM"}}, "reaction_role"
+
+[rp=1.2 21/42] NEW69 3-{4-[(R)-{[(1S)-1-(methoxycarbonyl)-3-methylbutyl
+[Accessory] (28.5s) valid_json=True {"inputs": {"m1_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "methyl (2S)-4-methyl-2-{[(R)-phenyl(4-pyridin-3-ylphenyl)methyl]oxy}pentanoate"}], "amount": {"mass": {"value": 740.
+
+[rp=1.2 22/42] NEW71 N-t-butyl anilino dimethyl sulfonium trifluoroacet
+[Accessory] (62.4s) valid_json=True {"inputs": {"m4_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "trifluoroacetate"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "CH3OH"}], "amount": {"vo
+
+[rp=1.2 23/42] NEW73 S-methyl-N-[2-((5-methyl-4-imidazolyl)methylthio)e
+[Accessory] (27.1s) valid_json=True {"inputs": {"m1_m2_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "N-[2-((5-methyl-4-imidazolyl)methylthio)ethyl] thiourea"}], "amount": {"mass": {"value": 2.29, "units": "GRAM"}}, "r
+
+[rp=1.2 24/42] NEW76 5-bromo-2-(4-phenethylthiazol-2-ylamino)pyridin-4-
+[Accessory] (46.6s) valid_json=True {"inputs": {"m1_m3_m2_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "4-(benzyloxy)-5-bromo-N-(4-phenethylthiazol-2-yl)pyridin-2-amine"}], "amount": {"mass": {"value": 1.0, "units": "
+
+[rp=1.2 25/42] NEW77 hydrochloride
+[Accessory] (33.0s) valid_json=True {"inputs": {"m4_m5": {"components": [{"identifiers": [{"type": "NAME", "value": "hydrochloric acid"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "ether"}], "reaction_rol
+
+[rp=1.2 26/42] NEW82 5′-Amino-2′-chloro-biphenyl-4-carboxylic acid ethy
+[Accessory] (28.4s) valid_json=True {"inputs": {"m1_m3_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "2\u2032-Chloro-5\u2032-nitro-biphenyl-4-carboxylic acid ethyl ester"}], "amount": {"mass": {"value": 1.04, "units": 
+
+[rp=1.2 27/42] NEW84 lithium diisobutylamide
+[Accessory] (17.2s) valid_json=True {"inputs": {"m1_m2_m3_m5": {"components": [{"identifiers": [{"type": "NAME", "value": "diisobutyl amine"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "solution"}], "reac
+
+[rp=1.2 28/42] NEW94 3β,17β-di(dimethyltert-butylsilyloxy)-androstane-6
+[Accessory] (49.2s) valid_json=True {"inputs": {"m1_m2_m5_m3_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "3\u03b2,17\u03b2-di(dimethyltert-butylsilyloxy)androstane-6\u03b1-ol"}], "reaction_role": "REACTANT"}, {"ident
+
+[rp=1.2 29/42] NEW96 [4-amino-2-(piperidin-3-ylamino)-pyrimidin-5-yl]-(
+[Accessory] (37.8s) valid_json=True {"inputs": {"m2_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "3-[4-Amino-5-(2-methoxy-benzoyl)-pyrimidin-2-ylamino]-piperidine-1-carboxylic acid tert-butyl ester"}], "amount": {"mas
+
+[rp=1.2 30/42] NEW212 Preparation of Campholenic Aldehyde ##STR97##
+[Accessory] (48.2s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "acetic acid"}], "reaction_role": "REACTANT"}]}, "m6": {"components": [{"identifiers": [{"type": "NAME", "value": "toluene"
+
+[rp=1.2 31/42] NEW218 1(4-methylthiophenyl)-1-propanone
+[Accessory] (42.3s) valid_json=True {"inputs": {"m7_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "HCl"}], "amount": {"volume": {"value": 2.0, "units": "MILLILITER"}}, "reaction_role": "REACTANT"}, {"identifiers": [{"t
+
+[rp=1.2 32/42] NEW234 6-ethoxycarbonylmethylene-1,3,5(10)-estratriene-3,
+[Accessory] (39.3s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "tetrahydrofuran"}], "reaction_role": "REACTANT"}]}, "m6": {"components": [{"identifiers": [{"type": "NAME", "value": "Pd C
+
+[rp=1.2 33/42] NEW235 N-benzyloxycarbonyl-L-leucinyl-L-leucine methyl es
+[Accessory] (76.8s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "DMF"}], "amount": {"volume": {"value": 25.0, "units": "MILLILITER"}}, "reaction_role": "SOLVENT"}]}, "m6": {"components": 
+
+[rp=1.2 34/42] NEW281 citric acid
+[Accessory] (43.4s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "KH2PO4"}], "reaction_role": "REACTANT"}]}, "m1": {"components": [{"identifiers": [{"type": "NAME", "value": "urea"}], "rea
+
+[rp=1.2 35/42] NEW296 4-FLUORO-N-[4-(3-TRIFLUOROMETHYL-PHENYL)-INDAN-2-Y
+[Accessory] (52.4s) valid_json=True {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "tetrakis-triphenylphosphine palladium"}], "amount": {"mass": {"value": 20.0, "units": "MILLIGRAM"}}, "reaction_role": "REA
+
+[rp=1.2 36/42] NEW315 methyl 8-(4-cyano-3-fluoro-phenyl)-1-cyclopropyl-9
+[Accessory] (31.9s) valid_json=True {"inputs": {"m2": {"components": [{"identifiers": [{"type": "NAME", "value": "methyl 8-chloro-1-cyclopropyl-9-methyl-4-oxo-4H-quinolizine-3-carboxylate"}], "amount": {"mass": {"value": 100.0, "units":
+
+[rp=1.2 37/42] CHK98 1-(N-Methyl-aminoacetamido)-2-(2-chlorobenzoyl)pyr
+[Accessory] (39.4s) valid_json=True {"inputs": {"m1_m4": {"components": [{"identifiers": [{"type": "NAME", "value": "2-(2-chlorobenzoyl)pyrrole"}], "amount": {"mass": {"value": 24.0, "units": "GRAM"}}, "reaction_role": "REACTANT"}, {"id
+
+[rp=1.2 38/42] CHK311 5-[[4-Methoxy-3-(phenylmethoxy)phenyl]methylene]-2
+[Accessory] (9.2s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "3-benzyloxy-4-methoxybenzaldehyde"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "hydanto
+
+[rp=1.2 39/42] CHK388 (3S,4R,6S)-6-benzhydryl-4-benzylamino-tetrahydropy
+[Accessory] (24.7s) valid_json=True {"inputs": {"m1_m2": {"components": [{"identifiers": [{"type": "NAME", "value": "(1R,4S,6S)-4-benzhydryl-3,7-dioxa-bicyclo[4.1.0]heptane"}], "amount": {"mass": {"value": 0.03, "units": "GRAM"}}, "reac
+
+[rp=1.2 40/42] CHK393 5-Methyl-2[3-(N,N-diethylamino)-2-hydroxypropylami
+[Accessory] (17.0s) valid_json=True {"inputs": {"m1": {"components": [{"identifiers": [{"type": "NAME", "value": "3-methoxy-5-methyl-1-phenylindole-2-carboxylic acid"}], "reaction_role": "REACTANT"}]}, "m2": {"components": [{"identifier
+
+[rp=1.2 41/42] CHK198 A466.3: 1-(6-Bromo-pyridin-2-yl)-propylamine
+[Accessory] (77.1s) valid_json=False {"inputs": {"m4": {"components": [{"identifiers": [{"type": "NAME", "value": "sodium borohydride"}], "amount": {"mass": {"value": 115.0, "units": "MILLIGRAM"}}, "reaction_role": "REACTANT"}]}, "m1_m2_
+
+[rp=1.2 42/42] CHK289 (Z)-Methyl 3-(4-amino-3,5-dimethylphenyl)-2-(benzy
+[Accessory] (75.9s) valid_json=False {"inputs": {"m4_m3": {"components": [{"identifiers": [{"type": "NAME", "value": "tetrahydrofuran"}], "reaction_role": "REACTANT"}, {"identifiers": [{"type": "NAME", "value": "palladium (II) acetate"}]
+
+rp=1.2 완료 → <server_home>/llama_benchmark/rep36/output/llama_output_rp1.2.json
+
+======================================================================
+완료! <server_home>/llama_benchmark/rep36/output/llama_output.json (42건)
+========================================
+End      : Tue Oct 27 10:26:13 PM KST 2026
+Elapsed  : 0h 59m 39s
+Exit     : 0
+========================================

@@ -1,0 +1,498 @@
+{
+  "method": "AutoTemplate core on official RXNMapper 0.3.0 remapping (upstream workflow)",
+  "primary_method": "AutoTemplate_RXNMapper",
+  "statuses": {
+    "AutoTemplate_RXNMapper": {
+      "no_template_match": 123,
+      "retained": 277
+    },
+    "AutoTemplate_RXNMapper_skip_top3": {
+      "no_template_match": 123,
+      "retained": 277
+    },
+    "AutoTemplate_source_mapping": {
+      "exception": 27,
+      "retained": 261,
+      "no_template_match": 61,
+      "timeout": 51
+    },
+    "AutoTemplate_RXNMapper_no_change_as_failure": {
+      "no_template_match": 95,
+      "retained": 277,
+      "exception": 28
+    }
+  },
+  "benchmark_rows": 400,
+  "noise_free_denominator": 292,
+  "complete_reference_denominator": 291,
+  "component_reference_denominator": 292,
+  "metrics": [
+    {
+      "endpoint": "primary_structure",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 50,
+      "denominator": 292,
+      "accuracy": 0.17123287671232876,
+      "ci95_low": 0.13236333151134047,
+      "ci95_high": 0.21864040959592315
+    },
+    {
+      "endpoint": "primary_pooled_set",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 53,
+      "denominator": 292,
+      "accuracy": 0.1815068493150685,
+      "ci95_low": 0.14152712490502642,
+      "ci95_high": 0.22975774929263523
+    },
+    {
+      "endpoint": "primary_end_to_end",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 94,
+      "denominator": 400,
+      "accuracy": 0.235,
+      "ci95_low": 0.1960909748126292,
+      "ci95_high": 0.278950541184548
+    },
+    {
+      "endpoint": "denoising",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 257,
+      "denominator": 400,
+      "accuracy": 0.6425,
+      "ci95_low": 0.5943817784800669,
+      "ci95_high": 0.6879072176346586
+    },
+    {
+      "endpoint": "primary_structure",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 50,
+      "denominator": 292,
+      "accuracy": 0.17123287671232876,
+      "ci95_low": 0.13236333151134047,
+      "ci95_high": 0.21864040959592315
+    },
+    {
+      "endpoint": "primary_pooled_set",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 53,
+      "denominator": 292,
+      "accuracy": 0.1815068493150685,
+      "ci95_low": 0.14152712490502642,
+      "ci95_high": 0.22975774929263523
+    },
+    {
+      "endpoint": "primary_end_to_end",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 94,
+      "denominator": 400,
+      "accuracy": 0.235,
+      "ci95_low": 0.1960909748126292,
+      "ci95_high": 0.278950541184548
+    },
+    {
+      "endpoint": "denoising",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 257,
+      "denominator": 400,
+      "accuracy": 0.6425,
+      "ci95_low": 0.5943817784800669,
+      "ci95_high": 0.6879072176346586
+    },
+    {
+      "endpoint": "primary_structure",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 45,
+      "denominator": 292,
+      "accuracy": 0.1541095890410959,
+      "ci95_low": 0.1172140239989376,
+      "ci95_high": 0.1999878286243294
+    },
+    {
+      "endpoint": "primary_pooled_set",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 52,
+      "denominator": 292,
+      "accuracy": 0.1780821917808219,
+      "ci95_low": 0.13846667402215643,
+      "ci95_high": 0.2260578224787059
+    },
+    {
+      "endpoint": "primary_end_to_end",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 64,
+      "denominator": 400,
+      "accuracy": 0.16,
+      "ci95_low": 0.12733275559943816,
+      "ci95_high": 0.1991356045478835
+    },
+    {
+      "endpoint": "denoising",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 218,
+      "denominator": 400,
+      "accuracy": 0.545,
+      "ci95_low": 0.496002466449648,
+      "ci95_high": 0.5931414270602654
+    },
+    {
+      "endpoint": "primary_structure",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 50,
+      "denominator": 292,
+      "accuracy": 0.17123287671232876,
+      "ci95_low": 0.13236333151134047,
+      "ci95_high": 0.21864040959592315
+    },
+    {
+      "endpoint": "primary_pooled_set",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 53,
+      "denominator": 292,
+      "accuracy": 0.1815068493150685,
+      "ci95_low": 0.14152712490502642,
+      "ci95_high": 0.22975774929263523
+    },
+    {
+      "endpoint": "primary_end_to_end",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 89,
+      "denominator": 400,
+      "accuracy": 0.2225,
+      "ci95_low": 0.18448827447183322,
+      "ci95_high": 0.2657910488837013
+    },
+    {
+      "endpoint": "denoising",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 252,
+      "denominator": 400,
+      "accuracy": 0.63,
+      "ci95_low": 0.5816587842920732,
+      "ci95_high": 0.6758680191810097
+    },
+    {
+      "endpoint": "primary_structure",
+      "method": "Original_USPTO",
+      "correct": 99,
+      "denominator": 292,
+      "accuracy": 0.339041095890411,
+      "ci95_low": 0.2871480376016179,
+      "ci95_high": 0.39511421064881325
+    },
+    {
+      "endpoint": "primary_pooled_set",
+      "method": "Original_USPTO",
+      "correct": 119,
+      "denominator": 292,
+      "accuracy": 0.4075342465753425,
+      "ci95_low": 0.35272922090362246,
+      "ci95_high": 0.4647405812827954
+    },
+    {
+      "endpoint": "primary_end_to_end",
+      "method": "Original_USPTO",
+      "correct": 99,
+      "denominator": 400,
+      "accuracy": 0.2475,
+      "ci95_low": 0.20774293744415318,
+      "ci95_high": 0.29206077119466656
+    },
+    {
+      "endpoint": "denoising",
+      "method": "Original_USPTO",
+      "correct": 292,
+      "denominator": 400,
+      "accuracy": 0.73,
+      "ci95_low": 0.684457128728908,
+      "ci95_high": 0.7711672158773156
+    },
+    {
+      "endpoint": "primary_structure",
+      "method": "GPT_5.4_none",
+      "correct": 209,
+      "denominator": 292,
+      "accuracy": 0.7157534246575342,
+      "ci95_low": 0.6614774034540996,
+      "ci95_high": 0.7644263914442586
+    },
+    {
+      "endpoint": "primary_pooled_set",
+      "method": "GPT_5.4_none",
+      "correct": 217,
+      "denominator": 292,
+      "accuracy": 0.7431506849315068,
+      "ci95_low": 0.6901086563374786,
+      "ci95_high": 0.7898781601352741
+    },
+    {
+      "endpoint": "primary_end_to_end",
+      "method": "GPT_5.4_none",
+      "correct": 240,
+      "denominator": 400,
+      "accuracy": 0.6,
+      "ci95_low": 0.5512590700269542,
+      "ci95_high": 0.6468384711061865
+    },
+    {
+      "endpoint": "denoising",
+      "method": "GPT_5.4_none",
+      "correct": 283,
+      "denominator": 400,
+      "accuracy": 0.7075,
+      "ci95_low": 0.6611144240081159,
+      "ci95_high": 0.7499379738431511
+    },
+    {
+      "endpoint": "strict_structure",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 46,
+      "denominator": 292,
+      "accuracy": 0.15753424657534246,
+      "ci95_low": 0.1202308037025461,
+      "ci95_high": 0.20373142661752022
+    },
+    {
+      "endpoint": "strict_pooled_set",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 47,
+      "denominator": 292,
+      "accuracy": 0.16095890410958905,
+      "ci95_low": 0.12325428908880555,
+      "ci95_high": 0.2074683189280601
+    },
+    {
+      "endpoint": "strict_end_to_end",
+      "method": "AutoTemplate_RXNMapper",
+      "correct": 90,
+      "denominator": 400,
+      "accuracy": 0.225,
+      "ci95_low": 0.1868047408249817,
+      "ci95_high": 0.2684270210588814
+    },
+    {
+      "endpoint": "strict_structure",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 46,
+      "denominator": 292,
+      "accuracy": 0.15753424657534246,
+      "ci95_low": 0.1202308037025461,
+      "ci95_high": 0.20373142661752022
+    },
+    {
+      "endpoint": "strict_pooled_set",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 47,
+      "denominator": 292,
+      "accuracy": 0.16095890410958905,
+      "ci95_low": 0.12325428908880555,
+      "ci95_high": 0.2074683189280601
+    },
+    {
+      "endpoint": "strict_end_to_end",
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "correct": 90,
+      "denominator": 400,
+      "accuracy": 0.225,
+      "ci95_low": 0.1868047408249817,
+      "ci95_high": 0.2684270210588814
+    },
+    {
+      "endpoint": "strict_structure",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 43,
+      "denominator": 292,
+      "accuracy": 0.14726027397260275,
+      "ci95_low": 0.11120130452501956,
+      "ci95_high": 0.19247979270464874
+    },
+    {
+      "endpoint": "strict_pooled_set",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 47,
+      "denominator": 292,
+      "accuracy": 0.16095890410958905,
+      "ci95_low": 0.12325428908880555,
+      "ci95_high": 0.2074683189280601
+    },
+    {
+      "endpoint": "strict_end_to_end",
+      "method": "AutoTemplate_source_mapping",
+      "correct": 62,
+      "denominator": 400,
+      "accuracy": 0.155,
+      "ci95_low": 0.12283258671753924,
+      "ci95_high": 0.19373089637312538
+    },
+    {
+      "endpoint": "strict_structure",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 46,
+      "denominator": 292,
+      "accuracy": 0.15753424657534246,
+      "ci95_low": 0.1202308037025461,
+      "ci95_high": 0.20373142661752022
+    },
+    {
+      "endpoint": "strict_pooled_set",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 47,
+      "denominator": 292,
+      "accuracy": 0.16095890410958905,
+      "ci95_low": 0.12325428908880555,
+      "ci95_high": 0.2074683189280601
+    },
+    {
+      "endpoint": "strict_end_to_end",
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "correct": 85,
+      "denominator": 400,
+      "accuracy": 0.2125,
+      "ci95_low": 0.17524350992363666,
+      "ci95_high": 0.2552260593185839
+    },
+    {
+      "endpoint": "strict_structure",
+      "method": "Original_USPTO",
+      "correct": 95,
+      "denominator": 292,
+      "accuracy": 0.3253424657534247,
+      "ci95_low": 0.2741758189659347,
+      "ci95_high": 0.38104491849729916
+    },
+    {
+      "endpoint": "strict_pooled_set",
+      "method": "Original_USPTO",
+      "correct": 109,
+      "denominator": 292,
+      "accuracy": 0.3732876712328767,
+      "ci95_low": 0.31979286228609005,
+      "ci95_high": 0.43007316293233433
+    },
+    {
+      "endpoint": "strict_end_to_end",
+      "method": "Original_USPTO",
+      "correct": 95,
+      "denominator": 400,
+      "accuracy": 0.2375,
+      "ci95_low": 0.19841751180740802,
+      "ci95_high": 0.2815764427180976
+    },
+    {
+      "endpoint": "strict_structure",
+      "method": "GPT_5.4_none",
+      "correct": 205,
+      "denominator": 292,
+      "accuracy": 0.702054794520548,
+      "ci95_low": 0.647248998947245,
+      "ci95_high": 0.7516132851639159
+    },
+    {
+      "endpoint": "strict_pooled_set",
+      "method": "GPT_5.4_none",
+      "correct": 209,
+      "denominator": 292,
+      "accuracy": 0.7157534246575342,
+      "ci95_low": 0.6614774034540996,
+      "ci95_high": 0.7644263914442586
+    },
+    {
+      "endpoint": "strict_end_to_end",
+      "method": "GPT_5.4_none",
+      "correct": 239,
+      "denominator": 400,
+      "accuracy": 0.5975,
+      "ci95_low": 0.5487342037489487,
+      "ci95_high": 0.6444108988558637
+    }
+  ],
+  "retention": [
+    {
+      "method": "AutoTemplate_RXNMapper",
+      "noise_free_retained": 213,
+      "noise_free_denominator": 292,
+      "noisy_rejected_completed": 44,
+      "noisy_denominator": 108,
+      "execution_unresolved": 0,
+      "retained_total": 277
+    },
+    {
+      "method": "AutoTemplate_RXNMapper_skip_top3",
+      "noise_free_retained": 213,
+      "noise_free_denominator": 292,
+      "noisy_rejected_completed": 44,
+      "noisy_denominator": 108,
+      "execution_unresolved": 0,
+      "retained_total": 277
+    },
+    {
+      "method": "AutoTemplate_source_mapping",
+      "noise_free_retained": 199,
+      "noise_free_denominator": 292,
+      "noisy_rejected_completed": 19,
+      "noisy_denominator": 108,
+      "execution_unresolved": 78,
+      "retained_total": 261
+    },
+    {
+      "method": "AutoTemplate_RXNMapper_no_change_as_failure",
+      "noise_free_retained": 213,
+      "noise_free_denominator": 292,
+      "noisy_rejected_completed": 39,
+      "noisy_denominator": 108,
+      "execution_unresolved": 28,
+      "retained_total": 277
+    },
+    {
+      "method": "Original_USPTO",
+      "noise_free_retained": 292,
+      "noise_free_denominator": 292,
+      "noisy_rejected_completed": 0,
+      "noisy_denominator": 108,
+      "execution_unresolved": 0,
+      "retained_total": 400
+    },
+    {
+      "method": "GPT_5.4_none",
+      "noise_free_retained": 221,
+      "noise_free_denominator": 292,
+      "noisy_rejected_completed": 62,
+      "noisy_denominator": 108,
+      "execution_unresolved": 0,
+      "retained_total": 267
+    }
+  ],
+  "scorer_parity": {
+    "primary": {
+      "original_exact_reproduced": 99,
+      "gpt_exact_reproduced": 209,
+      "source_mapped_autotemplate_flags_reproduced": true,
+      "all_original_and_gpt_per_record_flags_equal": true
+    },
+    "strict": {
+      "original_exact_reproduced": 95,
+      "gpt_exact_reproduced": 205,
+      "source_mapped_autotemplate_flags_reproduced": true,
+      "all_original_and_gpt_per_record_flags_equal": true
+    }
+  },
+  "protocol_sha256": "627f7d8588920a2779211a9187ffbd96ea5eb6d971a84881a176c989160e3a5a",
+  "outputs_sha256": {
+    "AutoTemplate_RXNMapper": "f58d176077625c2d55f3518d0253785e4774bb646c53e59dac57b04b7768fe76",
+    "AutoTemplate_RXNMapper_skip_top3": "d0b008797f6d71994ab35381a57802c95965605fe702eea8493ae9195b181fac",
+    "AutoTemplate_source_mapping": "2b28cfaebd39ec935b8c5f16cfe2373764356de46b9fe1cd903b473b6457a33c"
+  },
+  "source_gt_sha256": "995dd98bd975ec17cbf39988a2a6b97c09dd824703294b4b56ee3787a75bff42",
+  "scorer_sha256": {
+    "analysis/evaluate_table2.py": "58e017afc34763b87f2df4f6b7a36964b5607948e00bed12bf37a5147c42a178",
+    "analysis/evaluate_table3.py": "1dab96d89b59ff0c36f72022ed6cf95f38927a003bacf23d202e0573a20a3c94"
+  },
+  "limitations": [
+    "Pooled USPTO corpus library; upstream applies per reaction-class datasets, which USPTO lacks",
+    "Transductive: benchmark source reactions are in the template corpus",
+    "Same flagged 400-record development/selection benchmark, not an independent test",
+    "Different method inputs; AutoTemplate does not read paragraphs, so rejection does not validate paragraph interpretability",
+    "Newer RDKit/PyTorch/Transformers than the pinned environment; official RXNMapper expected maps reproduced",
+    "Remaining timeouts/mapping failures are incorrect, not chemical rejections"
+  ]
+}

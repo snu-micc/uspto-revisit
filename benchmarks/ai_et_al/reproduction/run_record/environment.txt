@@ -1,0 +1,18 @@
+run_date: 2026-10-27T21:26:34+09:00
+slurm_job_id: 21177
+node: alpha
+slurm_alloc: AllocTRES=cpu=2,mem=24G,node=1,billing=2,gres/shard=31,gres/shard:5000ada=31
+index, name, memory.total [MiB], driver_version, compute_cap
+0, NVIDIA RTX 5000 Ada Generation, 32760 MiB, 580.82.09, 8.9
+CUDA_VISIBLE_DEVICES: 0
+python: 3.10.20
+torch: 2.13.0+cu130 cuda: 13.0 cudnn: 92000
+transformers: 5.3.0
+fairscale: 0.4.13
+sentencepiece: 0.2.2
+numpy: 2.2.6
+gpu: NVIDIA RTX 5000 Ada Generation
+accessory_commit: 9b1cfb0277323332e59a98b6ec089461823aaed2
+accessory_remote: https://github.com/qai222/LLaMA2-Accessory.git
+accessory_local_changes:
+ M accessory/model/meta.py

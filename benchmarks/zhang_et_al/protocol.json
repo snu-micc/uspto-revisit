@@ -1,0 +1,55 @@
+{
+  "model_label": "llama3-8b",
+  "base_model": "NousResearch/Meta-Llama-3-8B-Instruct",
+  "base_model_revision": null,
+  "base_model_revision_note": "No immutable base-model revision was included in the supplied bundle.",
+  "pipeline": "Product LoRA detection followed by a role LoRA query for each detected product; paragraph-only input.",
+  "input": "../../analysis/data/input.csv",
+  "text_column": "paragraph",
+  "id_column": "idx",
+  "generation": {
+    "seed": 0,
+    "temperature": 0,
+    "top_p": 1,
+    "max_tokens": 3072,
+    "stop": [
+      "!!!"
+    ],
+    "max_model_len": 8192,
+    "max_lora_rank": 64,
+    "gpu_memory_utilization": 0.85,
+    "product_unit": "paragraph",
+    "pretokenize": true
+  },
+  "prompt_template": "<s>[INST] {instruction}{text} [/INST]",
+  "instructions": {
+    "prod": "annotate the products in the paragraph. ",
+    "role": "annotate the reaction roles in the paragraph. "
+  },
+  "aggregation": "Select the product query with the most entities across the seven ROLE_TAGS; break ties by last query. Reactants comes from this selected query; all_products contains products found at stage 1.",
+  "si_s13": "Role presence, not correctness. Reactant presence uses the selected primary-product query; product presence uses all_products.",
+  "source_archive_sha256": "7e160c4ad9547205d5359d9670a5c24ca6f7c95cac77e6954bf6bc41b2f4714e",
+  "source_code_history": "The supplied predict_csv.py was refactored after job 6285 to add optional sentence mode. The bundle reports unchanged paragraph matching logic; the pre-refactor file was not retained.",
+  "local_edits": [
+    "Server-specific SLURM launcher replaced by portable run_inference.sh.",
+    "Adapter base-model local path replaced by model ID; server home paths redacted in provenance.",
+    "Inference engine imports deferred until main() so --help works without GPU packages."
+  ],
+  "adapter_asset": {
+    "filename": "llama3_8b_adapters.zip",
+    "sha256": "9bbdba8f4f54f8b8db21ad5d0fa60d1f7448fba1ccf296cbf44fc2e0c0387cdd",
+    "size_bytes": 85245661,
+    "download_url": "https://github.com/snu-micc/uspto-revisit/releases/download/zhang-llama3-8b-adapters-v1.0.0/llama3_8b_adapters.zip",
+    "status": "Uploaded as a GitHub release asset.",
+    "extract_into": "benchmarks/zhang_et_al/",
+    "original_weight_sha256": {
+      "prod": "e87ab4ae246d190a495ce27fac1cb7de5f14fdd68d27604afb746def0fafa928",
+      "role": "c1674c25392b529fed85a44d4ad3bf3f36f6ea742a8ac42e998cf918d55d7c48"
+    },
+    "release_tag": "zhang-llama3-8b-adapters-v1.0.0",
+    "checksum_url": "https://github.com/snu-micc/uspto-revisit/releases/download/zhang-llama3-8b-adapters-v1.0.0/SHA256SUMS",
+    "license_file": "LLAMA3_LICENSE.txt",
+    "notice_file": "NOTICE.txt"
+  },
+  "validation_scope": "Offline CSV and parser validation; no new GPU generation performed."
+}

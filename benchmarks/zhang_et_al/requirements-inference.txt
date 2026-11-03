@@ -1,0 +1,7 @@
+# Dedicated Linux/CUDA inference environment; versions recorded by the server.
+pandas==3.1.0
+vllm==0.32.0
+torch==2.13.0
+transformers==5.19.0
+peft==0.21.2
+safetensors==0.8.0

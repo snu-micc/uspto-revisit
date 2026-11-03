@@ -1,0 +1,41 @@
+{
+  "rdkit": "2025.09.3",
+  "n": 200,
+  "matching_rule": "RDKit canonical isomeric SMILES equality; no tautomer normalization",
+  "original": {
+    "records_present": 200,
+    "correct": 82,
+    "accuracy_percent": 41.0,
+    "wilson95_percent": [
+      34.415674908482885,
+      47.92354096630791
+    ],
+    "valid_smiles": 170,
+    "failure_counts": {
+      "missing_record": 0,
+      "generation_error": 0,
+      "null_or_empty_prediction": 0,
+      "invalid_smiles": 30
+    }
+  },
+  "rerun": {
+    "records_present": 200,
+    "correct": 90,
+    "accuracy_percent": 45.0,
+    "wilson95_percent": [
+      38.264068402248355,
+      51.92438486152432
+    ],
+    "valid_smiles": 176,
+    "failure_counts": {
+      "missing_record": 0,
+      "generation_error": 0,
+      "null_or_empty_prediction": 2,
+      "invalid_smiles": 22
+    }
+  },
+  "rerun_response_models": [
+    "gpt-5.4-2026-03-05"
+  ],
+  "interpretation": "Agreement with the same fixed author-reviewed references; not independent validation of reference correctness."
+}

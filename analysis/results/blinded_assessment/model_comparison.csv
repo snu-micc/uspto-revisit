@@ -1,0 +1,5 @@
+﻿scoring,reference,n,gpt-5.4_correct,USPTO_correct,gpt-5.4_only_correct,USPTO_only_correct,p_exact
+lenient,evaluator,33,21,13,9,1,0.021484375
+lenient,benchmark,33,22,15,11,4,0.11846923828124999
+strict,evaluator,33,20,13,8,1,0.0390625
+strict,benchmark,33,21,15,10,4,0.1795654296875

@@ -1,0 +1,5 @@
+﻿model,template_anomaly_frequency_threshold,noise_free_reactions,noisy_reactions,total_reactions,passed_tp,filtered_fn,passed_fp,filtered_tn,noise_free_data_saved_rate,noisy_data_filtered_rate,denoising_accuracy
+gpt-5.4-none,none (primary criterion),292,108,400,229,63,48,60,0.7842465753424658,0.5555555555555556,0.7225
+gpt-5.4-none,N=1,292,108,400,229,63,48,60,0.7842465753424658,0.5555555555555556,0.7225
+gpt-5.4-none,N<5,292,108,400,181,111,24,84,0.6198630136986302,0.7777777777777778,0.6625
+gpt-5.4-none,N<10,292,108,400,168,124,21,87,0.5753424657534246,0.8055555555555556,0.6375

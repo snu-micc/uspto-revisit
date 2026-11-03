@@ -1,0 +1,33 @@
+{
+  "release_tag": "qwen3.5-9b-qlora-checkpoint-42",
+  "asset": "qwen3.5-9b-qlora-checkpoint-42.zip",
+  "download_url": "https://github.com/snu-micc/uspto-revisit/releases/download/qwen3.5-9b-qlora-checkpoint-42/qwen3.5-9b-qlora-checkpoint-42.zip",
+  "sha256": "eea8db9153728b0f5673157539737be7a8d569d3bf13b39f1a3f607c61e1d46a",
+  "size_bytes": 164004516,
+  "base_model": "Qwen/Qwen3.5-9B",
+  "base_model_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "original_weight_sha256": "e4f4797d88dc6cad6b49d06bf9c9e03edfa57b53b0170d8953db771bf0a47a69",
+  "original_training_script_sha256": "7fd8a2674957d3b8355d6e5e6c67b81ebd0b5635c0db4411bfd4d22e10439ee8",
+  "tensor_parameters": 43278336,
+  "tensor_storage_dtype": "float32",
+  "included_files": [
+    "adapter_model.safetensors",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "chat_template.jinja",
+    "adapter_config.json",
+    "trainer_state.json"
+  ],
+  "metadata_changes": {
+    "adapter_config.base_model_name_or_path": "Local training path replaced with public model ID.",
+    "adapter_config.revision": "Pinned to the author-reported base-model revision.",
+    "trainer_state.best_model_checkpoint": "Local training path replaced with checkpoint-42."
+  },
+  "omitted_training_state": [
+    "optimizer.pt",
+    "scheduler.pt",
+    "rng_state.pth",
+    "training_args.bin"
+  ],
+  "purpose": "Inference adapter; not a full Trainer resume checkpoint."
+}

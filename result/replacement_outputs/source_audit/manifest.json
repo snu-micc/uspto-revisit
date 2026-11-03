@@ -1,0 +1,40 @@
+{
+  "replacement_ids": [
+    3,
+    6,
+    13,
+    50,
+    62,
+    69,
+    82
+  ],
+  "retained_unchanged": 393,
+  "configurations": 19,
+  "medium_excluded": true,
+  "ground_truth_used_for_name_conversion": false,
+  "files": {
+    "automatic_name_cache_api.csv": "ab1cc63f4b82c2282a939d40915689234035e3e261518c436630994a306bfc00",
+    "automatic_name_cache_qwen.csv": "47ba94892a7a504a2a55d22f667dcf3eaad670ec05f04dde11b6c293ff181bbb",
+    "fully_automatic\\gemini-2.5-flash-none_reaction_smiles_final.csv": "d8127d21a87c07e2c209254702779a05bcfc04dc520b7271e00f4e34c84f5c48",
+    "fully_automatic\\gemini-3.1-pro-preview-high_reaction_smiles_final.csv": "2eb51d6d585a0e6f65c8791d56afcb8706e24da87c9cfaa694fcf3a18b0000de",
+    "fully_automatic\\gemini-3.1-pro-preview-low_reaction_smiles_final.csv": "44597ff183d058bfb146a8f6142f6df1a57ca4b445d93e5ceb969bcabc104ced",
+    "fully_automatic\\gemini-3.6-flash-high_reaction_smiles_final.csv": "192da4e8b1466a8f4a60f16d3977fba8ebe225f7f740b48895f8682da95682a9",
+    "fully_automatic\\gemini-3.6-flash-low_reaction_smiles_final.csv": "d5522b2a4ca79e50da7d1189372508bd514ba74bf2c019b880e857f9facf4e5e",
+    "fully_automatic\\gpt-4.1-mini-ft-nonreasoning-shared_reaction_smiles_final.csv": "ea2d4113bcb6a3bd0020c4d3a7b62467426ffa7cfb2698b4f05c75fee16ecea0",
+    "fully_automatic\\gpt-4.1-mini-nonreasoning-shared_reaction_smiles_final.csv": "ab59d0d8c638b51f0ff1d211d342911e23deb4a45e8e7c6be3d4b8d5d5f5c9cf",
+    "fully_automatic\\gpt-5.4-high_reaction_smiles_final.csv": "fe8d9867366691ebe20c3ef0aa1deeeaa94d0ad1b4b9a4679ff7ba3839fe2f40",
+    "fully_automatic\\gpt-5.4-low_reaction_smiles_final.csv": "7909d0c9bb6abef9ba32215368930f8a712840c7ddb08bb58800c920bc4655b0",
+    "fully_automatic\\gpt-5.4-none_reaction_smiles_final.csv": "091d95960ada5cdb4c1a00b7b8b3e10bf8512778f8854ccebe43261946fa641b",
+    "fully_automatic\\gpt-5.6-sol-high_reaction_smiles_final.csv": "d04c981c866333af0f8de08476606805ad87f555d11150869a5ca0a7443e31a1",
+    "fully_automatic\\gpt-5.6-sol-low_reaction_smiles_final.csv": "2f459bb8fde22931fc75368b9568e516219b73b05fa5b5c112493af5bb1aeb00",
+    "fully_automatic\\gpt-5.6-sol-none_reaction_smiles_final.csv": "feeadf16e7fbaf9318bb5416aa074ef1589bcef37ec30fa5df83f70fd54137c6",
+    "fully_automatic\\qwen-3.5-9b-ft-high_reaction_smiles_final.csv": "c016916ad1579fb89acc11e6c11f1263d6c2576bc2be27f5c828ba6bc1d10457",
+    "fully_automatic\\qwen-3.5-9b-ft-low_reaction_smiles_final.csv": "599cc58d6206707ad5ea6bce8e93908d4403fdf64091fc43dac893f5d950e8c3",
+    "fully_automatic\\qwen-3.5-9b-ft-off_reaction_smiles_final.csv": "00b46fecf1cdcc85889f6355ad4ce7c45879f6c72eb2570ca0b5eb9c89e8937e",
+    "fully_automatic\\qwen-3.5-9b-high_reaction_smiles_final.csv": "3628ade10fcea538b532162826e0ef55208e6d491d1e43108cb09432c85dcbf6",
+    "fully_automatic\\qwen-3.5-9b-low_reaction_smiles_final.csv": "d27bdaae208b6c1381abff1306b9abd20fe34ab7aebda30d1b48459b5e2278a1",
+    "fully_automatic\\qwen-3.5-9b-off_reaction_smiles_final.csv": "dca7c1cfa04f14da3dbe640b5711834ff3cbb4ec2a93caca5d2c39f0bce0156b"
+  },
+  "raw_model_responses_released": false,
+  "release_scope": "Historical replacement files retain only automatic predictions. Superseded correction subsets are archived outside published_code; current curated outputs are rebuilt from all primary predictions plus 46 overrides."
+}

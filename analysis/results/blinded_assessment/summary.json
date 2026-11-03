@@ -1,0 +1,24 @@
+{
+  "labels": 50,
+  "noise_free": 33,
+  "noisy": 17,
+  "label_agree": 46,
+  "label_agreement": 0.92,
+  "label_agreement_wilson95": [
+    0.8116175308165717,
+    0.968450485911407
+  ],
+  "label_cohen_kappa": 0.8109640831758035,
+  "reference_agreement": {
+    "lenient": {
+      "input_set_exact": 25,
+      "product_set_exact": 33,
+      "both_sets_exact": 25
+    },
+    "strict": {
+      "input_set_exact": 24,
+      "product_set_exact": 33,
+      "both_sets_exact": 24
+    }
+  }
+}

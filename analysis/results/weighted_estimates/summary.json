@@ -1,0 +1,85 @@
+{
+  "model": "gpt-5.4-none",
+  "scenario": "fully_automatic",
+  "source_rows": 1808937,
+  "table1_union": 677316,
+  "frame": {
+    "no_reagent": 179488,
+    "many_products": 74585,
+    "many_reagents": 211304,
+    "many_reactants": 70653
+  },
+  "frame_n": 536030,
+  "frame_definition": "Exactly one of the four source-count criteria and source template frequency not equal to one. Duplicate and unassigned-template flags are diagnostic.",
+  "interpretation": "Conditional projections assuming that benchmark outcome rates transfer within each stratum. Not an independently validated population estimate.",
+  "interval_method": "Normal approximation with within-stratum Bernoulli sample variance and finite-population correction. Conditional on representative within-stratum rates and a fixed model. Excludes transfer bias and model-selection uncertainty.",
+  "primary_template_anomaly": [
+    {
+      "heuristic": "rare_template",
+      "quantity": "noise_free_retained",
+      "estimate": 312533.81,
+      "se": 13842.297927817608,
+      "conditional_ci_low": 285403.40459820407,
+      "conditional_ci_high": 339664.2154017959,
+      "frame_n": 536030,
+      "percent_all_source": 17.277208106197175
+    },
+    {
+      "heuristic": "rare_template",
+      "quantity": "noise_free_removed",
+      "estimate": 72092.11,
+      "se": 8800.959973949295,
+      "conditional_ci_low": 54842.545421680814,
+      "conditional_ci_high": 89341.67457831919,
+      "frame_n": 536030,
+      "percent_all_source": 3.9853300584818596
+    },
+    {
+      "heuristic": "rare_template",
+      "quantity": "noisy_retained",
+      "estimate": 59932.74,
+      "se": 8846.26155846398,
+      "conditional_ci_low": 42594.38594758943,
+      "conditional_ci_high": 77271.09405241057,
+      "frame_n": 536030,
+      "percent_all_source": 3.3131468923461678
+    },
+    {
+      "heuristic": "rare_template",
+      "quantity": "noisy_removed",
+      "estimate": 91471.34000000001,
+      "se": 11106.876764866682,
+      "conditional_ci_low": 69702.26156013657,
+      "conditional_ci_high": 113240.41843986345,
+      "frame_n": 536030,
+      "percent_all_source": 5.0566349187395705
+    },
+    {
+      "heuristic": "rare_template",
+      "quantity": "exact_retained_primary",
+      "estimate": 263459.28,
+      "se": 14334.297523896026,
+      "conditional_ci_low": 235364.57310948215,
+      "conditional_ci_high": 291553.98689051793,
+      "frame_n": 536030,
+      "percent_all_source": 14.564314843468846
+    },
+    {
+      "heuristic": "rare_template",
+      "quantity": "exact_retained_strict",
+      "estimate": 261346.24,
+      "se": 14379.825370141238,
+      "conditional_ci_low": 233162.30017054782,
+      "conditional_ci_high": 289530.1798294522,
+      "frame_n": 536030,
+      "percent_all_source": 14.447503699686612
+    }
+  ],
+  "input_sha256": {
+    "population_summary": "35ba114d52d2b50d3f0ca90618b80ad951543d081936dd8177cedc2f49582e6c",
+    "benchmark_membership": "3c617f57580a7ea18bf1e5d31f9036365f6540e44895cde53b860795cacb8793",
+    "table3_flags": "474961e62df5a10d5807d855b8349a72e2b9a512be38ff2d02b8dc814e597a4a",
+    "table2_flags_lenient": "83ba46a42bdb3678b6454f0b4639fcbcbd1d988d3a20dd12769247ddf7d3c55c",
+    "table2_flags_strict": "ca3a367c4ae0036bd99f0a1477ea225eb2a18fe55468a83a49c9efc5ede36dd9"
+  }
+}

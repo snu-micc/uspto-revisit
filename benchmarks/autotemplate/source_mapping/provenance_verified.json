@@ -1,0 +1,140 @@
+{
+  "vendor_files": [
+    {
+      "path": "LICENSE",
+      "git_blob_sha1": "b3f913a394f66594f050d71463146f4bf768da57",
+      "sha256": "e4404ed7044d2b0640afb9272d59739711d51bf6c93afc7ffa9f59067fa37d3e"
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha1": "949a649183b6ce55093ad7545b25ec479229fd8c",
+      "sha256": "1dfb4235333c80190794f115ebc7d57e1ac739e9f9baa1e8152c6245d1425947"
+    },
+    {
+      "path": "auto_process.py",
+      "git_blob_sha1": "bc4936d3698c41d58a624dbbf9c380958bae1343",
+      "sha256": "3c160f9dd5149291795c8f83dc0a83d2dc3e612249ac6c1a67111c2e51261c5c"
+    },
+    {
+      "path": "autotemplate/analyze_utils/__init__.py",
+      "git_blob_sha1": "2cdaa97f80f98497470adbb9a5fa448b937c9e62",
+      "sha256": "cc3f3a01ba4f1c3c3349db13d7bcf1bcfeb5d7b350d3ac8083bcb3539a28160f"
+    },
+    {
+      "path": "autotemplate/analyze_utils/analyze_functions.py",
+      "git_blob_sha1": "c4510b4aa56d5732b0ef7cf1e63f95f79174864c",
+      "sha256": "fab9edb0f1cc0cb8d21bd43ff53233668947dd367886cb34cabcf6796fa8d148"
+    },
+    {
+      "path": "autotemplate/extract_utils/__init__.py",
+      "git_blob_sha1": "1c15b1ab68f64fa6752967a8558b4ae43ff187d4",
+      "sha256": "c5176f8c287d90ea26cd9f5c0272bf43cd3a73c11a9c6e68fa0bca312c90d5d7"
+    },
+    {
+      "path": "autotemplate/extract_utils/extract_functions.py",
+      "git_blob_sha1": "e28e2134e7d8e4a106b5d89206f015fc3c4f04de",
+      "sha256": "3c188ecf9105e7119453a1bf691b0e752c63ec60f680d33595b4fdac09c76887"
+    },
+    {
+      "path": "autotemplate/extract_utils/ori.py",
+      "git_blob_sha1": "a484bc2c2e07d0980b6371896ebf167e30eab5f3",
+      "sha256": "c8b1caaf504b2c7b8044c583ec7cad4fc6374b5d04b48249efae6945d1cd0c1a"
+    },
+    {
+      "path": "autotemplate/graph_utils/__init__.py",
+      "git_blob_sha1": "8694a1a45066943b4e98961c2ac61c06704f2de7",
+      "sha256": "cf00c07c76df7386535c1e9601b0cac28f60fab650dff6564c85da1b356f38d0"
+    },
+    {
+      "path": "autotemplate/graph_utils/networkx_GraphMatch.py",
+      "git_blob_sha1": "9d8f3cf6c129d0b4051ab2157b0a1f58ced6a4a1",
+      "sha256": "134b491146487cb5fa7d9b1005019f2c4b348514391d0c52db1eb281a7bf2497"
+    },
+    {
+      "path": "autotemplate/graph_utils/reaction_balancing.py",
+      "git_blob_sha1": "659393d42e4bf626142e7e5f23d9d2088206a5e6",
+      "sha256": "53df415e3ddefbfbcf8a93e6db7041009b49f6f26907cb6ed6bf7528688bbbf2"
+    },
+    {
+      "path": "autotemplate/module/GetBondChangeNumber.py",
+      "git_blob_sha1": "95f7622f208d00ea9b4e015f51586e93ea91cf7e",
+      "sha256": "23ad413bbe25cc0e789d95da151014fc2882a7fe882011a813d436fd827494da"
+    },
+    {
+      "path": "autotemplate/module/__init__.py",
+      "git_blob_sha1": "b44aae9688e00b3a6d9ca480e68eca102bfd982a",
+      "sha256": "ce453cb23c1975415fd068b55e60a1b13d2d5b02545753acf65c497aefffc44a"
+    },
+    {
+      "path": "autotemplate/module/backup/networkx_GraphMatch.py",
+      "git_blob_sha1": "b8f65f9c05a9da30088d421bf5b9fce11c98417c",
+      "sha256": "ae66bea6eac0ba0dd27216b1fef4641c82dc1e30906b2e6f0175931486ecaad1"
+    },
+    {
+      "path": "autotemplate/module/backup/template_extractor.py",
+      "git_blob_sha1": "22a70d460f30c2fcc50212efc80f2972b13ae5be",
+      "sha256": "1c9d97738f0a61e5245cc8ffc7421320f4e74ac5882c84873f4037274d5b63e0"
+    },
+    {
+      "path": "autotemplate/module/draw.py",
+      "git_blob_sha1": "117a19c885d53cbf45472877ddc8fec24bb52c99",
+      "sha256": "c82ed758500b684e9f4e1a4f5ca02d902281804920f45b2e78fa8dcbf8a22a87"
+    },
+    {
+      "path": "autotemplate/module/edit_mol_function.py",
+      "git_blob_sha1": "0d6f857d55c37e0e52613f800d67d5248268615c",
+      "sha256": "fc240647266580b1e8652db4c63bc1b89880c459bddf6738a214377de53990f8"
+    },
+    {
+      "path": "autotemplate/module/networkx_GraphMatch.py",
+      "git_blob_sha1": "cf730e86184ce2d231afb387c78f9ef422549389",
+      "sha256": "4149e77c679fefec418aaed474bf7e50668f900ffe01ea68a4704490663f0e71"
+    },
+    {
+      "path": "autotemplate/module/rdchiral_main_modified.py",
+      "git_blob_sha1": "3c0615838a9eb743f4b0fe492a77f5976f17adb2",
+      "sha256": "fe872faaf22340e553008e198f27483ed9e6d9427612d1ebb798044d5e2532c8"
+    },
+    {
+      "path": "autotemplate/module/sg_template.py",
+      "git_blob_sha1": "c6a4e6b2be6665a2a6f8b0280ce87c9a3d8af3be",
+      "sha256": "c87a140bde73fc2d42c5053deca057e61a2b1994fcadd029d4f1b0f150b9c082"
+    },
+    {
+      "path": "autotemplate/module/template_extractor.py",
+      "git_blob_sha1": "94ab1708f21b730dfa05af12450cdb349b7dc736",
+      "sha256": "852bb1e1eae8f9fcf63ba7b62055a7945b8e6c58e228affc1d852e3e7fef4e23"
+    },
+    {
+      "path": "autotemplate/run_utils/__init__.py",
+      "git_blob_sha1": "c6a52f411dafd80b99c5a1318e1a052684e98089",
+      "sha256": "3ab81b3e738d2c2bbe0dd6c949ed042641cc378c115c03e9373632881bf983d7"
+    },
+    {
+      "path": "autotemplate/run_utils/run_functions.py",
+      "git_blob_sha1": "67c649e0ceb225d8af7326d559ebf10de0518979",
+      "sha256": "6f9585bf6409b939fc8cfbc3a98168d9cd489bbd748a680e51dda92361bc2bf9"
+    },
+    {
+      "path": "docs/environment.yml",
+      "git_blob_sha1": "da6980a8427ef1eb36c55b3e9da5652be9eb5a43",
+      "sha256": "dcdfe6779c801eb65390082ad552eaafac83b60469023d9e183fe980f05ef28f"
+    },
+    {
+      "path": "rxnmapper_mapping.py",
+      "git_blob_sha1": "8dc6ea6cc56a4a2aa6c065077f62922b4b4b43d0",
+      "sha256": "12f0182add81f9e275939b7b273233d4963fd68cc9142bece195f38ca42a46c0"
+    }
+  ],
+  "source_sha256": "5e91117efdb228642647ff26fc5f41b8babf544ca60b2967d76adf243352b626",
+  "protocol_sha256": "9f6661b5c387b339d57b5ea2c5a1f2335cfe7d80875d32a0aa42e1902bed0232",
+  "runner_sha256": "bca6f3b211cae021d829580fe04c038b33745a3d2054e6f0eced87572d14a335",
+  "python": "3.10.19 | packaged by conda-forge | (main, Oct 22 2025, 22:23:22) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "<conda>/envs/localmapper_env/python.exe",
+  "packages": {
+    "rdkit": "2025.9.3",
+    "numpy": "2.2.6",
+    "networkx": "3.4.2",
+    "rdchiral": "1.1.0"
+  }
+}

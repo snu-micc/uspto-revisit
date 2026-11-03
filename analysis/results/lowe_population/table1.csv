@@ -1,0 +1,6 @@
+criterion,n,denominator,percent,policy
+many_products,142390,1808937,7.87147369,lowe-grants-raw-v3
+many_reactants,172536,1808937,9.53797728,lowe-grants-raw-v3
+many_reagents,249291,1808937,13.78107695,lowe-grants-raw-v3
+no_reagent,222957,1808937,12.32530486,lowe-grants-raw-v3
+union,677316,1808937,37.44276335,lowe-grants-raw-v3

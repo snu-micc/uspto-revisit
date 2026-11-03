@@ -1,0 +1,26 @@
+{
+  "started_utc": "2026-10-28T10:26:56.761810+00:00",
+  "status": "complete",
+  "last_started_utc": "2026-10-28T10:27:06.070542+00:00",
+  "records_completed": 200,
+  "response_models": [
+    "gpt-5.4-2026-03-05"
+  ],
+  "updated_utc": "2026-10-28T10:28:16.501907+00:00",
+  "total_input_tokens": 32533,
+  "total_output_tokens": 6806,
+  "generation_identity": {
+    "prompt.txt": "aa1d3be8645204f1fcc47237149040e40e4b113f84e9b9ac27374eab52130c4a",
+    "protocol.json": "605dee22ed9bdf8b88118353d929d95ade29e172aa1156f55f0123005ffd0084",
+    "names_only.json": "5b2c170b9562a57de953c067e1e37fcbd9edea4ae635718c509f144bf28b09d7"
+  },
+  "identity": {
+    "prompt.txt": "53fc6afa0b2232079571e248a4ff4c7b9307b63c337807da126a1a8b64f517a3",
+    "protocol.json": "e5fd5cdedd9584ba299ebae8152963e569d42cc46ae48c1d38f06724b492a110",
+    "names_only.json": "6479729533ac3d34907c5710979adff88eb06e1c3539a78ff5de1a5862c9ff02",
+    "references.json": "4d318f92c7b66fcbbbd0fca9e5c1161ac9ac68676fc7157b543d8a37957b5758",
+    "original_predictions.json": "bc9a93c6dc77d72f8294d67c2338f7bab18b83a73c984f9fa661a9933a1e488e",
+    "reference_corrections.csv": "931df1838e4f39d061a284b8baaacd5203324ac17e49ccd43ab485d9861c88fb"
+  },
+  "packaging_note": "identity records released file hashes; generation_identity preserves the original run hashes."
+}

@@ -1,0 +1,41 @@
+diff --git a/accessory/model/meta.py b/accessory/model/meta.py
+index 8362503..48f3fe1 100644
+--- a/accessory/model/meta.py
++++ b/accessory/model/meta.py
+@@ -376,7 +376,8 @@ class MetaModel(nn.Module):
+         max_gen_len: int = 512,
+         temperature: float = 0.0,
+         top_p: float = 0.95,
+-        additional_stop_symbols: Iterable[str] = ()
++        additional_stop_symbols: Iterable[str] = (),
++        repetition_penalty: float = 1.0
+     ) -> List[str]:
+         """
+         Generate text responses based on input prompts, optionally using images and controlling generation parameters.
+@@ -389,6 +390,9 @@ class MetaModel(nn.Module):
+          Default is 0.0, namely deterministic generation.
+         :param top_p: Top-p sampling probability for more diverse generation. Default is 0.95.
+         :param additional_stop_symbols: Iterable of additional symbols to stop generation.
++        :param repetition_penalty: Penalize tokens that already appeared in the sequence so far.
++         1.0 (default) disables the penalty (identical to original behavior). Values > 1.0 discourage
++         repetition (e.g. 1.1), following the standard HF-style penalty formulation.
+         :return: A list of generated text responses corresponding to each input prompt.
+         """
+ 
+@@ -435,6 +439,16 @@ class MetaModel(nn.Module):
+             logits = self.llma.forward_inference(
+                 tokens[:, prev_pos:cur_pos], prev_pos, images if prev_pos == 0 else None
+             ).float()
++            if repetition_penalty != 1.0:
++                # 지금까지 생성된(프롬프트 포함) 토큰의 logit 을 낮춰 반복을 억제.
++                # HF 의 RepetitionPenaltyLogitsProcessor 와 동일한 공식: 양수 logit 은 나누고,
++                # 음수 logit 은 곱해서 항상 값이 작아지는 방향으로 조정.
++                for b in range(logits.size(0)):
++                    seen = tokens[b, :cur_pos].unique()
++                    seen_logits = logits[b, seen]
++                    logits[b, seen] = torch.where(
++                        seen_logits > 0, seen_logits / repetition_penalty, seen_logits * repetition_penalty
++                    )
+             if temperature > 0:
+                 probs = torch.softmax(logits / temperature, dim=-1)
+                 next_token = self.sample_top_p(probs, top_p)

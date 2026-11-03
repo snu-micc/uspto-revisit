@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "started_at_utc": "2026-10-27T09:21:20.722830+00:00",
+  "completed_at_utc": "2026-10-27T09:57:13.515041+00:00",
+  "human_validation_completed": false,
+  "unflagged_model_results_available": false,
+  "files": {
+    "protocol.json": "9f6661b5c387b339d57b5ea2c5a1f2335cfe7d80875d32a0aa42e1902bed0232",
+    "template_library.json": "8f896a253a8940fa8543192cb3076a07982a6b22129e0cb55585a3ddfb9aeff3",
+    "benchmark_outputs.jsonl": "2b28cfaebd39ec935b8c5f16cfe2373764356de46b9fe1cd903b473b6457a33c",
+    "comparison_flags.csv": "5cef50c60356ea9a93ce5e8eb5b7693f1620024c9ce454f682e03e8372b52a8c",
+    "comparison_metrics.csv": "71250e1dfcc7ece2ae398579f3de5e01a0329627771f530b46514eeff69b6df9",
+    "paired_tests.csv": "8149960acc408f4ff6e8ad17e7346774fb8186be356589a52ff3b4715f8d8ee2",
+    "comparison_summary.json": "ba0e3392f3321a8afac78c214096bf8bf7e66c1af5dcc8e963661ec605de07e3",
+    "RESULTS.md": "c631a3dc38f7b9a71b51161ef62e8e7edcb4ba7a79a2d4cb3957995a89c22418"
+  }
+}

@@ -1,0 +1,5 @@
+*.sh text eol=lf
+/benchmarks/name2smiles_200/*.json text eol=lf
+/benchmarks/name2smiles_200/*.csv text eol=lf
+/benchmarks/name2smiles_200/*.txt text eol=lf
+/benchmarks/autotemplate/rxnmapper/protocol.json text eol=lf

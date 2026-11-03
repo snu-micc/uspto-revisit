@@ -1,0 +1,48 @@
+{
+  "frozen_before_benchmark_scores": true,
+  "date": "2026-10-27",
+  "method_name": "AutoTemplate core on official RXNMapper 0.3.0 remapping (upstream workflow)",
+  "upstream_commit": "6b17ea08cc3dded90a9eee8e25b74e8a60e4cb94",
+  "upstream_workflow": "README step (1) rxnmapper_mapping.py, then step (2) auto_process.py --radius 0 --threshold 5 --retain_reagents",
+  "implementation": "Unchanged upstream chemistry functions through the verified Windows wrapper in ../source_mapping/run_comparison.py; not execution of the unmodified upstream CLI processes.",
+  "atom_mapper": {
+    "package": "rxnmapper==0.3.0 (official PyPI wheel, pinned in upstream docs/environment.yml), unpacked to _deps/site; not the RXNMapper_v2 fork installed in rxnmapper_v2_env",
+    "wheel_sha256": "dae0cd269a7ceee7c81e59b0450d3d9afe83f614015d17c7c9c05380602e528b",
+    "model": "packaged albert_heads_8_uspto_all_1310k, default RXNMapper() configuration",
+    "call": "get_attention_guided_atom_maps with package defaults (canonicalize_rxns=True)",
+    "validation": "All three expected maps in the package's tests/test_mapper.py reproduced exactly (mapper_selftest.json)",
+    "runtime_difference": "PyTorch 2.11/Transformers 4.46/RDKit 2026.03 instead of the pinned torch 1.13/transformers 4.30.2/older RDKit"
+  },
+  "mapper_input": "Lowe reactant and agent sections folded into the precursor side (as in the source-mapped run), original Indigo atom maps removed so inputs are unmapped like Reaxys records, then upstream ValidRxnSmiles unchanged (isotopes cleared, reduce_radical=False).",
+  "mapping_batches": "Benchmark: one reaction per call, as upstream. Corpus: length-sorted batches of 8 for throughput; a failing batch is redone one reaction at a time. Batched and single-call maps were identical for all 400 benchmark reactions.",
+  "mapping_failures": "Upstream silently drops records RXNMapper or ValidRxnSmiles cannot handle (e.g. >512 tokens). They are recorded here; corpus rows contribute no template and benchmark rows count as incorrect.",
+  "reference_pool": "All 1808937 Lowe USPTO grant source reactions, remapped, including benchmark source records. Pooled corpus library because USPTO lacks the per-reaction-class datasets upstream processes separately. Transductive comparator, not independent validation.",
+  "source_sha256": "5e91117efdb228642647ff26fc5f41b8babf544ca60b2967d76adf243352b626",
+  "radius": 0,
+  "frequency_cutoff": "merged count > 5 (upstream threshold=5)",
+  "retain_reagents": true,
+  "no_change_return": "Upstream RemoveReagent returns a bare string for a reaction with no change; with --retain_reagents the pinned CLI would fail to unpack it. Primary: pass the reaction through with nothing removed, as the CLI's no-retain path does. Sensitivity: count these records as failures, as the source-mapped run did.",
+  "skip_top_n_templates": "Primary follows the pinned CLI's actual behaviour: its per-record template remains None, so no record is skipped and all are re-templated. Variant: upstream's intended branch, where a benchmark record whose own extracted template (resolved to its merged representative) is among the top 3 library templates is kept as preprocessed with give_mapnum_for_unmapped_reactant_atoms.",
+  "role_assignment": "Same as the source-mapped run: curated core classified by positive product-map overlap, then upstream removed_reagents appended to the reagent role; naive merged-SMILES classification reported as a diagnostic.",
+  "balance_product": false,
+  "product_selection": "First successful product in upstream preprocessed order",
+  "template_order": "Descending merged frequency; stable source-row order for ties",
+  "seed": "numpy seed = 20261027 + zero-based source or benchmark index; PYTHONHASHSEED=0",
+  "timeout_seconds_per_record": {
+    "corpus_extraction": 600,
+    "benchmark_application": 3600,
+    "note": "Upstream has no per-record limit; these generous caps replace the earlier 60 s condition. Remaining timeouts count as incorrect."
+  },
+  "benchmark_failures": "All 400 retained in denominators; mapping failures, exceptions, timeouts and worker crashes count as incorrect for both labels.",
+  "noise_prediction": "retained => noise-free; completed no_template_match => noisy; execution failure => unresolved",
+  "primary_structure": "Frozen Table 2 role-specific normalization and reactant multiplicity policy; denominator all 292 noise-free records; incomplete references and method failures cannot count as exact",
+  "secondary_structure": "Frozen strict Table 2 endpoint and pooled reactant/reagent set sensitivity, reported separately",
+  "comparators": [
+    "Original USPTO source",
+    "Previously fixed GPT-5.4-none output",
+    "Earlier source-mapped AutoTemplate run (per-record flags must reproduce)"
+  ],
+  "statistics": "Wilson 95% intervals; exact paired McNemar tests of the primary RXNMapper run against each comparator, Holm-corrected within endpoint",
+  "no_paid_calls": true,
+  "pilots": "Mapper speed/memory pilots on the first 6000 and 12000 source rows and a 3000-row runner smoke test; no benchmark labels or scores used to choose settings"
+}

@@ -1,0 +1,10 @@
+{
+  "frozen_at_utc": "2026-10-27T09:47:10.335732+00:00",
+  "source_rows": 1808937,
+  "source_contiguous_and_unique": true,
+  "sqlite_integrity": "ok",
+  "protocol_sha256": "9f6661b5c387b339d57b5ea2c5a1f2335cfe7d80875d32a0aa42e1902bed0232",
+  "runner_sha256": "bca6f3b211cae021d829580fe04c038b33745a3d2054e6f0eced87572d14a335",
+  "library_sha256": "8f896a253a8940fa8543192cb3076a07982a6b22129e0cb55585a3ddfb9aeff3",
+  "outputs_or_ground_truth_read_before_application": false
+}

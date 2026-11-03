@@ -1,0 +1,25 @@
+{
+  "run_type": "Generation on 2026-10-28",
+  "model_requested": "gpt-5.4-2026-03-05",
+  "reasoning_effort": "none",
+  "max_output_tokens": 2048,
+  "response_format": "JSON object",
+  "store": false,
+  "temperature": "not set; provider default",
+  "requests": "200 independent name-only requests",
+  "user_template": "Chemical name: {name}\nReturn JSON only.",
+  "concurrency": 5,
+  "retry_policy": "Up to 3 transport/API attempts; successful responses reused",
+  "primary_scoring": "RDKit canonical isomeric SMILES equality; preserve stereo, charge, protonation and isotopes; no tautomer normalization",
+  "denominator": 200,
+  "failed_or_null_or_invalid_outputs": "Count as mismatches",
+  "prompt_sha256": "53fc6afa0b2232079571e248a4ff4c7b9307b63c337807da126a1a8b64f517a3",
+  "original_predictions_provenance": {
+    "commit": "0a30e4d7d31f6c870e511ec71ce577d58dfe1f71",
+    "path_at_commit": "benchmarks/name2smiles_200/frozen_references_and_legacy.json",
+    "source_file_sha256": "55a8320beade996933b4118b5841d9626e431fc9302e0c6b3b06fb7fdd6a7a60",
+    "restored_fields": "row_id, name, legacy_smiles (renamed smiles)",
+    "original_generation_prompt": "not recovered",
+    "original_model_snapshot": "not recorded"
+  }
+}

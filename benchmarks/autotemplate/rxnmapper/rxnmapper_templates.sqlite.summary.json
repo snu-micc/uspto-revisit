@@ -1,0 +1,11 @@
+{
+  "rows": 1808937,
+  "limit": 0,
+  "seconds_this_run": 2369.343999999808,
+  "statuses": {
+    "exception": 1080,
+    "no_reconstructable_template": 128189,
+    "timeout": 2,
+    "valid_template": 1679666
+  }
+}

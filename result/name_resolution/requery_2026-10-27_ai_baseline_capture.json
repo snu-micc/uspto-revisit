@@ -1,0 +1,53 @@
+{
+  "query_started_utc": "2026-10-27T13:38:01+00:00",
+  "query_finished_utc": "2026-10-27T14:18:15+00:00",
+  "resolvers": [
+    "PubChem",
+    "OPSIN",
+    "CIR",
+    "ChEBI"
+  ],
+  "names_source": "ai-baseline",
+  "lookup_tables": false,
+  "endpoints": {
+    "PubChem": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/SMILES/JSON",
+    "OPSIN": "https://opsin.ch.cam.ac.uk/opsin/{name}.smi",
+    "CIR": "http://cactus.nci.nih.gov/chemical/structure/{name}/smiles",
+    "ChEBI": "https://www.ebi.ac.uk/chebi/backend/api/public/es_search?term={name}&page=1&size=3 and https://www.ebi.ac.uk/chebi/backend/api/public/compound/{id}/"
+  },
+  "min_interval_seconds_per_host": {
+    "pubchem.ncbi.nlm.nih.gov": 0.25,
+    "opsin.ch.cam.ac.uk": 0.2,
+    "cactus.nci.nih.gov": 1.0,
+    "www.ebi.ac.uk": 0.2
+  },
+  "timeout_seconds": 120,
+  "resolver_module_sha256": "c0d7e4d4d2aa54648b006cd040e142dbecdebc1a3e3f94ac15bdf02660b9fd93",
+  "names": 1034,
+  "requests": 4488,
+  "responses_by_host_and_status": {
+    "pubchem.ncbi.nlm.nih.gov 404": 112,
+    "cactus.nci.nih.gov 500": 255,
+    "www.ebi.ac.uk 200": 532,
+    "opsin.ch.cam.ac.uk 404": 249,
+    "www.ebi.ac.uk 404": 669,
+    "pubchem.ncbi.nlm.nih.gov 200": 873,
+    "cactus.nci.nih.gov 200": 851,
+    "opsin.ch.cam.ac.uk 200": 798,
+    "cactus.nci.nih.gov ClientConnectorError: Cannot c": 148,
+    "pubchem.ncbi.nlm.nih.gov 400": 1
+  },
+  "retries": [
+    {
+      "started_utc": "2026-10-27T14:10:20+00:00",
+      "finished_utc": "2026-10-27T14:18:15+00:00",
+      "interval_seconds": 5.0,
+      "max_attempts_per_url": 6,
+      "urls_retried": 74,
+      "requests": 74,
+      "still_unanswered": []
+    }
+  ],
+  "resolved": 923,
+  "raw_sha256": "68807e2d3890799e13c525d8c377d044c9eaf159cfd744f1757b8b0c0c56f96f"
+}

@@ -1,0 +1,13 @@
+# Local intermediates of the template-extraction and mapping steps (main README,
+# "Not distributed"). Their *.summary.json files are distributed.
+*.sqlite
+*.sqlite-journal
+*.partial
+pipeline_error.json
+pilot_library.json
+rxnmapper/rxnmapper_corpus.tsv
+rxnmapper/rxnmapper_template_changes.json
+rxnmapper/_deps/
+
+# Re-scored copies (main README, AutoTemplate re-scoring).
+rescored/

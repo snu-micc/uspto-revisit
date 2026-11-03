@@ -1,0 +1,283 @@
+{
+  "schema_version": 2,
+  "overrides": [
+    {
+      "name": "palladium on carbon",
+      "lookup_name": "palladium",
+      "kind": "active_component",
+      "resolved_smiles": "[Pd]"
+    },
+    {
+      "name": "palladium on charcoal",
+      "lookup_name": "palladium",
+      "kind": "active_component",
+      "resolved_smiles": "[Pd]"
+    },
+    {
+      "name": "10% palladium on carbon",
+      "lookup_name": "palladium",
+      "kind": "active_component",
+      "resolved_smiles": "[Pd]"
+    },
+    {
+      "name": "palladium hydroxide on carbon",
+      "lookup_name": "palladium hydroxide",
+      "kind": "active_component",
+      "resolved_smiles": "[OH-].[OH-].[Pd+2]"
+    },
+    {
+      "name": "Raney nickel",
+      "lookup_name": "nickel",
+      "kind": "active_component",
+      "resolved_smiles": "[Ni]"
+    },
+    {
+      "name": "Oxone",
+      "lookup_name": "potassium peroxymonosulfate",
+      "kind": "active_component",
+      "resolved_smiles": "O=S(=O)([O-])OO.[K+]"
+    },
+    {
+      "name": "hydrogen chloride in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "hydrogen chloride in 1,4-dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "hydrochloric acid in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "4.0 M hydrochloric acid in 1,4-dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "4M hydrochloric acid in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "4N hydrochloric acid in dioxane",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "ethereal hydrochloric acid",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "hydrogen chloride in diethyl ether",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "ethanolic hydrochloric acid",
+      "lookup_name": "hydrogen chloride",
+      "kind": "active_component",
+      "resolved_smiles": "Cl"
+    },
+    {
+      "name": "lithium aluminum hydride in tetrahydrofuran",
+      "lookup_name": "lithium aluminium hydride",
+      "kind": "active_component",
+      "resolved_smiles": "[AlH4-].[Li+]"
+    },
+    {
+      "name": "10% sodium hydroxide in D2O",
+      "lookup_name": "sodium hydroxide",
+      "kind": "active_component",
+      "resolved_smiles": "[Na+].[OH-]"
+    },
+    {
+      "name": "sodium alendronate aqueous solution",
+      "lookup_name": "sodium alendronate",
+      "kind": "active_component",
+      "resolved_smiles": "NCCCC(O)(P(=O)([O-])O)P(=O)(O)O.O.O.O.[Na+]"
+    },
+    {
+      "name": "cefoxitin acid",
+      "lookup_name": "cefoxitin",
+      "kind": "identity_alias",
+      "resolved_smiles": "CO[C@@]1(NC(=O)Cc2cccs2)C(=O)N2C(C(=O)O)=C(COC(N)=O)CS[C@@H]21"
+    },
+    {
+      "name": "19-nor-testosterone acetate",
+      "lookup_name": "19-nortestosterone acetate",
+      "kind": "identity_alias",
+      "resolved_smiles": "CC(=O)O[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@@H]4[C@H]3CC[C@]12C"
+    },
+    {
+      "name": "Flupirtine base",
+      "lookup_name": "flupirtine",
+      "kind": "identity_alias",
+      "resolved_smiles": "CCOC(=O)Nc1ccc(NCc2ccc(F)cc2)nc1N"
+    },
+    {
+      "name": "Nalbuphine alkaloid",
+      "lookup_name": "nalbuphine",
+      "kind": "identity_alias",
+      "resolved_smiles": "Oc1ccc2c3c1O[C@H]1[C@@H](O)CC[C@@]4(O)[C@@H](C2)N(CC2CCC2)CC[C@]314"
+    },
+    {
+      "name": "N,N-dimethylaminopyridine",
+      "lookup_name": "4-dimethylaminopyridine",
+      "kind": "name_correction",
+      "resolved_smiles": "CN(C)c1ccncc1"
+    },
+    {
+      "name": "4-methoxybenzylnitrile",
+      "lookup_name": "2-(4-methoxyphenyl)acetonitrile",
+      "kind": "identity_alias",
+      "resolved_smiles": "COc1ccc(CC#N)cc1"
+    },
+    {
+      "name": "4-benzyloxy-2-fluoroacetophenone",
+      "lookup_name": "1-[4-(benzyloxy)-2-fluorophenyl]ethan-1-one",
+      "kind": "systematic_name",
+      "resolved_smiles": "CC(=O)c1ccc(OCc2ccccc2)cc1F"
+    },
+    {
+      "name": "6-chloro-2-pentanone",
+      "lookup_name": "5-chloropentan-2-one",
+      "kind": "contextual_name_correction",
+      "resolved_smiles": "CC(=O)CCCCl"
+    },
+    {
+      "name": "2-oxazole-(tri-n-butyl)tin",
+      "lookup_name": "2-(tributylstannyl)-1,3-oxazole",
+      "kind": "systematic_name",
+      "resolved_smiles": "CCC[CH2][Sn]([CH2]CCC)([CH2]CCC)[c]1ncco1"
+    },
+    {
+      "name": "malonic acid monoester potassium salt",
+      "lookup_name": "potassium ethyl malonate",
+      "kind": "contextual_identity",
+      "resolved_smiles": "CCOC(=O)CC(=O)[O-].[K+]"
+    },
+    {
+      "name": "3-(3-amino-2-fluorobenzyl)amine",
+      "lookup_name": "(3-amino-2-fluorophenyl)methanamine",
+      "kind": "name_correction",
+      "resolved_smiles": "NCc1cccc(N)c1F"
+    },
+    {
+      "name": "N,N-dimethyl-2-(4-methyl-1H-indol-3-yl)methanamine",
+      "lookup_name": "N,N-dimethyl-1-(4-methyl-1H-indol-3-yl)methanamine",
+      "kind": "name_correction",
+      "resolved_smiles": "Cc1cccc2[nH]cc(CN(C)C)c12"
+    },
+    {
+      "name": "2-methyl-2-oxiranylmethyl (S)-4-nitrobenzenesulfonate",
+      "lookup_name": "[(2S)-2-methyloxiran-2-yl]methyl 4-nitrobenzenesulfonate",
+      "kind": "systematic_name",
+      "resolved_smiles": "C[C@@]1(COS(=O)(=O)c2ccc([N+](=O)[O-])cc2)CO1"
+    },
+    {
+      "name": "sodium meta-periodate",
+      "lookup_name": "sodium periodate",
+      "kind": "identity_alias",
+      "resolved_smiles": "[Na+].[O-][I+3]([O-])([O-])[O-]"
+    },
+    {
+      "name": "DMF/DMA",
+      "lookup_name": "N,N-dimethylformamide dimethyl acetal",
+      "kind": "identity_alias",
+      "resolved_smiles": "COC(OC)N(C)C"
+    },
+    {
+      "name": "BOP",
+      "lookup_name": "benzotriazol-1-yloxytris(dimethylamino)phosphonium hexafluorophosphate",
+      "kind": "contextual_abbreviation",
+      "resolved_smiles": "CN(C)[P+](On1nnc2ccccc21)(N(C)C)N(C)C.F[P-](F)(F)(F)(F)F"
+    },
+    {
+      "name": "CEE HCl",
+      "lookup_name": "creatine ethyl ester hydrochloride",
+      "kind": "contextual_abbreviation",
+      "resolved_smiles": "CCOC(=O)CN(C)C(=N)N.Cl"
+    },
+    {
+      "name": "free base of 4-isopropylphenylacetimidate",
+      "lookup_name": "ethyl 2-(4-isopropylphenyl)acetimidate",
+      "kind": "contextual_identity",
+      "resolved_smiles": "CCOC(=N)Cc1ccc(C(C)C)cc1"
+    },
+    {
+      "name": "E2 free base",
+      "lookup_name": "6-[(4-fluorophenyl)oxy]-N-methyl-N-[4-[[(3S)-3-methylpiperazin-1-yl]methyl]phenyl]pyridine-3-carboxamide",
+      "kind": "contextual_patent_label",
+      "resolved_smiles": "C[C@H]1CN(Cc2ccc(N(C)C(=O)c3ccc(Oc4ccc(F)cc4)nc3)cc2)CCN1"
+    },
+    {
+      "name": "pyridine nitrile A466.2",
+      "lookup_name": "6-bromopyridine-2-carbonitrile",
+      "kind": "contextual_patent_label",
+      "resolved_smiles": "N#Cc1cccc(Br)n1"
+    },
+    {
+      "name": "lithiated veratrole",
+      "lookup_name": "1-lithio-2,3-dimethoxybenzene",
+      "kind": "contextual_identity",
+      "resolved_smiles": "[Li][c]1cccc(OC)c1OC"
+    },
+    {
+      "name": "7α-(5-bromopentyl)-11β-fluor-estra-1,3,5(10)-triene-3,17-diol",
+      "lookup_name": "7alpha-(5-bromopentyl)-11beta-fluoroestra-1,3,5(10)-triene-3,17beta-diol",
+      "kind": "stereochemical_name_completion",
+      "resolved_smiles": "C[C@]12C[C@H](F)[C@@H]3c4ccc(O)cc4C[C@@H](CCCCCBr)[C@H]3[C@@H]1CC[C@@H]2O"
+    },
+    {
+      "name": "(3β,5β,14β,17β)-methyl 14-amino-3-hydroxyandrostane-17-carboxylate",
+      "lookup_name": "methyl (3beta,5beta,14beta,17beta)-14-amino-3-hydroxyandrostane-17-carboxylate",
+      "kind": "systematic_name",
+      "resolved_smiles": "COC(=O)[C@H]1CC[C@]2(N)[C@@H]3CC[C@@H]4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C"
+    },
+    {
+      "name": "p-n-decyloxybenzoic acid p'-(2-methylbutoxycarbonyl)phenyl ester",
+      "lookup_name": "2-methylbutyl 4-[(4-decyloxybenzoyl)oxy]benzoate",
+      "kind": "systematic_name",
+      "resolved_smiles": "CCCCCCCCCCOc1ccc(C(=O)Oc2ccc(C(=O)OCC(C)CC)cc2)cc1"
+    },
+    {
+      "name": "4-chloro-pyrimidin-2-yl)-(3,4,5-trimethoxy-phenyl)-amine",
+      "lookup_name": "N-(4-chloropyrimidin-2-yl)-3,4,5-trimethoxyaniline",
+      "kind": "name_correction",
+      "resolved_smiles": "COc1cc(Nc2nccc(Cl)n2)cc(OC)c1OC"
+    },
+    {
+      "name": "2-benzyloxy-4-chloro-N-tert-butoxycarbanilide",
+      "lookup_name": "2-benzyloxy-4-chloro-N-tert-butoxycarbonylaniline",
+      "kind": "title_correction",
+      "resolved_smiles": "CC(C)(C)OC(=O)Nc1ccc(Cl)cc1OCc1ccccc1"
+    },
+    {
+      "name": "diphenylphosphoryl azide",
+      "smiles": "O=P(OC1=CC=CC=C1)(N=[N+]=[N-])OC1=CC=CC=C1",
+      "kind": "canonical_structure",
+      "resolved_smiles": "[N-]=[N+]=NP(=O)(Oc1ccccc1)Oc1ccccc1"
+    },
+    {
+      "name": "diethyl malonate",
+      "smiles": "CCOC(=O)CC(=O)OCC",
+      "kind": "canonical_structure",
+      "resolved_smiles": "CCOC(=O)CC(=O)OCC"
+    }
+  ],
+  "scope": "Secondary sensitivity only: apply these 46 names to the frozen fully_automatic outputs. No other lookup table, shared cache or row-specific review is used.",
+  "resolved_smiles_source": "Frozen structures for these 46 entries: explicit smiles where present, otherwise the exact-name entries of the previously released curated cache. These are curated choices, not new resolver responses."
+}

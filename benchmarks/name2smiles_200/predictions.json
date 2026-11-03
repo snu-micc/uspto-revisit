@@ -1,0 +1,1402 @@
+[
+  {
+    "row_id": 1,
+    "name": "2-coumaranone",
+    "smiles": "O=C1Oc2ccccc2C1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 2,
+    "name": "5-cyano-2-hydroxy-6-methyl-3-pyridine-carboxylic acid, ethyl ester",
+    "smiles": "CCOC(=O)c1cc(C)nc(C#C)c1O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 3,
+    "name": "α-bromo-γ-butyrolactone",
+    "smiles": "BrCC1CC(=O)O1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 4,
+    "name": "di(p-t-butylphenyl)iodonium camphor sulfonate",
+    "smiles": "CC(C)(C)c1ccc([I+]c2ccc(C(C)(C)C)cc2)cc1.C[C@H]1CC[C@@H]2[C@@H](C1)C(C)(C)S(=O)(=O)[O-]2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 5,
+    "name": "[4-(4,9-dimethoxy-1-oxo-1,3-dihydro-2H-benzo[f]isoindol-2-yl)phenyl]acetic acid",
+    "smiles": "COc1ccc2c(c1OC)cc3c(c2)C(=O)N(c4ccc(cc4)CC(=O)O)C3",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 6,
+    "name": "8-hydroxy-7-phenylpyrido[3,4-d]pyridazine-1,4-(2H,3H)-dione",
+    "smiles": "O=c1[nH]c2ncc(c(O)c2c(=O)[nH]1)c1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 7,
+    "name": "naphthalene-1,5-disulfonic acid",
+    "smiles": "O=S(=O)(O)c1cccc2cc(S(=O)(=O)O)ccc12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 8,
+    "name": "4-biphenylbenzoic acid",
+    "smiles": "O=C(O)c1ccc(cc1)c2ccc(cc2)c3ccccc3",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 9,
+    "name": "2-chloro-4-morpholin-4-yl-thieno[3,2-d]pyrimidine-6-carbaldehyde",
+    "smiles": "O=Cc1cc2nc(N3CCOCC3)nc2s1Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 10,
+    "name": "4-(2-hydroxy-pyrimidin-4-yl)-benzoic acid",
+    "smiles": "O=C(O)c1ccc(cc1)c2cc(=O)nc(n2)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 11,
+    "name": "5-aminobenzimidazole",
+    "smiles": "Nc1ccc2[nH]c(nc2c1)N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 12,
+    "name": "2-(1H-Indol-4-yl)-6-(4-methyl-piperazin-1-ylmethyl)-4-morpholin-4-yl-thieno[3.2-d]pyrimidine",
+    "smiles": "CN1CCN(CC2=NC3=C(SC=C3N=C2N4CCOCC4)C5=CNC6=CC=CC=C56)CC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 13,
+    "name": "(R)-8-(5-bromo-2-fluoro-phenyl)-8-methyl-6,6-dioxo-6λ6-thia-9-aza-spiro[4.5]deca-2,9-dien-10-ylamine",
+    "smiles": "NC1N=CC[C@@]2(C)CS(=O)(=O)C=C[C@]12c1cc(Br)ccc1F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 14,
+    "name": "MEK",
+    "smiles": null,
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 15,
+    "name": "1,3-diallyl-5,6-diaminouracil",
+    "smiles": "C=CCn1c(N)c(N)c(=O)n(CC=C)c1=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 16,
+    "name": "nitrosonium tetrafluoroborate",
+    "smiles": "[N+]#O.[B-](F)(F)(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 17,
+    "name": "(R)-3-(4′-Cyano-biphenyl-4-yl)-2-{[(3R,7S)-3-[4-(3,4-dichloro-benzyloxy)-phenyl]-1-methyl-2-oxo-6-((S)-1-phenyl-propyl)-2,3,5,6,7,8-hexahydro-1H-4-oxa-1,6-diaza-anthracene-7-carbonyl]-amino}-propionic acid methyl ester",
+    "smiles": "COC(=O)[C@H](CC1=CC=C(C=C1)C2=CC=C(C=C2)C#N)NC(=O)[C@@H]3N(C)C(=O)N4C[C@H](CC[C@H]4OC5=CC=CC=C53)C(C[C@H](CC)C6=CC=CC=C6)=C(c7ccc(OCC8=CC(Cl)=C(Cl)C=C8)cc7)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 18,
+    "name": "2-(1-Piperazinyl)-4-amino-6,7-dimethoxyquinazoline",
+    "smiles": "COc1cc2nc(nc(N)c2cc1OC)N1CCNCC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 19,
+    "name": "4-amino-6-chloro-3-nitro-pyridine-2-carbonitrile",
+    "smiles": "N#Cc1nc(N)cc([N+](=O)[O-])c1Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 20,
+    "name": "N-(ethyl)-2-dimethylamino-1,2,3,4-tetrahydrodibenzofuran-8-carboxamide",
+    "smiles": "CCNC(=O)c1ccc2c(c1)OCCc1cc(N(C)C)ccc12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 21,
+    "name": "methyl 4,5-diamino-2-methylbenzoate",
+    "smiles": "COC(=O)c1cc(N)c(N)cc1C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 22,
+    "name": "triphenylsulfonium 2-acetoxy-1,1,3,3,3-pentafluoropropane-1-sulfonate",
+    "smiles": "[S+](c1ccccc1)(c2ccccc2)c3ccccc3.CC(=O)OC(C(F)(F)S(=O)(=O)[O-])C(F)(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 23,
+    "name": "6-{trans-[4-(2-methyl-3-phenylpropylamino)-cyclohexyl]}-3H-benzoxazol-2-one",
+    "smiles": "O=C1Nc2cccc(c2O1)[C@H]3CC[C@H](CC3)NC(Cc4ccccc4)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 24,
+    "name": "di(p-t-butylphenyl)iodonium toluenesulfonate",
+    "smiles": "CC(C)(C)c1ccc([I+](c2ccc(C(C)(C)C)cc2)c2ccccc2)cc1.Cc1ccc(S(=O)(=O)[O-])cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 25,
+    "name": "2-chloro-5-(methylthio)benzoic acid",
+    "smiles": "O=C(O)c1cc(SC)ccc1Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 26,
+    "name": "2,6-lutidine",
+    "smiles": "Cc1cccc(C)n1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 27,
+    "name": "3-benzo[b]thiophen-2-yl-1-perhydro-2H-pyran-2-yl-1H-indazole-5-carboxamide",
+    "smiles": "NC(=O)c1ccc2[nH]n(c(c2c1)-c1sccc1-c1CCCCO1)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 28,
+    "name": "N-[2-(2-methoxy-1-naphthyl)ethyl]propionamide",
+    "smiles": "CCC(=O)NCCc1c(OC)cc2ccccc2c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 29,
+    "name": "4,5-methylenedioxyindole-2-carboxylic acid methyl ester",
+    "smiles": "COC(=O)c1[nH]c2ccc3OCOc3c2c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 30,
+    "name": "(3R,5S)—N-butyl-3,5,6-trihydroxyhexanamide",
+    "smiles": "CCCCNC(=O)[C@H](O)C[C@@H](O)C(O)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 31,
+    "name": "2-Bromo-6-ethyl-5-[(4-methoxy-3-methylphenyl)sulfonyl]-5,6-dihydrophenanthridine",
+    "smiles": "CC1Cc2cc(Br)cc(c2N=C1)-S(=O)(=O)c3ccc(OC)c(c3)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 32,
+    "name": "Cis-3-[2-[2-methyl-3-[4-(aminoiminomethyl)phenyl]-isoxazolidin-5-yl]acetyl]amino-N-(3-methylphenylsulfonyl)-L-alanine methyl ester",
+    "smiles": "COC(=O)[C@H](NC(=O)CC1OC(C)(c2ccc(C(=N)N)cc2)CN1)c1ccccc1S(=O)(=O)Nc1cccc(C)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 33,
+    "name": "(R,R)-di-p-anisoyltartaric acid",
+    "smiles": "COc1ccc(C(=O)O[C@H](C(=O)O)C(O[C@H](C(=O)O)c2ccc(OC)cc2)=O)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 34,
+    "name": "3-[2-[4-(2-methoxyphenyl)-1-piperazinyl]ethyl]-7-acetylamino-1,2,3,4-tetrahydroquinazoline-2,4-dione",
+    "smiles": "COc1ccccc1N2CCN(CCc3n(CC4NC(=O)c5cc(NC(C)=O)ccc5C4=O)cnc3)CC2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 35,
+    "name": "8-bromo-3,4-dihydrobenzo[f][1,4]oxazepin-5(2H)-one",
+    "smiles": "O=C1NCCOc2ccc(Br)cc21",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 36,
+    "name": "N-(1S,2R)-{1-(3,5-Difluoro-benzyl)-2-hydroxy-2-[(5R,2R)-5-pent-4-enyloxy-piperdin-2-yl]-ethyl}-acetamide hydrochloride",
+    "smiles": "CC(=O)N[C@H](Cc1cc(F)cc(F)c1)[C@@](O)([C@H]1CCCC[C@H](OCCCC=C)N1)Cl.[Cl-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 37,
+    "name": "ethyl N-triethoxysilylpropylcarbamate",
+    "smiles": "CCOC(=O)NCCC[Si](OCC)(OCC)OCC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 38,
+    "name": "3-[2-difluoromethyl-5-(4-methoxy-phenyl)-2H-[1,2,4]triazol-3-yl]-benzaldehyde",
+    "smiles": "COc1ccc(cc1)c1nc(nn1c(c2ccccc2C=O)C(F)F)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 39,
+    "name": "6-Chloro-2-pyridinamine",
+    "smiles": "Nc1nc(Cl)ccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 40,
+    "name": "N-[1-methyl-prop-(E)-ylidene]-N'-phenyl-hydrazine",
+    "smiles": "CC/C(=N/Nc1ccccc1)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 41,
+    "name": "N-2-hydroxypropyl-5-methyl-oxazolidine",
+    "smiles": "CC1=NCC(O)CO1CCO",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 42,
+    "name": "N-(2-chloroethyl)-2-methyl-3-hydroxy-4-pyridinone",
+    "smiles": "CC1=C(O)C(=O)N(CCCl)C=C1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 43,
+    "name": "4-bromothiazole-2-carbohydrazide",
+    "smiles": "NNC(=O)c1nc(Br)cs1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 44,
+    "name": "(2aR, 4S)-1-Benzoyl-4-amino-6-bromo-1,2,2a,3,4,5-hexahydrobenz[cd]indole",
+    "smiles": "O=C(c1ccccc1)N1CC[C@H]2c3cc(Br)cc[c@H]2[C@H]1N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 45,
+    "name": "N-(4-propargylpiperazin-1-ylethyl)-2-methyl-3-hydroxy-4-pyridinone",
+    "smiles": "CC1=C(O)C(=O)N(CCN2CCN(CC#C)CC2)C=C1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 46,
+    "name": "CDCl3",
+    "smiles": "[2H]C(Cl)(Cl)Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 47,
+    "name": "5-[5-(3-methoxybenzyl)-1,3,4-oxadiazol-2-ylamino]-1H-indazole hydrochloride",
+    "smiles": "Cl.COc1cccc(Cc2nnc(Nc3ccc4[nH]ncc4c3)o2)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 48,
+    "name": "cis methyl N-t-butoxycarbonyl-4-(2-bromoethyl)pyrrolidine-2-carboxylate",
+    "smiles": "COC(=O)[C@@H]1CC[C@H](CCBr)N1C(=O)OC(C)(C)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 49,
+    "name": "Cefoxitin Sodium",
+    "smiles": "[Na+].CC1(C(=O)[O-])S[C@@H]2[C@H](NC(=O)COC(N)=O)C(=O)N2[C@H]1C(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 50,
+    "name": "N′-(4-nitrophenyl)-N,N′-di-n-hexylbenzene-1,4-diamine",
+    "smiles": "CCCCCCN(c1ccc(N(CCCCCC)c2ccc([N+](=O)[O-])cc2)cc1)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 51,
+    "name": "(3R)-3-(2-Hydroxy-2-thien-2-ylpent-4-enoyloxy)-1-(3-phenoxypropyl)-1-azoniabicyclo[2.2.2]octane bromide",
+    "smiles": "Br.[O-]C(=O)[C@@H](O)C(c1sccc1)CC=C.O[C@H]1C[N+]2(CCC1CC2)CCCOc1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 52,
+    "name": "5-chloro-3-nitropicolinonitrile",
+    "smiles": "N#Cc1cc([N+](=O)[O-])nc(Cl)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 53,
+    "name": "triflic acid",
+    "smiles": "OS(=O)(=O)C(F)(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 54,
+    "name": "2,3-dihydro-N-benzyloxy-1H-cyclopenta[b]quinoline-9-amine",
+    "smiles": "Nc1ccc2c(c1)C3CC=CC3=N2OCC4=CC=CC=C4",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 55,
+    "name": "Dimethyl-(1H-pyrrol-3-ylmethylene)-ammonium chlorid",
+    "smiles": "C[N+](C)=Cc1cc[nH]c1.[Cl-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 56,
+    "name": "1-(2-methoxyphenyl)-4-[3-(cyclohexanecarbonyl)-3-(phenyl)butyl]piperazine",
+    "smiles": "COc1ccccc1N2CCN(CCCC(c3ccccc3)(C(=O)C4CCCCC4))CC2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 57,
+    "name": "(S)-α-methyl-1,3 benzodioxole-5-ethanol",
+    "smiles": "C[C@H](CO)c1ccc2OCOc2c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 58,
+    "name": "[4′-(6-Ethoxy-pyridin-3-yl)-2′-ethylaminomethyl-6-methoxy-biphenyl-3-yl]-acetic acid ethyl ester, hydrochloride",
+    "smiles": "CCOC(=O)Cc1cc(OC)c(c(c1)-c2ccc(cc2)CNC(C)?)c3cncc(OCC)c3.Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 59,
+    "name": "N,N′-bis-Boc-(2R)-2,5-diamino-N-[(1R)-1-[(RS)-(5-tert-butyl-2-benzoxazolyl)-hydroxymethyl]-3-phenylpropyl]-valeramide",
+    "smiles": "CC(C)(C)OC(=O)N[C@@H](CCCNC(=O)OC(C)(C)C)C(=O)N[C@H](COc1nc2ccccc2o1)(CCc1ccccc1)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 60,
+    "name": "BnMgCl",
+    "smiles": "[Mg](Cl)Cc1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 61,
+    "name": "[(6-hydroxy-4-oxo-4H-chromen-3-yl)methyl]phosphonic acid",
+    "smiles": "OC(=O)1c2cc(O)ccc2oc1CP(=O)(O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 62,
+    "name": "2,4-dihydroxy-4b,5,6,7,8,8a,9,10-octahydro-9-oxo-phenanthrene",
+    "smiles": "Oc1cc2C(CCC3CCCCC3=O)Cc2cc1O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 63,
+    "name": "2-chloro-5-fluoro-N-(3-hydroxyphenyl)-4-pyrimidineamine",
+    "smiles": "Nc1nc(Cl)c(F)nc1Nc2cccc(O)c2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 64,
+    "name": "2-(4,5,6,7-tetrahydro-1-phenyl-1H-indazol-4-yl)ethanol",
+    "smiles": "OCCc1cc2n(n(c2CC/C=C1\\? )c3ccccc3)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 65,
+    "name": "5-((4S)-2-oxo-4-phenyl(1,3-oxazolidin-3-yl))-1-(4-fluorophenyl)pentane-1,5-dione",
+    "smiles": "O=C(CC(=O)c1ccc(F)cc1)CC[C@H]1COCN1c2ccccc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 66,
+    "name": "Diethyl-3-iodophenylphosphonate",
+    "smiles": "CCOP(=O)(OCC)c1cccc(I)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 67,
+    "name": "1-amino-2,3-dihydroindole",
+    "smiles": "NC1Cc2ccccc2N1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 68,
+    "name": "5-methoxyhomophthalic anhydride",
+    "smiles": "COc1cc2C(=O)OC(=O)Cc2cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 69,
+    "name": "ethyl 2-(4,5,6,7-tetrahydro-1-phenyl-1H-indazol-4-yl)acetate",
+    "smiles": "CCOC(=O)CC1CCC2=NN(C3=CC=CC=C3)C=C21",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 70,
+    "name": "6-cyano-1-(2-ethoxycarbonylvinyl)-2-naphthol",
+    "smiles": "CCOC(=O)C=Cc1c(O)c2cccc(C#N)c2cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 71,
+    "name": "(S)-amino-cyclohexyl-acetic acid methyl ester",
+    "smiles": "COC(=O)[C@H](N)C1CCCCC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 72,
+    "name": "Diethyl-Dithiocarbamic Acid 4-Vinyl-Phenyl Ester",
+    "smiles": "CCN(CC)C(=S)Sc1ccc(C=C)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 73,
+    "name": "potassium tert-butoxide",
+    "smiles": "[K+].[O-]C(C)(C)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 74,
+    "name": "HATU",
+    "smiles": "[O-][N+]1=C(N(C2=CC=CC=C2)C2=CC=CC=C2)N=C(C=C1)C(F)(F)F.OP(=O)([O-])[O-].[N+](C)(C)(C)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 75,
+    "name": "ethyl 1-(2,4-dimethoxybenzyl)-7-(2-(S)-hydroxymethyl-azetidin-1-yl)-4-oxo-1,4-dihydro-[1,8]naphthyridine-3-carboxylate",
+    "smiles": "CCOC(=O)C1=C(N(CC2=CC(=CC(=C2)OC)OC))C(=O)N=C2C=CC(N3CC[C@H](CO)C3)=NC12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 76,
+    "name": "t-butyl 4-(6-acetoxy-methylpyridine-2-carbonyl)piperazine-1-carboxylate",
+    "smiles": "CC(C)(C)OC(=O)N1CCN(CC1)C(=O)c2nc(COC(=O)C)ccc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 77,
+    "name": "3-(3-cyano-phenyl)-acrylic acid methyl ester",
+    "smiles": "COC(=O)C=Cc1cccc(c1)C#N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 78,
+    "name": "(R)-2-amino-3-(4′-cyano-biphenyl-4-yl)-propionic acid methyl ester",
+    "smiles": "COC(=O)[C@H](N)Cc1ccc(cc1)c2ccc(cc2)C#N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 79,
+    "name": "tert-butyl [6-aminomethyl-3-ethylbicyclo[3.2.0]hept-3-en-6-yl]acetate",
+    "smiles": "CC(C)(C)OC(=O)CC1(CN)CC2CC1=C(C)C2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 80,
+    "name": "1-acetyl-3-(3,4-methylenedioxyphenyl)-1,3-dihydroimidazo[4,5-b]pyridin-2-one",
+    "smiles": "CC(=O)N1c2nccnc2NC(c2ccc3OCOc3c2)=C1=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 81,
+    "name": "1,3-dimethyl-5-(3,5-dichloro-(4-(2-(1,1,2,2,3,3,3-heptafluoropropoxy)-1,1,2-trifluoroethoxy))-phenylcarbamoyl)barbituric acid",
+    "smiles": "Cn1c(=O)nc(C(=O)Nc2cc(Cl)cc(Cl)c2OCC(F)(F)C(F)(F)OCC(F)(F)C(F)(F)C(F)(F)F)c(=O)n(C)c1=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 82,
+    "name": "(E)-5-methoxy-2-[2-[3-[2-[4-(cyclobutyl)-2-thiazolyl]ethenyl]phenylamino]-2-oxoethyl]benzoic acid",
+    "smiles": "COc1ccc(C(=O)O)c(c1)N(c2cccc(/C=C/c3nc(sc3)C4CCC4)c2)CC(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 83,
+    "name": "methyl N-{4-[2-(4-chlorophenyl)-1-propylpent-4-en-1-yl]benzoyl}-beta-alaninate",
+    "smiles": "CCCOC(=O)NCCC(=O)c1ccc(cc1)C(CC(CC)=C)c2ccc(Cl)cc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 84,
+    "name": "6-[(4-Fluorophenyl)oxy]-N-methyl-N-(4-{[(3S)-3-methyl-1-piperazinyl]methyl}phenyl)-3-pyridinecarboxamide fumarate",
+    "smiles": "CN(c1ccc(CN2CCN[C@H](C)C2)cc1)C(=O)c1cc(Occ2ccc(F)cc2)cnc1.O=C(O)C=CC(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 85,
+    "name": "3-Amino-5-chloropicolinamide",
+    "smiles": "NC(=O)c1nc(Cl)cc(N)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 86,
+    "name": "3-bromo-5-(methoxycarbonyl)-1-phenyl-1,2-dihydropyridin-2-one",
+    "smiles": "COC(=O)c1cc(Br)cc(=O)n1c2ccccc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 87,
+    "name": "N-methylcyanoacetamide",
+    "smiles": "CN(C)C(=O)CC#N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 88,
+    "name": "dibenzylamine",
+    "smiles": "N(CC1=CC=CC=C1)CC2=CC=CC=C2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 89,
+    "name": "(S)-2-(tert-butoxycarbonyl)amino-1-(oxazolo[4,5-b]pyridin-2-yl)propan-1-ol",
+    "smiles": "CC(C)(C)OC(=O)N[C@H](C)C(O)c1nc2nccoc2n1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 90,
+    "name": "2,6-Dimethylphenyl 4-[(tert-butoxycarbonyl)amino]butanoate",
+    "smiles": "Cc1cccc(C)c1OC(=O)CCCNC(=O)OC(C)(C)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 91,
+    "name": "ferrocenylmethyltrimethylammonium iodide",
+    "smiles": "[I-].C[N+](C)(C)Cc1cccc(c1)[Fe]c2ccccc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 92,
+    "name": "2-tetrahydropyranyl-but-3-yne",
+    "smiles": "C#CC(C1CCCCO1)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 93,
+    "name": "(2E)-3-(5-{(tert-butoxycarbonyl){(3R)-1-(2-ethylbutyl)-3-pyrrolidinyl}amino}-2-pyridinyl)-N-(tetrahydro-2H-pyran-2-yloxy)acrylamide",
+    "smiles": "CC[C@H](CC)CN1C[C@H](CC1)N(C(=O)OC(C)(C)C)c2nc(C=CC(=O)NOC3CCCCO3)ccc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 94,
+    "name": "(3R,7S)-3-[4-(3,4-dichloro-benzyloxy)-phenyl]-1-methyl-2-oxo-6-((S)-1-phenyl-propyl)-2,3,5,6,7,8-hexahydro-1H-4-oxa-1,6-diaza-anthracene-7-carboxylic acid",
+    "smiles": "CN1C(=O)[C@H](c2ccc(OCH2c3ccc(Cl)c(Cl)c3)cc2)N2CC[C@H](C(=O)O)c3occc4c3N(C[C@H](CC)c3ccccc3)CC[C@@H]12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 95,
+    "name": "5-Ethyl-2-methylpyridine borane",
+    "smiles": "CC1=CN=C(C=C1)C.B",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 96,
+    "name": "methyl iodide",
+    "smiles": "CI",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 97,
+    "name": "(±)-N-Boc-trans-3-(N-methyl-4-phenoxybenzenesulfonamido)-4-tertbutylmercaptopyrrolidine",
+    "smiles": "CC(C)(C)OC(=O)N1CC(CS(C)(C)C)C(C1)NS(=O)(=O)c2ccc(Oc3ccccc3)cc2C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 98,
+    "name": "3,4-dihydroxy-5-(1,1′-biphenyl)-2(5H)-furanone",
+    "smiles": "O=C1OC(c2ccccc2-c2ccccc2)C(O)=C1O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 99,
+    "name": "potassium phthalimide",
+    "smiles": "[K+].[N-]1C(=O)c2ccccc2C1=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 100,
+    "name": "methyl 2-benzyloxycarbonylamino-3-(2,4-dichlorobenzenesulfonylamino)-2-methylpropionate",
+    "smiles": "COC(=O)C(NC(=O)OCH2c1ccccc1)(C)CNC(=O)(=O)c1ccc(Cl)cc1Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 101,
+    "name": "2,3,4-trimethoxy-benzaldehyde",
+    "smiles": "COc1ccc(C=O)c(OC)c1OC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 102,
+    "name": "3-[2-(2-diethylamino-ethyl)-cyclopropyl]-1-(toluene-4-sulfonyl)-1H-indole-5-carbonitrile",
+    "smiles": "N#Cc1ccc2[n](c(c2c1)C3CC3CCN(CC)CC)S(=O)(=O)c4ccc(C)cc4",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 103,
+    "name": "2-Oxo-4-phenylbutyric acid",
+    "smiles": "O=C(O)CC(c1ccccc1)C=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 104,
+    "name": "5-(2,2-dimethyl-1,3-dioxan-5-yl)pentanoic acid, methyl ester",
+    "smiles": "COC(=O)CCCC[C@H]1COC(C)(C)OC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 105,
+    "name": "2-(2-Hydroxyphenyl)-1-(4-methylpiperazino)-1-ethanone",
+    "smiles": "Oc1ccccc1CC(=O)N1CCN(C)CC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 106,
+    "name": "5-cyclopropyl-2-tetrahydropyranyl-pent-3-yne",
+    "smiles": "C1CCOC1CC#CC(C1CC1)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 107,
+    "name": "1-(2-Fluorobenzyl)-3-[5chlorosulphinylfuran2-yl]pyrazolo[3,4-b]-pyridine",
+    "smiles": "O=S(c1ccc(o1)c2n[nH]c3ncc(cc23)Cc4ccccc4F)Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 108,
+    "name": "fluorenylmethyloxycarbonyl isothiocyanate",
+    "smiles": "O=C(N=C=S)OCc1ccc2cc3ccccc3c2c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 109,
+    "name": "(1R,4S,6S)-4-benzhydryl-3,7-dioxa-bicyclo[4.1.0]heptane",
+    "smiles": "O1[C@@H]2[C@@H](C3=CC=CC=C3)(C4=CC=CC=C4)[C@H]1CO2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 110,
+    "name": "diethylmalonate",
+    "smiles": "CCOC(=O)CH2C(=O)OCC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 111,
+    "name": "[2-Chloro-4-(3-methyl-pyrazol-1-yl)-phenyl]-(11H-5-oxa-4,10-diaza-dibenzo[a,d]cyclohepten-10-yl)-methanone",
+    "smiles": "Cc1ccnn1-c1ccc(Cl)cc1C(=O)N1CCOc2ccccc2C=Cc2ccccc21",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 112,
+    "name": "1-amino-2,4-dibromoanthraquinone",
+    "smiles": "Nc1c(Br)cc2C(=O)c3cc(Br)ccc3C(=O)c2c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 113,
+    "name": "1,3-dimethyl-5-hydroxypyrazole",
+    "smiles": "Cn1cc(O)nc1C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 114,
+    "name": "1-hydroxy-6-propyl-3,4-dimethoxybenzene",
+    "smiles": "Oc1c(OC)c(OC)cc(CCC)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 115,
+    "name": "3-Cyano-8-fluoro-5-methoxy-2-H-chromen",
+    "smiles": null,
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 116,
+    "name": "methyl 2-(4-(bis(4-chlorophenyl)methyl)-2-oxopiperazin-1-yl)acetate",
+    "smiles": "COC(=O)CN1CC(=O)NCC1C(c2ccc(Cl)cc2)c3ccc(Cl)cc3",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 117,
+    "name": "sodium thiosulfate",
+    "smiles": "[Na+].[Na+].[O-]S(=O)(=S)[O-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 118,
+    "name": "2-Isoquinolin-3-yl-chromen-4-one",
+    "smiles": "O=c1cc(-c2cnc3ccccc3c2)oc2ccccc12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 119,
+    "name": "N-Isopropyl-4-methyl-N-[2-(2-methyl-4H-inden-7-yl)ethyl]benzenesulfonamide",
+    "smiles": "CC1=Cc2cc(CCN(S(=O)(=O)c3ccc(C)cc3)C(C)C)ccc2C1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 120,
+    "name": "thionyl chloride",
+    "smiles": "O=S(Cl)Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 121,
+    "name": "2-(1H-Indazol-4-yl)-4-morpholin-4-yl-thieno[3,2-d]pyrimidine-6-carbaldehyde",
+    "smiles": "O=Cc1nc(N2CCOCC2)c2scc(-c3ccc4[nH]ncc4c3)c2n1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 122,
+    "name": "1-[(1R,2R)-2-(2,4-difluorophenyl)-2-hydroxy-1-methyl-3-(1H-1,2,4-triazol-1-yl)propyl]-3-[4-(1H-tetrazol-1-yl)phenyl]-2-imidazolidinone",
+    "smiles": "C[C@H](N1CC(=O)N(c2ccc(nn2)c3ccccc3)C1)[C@@](O)(Cn1cncn1)c1ccc(F)cc1F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 123,
+    "name": "4-tert-Butylbenzenediazonium tetrafluoroborate",
+    "smiles": "CC(C)(C)c1ccc([N+]#N)cc1.[B-](F)(F)(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 124,
+    "name": "HBF4",
+    "smiles": "F[B-](F)(F)F.[H+]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 125,
+    "name": "(2,2-diphenyl-1,3-benzodioxolan-5-yl)acetyl chloride",
+    "smiles": "O=C(Cl)Cc1ccc2OCOc2c1C(c1ccccc1)c1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 126,
+    "name": "hypophosphorous acid",
+    "smiles": "OP",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 127,
+    "name": "4-(3-{[4-(4-acetyl-2-chloro-3-hydroxy-phenoxymethyl)-phenyl]-hydroxy-methyl}-phenyl)-3H-thiazol-2-one",
+    "smiles": "CC(=O)c1cc(Cl)c(O)c(c1)Oc2ccc(C(O)c3cccc(c3)c4nccs4=O)cc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 128,
+    "name": "3-aminopropyltriethoxysilane",
+    "smiles": "NCCCSi(OCC)(OCC)OCC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 129,
+    "name": "benzyl 3-bromopropyl ether",
+    "smiles": "BCCBrOCc1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 130,
+    "name": "tetrakis(triphenylphosphine)palladium(0)",
+    "smiles": "[Pd](P(c1ccccc1)(c2ccccc2)c3ccccc3)(P(c4ccccc4)(c5ccccc5)c6ccccc6)(P(c7ccccc7)(c8ccccc8)c9ccccc9)P(c%10ccccc%10)(c%11ccccc%11)c%12ccccc%12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 131,
+    "name": "(2-methyl-4-{2-[4-(3-phenoxy-propoxy)-phenyl]-ethyl}-4,5-dihydro-oxazol-4-yl)-methanol",
+    "smiles": "CC1=NCC(O1)(CO)CCc2ccc(OCCCOc3ccccc3)cc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 132,
+    "name": "phosphorous pentachloride",
+    "smiles": "Cl[P](Cl)(Cl)(Cl)Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 133,
+    "name": "6-methoxybenzisothiazole-3-carboxylic acid",
+    "smiles": "COc1ccc2snc(c2c1)C(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 134,
+    "name": "6-propyl-4-(3-trifluoromethylphenyl)-1H-pyrimidin-2-one",
+    "smiles": "CCCC1=CC(=NC(=O)N1)C2=CC(=CC=C2)C(F)(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 135,
+    "name": "1,3-diazidoacetone",
+    "smiles": "[N-]=[N+]=NCC(=O)CN=[N+]=[N-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 136,
+    "name": "HBTU",
+    "smiles": "[PF6-].CC(C)(C)N=C(N(c1ccccc1)c2ccccc2)N1CCC(CC1)OC(=O)N=C=N(c3ccccc3)c4ccccc4",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 137,
+    "name": "palladium tetrakistriphenylphosphine",
+    "smiles": "[Pd](P(c1ccccc1)(c2ccccc2)c3ccccc3)(P(c4ccccc4)(c5ccccc5)c6ccccc6)(P(c7ccccc7)(c8ccccc8)c9ccccc9)P(c%10ccccc%10)(c%11ccccc%11)c%12ccccc%12",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 138,
+    "name": "sodium azide",
+    "smiles": "[Na+].[N-]=[N+]=[N-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 139,
+    "name": "tert-Butyl 4-cyano-4-(morpholin-4-ylcarbonyl)piperidine-1-carboxylate",
+    "smiles": "CC(C)(C)OC(=O)N1CCC(CC1)(C#N)C(=O)N2CCOCC2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 140,
+    "name": "carbon monoxide",
+    "smiles": "[C-]#[O+]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 141,
+    "name": "3-(3-fluoro-5-nitrophenoxy)pyridine",
+    "smiles": "c1cncc(Oc2cc(F)cc([N+](=O)[O-])c2)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 142,
+    "name": "thiourea",
+    "smiles": "NC(=S)N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 143,
+    "name": "glutaric acid mono-amide",
+    "smiles": "NC(=O)CCCC(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 144,
+    "name": "sodium iodide",
+    "smiles": "[Na+].[I-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 145,
+    "name": "methyl[4-(benzyloxy)phenyl]acetate",
+    "smiles": "COC(=O)Cc1ccc(OCC2=CC=CC=C2)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 146,
+    "name": "4-(3-cyclopentyl-indole-1-sulfonyl)-benzoic acid",
+    "smiles": "O=C(O)c1ccc(cc1)S(=O)(=O)n2cc(c3ccccc23)C4CCCC4",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 147,
+    "name": "MTBE",
+    "smiles": "COC(C)(C)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 148,
+    "name": "hydrogen sulfide",
+    "smiles": "S",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 149,
+    "name": "1-amino-3-phenoxypropan-2-ol hydrochloride",
+    "smiles": "Cl.NCC(O)COc1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 150,
+    "name": "2-amino-4-acetylphenol",
+    "smiles": "CC(=O)c1ccc(O)c(N)c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 151,
+    "name": "sodium (Z)-3-(4-chlorophenyl)-3-(4-methanesulphonylphenyl)-2-(2-hydroxyethyl)prop-2-enoate",
+    "smiles": "[Na+].O=S(=O)(C)c1ccc(cc1)/C(=C(CCO)C(=O)[O-])\\c1ccc(Cl)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 152,
+    "name": "calcium hydroxide",
+    "smiles": "[Ca+2].[OH-].[OH-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 153,
+    "name": "citric acid",
+    "smiles": "OC(=O)CC(O)(CC(=O)O)C(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 154,
+    "name": "6-methoxy-2-cyclopentylbenzo[b]thiophene",
+    "smiles": "COc1ccc2scc(c2c1)C1CCCC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 155,
+    "name": "N-ethylethylenediamine",
+    "smiles": "CCNCCN",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 156,
+    "name": "para-toluenesulfonic acid monohydrate",
+    "smiles": "Cc1ccc(S(=O)(=O)O)cc1.O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 157,
+    "name": "4-bromobut-1-ene",
+    "smiles": "C=CCCBr",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 158,
+    "name": "2-methyl-2-(3-pyridin-3-yl-phenoxy)-propionic acid ethyl ester",
+    "smiles": "CCOC(=O)C(C)(C)Oc1cccc(c1)c2cccnc2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 159,
+    "name": "3-methoxyphenylboronic acid",
+    "smiles": "B(c1cccc(OC)c1)(O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 160,
+    "name": "sodium ethoxide",
+    "smiles": "[Na+].[O-]CC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 161,
+    "name": "1-hydroxy-3,4-dimethoxybenzene",
+    "smiles": "Oc1cc(OC)c(OC)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 162,
+    "name": "1-(bromomethyl)piperidine",
+    "smiles": "BrCC1CCNCC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 163,
+    "name": "1,1-difluoroethylene",
+    "smiles": "C=C(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 164,
+    "name": "cyclopropyl amine",
+    "smiles": "NC1CC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 165,
+    "name": "N-(triisopropylsilyl)-pyrrole",
+    "smiles": "CC(C)[Si](N1C=CC=C1)(C(C)C)C(C)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 166,
+    "name": "NaNO2",
+    "smiles": "[Na+].[O-][N]=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 167,
+    "name": "carbon tetrachloride",
+    "smiles": "ClC(Cl)(Cl)Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 168,
+    "name": "Imidazo[1,2-a]pyridin-6-ylamine",
+    "smiles": "Nc1ccc2nccn2c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 169,
+    "name": "phenoxypropylbromide",
+    "smiles": "BrCCCOc1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 170,
+    "name": "hydantoin",
+    "smiles": "O=C1NCC(=O)N1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 171,
+    "name": "2-(5-amino-1-phenyl-1H-pyrazol-3-yl)-2-methylpropanoic acid",
+    "smiles": "CC(C)(C(c1cc(N)nn1-c2ccccc2)C(=O)O)",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 172,
+    "name": "1-methyl-piperidine-4-carboxylic acid hydrochloride salt",
+    "smiles": "CN1CCC(CC1)C(=O)O.Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 173,
+    "name": "4-n-butoxyaniline",
+    "smiles": "CCCCOc1ccc(N)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 174,
+    "name": "1-Azido-5-chloro-2,4-dimethoxy-benzene",
+    "smiles": "COc1cc(Cl)c(N=[N+]=[N-])cc1OC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 175,
+    "name": "4-butoxybenzaldehyde",
+    "smiles": "CCCCOc1ccc(C=O)cc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 176,
+    "name": "acetonitrile",
+    "smiles": "CC#N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 177,
+    "name": "t-butylbenzene",
+    "smiles": "CC(C)(C)c1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 178,
+    "name": "2,6-difluorobenzoic acid",
+    "smiles": "O=C(O)c1c(F)cccc1F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 179,
+    "name": "sodium sulfate",
+    "smiles": "[Na+].[Na+].[O-]S(=O)(=O)[O-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 180,
+    "name": "hydrochloric acid",
+    "smiles": "Cl",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 181,
+    "name": "lithium chloride",
+    "smiles": "[Li+].[Cl-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 182,
+    "name": "propionic anhydride",
+    "smiles": "CCC(=O)OC(=O)CC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 183,
+    "name": "MeI",
+    "smiles": "CI",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 184,
+    "name": "phenylpropionyl chloride",
+    "smiles": "O=C(Cl)CCc1ccccc1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 185,
+    "name": "3-Amino-2-Phenylindole",
+    "smiles": "Nc1c(-c2ccccc2)c2ccccc2[nH]1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 186,
+    "name": "2-nitrobenzoic acid",
+    "smiles": "O=[N+]([O-])c1ccccc1C(=O)O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 187,
+    "name": "dimethoxymethane",
+    "smiles": "COCOC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 188,
+    "name": "TFA",
+    "smiles": "OC(=O)C(F)(F)F",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 189,
+    "name": "pyrrolidin",
+    "smiles": "N1CCCC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 190,
+    "name": "N-methyl-4-piperidone",
+    "smiles": "CN1CCC(=O)CC1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 191,
+    "name": "Cs2CO3",
+    "smiles": "[Cs+].[Cs+].[O-]C([O-])=O",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 192,
+    "name": "1-(pyrrolidino)-1-cyclohexene",
+    "smiles": "C1CCC(=CC1)N2CCCC2",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 193,
+    "name": "1-Nitro-3-[(propan-2-ylsulfonyl)methyl]benzene",
+    "smiles": "CC(C)S(=O)(=O)Cc1cccc([N+](=O)[O-])c1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 194,
+    "name": "paraformaldehyde",
+    "smiles": "O=CO",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 195,
+    "name": "acetone",
+    "smiles": "CC(=O)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 196,
+    "name": "C-[1-(toluene-4-sulfonyl)-cyclopentyl]-methylamine",
+    "smiles": "CC1(CCCC1)NCCc2ccc(cc2)S(=O)(=O)C",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 197,
+    "name": "AIBN",
+    "smiles": "CC(C)(C#N)N=NC(C)(C)C#N",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 198,
+    "name": "dimethyl sulfate",
+    "smiles": "COS(=O)(=O)OC",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 199,
+    "name": "caesium fluoride",
+    "smiles": "[Cs+].[F-]",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  },
+  {
+    "row_id": 200,
+    "name": "2-methyl-piperidine",
+    "smiles": "CC1CCCCN1",
+    "error": null,
+    "response_model": "gpt-5.4-2026-03-05"
+  }
+]

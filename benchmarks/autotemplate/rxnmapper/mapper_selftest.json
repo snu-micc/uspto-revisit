@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "map_equal": true,
+      "confidence": 0.9565621566301863,
+      "expected_confidence": 0.9565619900376546
+    },
+    {
+      "map_equal": true,
+      "confidence": 0.9704424862081648,
+      "expected_confidence": 0.9704424331552834
+    },
+    {
+      "map_equal": true,
+      "confidence": 0.919023471331775,
+      "expected_confidence": 0.919023506871605
+    }
+  ],
+  "all_maps_equal": true,
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "transformers": "4.46.3",
+  "rdkit": "2026.03.5",
+  "wheel_sha256": "dae0cd269a7ceee7c81e59b0450d3d9afe83f614015d17c7c9c05380602e528b"
+}
