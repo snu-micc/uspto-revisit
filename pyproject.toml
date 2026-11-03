@@ -25,7 +25,7 @@ dependencies = [
 
 [project.optional-dependencies]
 mapping = [
-    "localmapper[rdkit]==0.1.4",
+    "localmapper[rdkit]==0.1.5",
     # LocalMapper 0.1.x imports pkg_resources, which setuptools 82 removed.
     "setuptools>=77,<82",
     "torch>=2.13,<3",
