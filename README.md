@@ -52,6 +52,6 @@ role presence, not accuracy; reactants use the selected primary-product query.
 
 ## License and citation
 
-[LICENSE-PENDING.md](LICENSE-PENDING.md) · [CITATION.cff](CITATION.cff) ·
-[SECURITY.md](SECURITY.md). Third-party licenses apply; LocalMapper is CC BY-NC-SA 4.0.
-Built with Meta Llama 3; [license](benchmarks/zhang_et_al/LLAMA3_LICENSE.txt).
+Code is MIT ([LICENSE](LICENSE)); data are CC BY 4.0, with the exceptions listed in
+[LICENSE-DATA.md](LICENSE-DATA.md). [CITATION.cff](CITATION.cff) · [SECURITY.md](SECURITY.md).
+LocalMapper is CC BY-NC-SA 4.0. Built with Meta Llama 3; [license](benchmarks/zhang_et_al/LLAMA3_LICENSE.txt).

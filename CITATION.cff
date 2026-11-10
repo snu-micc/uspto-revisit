@@ -4,9 +4,11 @@ message: >-
   repository.
 title: "uspto-revisit: LLM extraction and template-anomaly denoising of USPTO reaction data"
 type: software
-version: 0.1.0
+version: 1.0.0
 repository-code: "https://github.com/snu-micc/uspto-revisit"
-# license: add the SPDX identifier here once the authors choose one (see LICENSE-PENDING.md).
+license:
+  - MIT
+  - CC-BY-4.0
 # doi: add the archived release DOI (e.g. Zenodo) when it exists.
 authors:
   - given-names: Chaewon
@@ -37,7 +39,7 @@ preferred-citation:
   type: article
   title: "Clean Reactions from Noisy Patents: LLM Extraction and Template-Aware Denoising for Reaction Data Curation"
   journal: Digital Discovery
-  notes: "Manuscript DD-ART-09-2026-000710, under review; update with volume, pages and DOI on publication."
+  notes: "Manuscript DD-ART-09-2026-000710.R1, accepted; update with volume, pages and DOI on publication."
   authors:
     - given-names: Chaewon
       family-names: Lee

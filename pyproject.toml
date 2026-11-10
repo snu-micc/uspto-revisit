@@ -4,9 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uspto-revisit"
-version = "0.1.0"
+version = "1.0.0"
 description = "Reproducible LLM extraction and template-anomaly evaluation for USPTO reaction data."
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.10"
 dependencies = [
     "aiohttp>=3.14.3,<4",
