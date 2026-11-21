@@ -164,7 +164,7 @@ lxml_html_clean==0.4.4
 markdown-it-py==4.0.0
 markdown2==2.5.5
 markdownify==1.2.2
-marker-pdf==1.10.2
+marker-pdf==2.1.0
 MarkupSafe==3.0.3
 matplotlib==3.10.8
 matplotlib-inline==0.2.1
